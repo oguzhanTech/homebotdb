@@ -1,0 +1,119 @@
+import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
+import { getPrimaryRobotImage } from "@/lib/robot-images";
+import type { Robot } from "@/types/robot";
+import type { Update } from "@/types/update";
+
+export function buildPageMetadata({
+  title,
+  description,
+  path = "",
+  image,
+}: {
+  title: string;
+  description: string;
+  path?: string;
+  image?: string;
+}): Metadata {
+  const url = `${siteConfig.url}${path}`;
+  const ogImage = image ?? siteConfig.defaultOgImage;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: siteConfig.name,
+      locale: siteConfig.locale,
+      type: "website",
+      images: [{ url: ogImage }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
+  };
+}
+
+export function buildRobotMetadata(robot: Robot): Metadata {
+  return buildPageMetadata({
+    title: `${robot.name} — ${robot.brand}`,
+    description: robot.shortDescription,
+    path: `/robots/${robot.slug}`,
+    image: getPrimaryRobotImage(robot) || siteConfig.defaultOgImage,
+  });
+}
+
+export function buildCompareMetadata(robots: Robot[]): Metadata {
+  const names = robots.map((robot) => robot.name).join(" vs ");
+  return buildPageMetadata({
+    title: `${names} — Home Robot Comparison`,
+    description: `Compare ${names} side by side. Specs, scores, availability, and home capabilities on ${siteConfig.name}.`,
+    path: `/compare/${robots.map((r) => r.slug).sort().join("-vs-")}`,
+  });
+}
+
+export function buildUpdateMetadata(update: Update): Metadata {
+  return buildPageMetadata({
+    title: update.title,
+    description: update.summary,
+    path: `/updates/${update.slug}`,
+  });
+}
+
+export function buildRobotJsonLd(robot: Robot) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: robot.name,
+    description: robot.shortDescription,
+    brand: { "@type": "Brand", name: robot.brand },
+    image: getPrimaryRobotImage(robot) || undefined,
+    offers: robot.price
+      ? {
+          "@type": "Offer",
+          price: robot.price.replace(/[^0-9.]/g, "") || undefined,
+          priceCurrency: "USD",
+          availability:
+            robot.commercialStatus === "buy_now"
+              ? "https://schema.org/InStock"
+              : "https://schema.org/PreOrder",
+        }
+      : undefined,
+  };
+}
+
+export function buildBreadcrumbJsonLd(
+  items: { name: string; path: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${siteConfig.url}${item.path}`,
+    })),
+  };
+}
+
+export function buildWebsiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${siteConfig.url}/?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+}
