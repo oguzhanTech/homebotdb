@@ -24,6 +24,7 @@ import { InfoRow, ScoreBar } from "@/components/ui/ScoreBar";
 import { Tabs } from "@/components/ui/Tabs";
 import { DataValue, MonoValue } from "@/components/ui/DataValue";
 import { BuyNowLink } from "@/components/ui/PrimaryLink";
+import { ShareButtons } from "@/components/update/ShareButtons";
 import { formatDate } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
@@ -61,17 +62,23 @@ export function RobotDetailView({
     <>
       <div className="hero-grid grid gap-5 xl:grid-cols-[minmax(0,1fr)_356px]">
         <section className="product-stage relative min-h-[660px] border-b border-line pb-8">
-          <div className="mb-5 flex flex-wrap gap-4 font-mono text-xs uppercase tracking-[0.17em] text-[#5d6570]">
-            <Link href="/robots">Robots</Link>
-            <span>/</span>
-            <span>{ROBOT_TYPE_LABELS[robot.type]}</span>
-            <span>/</span>
-            <span className="inline-flex items-center gap-2">
-              <BrandLogo brand={robot.brand} size="sm" />
-              {robot.brand}
-            </span>
-            <span>/</span>
-            <span>{robot.name}</span>
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+            <div className="flex flex-wrap items-center gap-4 font-mono text-xs uppercase tracking-[0.17em] text-[#5d6570]">
+              <Link href="/robots">Robots</Link>
+              <span>/</span>
+              <span>{ROBOT_TYPE_LABELS[robot.type]}</span>
+              <span>/</span>
+              <span>{robot.brand}</span>
+              <span>/</span>
+              <span>{robot.name}</span>
+            </div>
+            <ShareButtons
+              variant="subtle"
+              showLabel={false}
+              title={`${robot.name} — ${robot.brand}`}
+              path={`/robots/${robot.slug}`}
+              className="ml-auto shrink-0"
+            />
           </div>
 
           <div className="flex flex-wrap items-center gap-4">

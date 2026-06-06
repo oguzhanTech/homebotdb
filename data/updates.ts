@@ -65,7 +65,7 @@ export const updates: Update[] = [
     summary: "Compare table updated for Figure 02 and Unitree G1 with May 2026 data.",
     content:
       "We refreshed the humanoid compare table with May numbers. Battery and payload fields changed where specs are now confirmed. Open Compare to see Figure 02 and Unitree G1 side by side.",
-    coverImage: "/images/human-form-module-figure-3-image-v3.png",
+    coverImage: "/images/figure-02/figure-02-front.png",
     createdAt: "2026-06-04T09:00:00Z",
     updatedAt: "2026-06-04T09:00:00Z",
   },
@@ -92,7 +92,7 @@ export const updates: Update[] = [
     summary: "Quick roundup: Figure demos, Unitree regions, and an EMO app update.",
     content:
       "Figure kept sharing new demo clips this week. Unitree expanded G1 support in a few regions. EMO shipped app update 3.2 with new personality modes. Nothing earth-shaking, but worth a scan if you follow home bots.",
-    coverImage: "/images/unitree-g1/unitree-g1.png",
+    coverImage: "/images/figure-02/figure-02-action.png",
     createdAt: "2026-05-15T12:00:00Z",
     updatedAt: "2026-05-15T12:00:00Z",
   },

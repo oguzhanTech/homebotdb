@@ -92,13 +92,18 @@ export function ShareButtons({
   title,
   path,
   className,
+  variant = "default",
+  showLabel = true,
 }: {
   title: string;
   path: string;
   className?: string;
+  variant?: "default" | "subtle";
+  showLabel?: boolean;
 }) {
   const [copied, setCopied] = useState(false);
   const pageUrl = `${siteConfig.url}${path}`;
+  const isSubtle = variant === "subtle";
 
   const handleShare = async (channel: ShareChannel) => {
     if (channel === "copy") {
@@ -119,20 +124,42 @@ export function ShareButtons({
   };
 
   return (
-    <div className={cn("flex flex-wrap items-center gap-3", className)}>
-      <span className="text-sm font-medium text-[#4d5662]">Share</span>
-      <div className="flex flex-wrap gap-2">
+    <div
+      className={cn(
+        "flex flex-wrap items-center",
+        isSubtle ? "gap-2.5" : "gap-3",
+        className,
+      )}
+    >
+      {showLabel ? (
+        <span
+          className={
+            isSubtle
+              ? "text-[11px] font-bold uppercase tracking-wider text-muted"
+              : "text-sm font-medium text-[#4d5662]"
+          }
+        >
+          Share
+        </span>
+      ) : null}
+      <div className={cn("flex flex-wrap", isSubtle ? "gap-1.5" : "gap-2")}>
         {channels.map((channel) => (
           <button
             key={channel.id}
             type="button"
             aria-label={channel.label}
             onClick={() => handleShare(channel.id)}
-            className="group inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-line bg-white transition-colors"
+            className={cn(
+              "group inline-flex cursor-pointer items-center justify-center rounded-xl border transition-colors",
+              isSubtle
+                ? "h-9 w-9 border-line/60 bg-transparent hover:border-blue/25"
+                : "h-10 w-10 border-line bg-white",
+            )}
           >
             <span
               className={cn(
-                "text-[#4d5662] transition-colors",
+                "transition-colors",
+                isSubtle ? "text-muted" : "text-[#4d5662]",
                 channel.iconHoverClass,
               )}
             >

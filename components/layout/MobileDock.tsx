@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useMobileNav } from "@/contexts/MobileNavContext";
 import { cn } from "@/lib/utils";
 
 const items = [
@@ -9,11 +10,11 @@ const items = [
   { href: "/robots", label: "Robots" },
   { href: "/compare", label: "Compare" },
   { href: "/updates", label: "Alerts" },
-  { href: "/admin", label: "Menu" },
-];
+] as const;
 
 export function MobileDock() {
   const pathname = usePathname();
+  const { open, isOpen } = useMobileNav();
 
   return (
     <nav
@@ -41,6 +42,19 @@ export function MobileDock() {
           </Link>
         );
       })}
+
+      <button
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded={isOpen}
+        onClick={open}
+        className={cn(
+          "cursor-pointer text-center text-xl leading-none text-muted",
+          isOpen && "text-blue",
+        )}
+      >
+        <span aria-hidden>☰</span>
+      </button>
     </nav>
   );
 }
