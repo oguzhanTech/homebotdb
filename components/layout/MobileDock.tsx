@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMobileNav } from "@/contexts/MobileNavContext";
 import { cn } from "@/lib/utils";
 
 const items = [
@@ -14,11 +13,10 @@ const items = [
 
 export function MobileDock() {
   const pathname = usePathname();
-  const { open, isOpen } = useMobileNav();
 
   return (
     <nav
-      className="fixed inset-x-3.5 bottom-3.5 z-40 grid h-[62px] grid-cols-5 items-center rounded-[20px] border border-line bg-panel/88 shadow-[0_18px_50px_rgba(8,11,18,0.14)] backdrop-blur-[18px] xl:hidden"
+      className="fixed inset-x-3.5 bottom-3.5 z-40 grid h-[62px] grid-cols-4 items-center rounded-[20px] border border-line bg-panel/88 shadow-[0_18px_50px_rgba(8,11,18,0.14)] backdrop-blur-[18px] xl:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       {items.map((item) => {
@@ -42,19 +40,6 @@ export function MobileDock() {
           </Link>
         );
       })}
-
-      <button
-        type="button"
-        aria-label="Open navigation menu"
-        aria-expanded={isOpen}
-        onClick={open}
-        className={cn(
-          "cursor-pointer text-center text-xl leading-none text-muted",
-          isOpen && "text-blue",
-        )}
-      >
-        <span aria-hidden>☰</span>
-      </button>
     </nav>
   );
 }
