@@ -1,12 +1,14 @@
 import Link from "next/link";
 import type { Update } from "@/types/update";
+import { getUpdatePublicPath } from "@/lib/update-paths";
+import { formatUpdateReadingTime } from "@/lib/reading-time";
 import { formatDate } from "@/lib/utils";
 
 export function FeaturedNewsHero({ update }: { update: Update }) {
   return (
     <section className="mb-8">
       <Link
-        href={`/updates/${update.slug}`}
+        href={getUpdatePublicPath(update)}
         className="group block cursor-pointer rounded-[18px] border border-line bg-panel-strong p-6 shadow-card transition-colors hover:border-blue/30 sm:p-8"
       >
         <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-blue">
@@ -18,9 +20,14 @@ export function FeaturedNewsHero({ update }: { update: Update }) {
         <p className="mt-4 max-w-3xl text-base leading-relaxed text-[#565f6b] sm:text-lg">
           {update.summary}
         </p>
-        <span className="mt-5 inline-flex text-xs font-bold uppercase tracking-widest text-ink group-hover:text-blue">
-          Read news
-        </span>
+        <div className="mt-5 flex items-center justify-between gap-3">
+          <span className="text-xs font-bold uppercase tracking-widest text-ink group-hover:text-blue">
+            Read news
+          </span>
+          <span className="shrink-0 text-[11px] font-medium text-muted">
+            {formatUpdateReadingTime(update)}
+          </span>
+        </div>
       </Link>
     </section>
   );

@@ -247,10 +247,19 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
                   <RobotTypeTag type={robot.type} />
                 </td>
                 <td className="px-3 py-3.5">
-                  <BatteryBar value={robot.batteryLife} />
+                  <BatteryBar
+                    value={robot.batteryLife}
+                    dataStatus={robot.fieldMeta.batteryLife?.status}
+                  />
                 </td>
                 <td className="px-3 py-3.5 font-mono text-[13px] font-bold">
-                  <DataValue value={robot.price} fallback="TBA" mono />
+                  <DataValue
+                    value={robot.price}
+                    fallback="TBA"
+                    mono
+                    priceStatus={robot.priceStatus}
+                    dataStatus={robot.fieldMeta.price?.status}
+                  />
                 </td>
                 <td className="px-3 py-3.5">
                   <DataStatusTag status={getRobotDataStatus(robot)} />
@@ -331,11 +340,20 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
             <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
               <div>
                 <div className="text-muted">Price</div>
-                <DataValue value={robot.price} fallback="TBA" mono />
+                <DataValue
+                  value={robot.price}
+                  fallback="TBA"
+                  mono
+                  priceStatus={robot.priceStatus}
+                  dataStatus={robot.fieldMeta.price?.status}
+                />
               </div>
               <div>
                 <div className="text-muted">Battery</div>
-                <BatteryBar value={robot.batteryLife} />
+                <BatteryBar
+                  value={robot.batteryLife}
+                  dataStatus={robot.fieldMeta.batteryLife?.status}
+                />
               </div>
               <div>
                 <div className="text-muted">Height</div>

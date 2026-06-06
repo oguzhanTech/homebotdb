@@ -12,6 +12,7 @@ const sizes = {
     ringInner: "inset-[83px]",
     avatarSurface:
       "border border-line/60 bg-bg shadow-[0_18px_50px_rgba(8,11,18,0.08)]",
+    imageClass: "object-[46%_100%]",
   },
   lg: {
     outer: "h-[160px] w-[160px]",
@@ -39,7 +40,11 @@ const sizes = {
 };
 
 /** Fill the frame at full size; anchor bottom; clip top/sides inside the circle. */
-const IMAGE_CLASS_NAME = "h-full w-full object-cover object-bottom";
+function getImageClassName(config: (typeof sizes)[keyof typeof sizes]) {
+  const imageClass =
+    "imageClass" in config ? config.imageClass : undefined;
+  return cn("h-full w-full object-cover", imageClass ?? "object-bottom");
+}
 
 const CAROUSEL_INTERVAL_MS = 3400;
 const CAROUSEL_FADE_MS = 900;
@@ -62,6 +67,7 @@ export function RobotAvatar({
   enableCarousel?: boolean;
 }) {
   const config = sizes[size];
+  const imageClassName = getImageClassName(config);
   const ringsVisible = showRings && size !== "sm";
 
   const images = useMemo(() => {
@@ -132,7 +138,7 @@ export function RobotAvatar({
                   src={src}
                   alt={index === activeIndex ? name : `${name} view ${index + 1}`}
                   className={cn(
-                    IMAGE_CLASS_NAME,
+                    imageClassName,
                     "absolute inset-0 transition-opacity ease-in-out",
                     index === activeIndex ? "z-10 opacity-100" : "z-0 opacity-0",
                   )}
@@ -143,7 +149,7 @@ export function RobotAvatar({
             </div>
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={images[0]} alt={name} className={IMAGE_CLASS_NAME} />
+            <img src={images[0]} alt={name} className={imageClassName} />
           )
         ) : (
           <RobotImagePlaceholder

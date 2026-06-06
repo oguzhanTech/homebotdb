@@ -77,3 +77,33 @@ button:disabled {
     padding-top: env(safe-area-inset-top);
   }
 }
+
+/* Long comment text: wrap inside the comment widget only */
+.comment-body {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.comment-textarea-wrap {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.comment-textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  field-sizing: fixed;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  overflow-x: hidden;
+  resize: vertical;
+}

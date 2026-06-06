@@ -11,7 +11,9 @@ import {
   buildRobotMetadata,
 } from "@/lib/seo";
 import { TopBar } from "@/components/layout/TopBar";
+import { CommentSection } from "@/components/comments/CommentSection";
 import { RobotDetailView } from "@/components/robot/RobotDetailView";
+import { listComments } from "@/lib/data/comments";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -35,6 +37,7 @@ export default async function RobotDetailPage({ params }: PageProps) {
 
   const similarRobots = getSimilarRobots(robot);
   const updates = getUpdatesByRobotSlug(slug, 5);
+  const comments = await listComments("robot", slug);
   const jsonLd = buildRobotJsonLd(robot);
   const breadcrumbLd = buildBreadcrumbJsonLd([
     { name: "Home", path: "/" },
@@ -57,6 +60,16 @@ export default async function RobotDetailPage({ params }: PageProps) {
           robot={robot}
           similarRobots={similarRobots}
           updates={updates}
+          reviewsSection={
+            <CommentSection
+              target={{ type: "robot", slug: robot.slug }}
+              pageTitle={robot.name}
+              pageDescription={robot.shortDescription}
+              pagePath={`/robots/${robot.slug}`}
+              comments={comments}
+              heading="Community reviews"
+            />
+          }
         />
       </main>
     </>

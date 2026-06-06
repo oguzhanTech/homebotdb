@@ -1,17 +1,19 @@
 import { siteConfig } from "@/config/site";
 import { getNewsUpdates } from "@/lib/data/repository";
 import { getEditorById } from "@/lib/editors";
+import { getUpdatePublicPath } from "@/lib/update-paths";
 
 export async function GET() {
   const news = getNewsUpdates();
   const items = news
     .map((update) => {
       const author = getEditorById(update.authorId);
+      const link = `${siteConfig.url}${getUpdatePublicPath(update)}`;
       return `
     <item>
       <title><![CDATA[${update.title}]]></title>
-      <link>${siteConfig.url}/updates/${update.slug}</link>
-      <guid>${siteConfig.url}/updates/${update.slug}</guid>
+      <link>${link}</link>
+      <guid>${link}</guid>
       <pubDate>${new Date(update.createdAt).toUTCString()}</pubDate>
       <description><![CDATA[${update.summary}]]></description>
       <author>${author.name}</author>

@@ -13,7 +13,7 @@ import { UpdatesSection, NewsSection } from "@/components/robot/UpdatesSection";
 import { EmailAlertPlaceholder } from "@/components/marketing/EmailAlertPlaceholder";
 
 export const metadata = buildPageMetadata({
-  title: `${siteConfig.name} — Home Robot Matrix`,
+  title: `${siteConfig.name} — ${siteConfig.tagline}`,
   description: siteConfig.description,
   path: "/",
 });
@@ -31,13 +31,15 @@ function HomeContent() {
 
       <RobotMatrix />
 
-      <UpdatesSection title="Latest Robot Updates" updates={latestUpdates} />
-
       <NewsSection updates={newsUpdates} />
 
-      <div className="mt-10">
-        <EmailAlertPlaceholder />
-      </div>
+      <UpdatesSection title="Latest Robot Updates" updates={latestUpdates} />
+
+      {siteConfig.features.emailSubscription ? (
+        <div className="mt-10">
+          <EmailAlertPlaceholder />
+        </div>
+      ) : null}
     </main>
   );
 }

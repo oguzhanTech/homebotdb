@@ -35,3 +35,14 @@ export function slugify(text: string): string {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 }
+
+/** Extract runtime hours from labels like "2.5 h", "~8 h (estimated)", or "Unknown". */
+export function parseBatteryHours(value: string | null | undefined): number | null {
+  const text = displayValue(value, "Unknown");
+  if (text === "Unknown" || text === "Not specified" || text === "NA" || text === "Coming soon") {
+    return null;
+  }
+
+  const match = text.replace(/,/g, "").match(/(\d+(?:\.\d+)?)/);
+  return match ? parseFloat(match[1]) : null;
+}

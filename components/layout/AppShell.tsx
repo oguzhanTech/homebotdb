@@ -12,6 +12,7 @@ import { MobileSidebar } from "./MobileSidebar";
 import { MobileDock } from "./MobileDock";
 import { CompareDock } from "./CompareDock";
 import { CommandPalette } from "@/components/search/CommandPalette";
+import { SiteFooter } from "./SiteFooter";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const robots = getRobots();
@@ -24,9 +25,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <MobileNavProvider>
           <div className="grid min-h-screen xl:grid-cols-[178px_minmax(0,1fr)]">
             <Sidebar freshnessScore={freshnessScore} lastUpdate={lastUpdate} />
-            <div className="min-w-0 pb-28 xl:pb-9">
+            <div className="flex min-h-full min-w-0 flex-col pb-28 xl:pb-9">
               <MobileHeader />
-              {children}
+              <div className="flex-1">{children}</div>
+              <SiteFooter />
             </div>
           </div>
           <MobileSidebar freshnessScore={freshnessScore} lastUpdate={lastUpdate} />

@@ -35,4 +35,10 @@ export const brands: Brand[] = [
     logo: "/brands/living-ai-logo.png",
     aliases: ["Living AI", "Living.Ai"],
   },
+  {
+    id: "1x",
+    name: "1X",
+    logo: "/brands/1x.png",
+    aliases: ["1X", "1X Technologies", "1X Tech"],
+  },
 ];

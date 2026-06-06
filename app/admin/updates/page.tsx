@@ -3,8 +3,9 @@ import { siteConfig } from "@/config/site";
 import { buildPageMetadata } from "@/lib/seo";
 import { getDataUpdates, getNewsUpdates } from "@/lib/data/repository";
 import { getEditorById } from "@/lib/editors";
+import { getUpdatePublicPath } from "@/lib/update-paths";
 import { formatDate } from "@/lib/utils";
-import { UPDATE_TYPE_LABELS } from "@/types/update";
+import { UPDATE_TYPE_LABELS, isNewsUpdate } from "@/types/update";
 
 export const metadata = buildPageMetadata({
   title: `Updates — Admin — ${siteConfig.name}`,
@@ -14,6 +15,7 @@ export const metadata = buildPageMetadata({
 
 function AdminUpdateRow({ update }: { update: ReturnType<typeof getDataUpdates>[number] }) {
   const editor = getEditorById(update.authorId);
+  const isNews = isNewsUpdate(update.type);
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 rounded-[18px] border border-line bg-panel-strong p-5 shadow-card">
@@ -27,13 +29,27 @@ function AdminUpdateRow({ update }: { update: ReturnType<typeof getDataUpdates>[
         </div>
         <h2 className="mt-1 font-semibold tracking-tight">{update.title}</h2>
         <p className="mt-1 line-clamp-1 text-sm text-[#565f6b]">{update.summary}</p>
+        {isNews ? (
+          <p className="mt-2 font-mono text-[11px] text-muted">
+            data/news/{update.slug}.md
+          </p>
+        ) : null}
       </div>
-      <Link
-        href={`/admin/updates/${update.slug}/edit`}
-        className="shrink-0 rounded-full border border-line bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#4d5662] hover:border-blue/30"
-      >
-        Edit
-      </Link>
+      {isNews ? (
+        <Link
+          href={getUpdatePublicPath(update)}
+          className="shrink-0 rounded-full border border-line bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#4d5662] hover:border-blue/30"
+        >
+          View
+        </Link>
+      ) : (
+        <Link
+          href={`/admin/updates/${update.slug}/edit`}
+          className="shrink-0 rounded-full border border-line bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#4d5662] hover:border-blue/30"
+        >
+          Edit
+        </Link>
+      )}
     </div>
   );
 }
@@ -86,6 +102,10 @@ export default function AdminUpdatesPage() {
             News
           </div>
           <h2 className="mt-1 text-xl font-semibold tracking-tight">Stories and roundups</h2>
+          <p className="mt-2 text-sm text-[#565f6b]">
+            Edit Markdown files in <code className="font-mono text-xs">data/news/</code>, then
+            run <code className="font-mono text-xs">npm run news:build</code>.
+          </p>
         </div>
         <div className="grid gap-3">
           {news.length > 0 ? (

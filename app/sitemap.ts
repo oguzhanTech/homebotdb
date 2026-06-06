@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import {
+  getAllDataUpdateSlugs,
+  getAllNewsSlugs,
   getAllRobotSlugs,
-  getAllUpdateSlugs,
   getComparePairs,
 } from "@/lib/data/repository";
 
@@ -17,6 +18,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/updates`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${base}/news`, lastModified: now, changeFrequency: "daily", priority: 0.85 },
     { url: `${base}/wizard`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${base}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/cookies`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const robotRoutes = getAllRobotSlugs().map((slug) => ({
@@ -26,11 +30,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  const updateRoutes = getAllUpdateSlugs().map((slug) => ({
+  const updateRoutes = getAllDataUpdateSlugs().map((slug) => ({
     url: `${base}/updates/${slug}`,
     lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.7,
+  }));
+
+  const newsRoutes = getAllNewsSlugs().map((slug) => ({
+    url: `${base}/news/${slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.75,
   }));
 
   const compareRoutes = getComparePairs().map((slug) => ({
@@ -40,5 +51,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticRoutes, ...robotRoutes, ...updateRoutes, ...compareRoutes];
+  return [...staticRoutes, ...robotRoutes, ...updateRoutes, ...newsRoutes, ...compareRoutes];
 }

@@ -42,10 +42,12 @@ export function RobotDetailView({
   robot,
   similarRobots,
   updates,
+  reviewsSection,
 }: {
   robot: Robot;
   similarRobots: Robot[];
   updates: Update[];
+  reviewsSection: React.ReactNode;
 }) {
   const [activeTab, setActiveTab] = useState("Overview");
   const { toggle, isSelected, isFull } = useCompare();
@@ -107,7 +109,7 @@ export function RobotDetailView({
             </div>
           )}
 
-          <div className="relative mx-auto mt-8 flex justify-center xl:absolute xl:right-10 xl:top-[108px] xl:mt-0">
+          <div className="relative mx-auto mt-8 flex -translate-x-1 justify-center sm:-translate-x-2 xl:absolute xl:right-16 xl:top-[108px] xl:mt-0 xl:translate-x-0">
             <RobotAvatar
               name={robot.name}
               imageUrls={heroImages}
@@ -160,14 +162,16 @@ export function RobotDetailView({
               Key Specs
             </div>
             <div className="grid grid-cols-2 border-y border-line sm:grid-cols-3">
-              {[
-                ["Height", robot.height],
-                ["Weight", robot.weight],
-                ["Battery", robot.batteryLife],
-                ["Speed", robot.speed],
-                ["Payload", robot.payload],
-                ["DOF", robot.degreesOfFreedom ?? "Not specified"],
-              ].map(([label, value]) => (
+              {(
+                [
+                  ["Height", robot.height, "height"],
+                  ["Weight", robot.weight, "weight"],
+                  ["Battery", robot.batteryLife, "batteryLife"],
+                  ["Speed", robot.speed, "speed"],
+                  ["Payload", robot.payload, "payload"],
+                  ["DOF", robot.degreesOfFreedom ?? "Not specified", null],
+                ] as const
+              ).map(([label, value, metaKey]) => (
                 <div
                   key={label}
                   className="border-r border-line p-[18px] last:border-r-0 nth-[2n]:border-r-0 sm:nth-[2n]:border-r sm:nth-[3n]:border-r-0"
@@ -176,7 +180,12 @@ export function RobotDetailView({
                     {label}
                   </div>
                   <div className="mt-1 text-[13px] font-bold">
-                    <DataValue value={value as string} />
+                    <DataValue
+                      value={value}
+                      dataStatus={
+                        metaKey ? robot.fieldMeta[metaKey]?.status : undefined
+                      }
+                    />
                   </div>
                 </div>
               ))}
@@ -202,7 +211,17 @@ export function RobotDetailView({
               label="Commercial Status"
               value={COMMERCIAL_STATUS_LABELS[robot.commercialStatus]}
             />
-            <InfoRow label="Est. Price" value={<DataValue value={robot.price} fallback="Unknown" />} />
+            <InfoRow
+              label="Est. Price"
+              value={
+                <DataValue
+                  value={robot.price}
+                  fallback="Unknown"
+                  priceStatus={robot.priceStatus}
+                  dataStatus={robot.fieldMeta.price?.status}
+                />
+              }
+            />
             <InfoRow
               label="Availability"
               value={robot.availabilityStatus.replace("_", " ")}
@@ -352,10 +371,7 @@ export function RobotDetailView({
                   key={label}
                   label={label}
                   value={<DataValue value={value as string} />}
-                  className={cn(
-                    index % 2 === 0 ? "sm:pr-5" : "sm:pl-5",
-                    "[&_span:last-child]:max-w-[58%] [&_span:last-child]:break-words [&_span:last-child]:normal-case [&_span:last-child]:tracking-normal",
-                  )}
+                  className={cn(index % 2 === 0 ? "sm:pr-5" : "sm:pl-5")}
                 />
               ))}
             </div>
@@ -433,23 +449,7 @@ export function RobotDetailView({
           )}
 
           {activeTab === "Reviews" && (
-            <div className="lg:col-span-2">
-              {robot.reviews.length > 0 ? (
-                robot.reviews.map((review) => (
-                  <div
-                    key={review.source}
-                    className="mb-3 rounded-xl border border-line p-4"
-                  >
-                    <div className="text-xs font-bold uppercase tracking-wider text-muted">
-                      {review.source}
-                    </div>
-                    <p className="mt-2 text-sm text-[#4d5662]">{review.summary}</p>
-                  </div>
-                ))
-              ) : (
-                <p className="text-muted">Coming soon</p>
-              )}
-            </div>
+            <div className="lg:col-span-2">{reviewsSection}</div>
           )}
         </div>
       </Card>

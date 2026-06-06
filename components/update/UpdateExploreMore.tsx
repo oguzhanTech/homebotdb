@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Update } from "@/types/update";
 import { isNewsUpdate } from "@/types/update";
-import { buildComparePath } from "@/lib/compare";
 import { getRobotBySlug } from "@/lib/data/repository";
 
 export function UpdateExploreMore({ update }: { update: Update }) {
@@ -16,14 +15,6 @@ export function UpdateExploreMore({ update }: { update: Update }) {
     links.unshift({
       href: `/robots/${robot.slug}`,
       label: `${robot.name} page`,
-      primary: true,
-    });
-  }
-
-  if (update.slug === "humanoid-comparison-data-refresh") {
-    links.unshift({
-      href: buildComparePath(["figure-02", "unitree-g1"]),
-      label: "Compare Figure 02 vs Unitree G1",
       primary: true,
     });
   }

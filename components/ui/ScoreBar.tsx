@@ -29,20 +29,29 @@ export function InfoRow({
   label,
   value,
   className,
+  valueClassName,
 }: {
   label: string;
   value: React.ReactNode;
   className?: string;
+  valueClassName?: string;
 }) {
   return (
     <div
       className={cn(
-        "flex items-center justify-between border-t border-line py-3 text-[13px] uppercase tracking-wider",
+        "flex items-start justify-between gap-4 border-t border-line py-3 text-[13px] uppercase tracking-wider",
         className,
       )}
     >
-      <span className="text-[#4f5864]">{label}</span>
-      <span className="text-right font-bold">{value}</span>
+      <span className="shrink-0 text-[#4f5864]">{label}</span>
+      <span
+        className={cn(
+          "min-w-0 max-w-[58%] text-right font-bold normal-case tracking-normal break-words",
+          valueClassName,
+        )}
+      >
+        {value}
+      </span>
     </div>
   );
 }

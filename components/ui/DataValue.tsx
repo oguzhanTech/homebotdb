@@ -1,28 +1,54 @@
-import { displayValue } from "@/lib/utils";
+import type { DataStatus, PriceStatus } from "@/types/robot";
+import type { SpecFallback } from "@/lib/spec-display";
+import { resolveSpecDisplay, SPEC_EMPTY_DISPLAY } from "@/lib/spec-display";
 import { cn } from "@/lib/utils";
+import { SpecEmptyHint } from "@/components/ui/SpecQualifierIcon";
+import { SpecQualifierIcon } from "@/components/ui/SpecQualifierIcon";
 
 export function DataValue({
   value,
-  fallback = "Not specified",
+  fallback = SPEC_EMPTY_DISPLAY,
   className,
   mono = false,
+  dataStatus,
+  priceStatus,
+  showQualifier = true,
 }: {
   value: string | number | null | undefined;
-  fallback?: "Not specified" | "Unknown" | "Coming soon" | "TBA";
+  fallback?: SpecFallback;
   className?: string;
   mono?: boolean;
+  dataStatus?: DataStatus;
+  priceStatus?: PriceStatus;
+  showQualifier?: boolean;
 }) {
-  const text = displayValue(value, fallback);
-  const isFallback = text === fallback;
+  const resolved = resolveSpecDisplay(value, {
+    dataStatus,
+    priceStatus,
+    fallback,
+  });
+
   return (
     <span
       className={cn(
+        "inline-flex max-w-full items-center gap-1",
         mono && "font-mono",
-        isFallback && "text-muted italic normal-case",
+        resolved.isFallback && "text-muted italic normal-case",
         className,
       )}
     >
-      {text}
+      {resolved.emptyTooltip ? (
+        <SpecEmptyHint
+          tooltip={resolved.emptyTooltip}
+          label={resolved.display}
+          showIcon={showQualifier}
+        />
+      ) : (
+        <span>{resolved.display}</span>
+      )}
+      {showQualifier && resolved.tooltip ? (
+        <SpecQualifierIcon label={resolved.tooltip} />
+      ) : null}
     </span>
   );
 }

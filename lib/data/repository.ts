@@ -1,6 +1,8 @@
 import { robots as mockRobots } from "@/data/robots";
-import { updates as mockUpdates } from "@/data/updates";
+import newsArticles from "@/data/news.generated.json";
+import { updates as dataUpdates } from "@/data/updates";
 import { enrichRobotScores } from "@/lib/score";
+import { parseBatteryHours } from "@/lib/utils";
 import type { Robot, RobotType, CommercialStatus, PrimaryTask } from "@/types/robot";
 import type { Update, UpdateType } from "@/types/update";
 
@@ -30,8 +32,13 @@ export function getAllRobotSlugs(): string[] {
   return enrichedRobots.map((robot) => robot.slug);
 }
 
+const allUpdates: Update[] = [
+  ...dataUpdates,
+  ...(newsArticles as Update[]),
+];
+
 export function getUpdates(): Update[] {
-  return [...mockUpdates].sort(
+  return [...allUpdates].sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
 }
@@ -79,6 +86,14 @@ export function getFeaturedNews(days = 5): Update | undefined {
 
 export function getAllUpdateSlugs(): string[] {
   return getUpdates().map((update) => update.slug);
+}
+
+export function getAllDataUpdateSlugs(): string[] {
+  return getDataUpdates().map((update) => update.slug);
+}
+
+export function getAllNewsSlugs(): string[] {
+  return getNewsUpdates().map((update) => update.slug);
 }
 
 export function getAllCountries(): string[] {
@@ -156,8 +171,9 @@ export function sortRobots(robots: Robot[], sort: SortField): Robot[] {
       );
     case "battery":
       return sorted.sort((a, b) => {
-        const getHours = (s: string) => parseFloat(s) || 0;
-        return getHours(b.batteryLife) - getHours(a.batteryLife);
+        const aHours = parseBatteryHours(a.batteryLife) ?? -1;
+        const bHours = parseBatteryHours(b.batteryLife) ?? -1;
+        return bHours - aHours;
       });
     case "lastUpdated":
       return sorted.sort(

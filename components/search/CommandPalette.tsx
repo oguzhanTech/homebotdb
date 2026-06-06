@@ -5,6 +5,7 @@ import Link from "next/link";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { getRobots } from "@/lib/data/repository";
 import { getUpdates } from "@/lib/data/repository";
+import { getUpdatePublicPath } from "@/lib/update-paths";
 import { cn } from "@/lib/utils";
 
 export function CommandPalette() {
@@ -80,7 +81,7 @@ export function CommandPalette() {
           {filteredUpdates.slice(0, 4).map((update) => (
             <Link
               key={update.slug}
-              href={`/updates/${update.slug}`}
+              href={getUpdatePublicPath(update)}
               onClick={() => setOpen(false)}
               className={cn("block rounded-xl px-3 py-2 text-sm hover:bg-blue-soft")}
             >

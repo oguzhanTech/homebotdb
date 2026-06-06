@@ -9,7 +9,11 @@ import {
   PRIMARY_TASK_LABELS,
   ROBOT_TYPE_LABELS,
 } from "@/types/robot";
-import { cn } from "@/lib/utils";
+import type { DataStatus } from "@/types/robot";
+import { resolveSpecDisplay } from "@/lib/spec-display";
+import { cn, parseBatteryHours } from "@/lib/utils";
+import { SpecEmptyHint } from "@/components/ui/SpecQualifierIcon";
+import { SpecQualifierIcon } from "@/components/ui/SpecQualifierIcon";
 
 const tagBase =
   "inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] whitespace-nowrap";
@@ -141,9 +145,19 @@ export function DataStatusTag({ status }: { status: RobotDataStatus }) {
   );
 }
 
-export function BatteryBar({ value }: { value: string }) {
-  const hours = parseFloat(value) || 0;
-  const pct = Math.min(Math.max((hours / 5) * 100, 8), 100);
+export function BatteryBar({
+  value,
+  dataStatus,
+}: {
+  value: string;
+  dataStatus?: DataStatus;
+}) {
+  const resolved = resolveSpecDisplay(value, { dataStatus });
+  const hours = parseBatteryHours(resolved.display);
+  const pct =
+    hours === null
+      ? 0
+      : Math.min(Math.max((hours / 8) * 100, 8), 100);
 
   return (
     <div className="flex min-w-[88px] items-center gap-2">
@@ -153,8 +167,15 @@ export function BatteryBar({ value }: { value: string }) {
           style={{ width: `${pct}%` }}
         />
       </div>
-      <span className="font-mono text-[11px] font-bold tracking-wide">
-        {value || "—"}
+      <span className="inline-flex items-center gap-1 font-mono text-[11px] font-bold tracking-wide">
+        {resolved.emptyTooltip ? (
+          <SpecEmptyHint tooltip={resolved.emptyTooltip} label={resolved.display} />
+        ) : (
+          <span>{resolved.display}</span>
+        )}
+        {resolved.tooltip ? (
+          <SpecQualifierIcon label={resolved.tooltip} />
+        ) : null}
       </span>
     </div>
   );

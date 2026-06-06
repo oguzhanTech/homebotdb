@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HomeBotRadar
 
-## Getting Started
+Compare, score, and track home robots on [homebotradar.com](https://homebotradar.com).
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Comments (local demo)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+User comments appear on:
 
-## Learn More
+- Robot pages → **Reviews** tab
+- News articles → **Discussion** section
 
-To learn more about Next.js, take a look at the following resources:
+Storage is file-based for now (`data/comments.json`). Comments are rendered in HTML for SEO (microdata + JSON-LD). Production will move to Supabase.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Features:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- No account sign-up (username only)
+- One reply level per comment
+- Staff/admin usernames map to editor profiles with avatar + HomeBotRadar logo
+- 500 character limit per comment or reply
 
-## Deploy on Vercel
+### Admin comment usernames
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Enter one of these **exact usernames** in the comment form to post as a verified HomeBotRadar editor (avatar + small HR logo next to the name):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Username | Posts as |
+| --- | --- |
+| `oguzhan-aydin26` | Oguzhan Aydin |
+| `chuck-steward26` | Chuck Steward |
+| `maya-chen26` | Maya Chen |
+
+Usernames are case-insensitive. Codes live in `config/admin-codes.ts`.
+
+**Do not share these publicly.** They are for internal staff replies only until proper auth exists.
+
+## Email alerts
+
+Homepage email signup is disabled (`siteConfig.features.emailSubscription = false`) until the list is live.
+
+## News content
+
+Markdown sources live in `data/news/`. Rebuild with:
+
+```bash
+npm run news:build
+```
+
+`predev` / `prebuild` run this automatically.
+
+## Deploy
+
+Standard Next.js deploy (Vercel or similar). Set `NEXT_PUBLIC_SITE_URL` for canonical URLs and OG tags.
+
+## Legal pages
+
+Public policy pages for Search and AdSense:
+
+- `/privacy` — Privacy Policy
+- `/cookies` — Cookie Policy
+- `/terms` — Terms of Service
+
+Footer links appear site-wide. Contact and last-updated dates live in `config/legal.ts`. Review with counsel before production ads go live.

@@ -2,13 +2,17 @@ export const siteConfig = {
   name: "HomeBotRadar",
   shortName: "HR",
   logoLines: ["HOMEBOT", "RADAR"] as const,
-  tagline: "Home & companion robot radar",
+  tagline: "Home & Companion Robot Database",
   description:
-    "Compare, score, and track home robots, humanoids, companions, and elder-care assistants. Industrial robots excluded.",
+    "Track every home robot on the market. HomeBotRadar lets you compare humanoid and companion robots side by side — specs, prices, readiness scores, and real availability data.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://homebotradar.com",
   version: "v0.1",
   locale: "en",
   defaultOgImage: "/og-default.png",
+  features: {
+    /** Email alert signup on the homepage. Enable when the list is live. */
+    emailSubscription: false,
+  },
 } as const;
 
 export type SiteConfig = typeof siteConfig;

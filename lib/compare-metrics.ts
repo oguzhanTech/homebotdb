@@ -21,7 +21,7 @@ export const COMPARE_ROW_DIRECTION: Record<string, CompareDirection> = {
 };
 
 function parseNumber(value: string): number | null {
-  if (!value || value === "Unknown" || value === "Not specified") return null;
+  if (!value || value === "Unknown" || value === "Not specified" || value === "NA") return null;
   const match = value.replace(/,/g, "").match(/(\d+(?:\.\d+)?)/);
   return match ? parseFloat(match[1]) : null;
 }

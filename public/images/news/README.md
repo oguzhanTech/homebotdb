@@ -1,6 +1,6 @@
 # News cover images
 
-Optional hero images for news articles. Reference paths in `data/updates.ts` as `coverImage`.
+Optional hero images for news articles. Reference paths in `data/news/*.md` frontmatter as `coverImage`.
 
 Recommended: 1200×630 px (or 16:9) for Twitter, Reddit, and Facebook previews.
 

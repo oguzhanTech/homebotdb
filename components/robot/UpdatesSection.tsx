@@ -4,6 +4,8 @@ import { UPDATE_TYPE_LABELS, isNewsUpdate } from "@/types/update";
 import { siteConfig } from "@/config/site";
 import { getRobotBySlug } from "@/lib/data/repository";
 import { getEditorById } from "@/lib/editors";
+import { getUpdatePublicPath } from "@/lib/update-paths";
+import { formatUpdateReadingTime } from "@/lib/reading-time";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { formatDate } from "@/lib/utils";
 
@@ -21,7 +23,7 @@ export function UpdateCard({
 
   return (
     <Link
-      href={`/updates/${update.slug}`}
+      href={getUpdatePublicPath(update)}
       className="group block cursor-pointer rounded-[18px] border border-line bg-panel/82 p-5 shadow-card transition-colors hover:border-blue/30"
     >
       <div className="mb-3 flex items-center justify-between gap-3">
@@ -81,7 +83,7 @@ export function NewsCard({
 
   return (
     <Link
-      href={`/updates/${update.slug}`}
+      href={getUpdatePublicPath(update)}
       className="group block cursor-pointer rounded-[18px] border border-line bg-panel/82 p-5 shadow-card transition-colors hover:border-blue/30"
     >
       <div className="flex items-center justify-between gap-3">
@@ -102,9 +104,14 @@ export function NewsCard({
         {update.summary}
       </p>
 
-      <span className="mt-3 inline-block text-xs font-bold uppercase tracking-wider text-muted">
-        Read news
-      </span>
+      <div className="mt-3 flex items-center justify-between gap-3">
+        <span className="text-xs font-bold uppercase tracking-wider text-muted">
+          Read news
+        </span>
+        <span className="shrink-0 text-[11px] font-medium text-muted">
+          {formatUpdateReadingTime(update)}
+        </span>
+      </div>
     </Link>
   );
 }

@@ -3,9 +3,12 @@ import { siteConfig } from "@/config/site";
 import { getPrimaryRobotImage } from "@/lib/robot-images";
 import { getEditorById } from "@/lib/editors";
 import { getAbsoluteUpdateCoverImage } from "@/lib/update-images";
+import { getUpdatePublicPath } from "@/lib/update-paths";
 import type { Robot } from "@/types/robot";
 import type { Update } from "@/types/update";
 import { isNewsUpdate } from "@/types/update";
+import type { Comment, CommentTarget } from "@/types/comment";
+import { groupCommentsByThread } from "@/lib/data/comments";
 
 export function buildPageMetadata({
   title,
@@ -73,7 +76,7 @@ export function buildUpdateMetadata(update: Update): Metadata {
   return buildPageMetadata({
     title: update.title,
     description: update.summary,
-    path: `/updates/${update.slug}`,
+    path: getUpdatePublicPath(update),
     authors: [{ name: author.name }],
     image,
   });
@@ -128,5 +131,61 @@ export function buildWebsiteJsonLd() {
       target: `${siteConfig.url}/?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
+  };
+}
+
+function buildCommentJsonLdNode(comment: Comment, pageUrl: string) {
+  return {
+    "@type": "Comment",
+    "@id": `${pageUrl}#comment-${comment.id}`,
+    text: comment.body,
+    datePublished: comment.createdAt,
+    author: {
+      "@type": "Person",
+      name: comment.authorName,
+      ...(comment.isAdmin
+        ? { affiliation: { "@type": "Organization", name: siteConfig.name } }
+        : {}),
+    },
+  };
+}
+
+export function buildDiscussionJsonLd({
+  target,
+  pagePath,
+  pageTitle,
+  pageDescription,
+  comments,
+}: {
+  target: CommentTarget;
+  pagePath: string;
+  pageTitle: string;
+  pageDescription: string;
+  comments: Comment[];
+}) {
+  const pageUrl = `${siteConfig.url}${pagePath}`;
+  const { topLevel, repliesByParent } = groupCommentsByThread(comments);
+
+  const discussionComments = topLevel.flatMap((comment) => {
+    const replies = repliesByParent.get(comment.id) ?? [];
+    return [comment, ...replies].map((entry) =>
+      buildCommentJsonLdNode(entry, pageUrl),
+    );
+  });
+
+  const aboutType = target.type === "robot" ? "Product" : "NewsArticle";
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "DiscussionForumPosting",
+    headline: `Comments on ${pageTitle}`,
+    description: pageDescription,
+    url: `${pageUrl}#comments`,
+    about: {
+      "@type": aboutType,
+      name: pageTitle,
+      url: pageUrl,
+    },
+    comment: discussionComments,
   };
 }

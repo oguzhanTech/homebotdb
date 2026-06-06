@@ -30,20 +30,6 @@ export const updates: Update[] = [
     updatedAt: "2026-05-20T08:30:00Z",
   },
   {
-    id: "upd-003",
-    title: "New companion robot added",
-    slug: "new-companion-robot-added",
-    type: "news",
-    authorId: "chuck-steward",
-    robotSlug: "emo-companion",
-    summary: "EMO is now in HomeBotRadar with price and availability filled in.",
-    content:
-      "Living AI's EMO desk robot is live in our catalog. We added social scores, smart home notes, and a confirmed $279 price for major markets. Good entry point if you want a small home companion bot on your desk.",
-    sourceUrl: "https://living.ai/",
-    createdAt: "2026-05-01T14:00:00Z",
-    updatedAt: "2026-05-01T14:00:00Z",
-  },
-  {
     id: "upd-004",
     title: "Price estimate revised for Figure 02",
     slug: "figure-02-price-estimate-revised",
@@ -55,19 +41,6 @@ export const updates: Update[] = [
       "Figure still has not posted an official MSRP. We moved our estimate band to $20,000+ after new industry reports. Treat this as an estimate, not a store price.",
     createdAt: "2026-05-18T11:00:00Z",
     updatedAt: "2026-05-18T11:00:00Z",
-  },
-  {
-    id: "upd-005",
-    title: "Humanoid comparison data refresh",
-    slug: "humanoid-comparison-data-refresh",
-    type: "news",
-    authorId: "chuck-steward",
-    summary: "Compare table updated for Figure 02 and Unitree G1 with May 2026 data.",
-    content:
-      "We refreshed the humanoid compare table with May numbers. Battery and payload fields changed where specs are now confirmed. Open Compare to see Figure 02 and Unitree G1 side by side.",
-    coverImage: "/images/figure-02/figure-02-front.png",
-    createdAt: "2026-06-04T09:00:00Z",
-    updatedAt: "2026-06-04T09:00:00Z",
   },
   {
     id: "upd-006",
@@ -82,19 +55,6 @@ export const updates: Update[] = [
     sourceUrl: "https://www.unitree.com/g1",
     createdAt: "2026-05-17T16:00:00Z",
     updatedAt: "2026-05-17T16:00:00Z",
-  },
-  {
-    id: "upd-007",
-    title: "Home robot market weekly digest",
-    slug: "home-robot-market-weekly-digest",
-    type: "news",
-    authorId: "chuck-steward",
-    summary: "Quick roundup: Figure demos, Unitree regions, and an EMO app update.",
-    content:
-      "Figure kept sharing new demo clips this week. Unitree expanded G1 support in a few regions. EMO shipped app update 3.2 with new personality modes. Nothing earth-shaking, but worth a scan if you follow home bots.",
-    coverImage: "/images/figure-02/figure-02-action.png",
-    createdAt: "2026-05-15T12:00:00Z",
-    updatedAt: "2026-05-15T12:00:00Z",
   },
   {
     id: "upd-008",
