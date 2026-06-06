@@ -41,8 +41,8 @@ export default function AdminDashboardPage() {
         </div>
         <div className="rounded-[18px] border border-line bg-panel-strong p-5 shadow-card">
           <div className="text-muted">Auth</div>
-          <div className="mt-2 text-sm font-bold uppercase tracking-wider text-muted">
-            Not configured
+          <div className="mt-2 text-sm font-bold uppercase tracking-wider text-emerald-700">
+            Password protected
           </div>
         </div>
       </div>

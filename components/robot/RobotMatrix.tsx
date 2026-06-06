@@ -77,7 +77,7 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
       });
       const qs = sp.toString();
       if (useHomeAnchor) {
-        router.replace(qs ? `/?${qs}#matrix` : "/#matrix", { scroll: false });
+        router.replace(qs ? `/?${qs}` : "/", { scroll: false });
       } else {
         router.replace(qs ? `${listingPath}?${qs}` : listingPath, { scroll: false });
       }

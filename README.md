@@ -59,6 +59,29 @@ npm run news:build
 
 Standard Next.js deploy (Vercel or similar). Set `NEXT_PUBLIC_SITE_URL` for canonical URLs and OG tags.
 
+Copy `.env.example` to `.env` locally. In Vercel → Project → Settings → Environment Variables, add at minimum:
+
+- `NEXT_PUBLIC_SITE_URL` = `https://homebotradar.com`
+- `ADMIN_PASSWORD` = your admin login password
+- `ADMIN_SESSION_SECRET` = long random string (32+ chars)
+- Supabase keys when comments go live
+
+Redeploy after changing env vars.
+
+### GoDaddy DNS → Vercel
+
+1. Vercel project → **Settings → Domains** → add `homebotradar.com` and `www.homebotradar.com`
+2. GoDaddy → DNS for the domain:
+   - **A** record `@` → IP Vercel shows (often `76.76.21.21`)
+   - **CNAME** `www` → `cname.vercel-dns.com`
+3. Wait for propagation, then confirm SSL in Vercel
+
+### Admin
+
+- URL: `/admin/login` (middleware protects `/admin/*`)
+- Password: `ADMIN_PASSWORD` env var only (no public sign-up)
+- Session cookie signed with `ADMIN_SESSION_SECRET`
+
 ## Legal pages
 
 Public policy pages for Search and AdSense:
