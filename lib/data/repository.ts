@@ -139,8 +139,9 @@ export function filterRobots(filters: RobotFilters): Robot[] {
     }
     if (filters.query) {
       const q = filters.query.toLowerCase();
+      const capabilityNames = robot.capabilities.map((cap) => cap.name).join(" ");
       const haystack =
-        `${robot.name} ${robot.brand} ${robot.shortDescription} ${robot.tags.join(" ")} ${robot.primaryTask}`.toLowerCase();
+        `${robot.name} ${robot.brand} ${robot.shortDescription} ${robot.tags.join(" ")} ${robot.primaryTask} ${capabilityNames}`.toLowerCase();
       if (!haystack.includes(q)) return false;
     }
     const price = parsePrice(robot.price);

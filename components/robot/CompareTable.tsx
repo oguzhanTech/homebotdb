@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useLayoutEffect, useRef, type CSSProperties } from "react";
 import Link from "next/link";
 import type { Robot } from "@/types/robot";
 import {
@@ -109,8 +110,30 @@ function buildRows(robots: Robot[]): CompareRow[] {
   }));
 }
 
-function CompareRobotHeader({ robot }: { robot: Robot }) {
+function CompareRobotHeader({
+  robot,
+  compact = false,
+}: {
+  robot: Robot;
+  compact?: boolean;
+}) {
   const image = pickRobotImage(robot, `${robot.slug}-compare-header`);
+
+  if (compact) {
+    return (
+      <Link
+        href={`/robots/${robot.slug}`}
+        className="block min-w-0 cursor-pointer text-left"
+      >
+        <div className="truncate text-xs font-bold uppercase tracking-wide">
+          {robot.name}
+        </div>
+        <div className="mt-0.5 truncate text-[10px] font-normal normal-case text-muted">
+          {robot.brand}
+        </div>
+      </Link>
+    );
+  }
 
   return (
     <Link
@@ -143,29 +166,120 @@ function CompareRobotHeader({ robot }: { robot: Robot }) {
   );
 }
 
+const SPEC_COL_WIDTH = "120px";
+
+function compareTableMinWidth(robotCount: number) {
+  return `calc(${SPEC_COL_WIDTH} + ${robotCount} * var(--compare-robot-w))`;
+}
+
+const mobileStickyTop =
+  "top-[calc(max(0.75rem,env(safe-area-inset-top))+4rem)]";
+
+const robotColWidthClass =
+  "w-[var(--compare-robot-w)] min-w-[var(--compare-robot-w)] max-w-[var(--compare-robot-w)] shrink-0 px-4 py-3";
+
 export function CompareTable({ robots }: { robots: Robot[] }) {
   const rows = buildRows(robots);
   const colCount = robots.length;
+  const tableScrollRef = useRef<HTMLDivElement>(null);
+  const mobileHeaderTrackRef = useRef<HTMLDivElement>(null);
+
+  const syncMobileHeaderScroll = useCallback(() => {
+    const tableScroll = tableScrollRef.current;
+    const headerTrack = mobileHeaderTrackRef.current;
+    if (!tableScroll || !headerTrack) return;
+    headerTrack.style.transform = `translateX(-${tableScroll.scrollLeft}px)`;
+  }, []);
+
+  useLayoutEffect(() => {
+    syncMobileHeaderScroll();
+  }, [syncMobileHeaderScroll, colCount]);
 
   return (
-    <div className="overflow-x-auto rounded-[18px] border border-line bg-panel-strong shadow-card">
-      <table className="w-full min-w-[640px] text-left text-sm">
-        <thead>
-          <tr className="border-b border-line">
-            <th className="sticky left-0 z-10 w-[120px] bg-panel-strong px-4 py-4 text-[10px] uppercase tracking-[0.12em] text-muted">
-              Spec
-            </th>
+    <div
+      className="rounded-[18px] border border-line bg-panel-strong shadow-card [--compare-robot-w:160px] xl:[--compare-robot-w:180px]"
+      style={
+        {
+          "--compare-spec-w": SPEC_COL_WIDTH,
+        } as CSSProperties
+      }
+    >
+      <div
+        className={cn(
+          "sticky z-20 flex overflow-hidden border-b border-line bg-panel-strong/95 backdrop-blur-md xl:hidden",
+          mobileStickyTop,
+          "shadow-[0_10px_24px_rgba(8,11,18,0.06)]",
+        )}
+      >
+        <div className="z-10 w-[var(--compare-spec-w)] shrink-0 bg-panel-strong px-4 py-3 text-[10px] uppercase tracking-[0.12em] text-muted">
+          Spec
+        </div>
+        <div className="min-w-0 flex-1 overflow-hidden">
+          <div
+            ref={mobileHeaderTrackRef}
+            className="flex w-max will-change-transform"
+          >
             {robots.map((robot) => (
-              <th key={robot.slug} className="min-w-[180px] px-4 py-4 align-middle">
-                <CompareRobotHeader robot={robot} />
-              </th>
+              <div
+                key={robot.slug}
+                className={cn(robotColWidthClass, "bg-panel-strong")}
+              >
+                <CompareRobotHeader robot={robot} compact />
+              </div>
             ))}
-          </tr>
-        </thead>
+          </div>
+        </div>
+      </div>
+
+      <div
+        ref={tableScrollRef}
+        className="max-xl:overflow-x-auto"
+        onScroll={syncMobileHeaderScroll}
+      >
+        <table
+          className={cn(
+            "w-full text-left text-sm",
+            "max-xl:table-fixed max-xl:w-[var(--compare-table-w)] max-xl:min-w-[var(--compare-table-w)]",
+          )}
+          style={
+            {
+              "--compare-table-w": compareTableMinWidth(colCount),
+            } as CSSProperties
+          }
+        >
+          <colgroup>
+            <col style={{ width: SPEC_COL_WIDTH }} />
+            {robots.map((robot) => (
+              <col
+                key={robot.slug}
+                className="max-xl:w-[var(--compare-robot-w)]"
+              />
+            ))}
+          </colgroup>
+          <thead className="hidden xl:table-header-group">
+            <tr className="border-b border-line">
+              <th className="sticky left-0 z-30 w-[var(--compare-spec-w)] bg-panel-strong px-4 py-3 text-[10px] uppercase tracking-[0.12em] text-muted">
+                Spec
+              </th>
+              {robots.map((robot) => (
+                <th
+                  key={robot.slug}
+                  className="min-w-[180px] bg-panel-strong px-4 py-4 align-middle"
+                >
+                  <CompareRobotHeader robot={robot} />
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {rows.map((row) => (
             <tr key={row.label} className="border-b border-line/80">
-              <td className="sticky left-0 z-10 bg-panel-strong px-4 py-3 text-[11px] font-bold uppercase tracking-wider text-muted">
+              <td
+                className={cn(
+                  "sticky left-0 z-10 w-[var(--compare-spec-w)] bg-panel-strong px-4 py-3 text-[11px] font-bold uppercase tracking-wider text-muted",
+                  "max-xl:shadow-[4px_0_12px_rgba(8,11,18,0.04)]",
+                )}
+              >
                 {row.label}
               </td>
               {row.values.map((value, i) => {
@@ -187,7 +301,8 @@ export function CompareTable({ robots }: { robots: Robot[] }) {
             </tr>
           ))}
         </tbody>
-      </table>
+        </table>
+      </div>
       <div className="px-4 py-3 text-xs text-muted">
         Green cells mark the stronger value in each row across {colCount} robots.
       </div>

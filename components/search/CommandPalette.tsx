@@ -3,17 +3,19 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { BrandLogo } from "@/components/brand/BrandLogo";
-import { getRobots } from "@/lib/data/repository";
-import { getUpdates } from "@/lib/data/repository";
-import { getUpdatePublicPath } from "@/lib/update-paths";
+import { SearchBrowseIcon, SearchArticleIcon } from "@/components/search/SearchBrowseIcon";
+import {
+  groupSiteSearchResults,
+  searchSite,
+} from "@/lib/site-search";
 import { cn } from "@/lib/utils";
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
 
-  const robots = useMemo(() => getRobots(), []);
-  const updates = useMemo(() => getUpdates(), []);
+  const results = useMemo(() => searchSite(query, 12), [query]);
+  const grouped = useMemo(() => groupSiteSearchResults(results), [results]);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -23,23 +25,14 @@ export function CommandPalette() {
       }
       if (e.key === "Escape") setOpen(false);
     };
+    const onOpen = () => setOpen(true);
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    window.addEventListener("homebot:open-command-palette", onOpen);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("homebot:open-command-palette", onOpen);
+    };
   }, []);
-
-  const filteredRobots = robots.filter((robot) => {
-    if (!query) return true;
-    const q = query.toLowerCase();
-    return (
-      robot.name.toLowerCase().includes(q) ||
-      robot.brand.toLowerCase().includes(q)
-    );
-  });
-
-  const filteredUpdates = updates.filter((update) => {
-    if (!query) return true;
-    return update.title.toLowerCase().includes(query.toLowerCase());
-  });
 
   if (!open) return null;
 
@@ -56,38 +49,105 @@ export function CommandPalette() {
           autoFocus
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search robots, updates..."
+          placeholder="Search robots, news, updates..."
           className="w-full border-b border-line px-4 py-4 text-sm outline-none"
         />
-        <div className="max-h-[50vh] overflow-y-auto p-2">
-          <div className="px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-muted">
-            Robots
-          </div>
-          {filteredRobots.slice(0, 6).map((robot) => (
-            <Link
-              key={robot.slug}
-              href={`/robots/${robot.slug}`}
-              onClick={() => setOpen(false)}
-              className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm hover:bg-blue-soft"
-            >
-              <BrandLogo brand={robot.brand} size="xs" />
-              <span className="font-bold">{robot.name}</span>
-              <span className="text-muted">{robot.brand}</span>
-            </Link>
-          ))}
-          <div className="mt-2 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-muted">
-            Updates
-          </div>
-          {filteredUpdates.slice(0, 4).map((update) => (
-            <Link
-              key={update.slug}
-              href={getUpdatePublicPath(update)}
-              onClick={() => setOpen(false)}
-              className={cn("block rounded-xl px-3 py-2 text-sm hover:bg-blue-soft")}
-            >
-              {update.title}
-            </Link>
-          ))}
+        <div className="max-h-[50vh] overflow-x-hidden overflow-y-auto p-2">
+          {query.trim().length >= 2 ? (
+            <>
+              {grouped.filters.length > 0 ? (
+                <>
+                  <div className="px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-muted">
+                    Browse
+                  </div>
+                  {grouped.filters.map((filter) => (
+                    <Link
+                      key={filter.id}
+                      href={filter.href}
+                      onClick={() => setOpen(false)}
+                      title={`${filter.title} — ${filter.subtitle}`}
+                      className="flex min-w-0 items-center gap-2 overflow-hidden rounded-xl px-3 py-2 text-sm hover:bg-blue-soft"
+                    >
+                      <SearchBrowseIcon
+                        kind={filter.kind}
+                        id={filter.id}
+                        title={filter.title}
+                      />
+                      <span className="min-w-0 flex-1 overflow-hidden">
+                        <span className="block truncate font-bold">{filter.title}</span>
+                        <span className="block truncate text-xs text-muted">
+                          {filter.subtitle}
+                        </span>
+                      </span>
+                    </Link>
+                  ))}
+                </>
+              ) : null}
+              {grouped.robots.length > 0 ? (
+                <>
+                  <div className="px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-muted">
+                    Robots
+                  </div>
+                  {grouped.robots.map((robot) => (
+                    <Link
+                      key={robot.id}
+                      href={robot.href}
+                      onClick={() => setOpen(false)}
+                      title={`${robot.title} — ${robot.subtitle}`}
+                      className="flex min-w-0 items-center gap-2 overflow-hidden rounded-xl px-3 py-2 text-sm hover:bg-blue-soft"
+                    >
+                      <BrandLogo brand={robot.subtitle} size="xs" className="shrink-0" />
+                      <span className="min-w-0 flex-1 overflow-hidden">
+                        <span className="block truncate font-bold">{robot.title}</span>
+                        <span className="block truncate text-xs text-muted">{robot.subtitle}</span>
+                      </span>
+                    </Link>
+                  ))}
+                </>
+              ) : null}
+              {grouped.articles.length > 0 ? (
+                <>
+                  <div className="mt-2 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-muted">
+                    News & updates
+                  </div>
+                  {grouped.articles.map((update) => (
+                    <Link
+                      key={update.id}
+                      href={update.href}
+                      onClick={() => setOpen(false)}
+                      title={
+                        update.date
+                          ? `${update.title} — ${update.date}`
+                          : update.title
+                      }
+                      className={cn(
+                        "flex min-w-0 items-center gap-2 overflow-hidden rounded-xl px-3 py-2 text-sm hover:bg-blue-soft",
+                      )}
+                    >
+                      <SearchArticleIcon kind={update.kind} />
+                      <span className="min-w-0 flex-1 overflow-hidden">
+                        <span className="flex min-w-0 items-baseline gap-2">
+                          <span className="min-w-0 truncate">{update.title}</span>
+                          {update.date ? (
+                            <span className="shrink-0 text-[11px] text-muted/70">
+                              {update.date}
+                            </span>
+                          ) : null}
+                        </span>
+                      </span>
+                    </Link>
+                  ))}
+                </>
+              ) : null}
+              {results.length === 0 ? (
+                <div className="px-3 py-4 text-sm text-muted">No matches found.</div>
+              ) : null}
+            </>
+          ) : (
+            <div className="px-3 py-4 text-sm text-muted">
+              Type at least 2 characters to search.
+            </div>
+          )}
           <div className="mt-2 grid gap-1 border-t border-line pt-2">
             <Link href="/compare" onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-sm hover:bg-blue-soft">
               Compare robots

@@ -97,6 +97,16 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
     });
   }, [query, type, status, primaryTask, sort, minPrice, maxPrice, syncUrl]);
 
+  useEffect(() => {
+    setQuery(searchParams.get("q") ?? "");
+    setType((searchParams.get("type") as RobotType | "all") ?? "all");
+    setStatus((searchParams.get("status") as CommercialStatus | "all") ?? "all");
+    setPrimaryTask((searchParams.get("task") as PrimaryTask | "all") ?? "all");
+    setSort((searchParams.get("sort") as SortField) ?? "readiness");
+    setMinPrice(searchParams.get("minPrice") ?? "");
+    setMaxPrice(searchParams.get("maxPrice") ?? "");
+  }, [searchParams]);
+
   const filtered = useMemo(() => {
     const result = filterRobots({
       type,
