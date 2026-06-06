@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { getRobots } from "@/lib/data/repository";
 import { getUpdates } from "@/lib/data/repository";
 import { cn } from "@/lib/utils";
@@ -66,10 +67,11 @@ export function CommandPalette() {
               key={robot.slug}
               href={`/robots/${robot.slug}`}
               onClick={() => setOpen(false)}
-              className="block rounded-xl px-3 py-2 text-sm hover:bg-blue-soft"
+              className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm hover:bg-blue-soft"
             >
+              <BrandLogo brand={robot.brand} size="xs" />
               <span className="font-bold">{robot.name}</span>
-              <span className="ml-2 text-muted">{robot.brand}</span>
+              <span className="text-muted">{robot.brand}</span>
             </Link>
           ))}
           <div className="mt-2 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-muted">

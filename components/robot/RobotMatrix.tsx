@@ -15,6 +15,7 @@ import {
   sortRobots,
   type SortField,
 } from "@/lib/data/repository";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { RobotAvatar } from "./RobotAvatar";
 import { CompareToggleButton } from "./CompareToggleButton";
 import { VideoPlayLink } from "@/components/ui/VideoPlayLink";
@@ -135,7 +136,7 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
         >
           {ROBOT_TYPES.map((opt) => (
             <option key={opt.value} value={opt.value}>
-              Type: {opt.label}
+              Form: {opt.label}
             </option>
           ))}
         </select>
@@ -198,7 +199,7 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
           <thead>
             <tr className="border-b border-line bg-ink text-[10px] uppercase tracking-[0.12em] text-white">
               <th className="px-4 py-3 font-bold">Robot</th>
-              <th className="px-3 py-3 font-bold">Type</th>
+              <th className="px-3 py-3 font-bold">Form</th>
               <th className="px-3 py-3 font-bold">Battery</th>
               <th className="px-3 py-3 font-bold">Price</th>
               <th className="px-3 py-3 font-bold">Data Status</th>
@@ -233,7 +234,12 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
                       <div className="font-bold uppercase tracking-wide">
                         {robot.name}
                       </div>
-                      <div className="text-xs text-muted">{robot.brand}</div>
+                      <BrandLogo
+                        brand={robot.brand}
+                        size="xs"
+                        showName
+                        nameClassName="text-xs text-muted font-normal"
+                      />
                     </div>
                   </Link>
                 </td>
@@ -302,7 +308,13 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
               </div>
               <div className="min-w-0 flex-1">
                 <div className="font-bold uppercase tracking-wide">{robot.name}</div>
-                <div className="text-sm text-muted">{robot.brand}</div>
+                <BrandLogo
+                  brand={robot.brand}
+                  size="xs"
+                  showName
+                  nameClassName="text-sm text-muted font-normal"
+                  className="mt-0.5"
+                />
             <div className="mt-2 flex flex-wrap gap-1.5">
               <RobotTypeTag type={robot.type} />
               <CommercialStatusTag

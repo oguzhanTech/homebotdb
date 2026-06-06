@@ -8,10 +8,10 @@ export type PrimaryTask =
 
 export type RobotType =
   | "humanoid"
-  | "companion"
-  | "cleaning"
-  | "elder_care"
-  | "social";
+  | "zoomorphic"
+  | "mobile"
+  | "desktop"
+  | "specialty";
 
 export type CommercialStatus =
   | "buy_now"
@@ -106,11 +106,12 @@ export interface Robot {
 }
 
 export const ROBOT_TYPES: { value: RobotType | "all"; label: string }[] = [
-  { value: "all", label: "All" },
+  { value: "all", label: "All forms" },
   { value: "humanoid", label: "Humanoid" },
-  { value: "companion", label: "Companion" },
-  { value: "cleaning", label: "Cleaning" },
-  { value: "elder_care", label: "Elder Care" },
+  { value: "zoomorphic", label: "Animal-like" },
+  { value: "mobile", label: "Mobile" },
+  { value: "desktop", label: "Desktop" },
+  { value: "specialty", label: "Other" },
 ];
 
 export const COMMERCIAL_STATUS_LABELS: Record<CommercialStatus, string> = {
@@ -125,10 +126,10 @@ export const COMMERCIAL_STATUS_LABELS: Record<CommercialStatus, string> = {
 
 export const ROBOT_TYPE_LABELS: Record<RobotType, string> = {
   humanoid: "Humanoid",
-  companion: "Companion",
-  cleaning: "Cleaning",
-  elder_care: "Elder Care",
-  social: "Social",
+  zoomorphic: "Animal-like",
+  mobile: "Mobile",
+  desktop: "Desktop",
+  specialty: "Other",
 };
 
 export const PRIMARY_TASKS: { value: PrimaryTask | "all"; label: string }[] = [

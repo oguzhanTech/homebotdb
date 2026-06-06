@@ -47,13 +47,17 @@ export function getUpdatesByRobotSlug(robotSlug: string, limit = 5): Update[] {
 }
 
 export function getLatestUpdates(limit = 6): Update[] {
-  return getUpdates().slice(0, limit);
+  return getDataUpdates(limit);
 }
 
-export function getNewsUpdates(limit = 4): Update[] {
-  return getUpdates()
-    .filter((update) => update.type === "news")
-    .slice(0, limit);
+export function getDataUpdates(limit?: number): Update[] {
+  const items = getUpdates().filter((update) => update.type !== "news");
+  return limit ? items.slice(0, limit) : items;
+}
+
+export function getNewsUpdates(limit?: number): Update[] {
+  const items = getUpdates().filter((update) => update.type === "news");
+  return limit ? items.slice(0, limit) : items;
 }
 
 export function getRecentNews(days = 5, limit = 1): Update[] {

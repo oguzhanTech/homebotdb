@@ -48,7 +48,7 @@ export const robots: Robot[] = [
       "/images/figure-02/figure-02-front.png",
       "/images/figure-02/figure-02-action.png",
     ],
-    videoUrls: ["https://www.youtube.com/watch?v=Juc-IyTdSho"],
+    videoUrls: ["https://www.youtube.com/watch?v=Sq1QZB5baNw&t=3s"],
     affiliateUrl: "",
     sourceUrls: [
       "https://www.figure.ai/",
@@ -130,7 +130,7 @@ export const robots: Robot[] = [
       "/images/unitree-g1/unitree-g1-side.png",
       "/images/unitree-g1/unitree-g1-pose.png",
     ],
-    videoUrls: ["https://www.youtube.com/watch?v=unitreeg1demo"],
+    videoUrls: ["https://www.youtube.com/watch?v=GzX1qOIO1bE"],
     affiliateUrl: "",
     sourceUrls: ["https://www.unitree.com/g1", "https://www.unitree.com/"],
     similarRobotSlugs: ["figure-02", "optimus-gen2-dummy"],
@@ -185,7 +185,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Tesla humanoid prototype with home-assistant ambitions; limited public home deployment data.",
     longDescription:
-      "Optimus Gen 2 represents Tesla's ongoing humanoid robotics program. While much of the public narrative focuses on factory tasks, Tesla has discussed future home assistance scenarios. HomeBotDB tracks home-relevant signals only.",
+      "Optimus Gen 2 represents Tesla's ongoing humanoid robotics program. While much of the public narrative focuses on factory tasks, Tesla has discussed future home assistance scenarios. HomeBotRadar tracks home-relevant signals only.",
     price: "Unknown",
     priceStatus: "unknown",
     batteryLife: "Unknown",
@@ -207,7 +207,12 @@ export const robots: Robot[] = [
     firstAnnounced: "2022",
     lastUpdated: "2026-04-10",
     imageUrl: "",
-    videoUrls: [],
+    imageUrls: [
+      "/images/optimus/optimus-pose.png",
+      "/images/optimus/optimus-side (2).png",
+      "/images/optimus/optimus.png",
+    ],
+    videoUrls: ["https://www.youtube.com/watch?v=cpraXaw7dyc"],
     affiliateUrl: "",
     sourceUrls: ["https://www.tesla.com/AI"],
     similarRobotSlugs: ["figure-02", "unitree-g1"],
@@ -233,7 +238,7 @@ export const robots: Robot[] = [
     name: "EMO",
     slug: "emo-companion",
     brand: "Living AI",
-    type: "companion",
+    type: "desktop",
     primaryTask: "conversation",
     shortDescription:
       "Desktop companion robot with expressive personality and smart home integrations.",
@@ -260,7 +265,12 @@ export const robots: Robot[] = [
     firstAnnounced: "2021",
     lastUpdated: "2026-05-01",
     imageUrl: "",
-    videoUrls: ["https://www.youtube.com/watch?v=emorobot"],
+    imageUrls: [
+      "/images/emo/emo-g1-side.png",
+      "/images/emo/emo-g1.png",
+      "/images/emo/emo-g1-pose.png",
+    ],
+    videoUrls: ["https://www.youtube.com/watch?v=IqQhJsrttp8"],
     affiliateUrl: "https://living.ai/",
     sourceUrls: ["https://living.ai/"],
     similarRobotSlugs: [],
@@ -272,7 +282,7 @@ export const robots: Robot[] = [
     ],
     ecosystem: ["Living AI app", "Alexa integration"],
     reviews: [],
-    tags: ["COMPANION", "DESKTOP", "BUY NOW"],
+    tags: ["DESKTOP", "COMPANION", "BUY NOW"],
     fieldMeta: baseFieldMeta({
       price: "confirmed",
       commercialStatus: "confirmed",

@@ -1,19 +1,19 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { buildPageMetadata } from "@/lib/seo";
-import { getUpdates } from "@/lib/data/repository";
+import { getDataUpdates } from "@/lib/data/repository";
 import { TopBar } from "@/components/layout/TopBar";
 import { UpdateCard } from "@/components/robot/UpdatesSection";
 
 export const metadata = buildPageMetadata({
-  title: `Robot Updates & News — ${siteConfig.name}`,
+  title: `Robot Data Updates — ${siteConfig.name}`,
   description:
-    "Latest home robot data updates, price revisions, availability checks, and industry news.",
+    "Spec changes, score revisions, price updates, and availability checks for home robots.",
   path: "/updates",
 });
 
 export default function UpdatesPage() {
-  const updates = getUpdates();
+  const updates = getDataUpdates();
 
   return (
     <main className="px-3.5 py-5 sm:px-7 sm:py-7">
@@ -23,9 +23,15 @@ export default function UpdatesPage() {
           <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
             Updates
           </div>
-          <h1 className="mt-1 text-3xl font-medium tracking-tight">
-            Robot updates & news
-          </h1>
+          <h1 className="mt-1 text-3xl font-medium tracking-tight">Robot data updates</h1>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#565f6b]">
+            Spec, score, price, and availability changes from the {siteConfig.name} team.
+            News lives on a{" "}
+            <Link href="/news" className="font-semibold text-blue hover:underline">
+              separate page
+            </Link>
+            .
+          </p>
         </div>
         <Link
           href="/updates/feed.xml"
@@ -34,11 +40,15 @@ export default function UpdatesPage() {
           RSS Feed
         </Link>
       </div>
-      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-        {updates.map((update) => (
-          <UpdateCard key={update.id} update={update} />
-        ))}
-      </div>
+      {updates.length > 0 ? (
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          {updates.map((update) => (
+            <UpdateCard key={update.id} update={update} />
+          ))}
+        </div>
+      ) : (
+        <p className="text-sm text-muted">No data updates yet.</p>
+      )}
     </main>
   );
 }

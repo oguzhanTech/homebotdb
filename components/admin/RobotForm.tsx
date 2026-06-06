@@ -115,7 +115,7 @@ export function RobotForm({
 
         <label className="block">
           <span className="text-[11px] font-bold uppercase tracking-wider text-muted">
-            Type
+            Form
           </span>
           <select
             className="mt-2 h-[42px] w-full rounded-[14px] border border-line bg-white px-3 text-sm"

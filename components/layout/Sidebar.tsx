@@ -12,6 +12,7 @@ const navItems = [
   { href: "/robots", label: "Robots", icon: "⌘" },
   { href: "/compare", label: "Compare", icon: "✣" },
   { href: "/updates", label: "Updates", icon: "⟳" },
+  { href: "/news", label: "News", icon: "✎" },
   { href: "/wizard", label: "Wizard", icon: "⌁" },
   { href: "/admin", label: "Admin", icon: "⚙" },
 ];
@@ -33,8 +34,12 @@ export function Sidebar({
             {siteConfig.shortName}
             <span className="absolute -right-2.5 top-2 h-2 w-2 rounded-full bg-blue" />
           </div>
-          <div className="mt-3 text-[13px] font-bold tracking-[0.18em]">
-            {siteConfig.name.toUpperCase()}
+          <div className="mt-3 text-[11px] font-bold leading-[1.15] tracking-[0.14em]">
+            {siteConfig.logoLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
           </div>
           <div className="mt-0.5 text-xs text-muted">{siteConfig.version}</div>
         </Link>
@@ -47,7 +52,9 @@ export function Sidebar({
                 ? pathname === "/"
                 : item.label === "Robots"
                   ? pathname === "/robots" || pathname.startsWith("/robots/")
-                  : hrefBase !== "/" && pathname.startsWith(hrefBase);
+                  : item.label === "Updates"
+                    ? pathname === "/updates"
+                    : hrefBase !== "/" && pathname.startsWith(hrefBase);
             return (
               <Link
                 key={item.href}

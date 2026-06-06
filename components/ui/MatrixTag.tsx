@@ -16,10 +16,10 @@ const tagBase =
 
 const typeVariants: Record<RobotType, string> = {
   humanoid: "border-blue/35 bg-blue-soft text-blue",
-  companion: "border-violet-300/80 bg-violet-50 text-violet-700",
-  cleaning: "border-emerald-300/80 bg-emerald-50 text-emerald-700",
-  elder_care: "border-rose-300/80 bg-rose-50 text-rose-700",
-  social: "border-cyan-300/80 bg-cyan-50 text-cyan-700",
+  zoomorphic: "border-amber-400/45 bg-amber-50 text-amber-800",
+  mobile: "border-emerald-300/80 bg-emerald-50 text-emerald-700",
+  desktop: "border-violet-300/80 bg-violet-50 text-violet-700",
+  specialty: "border-slate-300/80 bg-slate-50 text-slate-600",
 };
 
 const commercialVariants: Record<CommercialStatus, string> = {

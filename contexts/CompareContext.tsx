@@ -11,13 +11,18 @@ import {
 import { buildComparePath } from "@/lib/compare";
 import { getRobotsBySlugs } from "@/lib/data/repository";
 
-const STORAGE_KEY = "homebotdb-compare";
+const STORAGE_KEY = "homebotradar-compare";
+const LEGACY_STORAGE_KEY = "homebotdb-compare";
 const MAX_COMPARE = 3;
 
 function readStoredSlugs(): string[] {
   if (typeof window === "undefined") return [];
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    let stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) {
+      stored = localStorage.getItem(LEGACY_STORAGE_KEY);
+      if (stored) localStorage.setItem(STORAGE_KEY, stored);
+    }
     if (stored) {
       const parsed = JSON.parse(stored) as string[];
       if (Array.isArray(parsed)) return parsed.slice(0, MAX_COMPARE);

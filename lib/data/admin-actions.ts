@@ -20,7 +20,14 @@ export async function deleteRobot(_slug: string): Promise<AdminActionResult> {
   };
 }
 
-export async function saveUpdate(_update: Partial<Update>): Promise<AdminActionResult> {
+export async function saveUpdate(update: Partial<Update>): Promise<AdminActionResult> {
+  if (!update.authorId) {
+    return {
+      ok: false,
+      message: "Author is required for every update.",
+    };
+  }
+
   return {
     ok: true,
     message: "Update saved locally (demo). Database integration coming soon.",

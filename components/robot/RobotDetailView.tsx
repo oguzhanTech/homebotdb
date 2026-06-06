@@ -12,10 +12,11 @@ import { useCompare } from "@/contexts/CompareContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { getPurchaseUrl } from "@/lib/purchase";
 import { getPrimaryRobotImage, getRobotImages } from "@/lib/robot-images";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { RobotAvatar } from "./RobotAvatar";
 import { RobotFeaturedVideo } from "./RobotFeaturedVideo";
 import { RobotImagePlaceholder } from "./RobotImagePlaceholder";
-import { UpdateCard } from "./UpdatesSection";
+import { UpdateCard, NewsCard, splitUpdatesByKind } from "./UpdatesSection";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge, StatusPill } from "@/components/ui/Badge";
@@ -65,7 +66,10 @@ export function RobotDetailView({
             <span>/</span>
             <span>{ROBOT_TYPE_LABELS[robot.type]}</span>
             <span>/</span>
-            <span>{robot.brand}</span>
+            <span className="inline-flex items-center gap-2">
+              <BrandLogo brand={robot.brand} size="sm" />
+              {robot.brand}
+            </span>
             <span>/</span>
             <span>{robot.name}</span>
           </div>
@@ -79,7 +83,13 @@ export function RobotDetailView({
             </StatusPill>
           </div>
 
-          <div className="mt-3.5 text-2xl font-semibold">{robot.brand}</div>
+          <BrandLogo
+            brand={robot.brand}
+            size="2xl"
+            showName
+            nameClassName="text-2xl font-semibold"
+            className="mt-3.5"
+          />
           <p className="mt-5 max-w-[405px] text-[15px] leading-relaxed text-[#565f6b]">
             {robot.shortDescription}
           </p>
@@ -102,7 +112,7 @@ export function RobotDetailView({
           <div className="relative z-[3] mt-4 grid grid-cols-2 gap-4 font-mono xl:absolute xl:right-2 xl:top-20 xl:w-[142px] xl:grid-cols-1">
             {[
               ["Unit ID", robot.unitId ?? "Unknown"],
-              ["Category", ROBOT_TYPE_LABELS[robot.type]],
+              ["Form", ROBOT_TYPE_LABELS[robot.type]],
               ["Height", robot.height],
               ["Weight", robot.weight],
             ].map(([label, value]) => (
@@ -245,7 +255,7 @@ export function RobotDetailView({
                 </div>
                 <div>
                   <div className="text-[13px] font-bold">{similar.name.toUpperCase()}</div>
-                  <div className="text-xs text-muted">{similar.brand}</div>
+                  <BrandLogo brand={similar.brand} size="xs" showName nameClassName="text-xs text-muted font-normal" />
                 </div>
                 <MonoValue className="font-bold">{similar.readinessScore}</MonoValue>
               </Link>
@@ -376,14 +386,42 @@ export function RobotDetailView({
           )}
 
           {activeTab === "Updates" && (
-            <div className="lg:col-span-2 grid gap-3 md:grid-cols-2">
-              {updates.length > 0 ? (
-                updates.map((update) => (
-                  <UpdateCard key={update.id} update={update} />
-                ))
-              ) : (
-                <p className="text-muted">No updates yet.</p>
-              )}
+            <div className="lg:col-span-2 space-y-8">
+              {(() => {
+                const { dataUpdates, news } = splitUpdatesByKind(updates);
+                return (
+                  <>
+                    <div>
+                      <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
+                        Data updates
+                      </div>
+                      {dataUpdates.length > 0 ? (
+                        <div className="grid gap-3 md:grid-cols-2">
+                          {dataUpdates.map((update) => (
+                            <UpdateCard key={update.id} update={update} />
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-sm text-muted">No data updates for this robot.</p>
+                      )}
+                    </div>
+                    <div>
+                      <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
+                        News
+                      </div>
+                      {news.length > 0 ? (
+                        <div className="grid gap-3 md:grid-cols-2">
+                          {news.map((update) => (
+                            <NewsCard key={update.id} update={update} />
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-sm text-muted">No news for this robot.</p>
+                      )}
+                    </div>
+                  </>
+                );
+              })()}
             </div>
           )}
 

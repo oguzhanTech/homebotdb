@@ -10,30 +10,36 @@ const sizes = {
     avatar: "h-[300px] w-[300px]",
     ringMiddle: "inset-[34px]",
     ringInner: "inset-[83px]",
-    image: "scale-[1.05] p-3",
+    avatarSurface:
+      "border border-line/60 bg-bg shadow-[0_18px_50px_rgba(8,11,18,0.08)]",
   },
   lg: {
     outer: "h-[160px] w-[160px]",
     avatar: "h-[140px] w-[140px]",
     ringMiddle: "inset-[16px]",
     ringInner: "inset-[40px]",
-    image: "scale-[1.04] p-2",
+    avatarSurface:
+      "border border-line/60 bg-bg shadow-[0_18px_50px_rgba(8,11,18,0.08)]",
   },
   md: {
     outer: "h-[120px] w-[120px]",
     avatar: "h-[104px] w-[104px]",
     ringMiddle: "inset-[12px]",
     ringInner: "inset-[30px]",
-    image: "scale-[1.02] p-1.5",
+    avatarSurface:
+      "border border-line/60 bg-bg shadow-[0_18px_50px_rgba(8,11,18,0.08)]",
   },
   sm: {
     outer: "h-10 w-10",
     avatar: "h-9 w-9",
     ringMiddle: "",
     ringInner: "",
-    image: "scale-[1.05] p-0.5",
+    avatarSurface: "border border-line/60 bg-bg",
   },
 };
+
+/** Fill the frame at full size; anchor bottom; clip top/sides inside the circle. */
+const IMAGE_CLASS_NAME = "h-full w-full object-cover object-bottom";
 
 const CAROUSEL_INTERVAL_MS = 3400;
 const CAROUSEL_FADE_MS = 900;
@@ -111,8 +117,9 @@ export function RobotAvatar({
 
       <div
         className={cn(
-          "relative z-[2] overflow-hidden rounded-full border border-line/60 bg-gradient-to-b from-white via-[#f8f9fb] to-[#e8ebef] shadow-[inset_0_0_32px_rgba(8,11,18,0.05),0_18px_50px_rgba(8,11,18,0.08)]",
+          "relative z-[2] overflow-hidden rounded-full",
           config.avatar,
+          config.avatarSurface,
         )}
       >
         {images.length > 0 ? (
@@ -125,11 +132,9 @@ export function RobotAvatar({
                   src={src}
                   alt={index === activeIndex ? name : `${name} view ${index + 1}`}
                   className={cn(
-                    "absolute inset-0 h-full w-full object-contain object-bottom drop-shadow-[0_12px_24px_rgba(8,11,18,0.12)] transition-opacity ease-in-out",
-                    config.image,
-                    index === activeIndex
-                      ? "z-10 opacity-100"
-                      : "z-0 opacity-0",
+                    IMAGE_CLASS_NAME,
+                    "absolute inset-0 transition-opacity ease-in-out",
+                    index === activeIndex ? "z-10 opacity-100" : "z-0 opacity-0",
                   )}
                   style={{ transitionDuration: `${CAROUSEL_FADE_MS}ms` }}
                   aria-hidden={index !== activeIndex}
@@ -138,14 +143,7 @@ export function RobotAvatar({
             </div>
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={images[0]}
-              alt={name}
-              className={cn(
-                "h-full w-full object-contain object-bottom drop-shadow-[0_12px_24px_rgba(8,11,18,0.12)]",
-                config.image,
-              )}
-            />
+            <img src={images[0]} alt={name} className={IMAGE_CLASS_NAME} />
           )
         ) : (
           <RobotImagePlaceholder

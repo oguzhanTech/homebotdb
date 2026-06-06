@@ -9,12 +9,17 @@ import {
   useState,
 } from "react";
 
-const STORAGE_KEY = "homebotdb-favorites";
+const STORAGE_KEY = "homebotradar-favorites";
+const LEGACY_STORAGE_KEY = "homebotdb-favorites";
 
 function readStoredFavorites(): string[] {
   if (typeof window === "undefined") return [];
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    let stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) {
+      stored = localStorage.getItem(LEGACY_STORAGE_KEY);
+      if (stored) localStorage.setItem(STORAGE_KEY, stored);
+    }
     if (stored) return JSON.parse(stored) as string[];
   } catch {
     // ignore

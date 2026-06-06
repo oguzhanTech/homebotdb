@@ -1,27 +1,30 @@
 import { siteConfig } from "@/config/site";
-import { getUpdates } from "@/lib/data/repository";
+import { getDataUpdates } from "@/lib/data/repository";
+import { getEditorById } from "@/lib/editors";
 
 export async function GET() {
-  const updates = getUpdates();
+  const updates = getDataUpdates();
   const items = updates
-    .map(
-      (update) => `
+    .map((update) => {
+      const author = getEditorById(update.authorId);
+      return `
     <item>
       <title><![CDATA[${update.title}]]></title>
       <link>${siteConfig.url}/updates/${update.slug}</link>
       <guid>${siteConfig.url}/updates/${update.slug}</guid>
       <pubDate>${new Date(update.createdAt).toUTCString()}</pubDate>
       <description><![CDATA[${update.summary}]]></description>
-    </item>`,
-    )
+      <author>${author.name}</author>
+    </item>`;
+    })
     .join("");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>${siteConfig.name} Updates</title>
+    <title>${siteConfig.name} Data Updates</title>
     <link>${siteConfig.url}/updates</link>
-    <description>${siteConfig.description}</description>
+    <description>Spec, score, price, and availability changes on ${siteConfig.name}.</description>
     ${items}
   </channel>
 </rss>`;

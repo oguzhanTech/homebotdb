@@ -11,6 +11,7 @@ import {
 import { getSpotlightRobot } from "@/lib/random-robot";
 import { getPurchaseUrl } from "@/lib/purchase";
 import { getPrimaryRobotImage } from "@/lib/robot-images";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { RobotAvatar } from "./RobotAvatar";
 import { StatusPill } from "@/components/ui/Badge";
 import { MonoValue } from "@/components/ui/DataValue";
@@ -23,7 +24,7 @@ export function DashboardSpotlight({ robots }: { robots: Robot[] }) {
 
   const highlights = [
     { label: "Primary task", value: PRIMARY_TASK_LABELS[robot.primaryTask] },
-    { label: "Type", value: ROBOT_TYPE_LABELS[robot.type] },
+    { label: "Form", value: ROBOT_TYPE_LABELS[robot.type] },
     { label: "Readiness", value: `${robot.readinessScore}/100`, mono: true },
     { label: "Price", value: robot.price, mono: true },
     {
@@ -50,12 +51,12 @@ export function DashboardSpotlight({ robots }: { robots: Robot[] }) {
               </span>
             </div>
 
-            <h1 className="mt-3 text-3xl font-medium tracking-tight sm:text-4xl">
-              {robot.name}
-            </h1>
-            <p className="mt-1 text-lg font-semibold text-[#4d5561]">
-              {robot.brand}
-            </p>
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              <BrandLogo brand={robot.brand} size="lg" />
+              <h1 className="text-3xl font-medium tracking-tight sm:text-4xl">
+                {robot.name}
+              </h1>
+            </div>
             <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[#565f6b]">
               {robot.shortDescription}
             </p>

@@ -19,7 +19,7 @@ export function FeaturedNewsHero({ update }: { update: Update }) {
           {update.summary}
         </p>
         <span className="mt-5 inline-flex text-xs font-bold uppercase tracking-widest text-ink group-hover:text-blue">
-          Read update
+          Read news
         </span>
       </Link>
     </section>

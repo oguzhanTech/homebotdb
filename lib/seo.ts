@@ -1,19 +1,24 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { getPrimaryRobotImage } from "@/lib/robot-images";
+import { getEditorById } from "@/lib/editors";
+import { getAbsoluteUpdateCoverImage } from "@/lib/update-images";
 import type { Robot } from "@/types/robot";
 import type { Update } from "@/types/update";
+import { isNewsUpdate } from "@/types/update";
 
 export function buildPageMetadata({
   title,
   description,
   path = "",
   image,
+  authors,
 }: {
   title: string;
   description: string;
   path?: string;
   image?: string;
+  authors?: { name: string }[];
 }): Metadata {
   const url = `${siteConfig.url}${path}`;
   const ogImage = image ?? siteConfig.defaultOgImage;
@@ -21,6 +26,7 @@ export function buildPageMetadata({
   return {
     title,
     description,
+    ...(authors ? { authors } : {}),
     alternates: { canonical: url },
     openGraph: {
       title,
@@ -59,10 +65,17 @@ export function buildCompareMetadata(robots: Robot[]): Metadata {
 }
 
 export function buildUpdateMetadata(update: Update): Metadata {
+  const author = getEditorById(update.authorId);
+  const image = isNewsUpdate(update.type)
+    ? getAbsoluteUpdateCoverImage(update)
+    : undefined;
+
   return buildPageMetadata({
     title: update.title,
     description: update.summary,
     path: `/updates/${update.slug}`,
+    authors: [{ name: author.name }],
+    image,
   });
 }
 

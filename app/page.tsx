@@ -9,7 +9,7 @@ import {
 import { TopBar } from "@/components/layout/TopBar";
 import { RobotMatrix } from "@/components/robot/RobotMatrix";
 import { DashboardSpotlight } from "@/components/robot/DashboardSpotlight";
-import { UpdatesSection } from "@/components/robot/UpdatesSection";
+import { UpdatesSection, NewsSection } from "@/components/robot/UpdatesSection";
 import { EmailAlertPlaceholder } from "@/components/marketing/EmailAlertPlaceholder";
 
 export const metadata = buildPageMetadata({
@@ -33,11 +33,7 @@ function HomeContent() {
 
       <UpdatesSection title="Latest Robot Updates" updates={latestUpdates} />
 
-      <UpdatesSection
-        title="Robot News"
-        updates={newsUpdates}
-        viewAllHref="/updates?type=news"
-      />
+      <NewsSection updates={newsUpdates} />
 
       <div className="mt-10">
         <EmailAlertPlaceholder />
