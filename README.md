@@ -64,7 +64,7 @@ Copy `.env.example` to `.env` locally. In Vercel → Project → Settings → En
 - `NEXT_PUBLIC_SITE_URL` = `https://homebotradar.com`
 - `ADMIN_PASSWORD` = your admin login password
 - `ADMIN_SESSION_SECRET` = long random string (32+ chars)
-- Supabase keys when comments go live
+- Supabase keys when comments go live (run `supabase/migrations/001_comments.sql` in SQL Editor)
 
 Redeploy after changing env vars.
 

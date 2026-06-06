@@ -3,6 +3,7 @@ import { Space_Grotesk, Space_Mono } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { buildPageMetadata, buildWebsiteJsonLd } from "@/lib/seo";
 import { AppShell } from "@/components/layout/AppShell";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -56,6 +57,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <GoogleAnalytics />
         <AppShell>{children}</AppShell>
       </body>
     </html>
