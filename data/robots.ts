@@ -441,7 +441,7 @@ export const robots: Robot[] = [
       "/images/vector-2/vector-2-side.png",
       "/images/vector-2/vector-2-desk.png",
     ],
-    videoUrls: [],
+    videoUrls: ["https://www.youtube.com/watch?v=v-MsY9pLWKI"],
     affiliateUrl: "https://www.digitaldreamlabs.com/pages/meet-vector",
     sourceUrls: [
       "https://www.digitaldreamlabs.com/pages/meet-vector",
