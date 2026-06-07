@@ -334,6 +334,8 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
                   nameClassName="text-sm text-muted font-normal"
                   className="mt-0.5"
                 />
+              </div>
+            </Link>
             <div className="mt-2 flex flex-wrap gap-1.5">
               <RobotTypeTag type={robot.type} />
               <CommercialStatusTag
@@ -341,8 +343,6 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
                 purchaseUrl={getPurchaseUrl(robot)}
               />
             </div>
-              </div>
-            </Link>
             <div className="mt-3 flex flex-wrap gap-1.5">
               <PrimaryTaskTag task={robot.primaryTask} />
               <DataStatusTag status={getRobotDataStatus(robot)} />

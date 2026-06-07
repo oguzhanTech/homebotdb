@@ -124,7 +124,9 @@ export function CommandPalette() {
                         "flex min-w-0 items-center gap-2 overflow-hidden rounded-xl px-3 py-2 text-sm hover:bg-blue-soft",
                       )}
                     >
-                      <SearchArticleIcon kind={update.kind} />
+                      <SearchArticleIcon
+                        kind={update.kind === "news" ? "news" : "update"}
+                      />
                       <span className="min-w-0 flex-1 overflow-hidden">
                         <span className="flex min-w-0 items-baseline gap-2">
                           <span className="min-w-0 truncate">{update.title}</span>
