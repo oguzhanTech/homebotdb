@@ -44,6 +44,7 @@ export const brands: Brand[] = [
   {
     id: "digital-dream-labs",
     name: "Digital Dream Labs",
+    logo: "/brands/digital-dream-labs.jpg",
     aliases: ["Digital Dream Labs", "DDL", "Anki"],
   },
 ];
