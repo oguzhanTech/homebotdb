@@ -2,6 +2,21 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-009",
+    title: "Vector 2.0 added to the catalog",
+    slug: "vector-2-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "vector-2",
+    summary:
+      "Digital Dream Labs' desk companion now has a full profile, scores, and buy links on HomeBotRadar.",
+    content:
+      "We added Vector 2.0 to HomeBotRadar. It is the palm-sized Anki successor from Digital Dream Labs: tracked movement on a desk, expressive face, local face recognition, and a replaceable battery with longer runtime than the original.\n\nOur listing covers hardware specs, readiness and reality scores, and availability in six countries. Voice commands, ChatGPT chat, and full Alexa features still depend on a paid Vector AI subscription, and we note that in the robot profile.\n\nCompare Vector 2.0 with EMO on the robot page if you are shopping for a desktop companion.",
+    sourceUrl: "https://www.digitaldreamlabs.com/pages/meet-vector",
+    createdAt: "2026-06-07T12:00:00Z",
+    updatedAt: "2026-06-07T12:00:00Z",
+  },
+  {
     id: "upd-001",
     title: "Figure 02 readiness score updated",
     slug: "figure-02-readiness-score-updated",
