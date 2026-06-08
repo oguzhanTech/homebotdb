@@ -31,7 +31,7 @@ import {
   RobotTypeTag,
 } from "@/components/ui/MatrixTag";
 import { getPurchaseUrl } from "@/lib/purchase";
-import { formatDate } from "@/lib/utils";
+import { formatDate, getMaxBatteryHours, parseBatteryHours } from "@/lib/utils";
 
 const STATUS_FILTERS: { value: CommercialStatus | "all"; label: string }[] = [
   { value: "all", label: "All" },
@@ -118,6 +118,14 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
     });
     return sortRobots(result, sort);
   }, [type, status, primaryTask, query, minPrice, maxPrice, sort]);
+
+  const maxBatteryHours = useMemo(
+    () =>
+      getMaxBatteryHours(
+        filtered.map((robot) => parseBatteryHours(robot.batteryLife)),
+      ),
+    [filtered],
+  );
 
   return (
     <section id="matrix" className="scroll-mt-24">
@@ -261,6 +269,7 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
                     value={robot.batteryLife}
                     dataStatus={robot.fieldMeta.batteryLife?.status}
                     specNote={robot.fieldMeta.batteryLife?.note}
+                    maxHours={maxBatteryHours}
                   />
                 </td>
                 <td className="px-3 py-3.5 font-mono text-[13px] font-bold">
@@ -285,7 +294,12 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
                   <PrimaryTaskTag task={robot.primaryTask} />
                 </td>
                 <td className="px-3 py-3.5 font-mono text-[13px]">
-                  <DataValue value={robot.height} mono />
+                  <DataValue
+                    value={robot.height}
+                    mono
+                    dataStatus={robot.fieldMeta.height?.status}
+                    specNote={robot.fieldMeta.height?.note}
+                  />
                 </td>
                 <td className="px-3 py-3.5 font-mono text-[13px]">
                   <DataValue value={robot.weight} mono />
@@ -365,11 +379,17 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
                   value={robot.batteryLife}
                   dataStatus={robot.fieldMeta.batteryLife?.status}
                   specNote={robot.fieldMeta.batteryLife?.note}
+                  maxHours={maxBatteryHours}
                 />
               </div>
               <div>
                 <div className="text-muted">Height</div>
-                <DataValue value={robot.height} mono />
+                <DataValue
+                  value={robot.height}
+                  mono
+                  dataStatus={robot.fieldMeta.height?.status}
+                  specNote={robot.fieldMeta.height?.note}
+                />
               </div>
               <div>
                 <div className="text-muted">Updated</div>

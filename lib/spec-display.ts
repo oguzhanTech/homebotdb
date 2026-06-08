@@ -2,7 +2,7 @@ import type { DataStatus, PriceStatus } from "@/types/robot";
 
 export type SpecFallback = "NA" | "Unknown" | "Coming soon" | "TBA";
 
-export const SPEC_EMPTY_DISPLAY = "NA";
+export const SPEC_EMPTY_DISPLAY = "TBA";
 export const SPEC_EMPTY_TOOLTIP = "Not specified yet";
 
 const EMPTY_SENTINELS = new Set([

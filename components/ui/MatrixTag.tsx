@@ -11,7 +11,7 @@ import {
 } from "@/types/robot";
 import type { DataStatus } from "@/types/robot";
 import { resolveSpecDisplay } from "@/lib/spec-display";
-import { cn, parseBatteryHours } from "@/lib/utils";
+import { cn, getBatteryBarPercent, parseBatteryHours } from "@/lib/utils";
 import { SpecEmptyHint } from "@/components/ui/SpecQualifierIcon";
 import { SpecQualifierIcon } from "@/components/ui/SpecQualifierIcon";
 
@@ -149,17 +149,16 @@ export function BatteryBar({
   value,
   dataStatus,
   specNote,
+  maxHours = 8,
 }: {
   value: string;
   dataStatus?: DataStatus;
   specNote?: string;
+  maxHours?: number;
 }) {
   const resolved = resolveSpecDisplay(value, { dataStatus, specNote });
   const hours = parseBatteryHours(resolved.display);
-  const pct =
-    hours === null
-      ? 0
-      : Math.min(Math.max((hours / 8) * 100, 8), 100);
+  const pct = getBatteryBarPercent(hours, maxHours);
 
   return (
     <div className="flex min-w-[88px] items-center gap-2">
