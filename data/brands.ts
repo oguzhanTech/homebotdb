@@ -47,4 +47,28 @@ export const brands: Brand[] = [
     logo: "/brands/digital-dream-labs.jpg",
     aliases: ["Digital Dream Labs", "DDL", "Anki"],
   },
+  {
+    id: "enchanted-tools",
+    name: "Enchanted Tools",
+    logo: "/brands/enchanted-tools.png",
+    aliases: ["Enchanted Tools"],
+  },
+  {
+    id: "tombot",
+    name: "Tombot",
+    logo: "/brands/tombot.png",
+    aliases: ["Tombot", "Tombot Inc."],
+  },
+  {
+    id: "elephant-robotics",
+    name: "Elephant Robotics",
+    logo: "/brands/elephant-robotics.png",
+    aliases: ["Elephant Robotics"],
+  },
+  {
+    id: "sony",
+    name: "Sony",
+    logo: "/brands/sony.png",
+    aliases: ["Sony", "Sony Electronics"],
+  },
 ];

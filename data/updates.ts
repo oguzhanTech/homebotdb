@@ -2,6 +2,66 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-013",
+    title: "Sony aibo added to the catalog",
+    slug: "aibo-ers1000-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "aibo-ers1000",
+    summary:
+      "Sony's AI robot puppy is listed with US pricing, cloud plan terms, and regional sale restrictions.",
+    content:
+      "We added Sony aibo (ERS-1000) to HomeBotRadar. It is the cloud-connected robot dog with 22 axes of motion, dual cameras for mapping, and a personality that grows through the My aibo app.\n\nOur listing at /robots/aibo-ers1000 covers the $3,199.99 US price with a bundled three-year AI Cloud Plan, the $300 annual renewal afterward, and the Illinois and Baltimore shipping limits.\n\nCompare aibo with MarsCat or Tombot Jennie if you are choosing between robot pets for the home.",
+    sourceUrl: "https://electronics.sony.com/more/aibo/p/ers1000",
+    createdAt: "2026-06-08T16:00:00Z",
+    updatedAt: "2026-06-08T16:00:00Z",
+  },
+  {
+    id: "upd-012",
+    title: "MarsCat added to the catalog",
+    slug: "marscat-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "marscat",
+    summary:
+      "Elephant Robotics' autonomous bionic cat joins the catalog with open-source SDK and buy-now pricing.",
+    content:
+      "We added MarsCat to HomeBotRadar. It is Elephant Robotics' fully autonomous robot cat: quadruped walking, personality that shifts with touch and voice, and optional auto-docking on its charging station.\n\nOur profile on /robots/marscat includes confirmed specs from the official GitBook, the current $1,199 store price, and links to the MarsAI open-source stack for developers.\n\nCompare MarsCat with aibo or Jennie on the robot page if you are shopping for a home robot pet.",
+    sourceUrl: "https://www.elephantrobotics.com/en/mars-en/",
+    createdAt: "2026-06-08T15:00:00Z",
+    updatedAt: "2026-06-08T15:00:00Z",
+  },
+  {
+    id: "upd-011",
+    title: "Tombot Jennie added to the catalog",
+    slug: "tombot-jennie-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "tombot-jennie",
+    summary:
+      "Jim Henson-designed lap puppy for dementia care joins HomeBotRadar with waitlist status and target pricing.",
+    content:
+      "We added Tombot Jennie to HomeBotRadar. She is a golden retriever-style animatronic for seniors who cannot keep a live pet: touch sensors, voice commands, and a caregiver app over local Bluetooth or Wi-Fi.\n\nOur listing at /robots/tombot-jennie notes the waitlist-only status, the roughly $1,500 target price, and that Tombot is still working toward FDA clearance for clinical settings.\n\nCompare Jennie with MarsCat or aibo if you want a walking robot pet instead of a lap therapy dog.",
+    sourceUrl: "https://tombot.com/pages/meet-our-puppies",
+    createdAt: "2026-06-08T14:00:00Z",
+    updatedAt: "2026-06-08T14:00:00Z",
+  },
+  {
+    id: "upd-010",
+    title: "Mirokaï added to the catalog",
+    slug: "mirokai-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "mirokai",
+    summary:
+      "Enchanted Tools' expressive ball-bot humanoid is now tracked for elder care and hospitality deployments.",
+    content:
+      "We added Mirokaï to HomeBotRadar. It is the social humanoid from Enchanted Tools with a projected face, multi-LLM conversation, and an omnidirectional ball base for clinics, nursing homes, airports, and retail.\n\nOur profile at /robots/mirokai covers confirmed dimensions from distributor specs, partner pricing around $30,000+, and limited enterprise availability in France, Japan, and the United States.\n\nCompare Mirokaï with NEO Gamma or Unitree G1 on the robot page if you are evaluating humanoids for care or concierge roles.",
+    sourceUrl: "https://enchanted.tools/robot",
+    createdAt: "2026-06-08T13:00:00Z",
+    updatedAt: "2026-06-08T13:00:00Z",
+  },
+  {
     id: "upd-009",
     title: "Vector 2.0 added to the catalog",
     slug: "vector-2-added-to-catalog",
