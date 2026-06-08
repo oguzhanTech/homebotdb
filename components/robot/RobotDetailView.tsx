@@ -185,6 +185,9 @@ export function RobotDetailView({
                       dataStatus={
                         metaKey ? robot.fieldMeta[metaKey]?.status : undefined
                       }
+                      specNote={
+                        metaKey ? robot.fieldMeta[metaKey]?.note : undefined
+                      }
                     />
                   </div>
                 </div>
@@ -357,20 +360,30 @@ export function RobotDetailView({
           {activeTab === "Tech Specs" && (
             <div className="lg:col-span-2 grid sm:grid-cols-2 sm:gap-x-14">
               {[
-                ["Battery life", robot.batteryLife],
-                ["Charge time", robot.chargeTime],
-                ["Speed", robot.speed],
-                ["Payload", robot.payload],
-                ["Sensors", robot.sensors],
-                ["Processor", robot.processor],
-                ["Connectivity", robot.connectivity],
-                ["Height", robot.height],
-                ["Weight", robot.weight],
-              ].map(([label, value], index) => (
+                ["Battery life", robot.batteryLife, "batteryLife"],
+                ["Charge time", robot.chargeTime, "chargeTime"],
+                ["Speed", robot.speed, "speed"],
+                ["Payload", robot.payload, "payload"],
+                ["Sensors", robot.sensors, null],
+                ["Processor", robot.processor, null],
+                ["Connectivity", robot.connectivity, null],
+                ["Height", robot.height, "height"],
+                ["Weight", robot.weight, "weight"],
+              ].map(([label, value, metaKey], index) => (
                 <InfoRow
-                  key={label}
-                  label={label}
-                  value={<DataValue value={value as string} />}
+                  key={String(label)}
+                  label={String(label)}
+                  value={
+                    <DataValue
+                      value={value as string}
+                      dataStatus={
+                        metaKey ? robot.fieldMeta[metaKey]?.status : undefined
+                      }
+                      specNote={
+                        metaKey ? robot.fieldMeta[metaKey]?.note : undefined
+                      }
+                    />
+                  }
                   className={cn(index % 2 === 0 ? "sm:pr-5" : "sm:pl-5")}
                 />
               ))}

@@ -13,6 +13,7 @@ export function DataValue({
   dataStatus,
   priceStatus,
   showQualifier = true,
+  specNote,
 }: {
   value: string | number | null | undefined;
   fallback?: SpecFallback;
@@ -21,11 +22,13 @@ export function DataValue({
   dataStatus?: DataStatus;
   priceStatus?: PriceStatus;
   showQualifier?: boolean;
+  specNote?: string;
 }) {
   const resolved = resolveSpecDisplay(value, {
     dataStatus,
     priceStatus,
     fallback,
+    specNote,
   });
 
   return (

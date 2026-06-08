@@ -55,6 +55,7 @@ export function resolveSpecDisplay(
     dataStatus?: DataStatus;
     priceStatus?: PriceStatus;
     fallback?: SpecFallback;
+    specNote?: string;
   },
 ): {
   display: string;
@@ -93,10 +94,14 @@ export function resolveSpecDisplay(
     qualifier = options.dataStatus;
   }
 
+  const tooltipParts: string[] = [];
+  if (qualifier) tooltipParts.push(getQualifierLabel(qualifier));
+  if (options?.specNote?.trim()) tooltipParts.push(options.specNote.trim());
+
   return {
     display,
     qualifier,
-    tooltip: qualifier ? getQualifierLabel(qualifier) : null,
+    tooltip: tooltipParts.length > 0 ? tooltipParts.join(" · ") : null,
     emptyTooltip: null,
     isFallback: false,
   };

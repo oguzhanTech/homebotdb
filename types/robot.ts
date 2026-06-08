@@ -40,6 +40,8 @@ export type PriceStatus =
 export interface FieldMeta {
   status: DataStatus;
   updatedAt?: string;
+  /** Extra context shown on the spec qualifier tooltip (e.g. active vs standby runtime). */
+  note?: string;
 }
 
 export interface Capability {

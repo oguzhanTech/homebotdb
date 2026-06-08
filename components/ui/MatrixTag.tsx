@@ -148,11 +148,13 @@ export function DataStatusTag({ status }: { status: RobotDataStatus }) {
 export function BatteryBar({
   value,
   dataStatus,
+  specNote,
 }: {
   value: string;
   dataStatus?: DataStatus;
+  specNote?: string;
 }) {
-  const resolved = resolveSpecDisplay(value, { dataStatus });
+  const resolved = resolveSpecDisplay(value, { dataStatus, specNote });
   const hours = parseBatteryHours(resolved.display);
   const pct =
     hours === null

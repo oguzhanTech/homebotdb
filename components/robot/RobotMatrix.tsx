@@ -260,6 +260,7 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
                   <BatteryBar
                     value={robot.batteryLife}
                     dataStatus={robot.fieldMeta.batteryLife?.status}
+                    specNote={robot.fieldMeta.batteryLife?.note}
                   />
                 </td>
                 <td className="px-3 py-3.5 font-mono text-[13px] font-bold">
@@ -363,6 +364,7 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
                 <BatteryBar
                   value={robot.batteryLife}
                   dataStatus={robot.fieldMeta.batteryLife?.status}
+                  specNote={robot.fieldMeta.batteryLife?.note}
                 />
               </div>
               <div>
