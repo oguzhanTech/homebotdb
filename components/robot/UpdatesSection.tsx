@@ -5,8 +5,10 @@ import { getRobotBySlug } from "@/lib/data/repository";
 import { getEditorById } from "@/lib/editors";
 import { getUpdatePublicPath } from "@/lib/update-paths";
 import { formatUpdateReadingTime } from "@/lib/reading-time";
+import { getPrimaryRobotImage } from "@/lib/robot-images";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { SiteMark } from "@/components/brand/SiteMark";
+import { RobotAvatarHoverPreview } from "@/components/robot/RobotAvatarHoverPreview";
 import { formatDate } from "@/lib/utils";
 
 export function UpdateCard({
@@ -37,9 +39,12 @@ export function UpdateCard({
 
       <div className="flex items-start gap-4">
         {robot ? (
-          <BrandLogo brand={robot.brand} size="md" className="shrink-0" />
+          <RobotAvatarHoverPreview
+            name={robot.name}
+            imageUrl={getPrimaryRobotImage(robot)}
+          />
         ) : (
-          <SiteMark size="md" />
+          <SiteMark size="card" />
         )}
 
         <div className="min-w-0 flex-1">

@@ -37,6 +37,13 @@ const sizes = {
     ringInner: "",
     avatarSurface: "border border-line/60 bg-bg",
   },
+  card: {
+    outer: "h-12 w-12",
+    avatar: "h-11 w-11",
+    ringMiddle: "",
+    ringInner: "",
+    avatarSurface: "border border-line/60 bg-bg",
+  },
 };
 
 /** Fill the frame at full size; anchor bottom; clip top/sides inside the circle. */
@@ -68,7 +75,7 @@ export function RobotAvatar({
 }) {
   const config = sizes[size];
   const imageClassName = getImageClassName(config);
-  const ringsVisible = showRings && size !== "sm";
+  const ringsVisible = showRings && size !== "sm" && size !== "card";
 
   const images = useMemo(() => {
     const fromList = imageUrls?.map((url) => url.trim()).filter(Boolean) ?? [];
