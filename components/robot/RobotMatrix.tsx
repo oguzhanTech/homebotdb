@@ -12,6 +12,7 @@ import {
 } from "@/types/robot";
 import {
   filterRobots,
+  isSortField,
   sortRobots,
   type SortField,
 } from "@/lib/data/repository";
@@ -48,7 +49,13 @@ const SORT_OPTIONS: { value: SortField; label: string }[] = [
   { value: "lastUpdated", label: "Last update" },
 ];
 
-export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
+export function RobotMatrix({
+  listingPath = "/",
+  initialSort = "readiness",
+}: {
+  listingPath?: string;
+  initialSort?: SortField;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const useHomeAnchor = listingPath === "/";
@@ -63,9 +70,11 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
   const [primaryTask, setPrimaryTask] = useState<PrimaryTask | "all">(
     (searchParams.get("task") as PrimaryTask | "all") ?? "all",
   );
-  const [sort, setSort] = useState<SortField>(
-    (searchParams.get("sort") as SortField) ?? "readiness",
-  );
+  const [sort, setSort] = useState<SortField>(() => {
+    if (listingPath === "/") return initialSort;
+    const fromUrl = searchParams.get("sort");
+    return isSortField(fromUrl) ? fromUrl : "readiness";
+  });
   const [minPrice, setMinPrice] = useState(searchParams.get("minPrice") ?? "");
   const [maxPrice, setMaxPrice] = useState(searchParams.get("maxPrice") ?? "");
 
@@ -86,26 +95,42 @@ export function RobotMatrix({ listingPath = "/" }: { listingPath?: string }) {
   );
 
   useEffect(() => {
-    syncUrl({
+    const params: Record<string, string> = {
       q: query,
       type,
       status,
       task: primaryTask,
-      sort,
       minPrice,
       maxPrice,
-    });
-  }, [query, type, status, primaryTask, sort, minPrice, maxPrice, syncUrl]);
+    };
+    if (!useHomeAnchor) {
+      params.sort = sort;
+    }
+    syncUrl(params);
+  }, [
+    query,
+    type,
+    status,
+    primaryTask,
+    sort,
+    minPrice,
+    maxPrice,
+    syncUrl,
+    useHomeAnchor,
+  ]);
 
   useEffect(() => {
     setQuery(searchParams.get("q") ?? "");
     setType((searchParams.get("type") as RobotType | "all") ?? "all");
     setStatus((searchParams.get("status") as CommercialStatus | "all") ?? "all");
     setPrimaryTask((searchParams.get("task") as PrimaryTask | "all") ?? "all");
-    setSort((searchParams.get("sort") as SortField) ?? "readiness");
+    if (!useHomeAnchor) {
+      const fromUrl = searchParams.get("sort");
+      setSort(isSortField(fromUrl) ? fromUrl : "readiness");
+    }
     setMinPrice(searchParams.get("minPrice") ?? "");
     setMaxPrice(searchParams.get("maxPrice") ?? "");
-  }, [searchParams]);
+  }, [searchParams, useHomeAnchor]);
 
   const filtered = useMemo(() => {
     const result = filterRobots({

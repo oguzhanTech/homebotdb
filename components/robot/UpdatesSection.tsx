@@ -1,12 +1,12 @@
 import Link from "next/link";
 import type { Update } from "@/types/update";
 import { UPDATE_TYPE_LABELS, isNewsUpdate } from "@/types/update";
-import { siteConfig } from "@/config/site";
 import { getRobotBySlug } from "@/lib/data/repository";
 import { getEditorById } from "@/lib/editors";
 import { getUpdatePublicPath } from "@/lib/update-paths";
 import { formatUpdateReadingTime } from "@/lib/reading-time";
 import { BrandLogo } from "@/components/brand/BrandLogo";
+import { SiteMark } from "@/components/brand/SiteMark";
 import { formatDate } from "@/lib/utils";
 
 export function UpdateCard({
@@ -39,12 +39,7 @@ export function UpdateCard({
         {robot ? (
           <BrandLogo brand={robot.brand} size="md" className="shrink-0" />
         ) : (
-          <div
-            aria-hidden
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-line bg-panel-strong font-mono text-[10px] font-bold uppercase tracking-wider text-muted"
-          >
-            {siteConfig.shortName}
-          </div>
+          <SiteMark size="md" />
         )}
 
         <div className="min-w-0 flex-1">
@@ -79,6 +74,7 @@ export function NewsCard({
   update: Update;
   showAuthor?: boolean;
 }) {
+  const robot = update.robotSlug ? getRobotBySlug(update.robotSlug) : null;
   const editor = showAuthor ? getEditorById(update.authorId) : null;
 
   return (
@@ -86,7 +82,7 @@ export function NewsCard({
       href={getUpdatePublicPath(update)}
       className="group block cursor-pointer rounded-[18px] border border-line bg-panel/82 p-5 shadow-card transition-colors hover:border-blue/30"
     >
-      <div className="flex items-center justify-between gap-3">
+      <div className="mb-3 flex items-center justify-between gap-3">
         <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-blue">
           {UPDATE_TYPE_LABELS[update.type]}
         </span>
@@ -95,22 +91,38 @@ export function NewsCard({
         </span>
       </div>
 
-      {showAuthor && editor ? (
-        <div className="mt-2 text-[11px] text-muted">{editor.name}</div>
-      ) : null}
+      <div className="flex items-start gap-4">
+        {robot ? (
+          <BrandLogo brand={robot.brand} size="md" className="shrink-0" />
+        ) : (
+          <SiteMark size="md" />
+        )}
 
-      <h3 className="mt-2 font-semibold tracking-tight">{update.title}</h3>
-      <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#565f6b]">
-        {update.summary}
-      </p>
+        <div className="min-w-0 flex-1">
+          {showAuthor && editor ? (
+            <div className="mb-2 text-[11px] text-muted">{editor.name}</div>
+          ) : null}
 
-      <div className="mt-3 flex items-center justify-between gap-3">
-        <span className="text-xs font-bold uppercase tracking-wider text-muted">
-          Read news
-        </span>
-        <span className="shrink-0 text-[11px] font-medium text-muted">
-          {formatUpdateReadingTime(update)}
-        </span>
+          <h3 className="font-semibold tracking-tight">{update.title}</h3>
+          <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#565f6b]">
+            {update.summary}
+          </p>
+
+          {robot ? (
+            <div className="mt-3 text-xs font-bold uppercase tracking-wider text-muted">
+              {robot.name}
+            </div>
+          ) : null}
+
+          <div className="mt-3 flex items-center justify-between gap-3">
+            <span className="text-xs font-bold uppercase tracking-wider text-muted">
+              Read news
+            </span>
+            <span className="shrink-0 text-[11px] font-medium text-muted">
+              {formatUpdateReadingTime(update)}
+            </span>
+          </div>
+        </div>
       </div>
     </Link>
   );

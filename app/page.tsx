@@ -5,6 +5,7 @@ import {
   getLatestUpdates,
   getNewsUpdates,
   getRobots,
+  pickRandomSortField,
 } from "@/lib/data/repository";
 import { TopBar } from "@/components/layout/TopBar";
 import { RobotMatrix } from "@/components/robot/RobotMatrix";
@@ -22,6 +23,7 @@ function HomeContent() {
   const robots = getRobots();
   const latestUpdates = getLatestUpdates(6);
   const newsUpdates = getNewsUpdates(4);
+  const initialSort = pickRandomSortField();
 
   return (
     <main className="px-3.5 py-5 sm:px-7 sm:py-7">
@@ -29,7 +31,7 @@ function HomeContent() {
 
       <DashboardSpotlight robots={robots} />
 
-      <RobotMatrix />
+      <RobotMatrix initialSort={initialSort} />
 
       <NewsSection updates={newsUpdates} />
 

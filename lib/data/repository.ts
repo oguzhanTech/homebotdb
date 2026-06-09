@@ -161,6 +161,21 @@ export type SortField =
   | "battery"
   | "lastUpdated";
 
+export const SORT_FIELDS: SortField[] = [
+  "readiness",
+  "price",
+  "battery",
+  "lastUpdated",
+];
+
+export function isSortField(value: string | null | undefined): value is SortField {
+  return value != null && SORT_FIELDS.includes(value as SortField);
+}
+
+export function pickRandomSortField(): SortField {
+  return SORT_FIELDS[Math.floor(Math.random() * SORT_FIELDS.length)];
+}
+
 export function sortRobots(robots: Robot[], sort: SortField): Robot[] {
   const sorted = [...robots];
   switch (sort) {

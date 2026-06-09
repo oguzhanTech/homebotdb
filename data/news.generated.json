@@ -26,5 +26,19 @@
     "sourceUrl": "https://electrek.co/2026/04/22/tesla-optimus-production-fremont-model-sx-line/",
     "createdAt": "2026-05-22T16:00:00.000Z",
     "updatedAt": "2026-05-22T16:00:00.000Z"
+  },
+  {
+    "id": "unitree-g1-pemba-chimborazo-summit-test",
+    "title": "Unitree G1 variant Pemba summits Chimborazo after a 16-hour push",
+    "slug": "unitree-g1-pemba-chimborazo-summit-test",
+    "type": "news",
+    "authorId": "oguzhan-aydin",
+    "robotSlug": "unitree-g1",
+    "summary": "Modified G1 Pemba reached Ecuador's Chimborazo summit in a 16-hour field test, but steep sections still needed a human carry.",
+    "content": "**Pemba**, a modified **Unitree G1**, reached the summit of **Chimborazo** in Ecuador after a **16-hour** push to about **20,341 ft (6,200 m)**. That altitude, cold, snow, thin air, and weak comms are a harder test than a trade-show floor. Still, the climb was **not fully autonomous**. On steeper pitches the team **carried** the robot. Treat this as a harsh field trial, not a solo mountaineering win.\n\n## What the team reported\n\n- **Robot:** Pemba, built on a modified **Unitree G1** platform\n- **Route:** Chimborazo volcano, Ecuador, one of the highest peaks in the Andes\n- **Duration:** about **16 hours** for the summit attempt\n- **Independent walking:** on sections where slope stayed **under ~30°**\n- **Human assist:** crew carried Pemba on **steeper, technical** passages\n- **Stress factors:** cold, snow, **low oxygen**, patchy comms, and **battery load** at altitude\n\nThe useful signal is environmental: how joints, balance, and power hold up when the demo hall is gone. The limit is autonomy: when the grade gets real, humans still had to step in.\n\n## Everest next, permits unclear\n\nReports say **Everest** is the next target. Planned checks include **battery performance**, joint durability, gait on uneven terrain, and behavior in extreme cold between base camps and higher camps.\n\nThat plan may stall on paperwork. **Nepal** reportedly has **no clear rules** yet for robotic expeditions on Everest, and officials are said to be drafting guidance for non-human climbing teams. Until permits exist, the Everest leg stays a headline, not a scheduled test.\n\n## What this means for HomeBotRadar\n\nPemba is **not a separate catalog robot**. We still score **Unitree G1** on the public G1 spec sheet and buyer channels. This story does not change our **home readiness** or **reality** scores.\n\nThe home-market read is indirect: G1 hardware is tough enough for altitude stress tests, but **no verified home task benchmark** came out of Chimborazo. Pre-order G1 buyers should not expect volcano-grade autonomy in the living room.\n\nWe are **not updating G1 scores** on this news alone. We will revisit metadata if Unitree publishes official endurance data tied to a production G1 SKU or a named variant buyers can order.",
+    "coverImage": "/images/news/unitree-g1-pemba-chimborazo.jpg",
+    "sourceUrl": "https://www.gzt.com/teknoloji/unitree-g1-pemba-insansi-robot-16-saatlik-tirmanisla-and-daglarina-cikti-teknoloji-haberleri-4230733",
+    "createdAt": "2026-06-09T14:20:00.000Z",
+    "updatedAt": "2026-06-09T14:20:00.000Z"
   }
 ]
