@@ -10,6 +10,21 @@ import { isNewsUpdate } from "@/types/update";
 import type { Comment, CommentTarget } from "@/types/comment";
 import { groupCommentsByThread } from "@/lib/data/comments";
 
+function markdownToPlainText(markdown: string): string {
+  return markdown
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[*_~`]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function absoluteUrl(path: string): string {
+  if (path.startsWith("http")) return path;
+  return `${siteConfig.url}${path}`;
+}
+
 export function buildPageMetadata({
   title,
   description,
@@ -83,13 +98,18 @@ export function buildUpdateMetadata(update: Update): Metadata {
 }
 
 export function buildRobotJsonLd(robot: Robot) {
+  const pageUrl = `${siteConfig.url}/robots/${robot.slug}`;
   return {
     "@context": "https://schema.org",
     "@type": "Product",
+    "@id": `${pageUrl}#product`,
     name: robot.name,
     description: robot.shortDescription,
     brand: { "@type": "Brand", name: robot.brand },
-    image: getPrimaryRobotImage(robot) || undefined,
+    image: getPrimaryRobotImage(robot)
+      ? absoluteUrl(getPrimaryRobotImage(robot)!)
+      : undefined,
+    url: pageUrl,
     offers: robot.price
       ? {
           "@type": "Offer",
@@ -101,6 +121,46 @@ export function buildRobotJsonLd(robot: Robot) {
               : "https://schema.org/PreOrder",
         }
       : undefined,
+  };
+}
+
+export function buildNewsArticleJsonLd(update: Update) {
+  const author = getEditorById(update.authorId);
+  const pagePath = getUpdatePublicPath(update);
+  const pageUrl = absoluteUrl(pagePath);
+  const imageUrl = getAbsoluteUpdateCoverImage(update);
+  const articleBody = markdownToPlainText(
+    `${update.summary}\n\n${update.content}`,
+  );
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "@id": `${pageUrl}#article`,
+    headline: update.title,
+    description: update.summary,
+    articleBody,
+    datePublished: update.createdAt,
+    dateModified: update.updatedAt,
+    author: {
+      "@type": "Person",
+      name: author.name,
+    },
+    image: [imageUrl],
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl(siteConfig.defaultOgImage),
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl,
+    },
+    url: pageUrl,
+    isAccessibleForFree: true,
   };
 }
 
@@ -173,7 +233,10 @@ export function buildDiscussionJsonLd({
     );
   });
 
-  const aboutType = target.type === "robot" ? "Product" : "NewsArticle";
+  const aboutId =
+    target.type === "robot"
+      ? `${pageUrl}#product`
+      : `${pageUrl}#article`;
 
   return {
     "@context": "https://schema.org",
@@ -182,9 +245,7 @@ export function buildDiscussionJsonLd({
     description: pageDescription,
     url: `${pageUrl}#comments`,
     about: {
-      "@type": aboutType,
-      name: pageTitle,
-      url: pageUrl,
+      "@id": aboutId,
     },
     comment: discussionComments,
   };

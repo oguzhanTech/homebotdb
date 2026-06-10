@@ -3,7 +3,7 @@ import {
   getAllNewsSlugs,
   getUpdateBySlug,
 } from "@/lib/data/repository";
-import { buildUpdateMetadata, buildBreadcrumbJsonLd } from "@/lib/seo";
+import { buildUpdateMetadata, buildBreadcrumbJsonLd, buildNewsArticleJsonLd } from "@/lib/seo";
 import { getUpdatePublicPath } from "@/lib/update-paths";
 import { isNewsUpdate } from "@/types/update";
 import { TopBar } from "@/components/layout/TopBar";
@@ -37,9 +37,14 @@ export default async function NewsDetailPage({ params }: PageProps) {
     { name: "News", path: "/news" },
     { name: update.title, path: publicPath },
   ]);
+  const articleLd = buildNewsArticleJsonLd(update);
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
