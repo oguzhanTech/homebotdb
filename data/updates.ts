@@ -2,6 +2,21 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-014",
+    title: "Loona added to the catalog",
+    slug: "loona-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "loona",
+    summary:
+      "KEYi Tech's wheeled robot pet joins HomeBotRadar with confirmed specs, buy-now pricing, and regional shipping notes.",
+    content:
+      "We added Loona to HomeBotRadar. It is KEYi Tech's home robot pet on wheels: face and gesture recognition, ChatGPT chat, auto-docking, Blockly coding, and remote camera viewing through the Loona app.\n\nOur profile at /robots/loona covers official dimensions, the 2-hour active battery rating, current $442 promo pricing on the KEYi store, and ship-to regions including the US, UK, Germany, Canada, Australia, and Singapore.\n\nCompare Loona with MarsCat or aibo on the robot page if you are choosing between robot pets for the home.",
+    sourceUrl: "https://keyirobot.com/en-us/products/petbot",
+    createdAt: "2026-06-10T12:00:00Z",
+    updatedAt: "2026-06-10T12:00:00Z",
+  },
+  {
     id: "upd-013",
     title: "Sony aibo added to the catalog",
     slug: "aibo-ers1000-added-to-catalog",

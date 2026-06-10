@@ -17,7 +17,7 @@ import {
   type SortField,
 } from "@/lib/data/repository";
 import { BrandLogo } from "@/components/brand/BrandLogo";
-import { RobotAvatar } from "./RobotAvatar";
+import { RobotAvatarHoverPreview } from "./RobotAvatarHoverPreview";
 import { CompareToggleButton } from "./CompareToggleButton";
 import { VideoPlayLink } from "@/components/ui/VideoPlayLink";
 import { getPrimaryRobotImage } from "@/lib/robot-images";
@@ -261,19 +261,19 @@ export function RobotMatrix({
                 className="border-b border-line/80 transition-colors hover:bg-blue-soft/20"
               >
                 <td className="px-4 py-3.5">
-                  <Link
-                    href={`/robots/${robot.slug}`}
-                    className="flex items-center gap-3"
-                  >
+                  <div className="flex items-center gap-3">
                     <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-line bg-white">
-                      <RobotAvatar
+                      <RobotAvatarHoverPreview
                         name={robot.name}
                         imageUrl={getPrimaryRobotImage(robot)}
                         size="sm"
-                        showRings={false}
+                        className="h-full w-full"
                       />
                     </div>
-                    <div>
+                    <Link
+                      href={`/robots/${robot.slug}`}
+                      className="min-w-0 cursor-pointer"
+                    >
                       <div className="font-bold uppercase tracking-wide">
                         {robot.name}
                       </div>
@@ -283,8 +283,8 @@ export function RobotMatrix({
                         showName
                         nameClassName="text-xs text-muted font-normal"
                       />
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 </td>
                 <td className="px-3 py-3.5">
                   <RobotTypeTag type={robot.type} />
@@ -355,17 +355,19 @@ export function RobotMatrix({
             key={robot.slug}
             className="rounded-[18px] border border-line bg-panel-strong p-4 shadow-card"
           >
-            <Link href={`/robots/${robot.slug}`} className="flex gap-3">
+            <div className="flex gap-3">
               <div className="h-16 w-14 shrink-0 overflow-hidden rounded-xl border border-line bg-white">
-                <RobotAvatar
+                <RobotAvatarHoverPreview
                   name={robot.name}
                   imageUrl={getPrimaryRobotImage(robot)}
                   size="sm"
-                  showRings={false}
                   className="h-full w-full"
                 />
               </div>
-              <div className="min-w-0 flex-1">
+              <Link
+                href={`/robots/${robot.slug}`}
+                className="min-w-0 flex-1 cursor-pointer"
+              >
                 <div className="font-bold uppercase tracking-wide">{robot.name}</div>
                 <BrandLogo
                   brand={robot.brand}
@@ -374,8 +376,8 @@ export function RobotMatrix({
                   nameClassName="text-sm text-muted font-normal"
                   className="mt-0.5"
                 />
-              </div>
-            </Link>
+              </Link>
+            </div>
             <div className="mt-2 flex flex-wrap gap-1.5">
               <RobotTypeTag type={robot.type} />
               <CommercialStatusTag

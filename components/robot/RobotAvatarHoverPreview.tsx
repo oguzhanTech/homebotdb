@@ -5,13 +5,20 @@ import { createPortal } from "react-dom";
 import { RobotAvatar } from "@/components/robot/RobotAvatar";
 import { cn } from "@/lib/utils";
 
+type AvatarSize = "sm" | "card";
+type PreviewSize = "md" | "lg";
+
 export function RobotAvatarHoverPreview({
   name,
   imageUrl,
+  size = "sm",
+  previewSize = "lg",
   className,
 }: {
   name: string;
   imageUrl?: string;
+  size?: AvatarSize;
+  previewSize?: PreviewSize;
   className?: string;
 }) {
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -36,14 +43,14 @@ export function RobotAvatarHoverPreview({
     <>
       <div
         ref={anchorRef}
-        className={cn("relative shrink-0", className)}
+        className={cn("relative shrink-0 cursor-pointer", className)}
         onMouseEnter={showPreview}
         onMouseLeave={hidePreview}
       >
         <RobotAvatar
           name={name}
           imageUrl={imageUrl}
-          size="card"
+          size={size}
           showRings={false}
         />
       </div>
@@ -62,7 +69,7 @@ export function RobotAvatarHoverPreview({
               <RobotAvatar
                 name={name}
                 imageUrl={imageUrl}
-                size="lg"
+                size={previewSize}
                 showRings={false}
               />
             </div>,
