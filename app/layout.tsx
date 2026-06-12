@@ -25,14 +25,6 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     path: "/",
   }),
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
-      { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
-    ],
-    apple: [{ url: "/favicon.ico", sizes: "180x180", type: "image/x-icon" }],
-    shortcut: "/favicon.ico",
-  },
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
