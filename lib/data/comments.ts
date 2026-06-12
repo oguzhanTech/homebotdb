@@ -1,5 +1,3 @@
-import { promises as fs } from "node:fs";
-import path from "node:path";
 import {
   isValidPublicUsername,
   resolveCommentAuthor,
@@ -8,26 +6,40 @@ import {
   COMMENT_MAX_LENGTH,
   COMMENT_MIN_LENGTH,
 } from "@/lib/comments-constants";
+import { getSupabase } from "@/lib/supabase/server";
+import type { EditorId } from "@/types/editor";
 import type {
   Comment,
   CommentTargetType,
   CreateCommentInput,
 } from "@/types/comment";
 
-const COMMENTS_PATH = path.join(process.cwd(), "data", "comments.json");
-
-async function readAllComments(): Promise<Comment[]> {
-  try {
-    const raw = await fs.readFile(COMMENTS_PATH, "utf8");
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? (parsed as Comment[]) : [];
-  } catch {
-    return [];
-  }
+interface CommentRow {
+  id: string;
+  target_type: CommentTargetType;
+  target_slug: string;
+  parent_id: string | null;
+  author_username: string;
+  author_name: string;
+  is_admin: boolean;
+  admin_id: string | null;
+  body: string;
+  created_at: string;
 }
 
-async function writeAllComments(comments: Comment[]): Promise<void> {
-  await fs.writeFile(COMMENTS_PATH, `${JSON.stringify(comments, null, 2)}\n`, "utf8");
+function rowToComment(row: CommentRow): Comment {
+  return {
+    id: row.id,
+    targetType: row.target_type,
+    targetSlug: row.target_slug,
+    parentId: row.parent_id,
+    authorUsername: row.author_username,
+    authorName: row.author_name,
+    isAdmin: row.is_admin,
+    ...(row.admin_id ? { adminId: row.admin_id as EditorId } : {}),
+    body: row.body,
+    createdAt: row.created_at,
+  };
 }
 
 function createCommentId(): string {
@@ -57,8 +69,19 @@ export async function listComments(
   targetType: CommentTargetType,
   targetSlug: string,
 ): Promise<Comment[]> {
-  const comments = await readAllComments();
-  return getCommentsForTarget(targetType, targetSlug, comments);
+  const supabase = getSupabase();
+  const { data, error } = await supabase
+    .from("comments")
+    .select("*")
+    .eq("target_type", targetType)
+    .eq("target_slug", targetSlug)
+    .order("created_at", { ascending: true });
+
+  if (error) {
+    throw new Error(`Failed to load comments: ${error.message}`);
+  }
+
+  return (data as CommentRow[]).map(rowToComment);
 }
 
 export function groupCommentsByThread(comments: Comment[]): {
@@ -115,19 +138,23 @@ export async function createComment(
     };
   }
 
-  const comments = await readAllComments();
-  const targetComments = getCommentsForTarget(
-    input.targetType,
-    input.targetSlug,
-    comments,
-  );
-
+  const supabase = getSupabase();
   let parentId: string | null = null;
 
   if (input.parentId) {
-    const parent = targetComments.find((comment) => comment.id === input.parentId);
+    const { data: parent, error } = await supabase
+      .from("comments")
+      .select("id, parent_id")
+      .eq("id", input.parentId)
+      .eq("target_type", input.targetType)
+      .eq("target_slug", input.targetSlug)
+      .maybeSingle();
 
-    if (!parent || parent.parentId) {
+    if (error) {
+      throw new Error(`Failed to verify parent comment: ${error.message}`);
+    }
+
+    if (!parent || parent.parent_id) {
       return {
         ok: false,
         message: "You can only reply to a top-level comment.",
@@ -138,23 +165,29 @@ export async function createComment(
   }
 
   const author = resolveCommentAuthor(username);
-  const comment: Comment = {
-    id: createCommentId(),
-    targetType: input.targetType,
-    targetSlug: input.targetSlug,
-    parentId,
-    authorUsername: author.username,
-    authorName: author.displayName,
-    isAdmin: author.isAdmin,
-    adminId: author.adminId,
-    body,
-    createdAt: new Date().toISOString(),
-  };
+  const id = createCommentId();
 
-  comments.push(comment);
-  await writeAllComments(comments);
+  const { data, error } = await supabase
+    .from("comments")
+    .insert({
+      id,
+      target_type: input.targetType,
+      target_slug: input.targetSlug,
+      parent_id: parentId,
+      author_username: author.username,
+      author_name: author.displayName,
+      is_admin: author.isAdmin,
+      admin_id: author.adminId ?? null,
+      body,
+    })
+    .select("*")
+    .single();
 
-  return { ok: true, comment };
+  if (error) {
+    throw new Error(`Failed to save comment: ${error.message}`);
+  }
+
+  return { ok: true, comment: rowToComment(data as CommentRow) };
 }
 
 export function countCommentsForTarget(

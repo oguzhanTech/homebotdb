@@ -19,8 +19,16 @@ export async function GET(request: Request) {
     );
   }
 
-  const comments = await listComments(targetType, targetSlug.trim());
-  return NextResponse.json({ ok: true, comments });
+  try {
+    const comments = await listComments(targetType, targetSlug.trim());
+    return NextResponse.json({ ok: true, comments });
+  } catch (error) {
+    console.error("[comments GET]", error);
+    return NextResponse.json(
+      { ok: false, message: "Could not load comments." },
+      { status: 500 },
+    );
+  }
 }
 
 export async function POST(request: Request) {
@@ -52,23 +60,31 @@ export async function POST(request: Request) {
     );
   }
 
-  const result = await createComment({
-    targetType,
-    targetSlug,
-    username,
-    body,
-    parentId,
-  });
+  try {
+    const result = await createComment({
+      targetType,
+      targetSlug,
+      username,
+      body,
+      parentId,
+    });
 
-  if (!result.ok) {
-    return NextResponse.json(result, { status: 400 });
+    if (!result.ok) {
+      return NextResponse.json(result, { status: 400 });
+    }
+
+    if (targetType === "robot") {
+      revalidatePath(`/robots/${targetSlug}`);
+    } else {
+      revalidatePath(`/news/${targetSlug}`);
+    }
+
+    return NextResponse.json(result, { status: 201 });
+  } catch (error) {
+    console.error("[comments POST]", error);
+    return NextResponse.json(
+      { ok: false, message: "Could not post comment. Try again." },
+      { status: 500 },
+    );
   }
-
-  if (targetType === "robot") {
-    revalidatePath(`/robots/${targetSlug}`);
-  } else {
-    revalidatePath(`/news/${targetSlug}`);
-  }
-
-  return NextResponse.json(result, { status: 201 });
 }
