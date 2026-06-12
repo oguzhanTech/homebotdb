@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import type { CommentTarget } from "@/types/comment";
+import type { Comment, CommentTarget } from "@/types/comment";
 import {
   COMMENT_MAX_LENGTH,
   COMMENT_MIN_LENGTH,
@@ -16,6 +15,7 @@ interface CommentFormProps {
   target: CommentTarget;
   parentId?: string | null;
   onCancel?: () => void;
+  onSuccess?: (comment: Comment) => void;
   submitLabel?: string;
   compact?: boolean;
 }
@@ -24,10 +24,10 @@ export function CommentForm({
   target,
   parentId = null,
   onCancel,
+  onSuccess,
   submitLabel = "Post comment",
   compact = false,
 }: CommentFormProps) {
-  const router = useRouter();
   const [username, setUsername] = useState("");
   const [body, setBody] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -61,9 +61,13 @@ export function CommentForm({
         }),
       });
 
-      const result = (await response.json()) as { ok: boolean; message?: string };
+      const result = (await response.json()) as {
+        ok: boolean;
+        message?: string;
+        comment?: Comment;
+      };
 
-      if (!response.ok || !result.ok) {
+      if (!response.ok || !result.ok || !result.comment) {
         setError(result.message ?? "Could not post comment.");
         return;
       }
@@ -74,8 +78,8 @@ export function CommentForm({
       } catch {
         /* ignore */
       }
+      onSuccess?.(result.comment);
       onCancel?.();
-      router.refresh();
     } catch {
       setError("Could not post comment. Try again.");
     } finally {
@@ -103,7 +107,7 @@ export function CommentForm({
             autoComplete="username"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
-            placeholder="your-name"
+            placeholder="your_name"
             required
             minLength={3}
             maxLength={40}
@@ -111,7 +115,7 @@ export function CommentForm({
           />
           {!parentId ? (
             <span className="text-[11px] text-muted">
-              Letters, numbers, and hyphens only. No sign-up required.
+              Letters, numbers, hyphens, and underscores. No sign-up required.
             </span>
           ) : null}
         </label>

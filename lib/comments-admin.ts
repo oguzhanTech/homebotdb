@@ -2,7 +2,7 @@ import { ADMIN_USERNAME_CODES } from "@/config/admin-codes";
 import { getEditorById } from "@/lib/editors";
 import type { CommentAuthorInput } from "@/types/comment";
 
-const USERNAME_PATTERN = /^[a-z0-9][a-z0-9-]{1,38}[a-z0-9]$/i;
+const USERNAME_PATTERN = /^[a-z0-9][a-z0-9_-]{1,38}[a-z0-9]$/i;
 
 export function normalizeUsername(username: string): string {
   return username.trim().toLowerCase();

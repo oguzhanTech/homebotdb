@@ -6,7 +6,7 @@ import {
   COMMENT_MAX_LENGTH,
   COMMENT_MIN_LENGTH,
 } from "@/lib/comments-constants";
-import { getSupabase } from "@/lib/supabase/server";
+import { getSupabase, getSupabaseAdmin } from "@/lib/supabase/server";
 import type { EditorId } from "@/types/editor";
 import type {
   Comment,
@@ -127,7 +127,7 @@ export async function createComment(
   if (!isValidPublicUsername(username)) {
     return {
       ok: false,
-      message: "Username must be 3–40 characters (letters, numbers, hyphens).",
+      message: "Username must be 3–40 characters (letters, numbers, hyphens, underscores).",
     };
   }
 
@@ -138,26 +138,27 @@ export async function createComment(
     };
   }
 
-  const supabase = getSupabase();
+  const supabase = getSupabaseAdmin();
   let parentId: string | null = null;
 
   if (input.parentId) {
     const { data: parent, error } = await supabase
       .from("comments")
-      .select("id, parent_id")
+      .select("id")
       .eq("id", input.parentId)
       .eq("target_type", input.targetType)
       .eq("target_slug", input.targetSlug)
+      .is("parent_id", null)
       .maybeSingle();
 
     if (error) {
       throw new Error(`Failed to verify parent comment: ${error.message}`);
     }
 
-    if (!parent || parent.parent_id) {
+    if (!parent) {
       return {
         ok: false,
-        message: "You can only reply to a top-level comment.",
+        message: "Could not find the comment you are replying to.",
       };
     }
 

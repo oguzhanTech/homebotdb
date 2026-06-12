@@ -8,6 +8,7 @@ import type { Robot } from "@/types/robot";
 import type { Update } from "@/types/update";
 import { isNewsUpdate } from "@/types/update";
 import type { Comment, CommentTarget } from "@/types/comment";
+import { commentPermalink } from "@/lib/comment-permalink";
 import { groupCommentsByThread } from "@/lib/data/comments";
 
 function markdownToPlainText(markdown: string): string {
@@ -194,10 +195,12 @@ export function buildWebsiteJsonLd() {
   };
 }
 
-function buildCommentJsonLdNode(comment: Comment, pageUrl: string) {
+function buildCommentJsonLdNode(comment: Comment, pagePath: string) {
+  const url = commentPermalink(pagePath, comment.id);
   return {
     "@type": "Comment",
-    "@id": `${pageUrl}#comment-${comment.id}`,
+    "@id": url,
+    url,
     text: comment.body,
     datePublished: comment.createdAt,
     author: {
@@ -229,7 +232,7 @@ export function buildDiscussionJsonLd({
   const discussionComments = topLevel.flatMap((comment) => {
     const replies = repliesByParent.get(comment.id) ?? [];
     return [comment, ...replies].map((entry) =>
-      buildCommentJsonLdNode(entry, pageUrl),
+      buildCommentJsonLdNode(entry, pagePath),
     );
   });
 
