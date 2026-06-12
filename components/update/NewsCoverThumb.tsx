@@ -5,20 +5,28 @@ export function NewsCoverThumb({
   src,
   alt,
   className,
+  variant = "card",
 }: {
   src?: string;
   alt: string;
   className?: string;
+  variant?: "card" | "banner";
 }) {
+  const frameClass =
+    variant === "banner"
+      ? "aspect-[16/10] w-full rounded-xl"
+      : "h-20 w-20 shrink-0 rounded-xl sm:h-[7.25rem] sm:w-[7.25rem]";
+
   if (!src) {
     return (
       <div
         className={cn(
-          "flex aspect-[16/10] w-full items-center justify-center rounded-xl border border-line bg-panel-strong",
+          "flex items-center justify-center border border-line/60 bg-panel-strong",
+          frameClass,
           className,
         )}
       >
-        <SiteMark size="lg" />
+        <SiteMark size={variant === "banner" ? "lg" : "card"} />
       </div>
     );
   }
@@ -26,7 +34,8 @@ export function NewsCoverThumb({
   return (
     <div
       className={cn(
-        "aspect-[16/10] w-full overflow-hidden rounded-xl border border-line bg-panel-strong",
+        "overflow-hidden border border-line/60 bg-panel-strong",
+        frameClass,
         className,
       )}
     >

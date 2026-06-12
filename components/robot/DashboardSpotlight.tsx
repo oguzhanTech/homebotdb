@@ -8,7 +8,7 @@ import {
   PRIMARY_TASK_LABELS,
   ROBOT_TYPE_LABELS,
 } from "@/types/robot";
-import { getSessionSpotlightRobot } from "@/lib/random-robot";
+import { getSessionSpotlightRobot, getSpotlightRobot } from "@/lib/random-robot";
 import { getPurchaseUrl } from "@/lib/purchase";
 import { getPrimaryRobotImage } from "@/lib/robot-images";
 import { BrandLogo } from "@/components/brand/BrandLogo";
@@ -75,9 +75,12 @@ function DashboardStats({
 }
 
 export function DashboardSpotlight({ robots }: { robots: Robot[] }) {
-  const [robot, setRobot] = useState<Robot | null>(null);
+  const [robot, setRobot] = useState<Robot | null>(() =>
+    robots.length > 0 ? getSpotlightRobot(robots) : null,
+  );
 
   useEffect(() => {
+    if (robots.length === 0) return;
     setRobot(getSessionSpotlightRobot(robots));
   }, [robots]);
 

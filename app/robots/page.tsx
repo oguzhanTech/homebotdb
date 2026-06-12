@@ -1,9 +1,8 @@
-import { Suspense } from "react";
 import { siteConfig } from "@/config/site";
 import { buildPageMetadata } from "@/lib/seo";
 import { getRobots } from "@/lib/data/repository";
 import { TopBar } from "@/components/layout/TopBar";
-import { RobotMatrix } from "@/components/robot/RobotMatrix";
+import { RobotMatrixSection } from "@/components/robot/RobotMatrixSection";
 
 export const metadata = buildPageMetadata({
   title: `All Robots — ${siteConfig.name}`,
@@ -12,7 +11,11 @@ export const metadata = buildPageMetadata({
   path: "/robots",
 });
 
-export default function RobotsPage() {
+interface PageProps {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}
+
+export default async function RobotsPage({ searchParams }: PageProps) {
   const robots = getRobots();
 
   return (
@@ -32,9 +35,7 @@ export default function RobotsPage() {
         </p>
       </section>
 
-      <Suspense fallback={<div className="text-muted">Loading robots...</div>}>
-        <RobotMatrix listingPath="/robots" />
-      </Suspense>
+      <RobotMatrixSection listingPath="/robots" searchParams={searchParams} />
     </main>
   );
 }

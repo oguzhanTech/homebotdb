@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { siteConfig } from "@/config/site";
 import { buildPageMetadata } from "@/lib/seo";
 import {
@@ -8,7 +7,7 @@ import {
   pickRandomSortField,
 } from "@/lib/data/repository";
 import { TopBar } from "@/components/layout/TopBar";
-import { RobotMatrix } from "@/components/robot/RobotMatrix";
+import { RobotMatrixSection } from "@/components/robot/RobotMatrixSection";
 import { DashboardSpotlight } from "@/components/robot/DashboardSpotlight";
 import { UpdatesSection, NewsSection } from "@/components/robot/UpdatesSection";
 import { EmailAlertPlaceholder } from "@/components/marketing/EmailAlertPlaceholder";
@@ -19,7 +18,11 @@ export const metadata = buildPageMetadata({
   path: "/",
 });
 
-function HomeContent() {
+interface PageProps {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}
+
+export default async function HomePage({ searchParams }: PageProps) {
   const robots = getRobots();
   const latestUpdates = getLatestUpdates(6);
   const newsUpdates = getNewsUpdates(4);
@@ -31,7 +34,11 @@ function HomeContent() {
 
       <DashboardSpotlight robots={robots} />
 
-      <RobotMatrix initialSort={initialSort} />
+      <RobotMatrixSection
+        listingPath="/"
+        searchParams={searchParams}
+        initialSort={initialSort}
+      />
 
       <NewsSection updates={newsUpdates} />
 
@@ -43,13 +50,5 @@ function HomeContent() {
         </div>
       ) : null}
     </main>
-  );
-}
-
-export default function HomePage() {
-  return (
-    <Suspense fallback={<main className="p-7">Loading...</main>}>
-      <HomeContent />
-    </Suspense>
   );
 }
