@@ -77,4 +77,16 @@ export const brands: Brand[] = [
     logo: "/brands/keyi-tech.png",
     aliases: ["KEYi Tech", "KEYi", "KEYi Robot"],
   },
+  {
+    id: "pollen-robotics",
+    name: "Pollen Robotics",
+    logo: "/brands/pollen-robotics.png",
+    aliases: ["Pollen Robotics", "Pollen", "Hugging Face Robotics"],
+  },
+  {
+    id: "samsung",
+    name: "Samsung",
+    logo: "/brands/samsung.png",
+    aliases: ["Samsung", "Samsung Electronics"],
+  },
 ];

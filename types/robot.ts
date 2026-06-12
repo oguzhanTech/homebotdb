@@ -126,6 +126,14 @@ export const COMMERCIAL_STATUS_LABELS: Record<CommercialStatus, string> = {
   unknown: "Unknown",
 };
 
+export const AVAILABILITY_STATUS_LABELS: Record<AvailabilityStatus, string> = {
+  available: "Available",
+  limited: "Limited",
+  waitlist: "Waitlist",
+  coming_soon: "Coming Soon",
+  unknown: "Unknown",
+};
+
 export const ROBOT_TYPE_LABELS: Record<RobotType, string> = {
   humanoid: "Humanoid",
   zoomorphic: "Animal-like",

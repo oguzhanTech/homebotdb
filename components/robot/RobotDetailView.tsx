@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Robot } from "@/types/robot";
 import type { Update } from "@/types/update";
 import {
+  AVAILABILITY_STATUS_LABELS,
   COMMERCIAL_STATUS_LABELS,
   ROBOT_TYPE_LABELS,
 } from "@/types/robot";
@@ -227,7 +228,7 @@ export function RobotDetailView({
             />
             <InfoRow
               label="Availability"
-              value={robot.availabilityStatus.replace("_", " ")}
+              value={AVAILABILITY_STATUS_LABELS[robot.availabilityStatus]}
             />
             <InfoRow label="First Announced" value={robot.firstAnnounced} />
             <InfoRow label="Last Update" value={formatDate(robot.lastUpdated)} />
@@ -409,7 +410,10 @@ export function RobotDetailView({
           {activeTab === "Availability" && (
             <div className="lg:col-span-2">
               <InfoRow label="Commercial status" value={COMMERCIAL_STATUS_LABELS[robot.commercialStatus]} />
-              <InfoRow label="Availability" value={robot.availabilityStatus.replace("_", " ")} />
+              <InfoRow
+                label="Availability"
+                value={AVAILABILITY_STATUS_LABELS[robot.availabilityStatus]}
+              />
               <InfoRow
                 label="Countries"
                 value={

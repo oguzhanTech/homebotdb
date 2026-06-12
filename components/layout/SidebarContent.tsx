@@ -41,7 +41,6 @@ export function SidebarContent({
               </span>
             ))}
           </div>
-          <div className="mt-0.5 text-xs text-muted">{siteConfig.version}</div>
         </Link>
 
         <nav className="grid gap-1.5">

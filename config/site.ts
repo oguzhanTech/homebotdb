@@ -6,7 +6,6 @@ export const siteConfig = {
   description:
     "Track every home robot on the market. HomeBotRadar lets you compare humanoid and companion robots side by side — specs, prices, readiness scores, and real availability data.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://homebotradar.com",
-  version: "v0.1",
   locale: "en",
   defaultOgImage: "/og-default.png",
   features: {

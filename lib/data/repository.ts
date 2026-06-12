@@ -3,7 +3,13 @@ import newsArticles from "@/data/news.generated.json";
 import { updates as dataUpdates } from "@/data/updates";
 import { enrichRobotScores } from "@/lib/score";
 import { parseBatteryHours } from "@/lib/utils";
-import type { Robot, RobotType, CommercialStatus, PrimaryTask } from "@/types/robot";
+import type {
+  AvailabilityStatus,
+  CommercialStatus,
+  PrimaryTask,
+  Robot,
+  RobotType,
+} from "@/types/robot";
 import type { Update, UpdateType } from "@/types/update";
 
 const enrichedRobots = mockRobots.map(enrichRobotScores);
@@ -107,6 +113,7 @@ export function getAllCountries(): string[] {
 export interface RobotFilters {
   type?: RobotType | "all";
   status?: CommercialStatus | "all";
+  availability?: AvailabilityStatus | "all";
   primaryTask?: PrimaryTask | "all";
   minPrice?: number;
   maxPrice?: number;
@@ -131,6 +138,13 @@ export function filterRobots(filters: RobotFilters): Robot[] {
       return false;
     }
     if (
+      filters.availability &&
+      filters.availability !== "all" &&
+      robot.availabilityStatus !== filters.availability
+    ) {
+      return false;
+    }
+    if (
       filters.primaryTask &&
       filters.primaryTask !== "all" &&
       robot.primaryTask !== filters.primaryTask
@@ -144,12 +158,19 @@ export function filterRobots(filters: RobotFilters): Robot[] {
         `${robot.name} ${robot.brand} ${robot.shortDescription} ${robot.tags.join(" ")} ${robot.primaryTask} ${capabilityNames}`.toLowerCase();
       if (!haystack.includes(q)) return false;
     }
-    const price = parsePrice(robot.price);
-    if (filters.minPrice != null && price != null && price < filters.minPrice) {
-      return false;
-    }
-    if (filters.maxPrice != null && price != null && price > filters.maxPrice) {
-      return false;
+    const hasPriceFilter =
+      filters.minPrice != null || filters.maxPrice != null;
+    if (hasPriceFilter) {
+      const price = parsePrice(robot.price);
+      if (price == null) {
+        return false;
+      }
+      if (filters.minPrice != null && price < filters.minPrice) {
+        return false;
+      }
+      if (filters.maxPrice != null && price > filters.maxPrice) {
+        return false;
+      }
     }
     return true;
   });

@@ -2,8 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import {
+  AVAILABILITY_STATUS_LABELS,
+  COMMERCIAL_STATUS_LABELS,
   PRIMARY_TASKS,
   ROBOT_TYPES,
+  type AvailabilityStatus,
   type CommercialStatus,
   type PrimaryTask,
   type RobotType,
@@ -13,15 +16,43 @@ import {
   buildMatrixQueryString,
   type MatrixFilters,
 } from "@/lib/matrix-search-params";
+import { FilterSelect, filterNumberClassName } from "@/components/ui/FilterSelect";
 import { SearchInput } from "@/components/ui/SearchInput";
 
-const STATUS_FILTERS: { value: CommercialStatus | "all"; label: string }[] = [
-  { value: "all", label: "All" },
-  { value: "buy_now", label: "Buy Now" },
-  { value: "pre_order", label: "Pre-order" },
-  { value: "waitlist", label: "Waitlist" },
-  { value: "coming_soon", label: "Coming Soon" },
-];
+const COMMERCIAL_FILTERS: { value: CommercialStatus | "all"; label: string }[] =
+  [
+    { value: "all", label: "All" },
+    ...(
+      [
+        "buy_now",
+        "pre_order",
+        "waitlist",
+        "coming_soon",
+        "prototype",
+        "limited",
+      ] as const
+    ).map((value) => ({
+      value,
+      label: COMMERCIAL_STATUS_LABELS[value],
+    })),
+  ];
+
+const AVAILABILITY_FILTERS: { value: AvailabilityStatus | "all"; label: string }[] =
+  [
+    { value: "all", label: "All" },
+    ...(
+      [
+        "available",
+        "limited",
+        "waitlist",
+        "coming_soon",
+        "unknown",
+      ] as const
+    ).map((value) => ({
+      value,
+      label: AVAILABILITY_STATUS_LABELS[value],
+    })),
+  ];
 
 const SORT_OPTIONS: { value: SortField; label: string }[] = [
   { value: "readiness", label: "Readiness" },
@@ -69,67 +100,75 @@ export function RobotMatrixFilters({
         value={filters.query}
         onChange={(e) => update({ query: e.target.value })}
       />
-      <select
+      <FilterSelect
         value={filters.type}
         onChange={(e) => update({ type: e.target.value as RobotType | "all" })}
-        className="h-[42px] cursor-pointer rounded-[14px] border border-line bg-white px-3 text-sm"
       >
         {ROBOT_TYPES.map((opt) => (
           <option key={opt.value} value={opt.value}>
             Form: {opt.label}
           </option>
         ))}
-      </select>
-      <select
+      </FilterSelect>
+      <FilterSelect
         value={filters.status}
         onChange={(e) =>
           update({ status: e.target.value as CommercialStatus | "all" })
         }
-        className="h-[42px] cursor-pointer rounded-[14px] border border-line bg-white px-3 text-sm"
       >
-        {STATUS_FILTERS.map((opt) => (
+        {COMMERCIAL_FILTERS.map((opt) => (
           <option key={opt.value} value={opt.value}>
-            Status: {opt.label}
+            Commercial: {opt.label}
           </option>
         ))}
-      </select>
-      <select
+      </FilterSelect>
+      <FilterSelect
+        value={filters.availability}
+        onChange={(e) =>
+          update({ availability: e.target.value as AvailabilityStatus | "all" })
+        }
+      >
+        {AVAILABILITY_FILTERS.map((opt) => (
+          <option key={opt.value} value={opt.value}>
+            Availability: {opt.label}
+          </option>
+        ))}
+      </FilterSelect>
+      <FilterSelect
         value={sort}
         onChange={(e) => handleSortChange(e.target.value as SortField)}
-        className="h-[42px] cursor-pointer rounded-[14px] border border-line bg-white px-3 text-sm"
       >
         {SORT_OPTIONS.map((opt) => (
           <option key={opt.value} value={opt.value}>
             Sort: {opt.label}
           </option>
         ))}
-      </select>
-      <select
+      </FilterSelect>
+      <FilterSelect
         value={filters.primaryTask}
         onChange={(e) =>
           update({ primaryTask: e.target.value as PrimaryTask | "all" })
         }
-        className="h-[42px] cursor-pointer rounded-[14px] border border-line bg-white px-3 text-sm"
       >
         {PRIMARY_TASKS.map((opt) => (
           <option key={opt.value} value={opt.value}>
             Primary task: {opt.label}
           </option>
         ))}
-      </select>
+      </FilterSelect>
       <input
         type="number"
         placeholder="Min price"
         value={filters.minPrice}
         onChange={(e) => update({ minPrice: e.target.value })}
-        className="h-[42px] rounded-[14px] border border-line bg-white px-3 text-sm"
+        className={filterNumberClassName}
       />
       <input
         type="number"
         placeholder="Max price"
         value={filters.maxPrice}
         onChange={(e) => update({ maxPrice: e.target.value })}
-        className="h-[42px] rounded-[14px] border border-line bg-white px-3 text-sm"
+        className={filterNumberClassName}
       />
     </div>
   );

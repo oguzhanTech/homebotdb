@@ -2,6 +2,37 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-016",
+    title: "Samsung Ballie added to the catalog",
+    slug: "ballie-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "ballie",
+    summary:
+      "Samsung's spherical home robot is tracked as a mobile prototype after CES demos and the 2026 consumer shelving report.",
+    content:
+      "We added Samsung Ballie to HomeBotRadar. It is the rolling yellow sphere Samsung revived at CES 2024 with spatial LiDAR, Gemini conversation, SmartThings control, and a 1080p projector for workouts and video calls.\n\nOur profile at /robots/ballie notes the 2–3 hour projector battery figure from Samsung's press briefing, the shelved summer 2025 retail plan, and Bloomberg's 2026 report that Ballie remains internal R&D only.\n\nCompare Ballie with Loona or Vector 2.0 if you want a buyable mobile or desk companion today.",
+    sourceUrl:
+      "https://news.samsung.com/us/samsung-ballie-ai-companion-robot-home-video-ces-2024",
+    createdAt: "2026-06-12T16:00:00Z",
+    updatedAt: "2026-06-12T16:00:00Z",
+  },
+  {
+    id: "upd-015",
+    title: "Reachy 2 added to the catalog",
+    slug: "reachy-2-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "reachy-2",
+    summary:
+      "Pollen Robotics' open humanoid joins the database with tiered lab pricing, ROS 2 stack, and Hugging Face LeRobot ties.",
+    content:
+      "We added Reachy 2 to HomeBotRadar. It is Pollen Robotics' open-source humanoid for research: dual 7-DoF Orbita arms, optional omni mobile base with LiDAR, VR teleoperation, and Hugging Face LeRobot integration after Pollen's acquisition.\n\nOur listing at /robots/reachy-2 covers configurations from $70,000 to $78,000, adjustable height between 136 and 166 cm, and the 3 kg per-arm payload from Pollen's hardware guide.\n\nCompare Reachy 2 with Unitree G1 or Figure 02 if you are budgeting for a home-adjacent humanoid platform.",
+    sourceUrl: "https://docs.pollen-robotics.com/hardware-guide/specifications/general/",
+    createdAt: "2026-06-12T15:00:00Z",
+    updatedAt: "2026-06-12T15:00:00Z",
+  },
+  {
     id: "upd-014",
     title: "Loona added to the catalog",
     slug: "loona-added-to-catalog",
