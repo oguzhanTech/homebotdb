@@ -14,6 +14,7 @@ export const COMPARE_ROW_DIRECTION: Record<string, CompareDirection> = {
   Height: "none",
   Weight: "none",
   "Market Status": "none",
+  Availability: "none",
   Form: "none",
   Sensors: "none",
   Connectivity: "none",

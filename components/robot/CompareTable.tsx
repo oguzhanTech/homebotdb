@@ -4,6 +4,7 @@ import { useCallback, useLayoutEffect, useRef, type CSSProperties } from "react"
 import Link from "next/link";
 import type { Robot } from "@/types/robot";
 import {
+  AVAILABILITY_STATUS_LABELS,
   COMMERCIAL_STATUS_LABELS,
   ROBOT_TYPE_LABELS,
 } from "@/types/robot";
@@ -42,6 +43,12 @@ function buildRows(robots: Robot[]): CompareRow[] {
     {
       label: uiCopy.scores.marketStatus,
       values: robots.map((r) => COMMERCIAL_STATUS_LABELS[r.commercialStatus]),
+    },
+    {
+      label: "Availability",
+      values: robots.map(
+        (r) => AVAILABILITY_STATUS_LABELS[r.availabilityStatus],
+      ),
     },
     {
       label: "Form",

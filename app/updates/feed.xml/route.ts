@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { uiCopy } from "@/config/ui-copy";
 import { getDataUpdates } from "@/lib/data/repository";
 import { getEditorById } from "@/lib/editors";
 
@@ -22,7 +23,7 @@ export async function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>${siteConfig.name} Data Updates</title>
+    <title>${siteConfig.name} ${uiCopy.nav.radarFeed}</title>
     <link>${siteConfig.url}/updates</link>
     <description>Spec, score, price, and availability changes on ${siteConfig.name}.</description>
     ${items}

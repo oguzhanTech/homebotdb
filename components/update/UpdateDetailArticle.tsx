@@ -29,7 +29,7 @@ export function UpdateDetailArticle({
   const robot = update.robotSlug ? getRobotBySlug(update.robotSlug) : null;
   const isNews = isNewsUpdate(update.type);
   const listHref = isNews ? "/news" : "/updates";
-  const listLabel = isNews ? "All news" : uiCopy.nav.radarFeed;
+  const listLabel = isNews ? uiCopy.nav.news : uiCopy.nav.radarFeed;
   const publicPath = getUpdatePublicPath(update);
   const coverImage = isNews ? getUpdateCoverImage(update) : undefined;
 

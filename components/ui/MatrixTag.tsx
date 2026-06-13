@@ -1,10 +1,12 @@
 import type {
+  AvailabilityStatus,
   CommercialStatus,
   PrimaryTask,
   Robot,
   RobotType,
 } from "@/types/robot";
 import {
+  AVAILABILITY_STATUS_LABELS,
   COMMERCIAL_STATUS_LABELS,
   PRIMARY_TASK_LABELS,
   ROBOT_TYPE_LABELS,
@@ -33,6 +35,16 @@ const commercialVariants: Record<CommercialStatus, string> = {
   coming_soon: "border-slate-300/80 bg-slate-50 text-slate-600",
   prototype: "border-blue/35 bg-blue-soft text-blue",
   limited: "border-amber-400/45 bg-amber-50 text-amber-800",
+  unknown: "border-line bg-[#f0f1f3] text-muted",
+};
+
+const availabilityVariants: Record<AvailabilityStatus, string> = {
+  available: "border-emerald-400/45 bg-emerald-50 text-emerald-700",
+  limited: "border-amber-400/45 bg-amber-50 text-amber-800",
+  waitlist: "border-orange-400/45 bg-orange-50 text-orange-700",
+  coming_soon: "border-slate-300/80 bg-slate-50 text-slate-600",
+  prototype: "border-blue/35 bg-blue-soft text-blue",
+  unavailable: "border-rose-300/80 bg-rose-50 text-rose-700",
   unknown: "border-line bg-[#f0f1f3] text-muted",
 };
 
@@ -120,6 +132,18 @@ export function CommercialStatusTag({
   }
 
   return <MatrixTag className={className}>{label}</MatrixTag>;
+}
+
+export function AvailabilityStatusTag({
+  status,
+}: {
+  status: AvailabilityStatus;
+}) {
+  return (
+    <MatrixTag className={availabilityVariants[status]}>
+      {AVAILABILITY_STATUS_LABELS[status]}
+    </MatrixTag>
+  );
 }
 
 export function PrimaryTaskTag({ task }: { task: PrimaryTask }) {

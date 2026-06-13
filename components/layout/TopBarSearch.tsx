@@ -11,6 +11,7 @@ import {
   type SiteSearchResult,
 } from "@/lib/site-search";
 import { cn } from "@/lib/utils";
+import { uiCopy } from "@/config/ui-copy";
 
 function TopBarSearchField() {
   const router = useRouter();
@@ -99,7 +100,7 @@ function TopBarSearchField() {
           aria-expanded={showDropdown}
           aria-controls="topbar-search-results"
           aria-autocomplete="list"
-          aria-label="Search robots and updates"
+          aria-label={uiCopy.search.ariaLabel}
         />
         <TopBarSearchHint />
       </label>
@@ -147,7 +148,7 @@ function TopBarSearchField() {
               ) : null}
 
               {grouped.articles.length > 0 ? (
-                <SearchSection title="News & updates">
+                <SearchSection title={uiCopy.search.sectionNewsAndRadar}>
                   {grouped.articles.map((result) => {
                     const index = flatResults.findIndex((entry) => entry.id === result.id);
                     return (

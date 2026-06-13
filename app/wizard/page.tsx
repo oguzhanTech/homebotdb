@@ -32,7 +32,7 @@ export default function WizardPage() {
           Which robot fits your home?
         </h1>
         <p className="mt-3 text-[15px] leading-relaxed text-[#565f6b]">
-          This recommendation wizard is coming in a future release. Form fields
+          This {uiCopy.nav.robotMatchmaker} flow is coming in a future release. Form fields
           below are placeholders.
         </p>
 

@@ -1,14 +1,18 @@
 import Link from "next/link";
 import type { Update } from "@/types/update";
 import { isNewsUpdate } from "@/types/update";
+import { uiCopy } from "@/config/ui-copy";
 import { getRobotBySlug } from "@/lib/data/repository";
 
 export function UpdateExploreMore({ update }: { update: Update }) {
   const robot = update.robotSlug ? getRobotBySlug(update.robotSlug) : null;
   const isNews = isNewsUpdate(update.type);
   const links: { href: string; label: string; primary?: boolean }[] = [
-    { href: isNews ? "/news" : "/updates", label: isNews ? "All news" : "All updates" },
-    { href: "/robots", label: "Robot catalog" },
+    {
+      href: isNews ? "/news" : "/updates",
+      label: isNews ? uiCopy.nav.news : uiCopy.nav.radarFeed,
+    },
+    { href: "/robots", label: uiCopy.links.robotCatalog },
   ];
 
   if (robot) {
@@ -22,7 +26,7 @@ export function UpdateExploreMore({ update }: { update: Update }) {
   return (
     <div className="rounded-[18px] border border-line bg-panel-strong p-5 shadow-card">
       <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted">
-        Explore more
+        {uiCopy.links.exploreMore}
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
         {links.map((link) => (

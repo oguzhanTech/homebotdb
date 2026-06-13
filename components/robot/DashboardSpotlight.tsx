@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { Robot } from "@/types/robot";
 import {
-  COMMERCIAL_STATUS_LABELS,
   PRIMARY_TASK_LABELS,
   ROBOT_TYPE_LABELS,
 } from "@/types/robot";
 import { getSessionSpotlightRobot, getSpotlightRobot } from "@/lib/random-robot";
 import { getPurchaseUrl } from "@/lib/purchase";
+import { getRobotHeroStatusLabel } from "@/lib/robot-status";
 import { getPrimaryRobotImage } from "@/lib/robot-images";
 import { uiCopy } from "@/config/ui-copy";
 import { BrandLogo } from "@/components/brand/BrandLogo";
@@ -130,7 +130,7 @@ function SpotlightCard({
     { label: "Price", value: robot.price, mono: true },
     {
       label: "Status",
-      value: COMMERCIAL_STATUS_LABELS[robot.commercialStatus],
+      value: getRobotHeroStatusLabel(robot),
     },
   ];
 
@@ -140,7 +140,7 @@ function SpotlightCard({
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-3">
             <StatusPill>
-              {COMMERCIAL_STATUS_LABELS[robot.commercialStatus].toUpperCase()}
+              {getRobotHeroStatusLabel(robot).toUpperCase()}
             </StatusPill>
             <span className="text-[11px] font-bold uppercase tracking-widest text-muted">
               Spotlight

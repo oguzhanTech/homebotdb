@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-018",
+    title: "MarsCat unavailable on Elephant Robotics store",
+    slug: "marscat-store-unavailable",
+    type: "availability_update",
+    authorId: "maya-chen",
+    robotSlug: "marscat",
+    summary:
+      "Every MarsCat bundle on the official shop now shows Unavailable/Sold out while $1,199 list pricing remains visible.",
+    content:
+      "We rechecked the Elephant Robotics store on June 14, 2026. The MarsCat product page now labels the robot Unavailable, and every Standard, Premium, and Developed bundle (all colors and warranty options) shows Sold out.\n\nWe updated /robots/marscat to set availability to Unavailable. Market status stays Buy Now because that reflects how Elephant Robotics sells MarsCat when stock returns; the Buy now button is hidden until units are back.\n\nList pricing still shows $1,199 (down from $1,399). Compare MarsCat with Loona or aibo if you need a robot pet you can order today.",
+    sourceUrl:
+      "https://shop.elephantrobotics.com/products/marscat-a-bionic-cat-a-home-robot",
+    createdAt: "2026-06-14T19:00:00Z",
+    updatedAt: "2026-06-14T19:00:00Z",
+  },
+  {
     id: "upd-017",
     title: "Embodied Moxie added to the catalog",
     slug: "moxie-added-to-catalog",

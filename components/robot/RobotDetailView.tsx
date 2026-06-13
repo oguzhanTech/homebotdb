@@ -12,6 +12,7 @@ import {
 import { useCompare } from "@/contexts/CompareContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { getPurchaseUrl } from "@/lib/purchase";
+import { getRobotHeroStatusLabel } from "@/lib/robot-status";
 import { getPrimaryRobotImage, getRobotImages } from "@/lib/robot-images";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { RobotAvatar } from "./RobotAvatar";
@@ -90,7 +91,7 @@ export function RobotDetailView({
               {robot.name.toUpperCase()}
             </h1>
             <StatusPill>
-              {COMMERCIAL_STATUS_LABELS[robot.commercialStatus].toUpperCase()}
+              {getRobotHeroStatusLabel(robot).toUpperCase()}
             </StatusPill>
           </div>
 

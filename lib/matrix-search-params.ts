@@ -22,6 +22,7 @@ const AVAILABILITY_STATUSES: AvailabilityStatus[] = [
   "waitlist",
   "coming_soon",
   "prototype",
+  "unavailable",
   "unknown",
 ];
 

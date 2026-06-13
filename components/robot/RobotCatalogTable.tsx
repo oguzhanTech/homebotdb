@@ -10,14 +10,13 @@ import { VideoPlayLink } from "@/components/ui/VideoPlayLink";
 import { getPrimaryRobotImage } from "@/lib/robot-images";
 import { DataValue } from "@/components/ui/DataValue";
 import {
+  AvailabilityStatusTag,
   BatteryBar,
-  CommercialStatusTag,
   DataStatusTag,
   getRobotDataStatus,
   PrimaryTaskTag,
   RobotTypeTag,
 } from "@/components/ui/MatrixTag";
-import { getPurchaseUrl } from "@/lib/purchase";
 import { cn, formatDate } from "@/lib/utils";
 
 const sizingRowClass =
@@ -106,10 +105,7 @@ function TableColumnSizingRow({
       <td className="px-3">
         {robots.map((robot) => (
           <span key={robot.slug} className={sizingStackClass}>
-            <CommercialStatusTag
-              status={robot.commercialStatus}
-              purchaseUrl={getPurchaseUrl(robot)}
-            />
+            <AvailabilityStatusTag status={robot.availabilityStatus} />
           </span>
         ))}
       </td>
@@ -295,10 +291,7 @@ export function RobotCatalogTable({
                   <DataStatusTag status={getRobotDataStatus(robot)} />
                 </td>
                 <td className="px-3 py-3.5">
-                  <CommercialStatusTag
-                    status={robot.commercialStatus}
-                    purchaseUrl={getPurchaseUrl(robot)}
-                  />
+                  <AvailabilityStatusTag status={robot.availabilityStatus} />
                 </td>
                 <td className="px-3 py-3.5">
                   <PrimaryTaskTag task={robot.primaryTask} />
@@ -368,10 +361,7 @@ export function RobotCatalogTable({
             </div>
             <div className="mt-2 flex flex-wrap gap-1.5">
               <RobotTypeTag type={robot.type} />
-              <CommercialStatusTag
-                status={robot.commercialStatus}
-                purchaseUrl={getPurchaseUrl(robot)}
-              />
+              <AvailabilityStatusTag status={robot.availabilityStatus} />
             </div>
             <div className="mt-3 flex flex-wrap gap-1.5">
               <PrimaryTaskTag task={robot.primaryTask} />

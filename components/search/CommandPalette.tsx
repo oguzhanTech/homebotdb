@@ -9,6 +9,7 @@ import {
   searchSite,
 } from "@/lib/site-search";
 import { cn } from "@/lib/utils";
+import { uiCopy } from "@/config/ui-copy";
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
@@ -49,7 +50,7 @@ export function CommandPalette() {
           autoFocus
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search robots, news, updates..."
+          placeholder="Search robots, news, and radar feed..."
           className="w-full border-b border-line px-4 py-4 text-sm outline-none"
         />
         <div className="max-h-[50vh] overflow-x-hidden overflow-y-auto p-2">
@@ -108,7 +109,7 @@ export function CommandPalette() {
               {grouped.articles.length > 0 ? (
                 <>
                   <div className="mt-2 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-muted">
-                    News & updates
+                    {uiCopy.search.sectionNewsAndRadar}
                   </div>
                   {grouped.articles.map((update) => (
                     <Link
@@ -152,10 +153,10 @@ export function CommandPalette() {
           )}
           <div className="mt-2 grid gap-1 border-t border-line pt-2">
             <Link href="/compare" onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-sm hover:bg-blue-soft">
-              Compare robots
+              {uiCopy.search.compareRobots}
             </Link>
             <Link href="/wizard" onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-sm hover:bg-blue-soft">
-              Robot wizard
+              {uiCopy.nav.robotMatchmaker}
             </Link>
           </div>
         </div>

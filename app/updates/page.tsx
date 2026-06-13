@@ -9,7 +9,7 @@ import { UpdateCard } from "@/components/robot/UpdatesSection";
 export const metadata = buildPageMetadata({
   title: `Radar Feed — ${siteConfig.name}`,
   description:
-    "Robot signals: spec changes, score revisions, price updates, and availability checks for home robots.",
+    "Radar feed: spec changes, score revisions, price updates, and availability checks for home robots.",
   path: "/updates",
 });
 

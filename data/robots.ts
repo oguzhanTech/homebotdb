@@ -704,7 +704,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Fully autonomous bionic robot cat that walks, plays, and develops personality through touch, voice, and vision.",
     longDescription:
-      "MarsCat is a robot cat from Elephant Robotics. It walks on four legs, stretches, kneads, and behaves like a pet when you touch or talk to it.\n\nWhen the battery drops below about 10%, it can roll to its charging station on its own if the dock is in view. A camera and touch sensors help shape six personality traits over time. A Raspberry Pi computer inside runs open-source MarsAI code, so hobbyists can program new behaviors.\n\nIt sells for about $1,199 on the official store (often discounted from list price). No subscription is required for core pet functions. It fits homes where a live cat is not practical but someone still wants animal-like company.",
+      "MarsCat is a robot cat from Elephant Robotics. It walks on four legs, stretches, kneads, and behaves like a pet when you touch or talk to it.\n\nWhen the battery drops below about 10%, it can roll to its charging station on its own if the dock is in view. A camera and touch sensors help shape six personality traits over time. A Raspberry Pi computer inside runs open-source MarsAI code, so hobbyists can program new behaviors.\n\nAs of June 2026, every MarsCat bundle on the Elephant Robotics store shows Unavailable/Sold out, though list pricing still appears at $1,199 (down from $1,399). No subscription is required for core pet functions when units are in stock. It fits homes where a live cat is not practical but someone still wants animal-like company.",
     price: "$1,199",
     priceStatus: "confirmed",
     batteryLife: "2–4 h",
@@ -721,7 +721,7 @@ export const robots: Robot[] = [
     dataFreshnessScore: 0,
     dataConfidenceScore: 0,
     commercialStatus: "buy_now",
-    availabilityStatus: "available",
+    availabilityStatus: "unavailable",
     countriesAvailable: [
       "United States",
       "United Kingdom",
@@ -731,7 +731,7 @@ export const robots: Robot[] = [
       "China",
     ],
     firstAnnounced: "2020",
-    lastUpdated: "2026-06-07",
+    lastUpdated: "2026-06-13",
     imageUrl: "/images/marscat/marscat-front.png",
     imageUrls: [
       "/images/marscat/marscat-front.png",
@@ -769,7 +769,7 @@ export const robots: Robot[] = [
           "Charming autonomous robo-cat with evolving personality; premium price for a developer-friendly pet platform.",
       },
     ],
-    tags: ["ZOOMORPHIC", "COMPANION", "OPEN SOURCE", "BUY NOW"],
+    tags: ["ZOOMORPHIC", "COMPANION", "OPEN SOURCE", "SOLD OUT"],
     degreesOfFreedom: "16",
     unitId: "MC-2026-001",
     fieldMeta: {
@@ -788,6 +788,11 @@ export const robots: Robot[] = [
         status: "confirmed",
         updatedAt: "2026-05-18",
         note: "Standing",
+      },
+      availabilityStatus: {
+        status: "confirmed",
+        updatedAt: "2026-06-13",
+        note: "All store bundles Unavailable/Sold out on Elephant Robotics shop",
       },
     },
     priceHistory: [

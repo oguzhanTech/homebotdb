@@ -87,4 +87,13 @@ export const uiCopy = {
   compare: {
     eyebrow: "Compare",
   },
+  search: {
+    ariaLabel: "Search robots, news, and radar feed",
+    sectionNewsAndRadar: "News & Radar Feed",
+    compareRobots: "Compare robots",
+  },
+  links: {
+    robotCatalog: "Robot catalog",
+    exploreMore: "Explore more",
+  },
 } as const;
