@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { uiCopy } from "@/config/ui-copy";
 import { buildPageMetadata } from "@/lib/seo";
 import { TopBar } from "@/components/layout/TopBar";
 import { Button } from "@/components/ui/Button";
@@ -25,7 +26,7 @@ export default function WizardPage() {
       <TopBar />
       <div className="mx-auto max-w-xl">
         <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
-          Wizard — Phase 2
+          {uiCopy.nav.robotMatchmaker}
         </div>
         <h1 className="mt-1 text-3xl font-medium tracking-tight">
           Which robot fits your home?

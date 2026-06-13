@@ -28,16 +28,17 @@ import { BuyNowLink } from "@/components/ui/PrimaryLink";
 import { ShareButtons } from "@/components/update/ShareButtons";
 import { formatDate } from "@/lib/utils";
 import { cn } from "@/lib/utils";
+import { uiCopy } from "@/config/ui-copy";
 
 const TAB_LIST = [
-  "Overview",
-  "Capabilities",
-  "Tech Specs",
-  "Ecosystem",
-  "Availability",
-  "Updates",
-  "Reviews",
-];
+  uiCopy.robot.tabs.overview,
+  uiCopy.robot.tabs.capabilities,
+  uiCopy.robot.tabs.techSpecs,
+  uiCopy.robot.tabs.ecosystem,
+  uiCopy.robot.tabs.availability,
+  uiCopy.robot.tabs.signalHistory,
+  uiCopy.robot.tabs.fieldReports,
+] as const;
 
 export function RobotDetailView({
   robot,
@@ -50,7 +51,7 @@ export function RobotDetailView({
   updates: Update[];
   reviewsSection: React.ReactNode;
 }) {
-  const [activeTab, setActiveTab] = useState("Overview");
+  const [activeTab, setActiveTab] = useState<string>(uiCopy.robot.tabs.overview);
   const { toggle, isSelected, isFull } = useCompare();
   const { toggle: toggleFavorite, isFavorite } = useFavorites();
   const purchaseUrl = getPurchaseUrl(robot);
@@ -147,14 +148,18 @@ export function RobotDetailView({
               disabled={!isSelected(robot.slug) && isFull}
               onClick={() => toggle(robot.slug)}
             >
-              {isSelected(robot.slug) ? "✓ In compare" : "＋ Add to compare"}
+              {isSelected(robot.slug)
+                ? `✓ ${uiCopy.robot.inCompare}`
+                : `＋ ${uiCopy.robot.addToCompare}`}
             </Button>
             <Button
               size="md"
               variant="secondary"
               onClick={() => toggleFavorite(robot.slug)}
             >
-              {isFavorite(robot.slug) ? "♥ Favorited" : "♡ Add to favorites"}
+              {isFavorite(robot.slug)
+                ? `♥ ${uiCopy.robot.tracking}`
+                : `♡ ${uiCopy.robot.trackRobot}`}
             </Button>
           </div>
 
@@ -200,7 +205,7 @@ export function RobotDetailView({
         <aside className="grid gap-[18px] md:grid-cols-3 xl:grid-cols-1">
           <Card className="p-5">
             <div className="text-xs font-bold uppercase tracking-[0.15em]">
-              Readiness Score ⓘ
+              {uiCopy.scores.readinessScore} ⓘ
             </div>
             <div className="my-3 font-mono text-[56px] leading-none tracking-[-0.06em]">
               {robot.readinessScore}{" "}
@@ -208,11 +213,11 @@ export function RobotDetailView({
             </div>
             <ScoreBar value={robot.readinessScore} />
             <InfoRow
-              label="Reality Score"
+              label={uiCopy.scores.realityScore}
               value={`${robot.realityScore} /100`}
             />
             <InfoRow
-              label="Commercial Status"
+              label={uiCopy.scores.marketStatus}
               value={COMMERCIAL_STATUS_LABELS[robot.commercialStatus]}
             />
             <InfoRow
@@ -231,13 +236,16 @@ export function RobotDetailView({
               value={AVAILABILITY_STATUS_LABELS[robot.availabilityStatus]}
             />
             <InfoRow label="First Announced" value={robot.firstAnnounced} />
-            <InfoRow label="Last Update" value={formatDate(robot.lastUpdated)} />
             <InfoRow
-              label="Data Freshness"
+              label={uiCopy.scores.lastSignal}
+              value={formatDate(robot.lastUpdated)}
+            />
+            <InfoRow
+              label={uiCopy.scores.freshnessScore}
               value={`${robot.dataFreshnessScore}%`}
             />
             <InfoRow
-              label="Data Confidence"
+              label={uiCopy.scores.confidenceScore}
               value={`${robot.dataConfidenceScore}%`}
             />
             <Link
@@ -262,7 +270,7 @@ export function RobotDetailView({
           <Card className="p-[18px]">
             <div className="mb-3.5 flex items-center justify-between">
               <div className="text-xs font-bold uppercase tracking-[0.15em]">
-                Similar Robots
+                {uiCopy.robot.relatedRobots}
               </div>
               <Link href="/robots" className="text-xs font-bold text-blue">
                 VIEW ALL
@@ -295,9 +303,9 @@ export function RobotDetailView({
       </div>
 
       <Card className="mt-5 overflow-hidden">
-        <Tabs tabs={TAB_LIST} active={activeTab} onChange={setActiveTab} />
+        <Tabs tabs={[...TAB_LIST]} active={activeTab} onChange={setActiveTab} />
         <div className="grid gap-6 p-6 lg:grid-cols-[1.1fr_0.9fr]">
-          {activeTab === "Overview" && (
+          {activeTab === uiCopy.robot.tabs.overview && (
             <>
               <div>
                 <h3 className="mb-4 text-[13px] uppercase tracking-[0.14em]">
@@ -345,7 +353,7 @@ export function RobotDetailView({
             </>
           )}
 
-          {activeTab === "Capabilities" && (
+          {activeTab === uiCopy.robot.tabs.capabilities && (
             <div className="lg:col-span-2">
               {robot.capabilities.map((cap) => (
                 <div
@@ -365,7 +373,7 @@ export function RobotDetailView({
             </div>
           )}
 
-          {activeTab === "Tech Specs" && (
+          {activeTab === uiCopy.robot.tabs.techSpecs && (
             <div className="lg:col-span-2 grid sm:grid-cols-2 sm:gap-x-14">
               {[
                 ["Battery life", robot.batteryLife, "batteryLife"],
@@ -398,7 +406,7 @@ export function RobotDetailView({
             </div>
           )}
 
-          {activeTab === "Ecosystem" && (
+          {activeTab === uiCopy.robot.tabs.ecosystem && (
             <div className="lg:col-span-2">
               {robot.ecosystem.length > 0 ? (
                 <ul className="space-y-2">
@@ -414,7 +422,7 @@ export function RobotDetailView({
             </div>
           )}
 
-          {activeTab === "Availability" && (
+          {activeTab === uiCopy.robot.tabs.availability && (
             <div className="lg:col-span-2">
               <InfoRow label="Commercial status" value={COMMERCIAL_STATUS_LABELS[robot.commercialStatus]} />
               <InfoRow
@@ -432,7 +440,7 @@ export function RobotDetailView({
             </div>
           )}
 
-          {activeTab === "Updates" && (
+          {activeTab === uiCopy.robot.tabs.signalHistory && (
             <div className="lg:col-span-2 space-y-8">
               {(() => {
                 const { dataUpdates, news } = splitUpdatesByKind(updates);
@@ -440,7 +448,7 @@ export function RobotDetailView({
                   <>
                     <div>
                       <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
-                        Data updates
+                        {uiCopy.robot.robotSignals}
                       </div>
                       {dataUpdates.length > 0 ? (
                         <div className="grid gap-3 md:grid-cols-2">
@@ -449,12 +457,14 @@ export function RobotDetailView({
                           ))}
                         </div>
                       ) : (
-                        <p className="text-sm text-muted">No data updates for this robot.</p>
+                        <p className="text-sm text-muted">
+                          {uiCopy.updates.noDataUpdatesForRobot}
+                        </p>
                       )}
                     </div>
                     <div>
                       <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
-                        News
+                        {uiCopy.robot.news}
                       </div>
                       {news.length > 0 ? (
                         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -468,7 +478,9 @@ export function RobotDetailView({
                           ))}
                         </div>
                       ) : (
-                        <p className="text-sm text-muted">No news for this robot.</p>
+                        <p className="text-sm text-muted">
+                          {uiCopy.updates.noNewsForRobot}
+                        </p>
                       )}
                     </div>
                   </>
@@ -477,7 +489,7 @@ export function RobotDetailView({
             </div>
           )}
 
-          {activeTab === "Reviews" && (
+          {activeTab === uiCopy.robot.tabs.fieldReports && (
             <div className="lg:col-span-2">{reviewsSection}</div>
           )}
         </div>

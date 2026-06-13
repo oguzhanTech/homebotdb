@@ -8,6 +8,7 @@ import {
   ROBOT_TYPE_LABELS,
 } from "@/types/robot";
 import { getWinningIndices } from "@/lib/compare-metrics";
+import { uiCopy } from "@/config/ui-copy";
 import { pickRobotImage } from "@/lib/robot-images";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { RobotImagePlaceholder } from "./RobotImagePlaceholder";
@@ -23,15 +24,15 @@ interface CompareRow {
 function buildRows(robots: Robot[]): CompareRow[] {
   const rows: { label: string; values: string[] }[] = [
     {
-      label: "Readiness Score",
+      label: uiCopy.scores.readinessScore,
       values: robots.map((r) => String(r.readinessScore)),
     },
     {
-      label: "Reality Score",
+      label: uiCopy.scores.realityScore,
       values: robots.map((r) => String(r.realityScore)),
     },
     {
-      label: "Data Freshness",
+      label: uiCopy.scores.freshnessScore,
       values: robots.map((r) => `${r.dataFreshnessScore}%`),
     },
     {
@@ -39,7 +40,7 @@ function buildRows(robots: Robot[]): CompareRow[] {
       values: robots.map((r) => r.price || "Unknown"),
     },
     {
-      label: "Commercial Status",
+      label: uiCopy.scores.marketStatus,
       values: robots.map((r) => COMMERCIAL_STATUS_LABELS[r.commercialStatus]),
     },
     {

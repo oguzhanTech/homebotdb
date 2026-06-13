@@ -11,6 +11,7 @@ import {
 import { getSessionSpotlightRobot, getSpotlightRobot } from "@/lib/random-robot";
 import { getPurchaseUrl } from "@/lib/purchase";
 import { getPrimaryRobotImage } from "@/lib/robot-images";
+import { uiCopy } from "@/config/ui-copy";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { RobotAvatar } from "./RobotAvatar";
 import { StatusPill } from "@/components/ui/Badge";
@@ -95,7 +96,7 @@ export function DashboardSpotlight({ robots }: { robots: Robot[] }) {
   return (
     <section className="mb-8">
       <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
-        Dashboard
+        {uiCopy.homepage.commandCenter}
       </div>
 
       {!robot ? (
@@ -180,7 +181,7 @@ function SpotlightCard({
 
           <div className="mt-5 flex flex-wrap gap-3">
             <PrimaryLink href={`/robots/${robot.slug}`}>
-              Open robot page
+              {uiCopy.homepage.viewFullProfile}
             </PrimaryLink>
             {purchaseUrl ? <BuyNowLink href={purchaseUrl} /> : null}
             <Link

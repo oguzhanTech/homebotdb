@@ -47,6 +47,7 @@ export function HomeMatrixClient({
         robots={robots}
         layoutRobots={layoutRobots}
         maxBatteryHours={maxBatteryHours}
+        showBrandInTable={false}
       />
     </>
   );

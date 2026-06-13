@@ -7,6 +7,7 @@ import {
   COMMENT_MIN_LENGTH,
 } from "@/lib/comments-constants";
 import { Button } from "@/components/ui/Button";
+import { uiCopy } from "@/config/ui-copy";
 import { cn } from "@/lib/utils";
 
 const USERNAME_STORAGE_KEY = "hbr-comment-username";
@@ -25,7 +26,7 @@ export function CommentForm({
   parentId = null,
   onCancel,
   onSuccess,
-  submitLabel = "Post comment",
+  submitLabel = uiCopy.comments.submitFieldReport,
   compact = false,
 }: CommentFormProps) {
   const [username, setUsername] = useState("");

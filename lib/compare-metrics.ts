@@ -13,7 +13,7 @@ export const COMPARE_ROW_DIRECTION: Record<string, CompareDirection> = {
   Countries: "higher",
   Height: "none",
   Weight: "none",
-  "Commercial Status": "none",
+  "Market Status": "none",
   Form: "none",
   Sensors: "none",
   Connectivity: "none",

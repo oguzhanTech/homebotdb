@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { uiCopy } from "@/config/ui-copy";
 import { buildPageMetadata } from "@/lib/seo";
 import {
   getLatestUpdates,
@@ -42,7 +43,11 @@ export default async function HomePage({ searchParams }: PageProps) {
 
       <NewsSection updates={newsUpdates} />
 
-      <UpdatesSection title="Latest Robot Updates" updates={latestUpdates} />
+      <UpdatesSection
+        title={uiCopy.homepage.radarFeedEyebrow}
+        heading={uiCopy.homepage.latestRobotUpdates}
+        updates={latestUpdates}
+      />
 
       {siteConfig.features.emailSubscription ? (
         <div className="mt-10">

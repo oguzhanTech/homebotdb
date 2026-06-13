@@ -89,4 +89,10 @@ export const brands: Brand[] = [
     logo: "/brands/samsung.png",
     aliases: ["Samsung", "Samsung Electronics"],
   },
+  {
+    id: "embodied",
+    name: "Embodied",
+    logo: "/brands/embodied.png",
+    aliases: ["Embodied", "Embodied Inc.", "Moxie Robots", "Moxie Robots Inc."],
+  },
 ];

@@ -2,6 +2,21 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-017",
+    title: "Embodied Moxie added to the catalog",
+    slug: "moxie-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "moxie",
+    summary:
+      "The kid-focused SEL companion joins HomeBotRadar with confirmed hardware specs, last known $799 pricing, and notes on Embodied's shutdown and Moxie Robots support.",
+    content:
+      "We added Embodied Moxie to HomeBotRadar. It is a tabletop companion for children ages 5–10 with a curved face screen, gesturing arms, and daily social-emotional learning missions through the parent app.\n\nOur profile at /robots/moxie covers official dimensions (14 × 12 × 4 in), weight (7 lb 6 oz), up to 4 hours of battery runtime, and the shift from Embodied's 2024 shutdown to support from Moxie Robots, Inc. New hardware sales are paused; owners need a paid Sunlight subscription for cloud AI.\n\nCompare Moxie with EMO or Vector 2.0 if you want a smaller desk companion, or Reachy 2 if you need an open education platform for a lab.",
+    sourceUrl: "https://moxierobots.com/contact.html",
+    createdAt: "2026-06-13T18:00:00Z",
+    updatedAt: "2026-06-13T18:00:00Z",
+  },
+  {
     id: "upd-016",
     title: "Samsung Ballie added to the catalog",
     slug: "ballie-added-to-catalog",

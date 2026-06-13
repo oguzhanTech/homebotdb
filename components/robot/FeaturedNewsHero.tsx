@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Update } from "@/types/update";
 import { getUpdatePublicPath } from "@/lib/update-paths";
+import { uiCopy } from "@/config/ui-copy";
 import { formatUpdateReadingTime } from "@/lib/reading-time";
 import { formatDate } from "@/lib/utils";
 
@@ -22,7 +23,7 @@ export function FeaturedNewsHero({ update }: { update: Update }) {
         </p>
         <div className="mt-5 flex items-center justify-between gap-3">
           <span className="text-xs font-bold uppercase tracking-widest text-ink group-hover:text-blue">
-            Read news
+            {uiCopy.updates.readStory}
           </span>
           <span className="shrink-0 text-[11px] font-medium text-muted">
             {formatUpdateReadingTime(update)}

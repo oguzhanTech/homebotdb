@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { uiCopy } from "@/config/ui-copy";
 import { cn } from "@/lib/utils";
 
 const items = [
-  { href: "/", label: "Home" },
-  { href: "/robots", label: "Robots" },
-  { href: "/compare", label: "Compare" },
-  { href: "/updates", label: "Alerts" },
+  { href: "/", label: uiCopy.mobileDock.home },
+  { href: "/robots", label: uiCopy.mobileDock.robots },
+  { href: "/compare", label: uiCopy.mobileDock.compare },
+  { href: "/updates", label: uiCopy.mobileDock.radar },
 ] as const;
 
 export function MobileDock() {
@@ -22,9 +23,9 @@ export function MobileDock() {
       {items.map((item) => {
         const hrefBase = item.href.split("#")[0];
         const active =
-          item.label === "Home"
+          item.href === "/"
             ? pathname === "/"
-            : item.label === "Robots"
+            : item.href === "/robots"
               ? pathname === "/robots" || pathname.startsWith("/robots/")
               : hrefBase !== "/" && pathname.startsWith(hrefBase);
         return (

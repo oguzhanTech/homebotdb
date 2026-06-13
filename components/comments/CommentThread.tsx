@@ -5,12 +5,13 @@ import type { Comment, CommentTarget } from "@/types/comment";
 import { groupCommentsByThread } from "@/lib/data/comments";
 import { CommentForm } from "@/components/comments/CommentForm";
 import { CommentArticle } from "@/components/comments/CommentItem";
+import { uiCopy } from "@/config/ui-copy";
 
 export function CommentThread({
   initialComments,
   target,
   pagePath,
-  heading = "Comments",
+  heading = uiCopy.comments.fieldReports,
 }: {
   initialComments: Comment[];
   target: CommentTarget;
@@ -36,8 +37,8 @@ export function CommentThread({
         </h2>
         <p className="text-sm text-muted">
           {comments.length === 0
-            ? "No comments yet"
-            : `${comments.length} comment${comments.length === 1 ? "" : "s"}`}
+            ? uiCopy.comments.noFieldReportsYet
+            : uiCopy.comments.reportCount(comments.length)}
         </p>
       </div>
 
@@ -57,7 +58,7 @@ export function CommentThread({
         </ol>
       ) : (
         <p className="mt-6 rounded-[18px] border border-dashed border-line px-4 py-8 text-center text-sm text-muted">
-          Be the first to share a question or hands-on note.
+          {uiCopy.comments.emptyPrompt}
         </p>
       )}
 

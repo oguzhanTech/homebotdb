@@ -15,6 +15,7 @@ import { SourceLink } from "@/components/update/SourceLink";
 import { UpdateExploreMore } from "@/components/update/UpdateExploreMore";
 import { WasThisHelpful } from "@/components/update/WasThisHelpful";
 import { CommentSection } from "@/components/comments/CommentSection";
+import { uiCopy } from "@/config/ui-copy";
 import type { Comment } from "@/types/comment";
 
 export function UpdateDetailArticle({
@@ -28,7 +29,7 @@ export function UpdateDetailArticle({
   const robot = update.robotSlug ? getRobotBySlug(update.robotSlug) : null;
   const isNews = isNewsUpdate(update.type);
   const listHref = isNews ? "/news" : "/updates";
-  const listLabel = isNews ? "All news" : "All updates";
+  const listLabel = isNews ? "All news" : uiCopy.nav.radarFeed;
   const publicPath = getUpdatePublicPath(update);
   const coverImage = isNews ? getUpdateCoverImage(update) : undefined;
 
@@ -118,7 +119,7 @@ export function UpdateDetailArticle({
             pageDescription={update.summary}
             pagePath={publicPath}
             comments={comments}
-            heading="Discussion"
+            heading={uiCopy.comments.fieldReports}
           />
         </div>
       ) : null}

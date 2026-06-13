@@ -5,6 +5,7 @@ import {
 } from "@/lib/data/repository";
 import { buildUpdateMetadata, buildBreadcrumbJsonLd } from "@/lib/seo";
 import { getUpdatePublicPath } from "@/lib/update-paths";
+import { uiCopy } from "@/config/ui-copy";
 import { isNewsUpdate } from "@/types/update";
 import { TopBar } from "@/components/layout/TopBar";
 import { UpdateDetailArticle } from "@/components/update/UpdateDetailArticle";
@@ -36,7 +37,7 @@ export default async function UpdateDetailPage({ params }: PageProps) {
   const publicPath = getUpdatePublicPath(update);
   const breadcrumbLd = buildBreadcrumbJsonLd([
     { name: "Home", path: "/" },
-    { name: "Updates", path: "/updates" },
+    { name: uiCopy.nav.radarFeed, path: "/updates" },
     { name: update.title, path: publicPath },
   ]);
 

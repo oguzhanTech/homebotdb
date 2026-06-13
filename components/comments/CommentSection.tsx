@@ -1,5 +1,6 @@
 import type { Comment, CommentTarget } from "@/types/comment";
 import { buildDiscussionJsonLd } from "@/lib/seo";
+import { uiCopy } from "@/config/ui-copy";
 import { CommentThread } from "@/components/comments/CommentThread";
 
 export function CommentSection({
@@ -8,7 +9,7 @@ export function CommentSection({
   pageDescription,
   pagePath,
   comments,
-  heading = "Comments",
+  heading = uiCopy.comments.fieldReports,
 }: {
   target: CommentTarget;
   pageTitle: string;

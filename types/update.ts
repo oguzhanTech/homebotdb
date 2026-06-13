@@ -22,10 +22,10 @@ export interface Update {
 }
 
 export const UPDATE_TYPE_LABELS: Record<UpdateType, string> = {
-  data_update: "Data Update",
+  data_update: "Robot Signal",
   news: "News",
-  price_update: "Price Update",
-  availability_update: "Availability Update",
+  price_update: "Price Signal",
+  availability_update: "Availability Signal",
 };
 
 export function isNewsUpdate(type: UpdateType): boolean {

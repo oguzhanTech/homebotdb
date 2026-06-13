@@ -33,9 +33,11 @@ function getLayoutKey(robots: Robot[]): string {
 function TableColumnSizingRow({
   robots,
   maxBatteryHours,
+  showBrandInTable,
 }: {
   robots: Robot[];
   maxBatteryHours: number;
+  showBrandInTable: boolean;
 }) {
   if (robots.length === 0) return null;
 
@@ -50,12 +52,14 @@ function TableColumnSizingRow({
             <div className="h-10 w-10 shrink-0" />
             <div>
               <div className="font-bold uppercase tracking-wide">{robot.name}</div>
-              <BrandLogo
-                brand={robot.brand}
-                size="xs"
-                showName
-                nameClassName="text-xs text-muted font-normal"
-              />
+              {showBrandInTable ? (
+                <BrandLogo
+                  brand={robot.brand}
+                  size="xs"
+                  showName
+                  nameClassName="text-xs text-muted font-normal"
+                />
+              ) : null}
             </div>
           </div>
         ))}
@@ -161,10 +165,12 @@ export function RobotCatalogTable({
   robots,
   layoutRobots,
   maxBatteryHours,
+  showBrandInTable = true,
 }: {
   robots: Robot[];
   layoutRobots: Robot[];
   maxBatteryHours: number;
+  showBrandInTable?: boolean;
 }) {
   const tableRef = useRef<HTMLTableElement>(null);
   const layoutKey = getLayoutKey(layoutRobots);
@@ -230,6 +236,7 @@ export function RobotCatalogTable({
             <TableColumnSizingRow
               robots={layoutRobots}
               maxBatteryHours={maxBatteryHours}
+              showBrandInTable={showBrandInTable}
             />
             {robots.map((robot) => (
               <tr
@@ -253,12 +260,14 @@ export function RobotCatalogTable({
                       <div className="font-bold uppercase tracking-wide">
                         {robot.name}
                       </div>
-                      <BrandLogo
-                        brand={robot.brand}
-                        size="xs"
-                        showName
-                        nameClassName="text-xs text-muted font-normal"
-                      />
+                      {showBrandInTable ? (
+                        <BrandLogo
+                          brand={robot.brand}
+                          size="xs"
+                          showName
+                          nameClassName="text-xs text-muted font-normal"
+                        />
+                      ) : null}
                     </Link>
                   </div>
                 </td>
@@ -346,13 +355,15 @@ export function RobotCatalogTable({
                 className="min-w-0 flex-1 cursor-pointer"
               >
                 <div className="font-bold uppercase tracking-wide">{robot.name}</div>
-                <BrandLogo
-                  brand={robot.brand}
-                  size="xs"
-                  showName
-                  nameClassName="text-sm text-muted font-normal"
-                  className="mt-0.5"
-                />
+                {showBrandInTable ? (
+                  <BrandLogo
+                    brand={robot.brand}
+                    size="xs"
+                    showName
+                    nameClassName="text-sm text-muted font-normal"
+                    className="mt-0.5"
+                  />
+                ) : null}
               </Link>
             </div>
             <div className="mt-2 flex flex-wrap gap-1.5">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Update } from "@/types/update";
+import { uiCopy } from "@/config/ui-copy";
 import { UPDATE_TYPE_LABELS, isNewsUpdate } from "@/types/update";
 import { getRobotBySlug } from "@/lib/data/repository";
 import { getEditorById } from "@/lib/editors";
@@ -14,7 +15,7 @@ import { formatDate } from "@/lib/utils";
 
 export function UpdateCard({
   update,
-  readLabel = "Read update",
+  readLabel = uiCopy.updates.readUpdate,
   showAuthor = true,
 }: {
   update: Update;
@@ -135,7 +136,7 @@ export function NewsCard({
 
       <div className="mt-2.5 flex items-center justify-between gap-2">
         <span className="text-[10px] font-bold uppercase tracking-wider text-muted sm:text-[11px]">
-          Read news
+          {uiCopy.updates.readStory}
         </span>
         <span className="shrink-0 text-[10px] font-medium text-muted sm:text-[11px]">
           {formatUpdateReadingTime(update)}
@@ -149,8 +150,8 @@ export function UpdatesSection({
   title,
   updates,
   viewAllHref = "/updates",
-  heading = "Stay current",
-  emptyMessage = "No updates yet.",
+  heading = uiCopy.homepage.stayOnRadar,
+  emptyMessage = uiCopy.updates.noUpdatesYet,
 }: {
   title: string;
   updates: Update[];
@@ -171,7 +172,7 @@ export function UpdatesSection({
           href={viewAllHref}
           className="text-xs font-bold uppercase tracking-wider text-blue"
         >
-          View all
+          {uiCopy.updates.viewAll}
         </Link>
       </div>
       {updates.length > 0 ? (
@@ -188,10 +189,10 @@ export function UpdatesSection({
 }
 
 export function NewsSection({
-  title = "Robot news",
+  title = uiCopy.homepage.newsEyebrow,
   updates,
   viewAllHref = "/news",
-  heading = "Latest headlines",
+  heading = uiCopy.homepage.latestRobotNews,
 }: {
   title?: string;
   updates: Update[];
@@ -211,7 +212,7 @@ export function NewsSection({
           href={viewAllHref}
           className="text-xs font-bold uppercase tracking-wider text-blue"
         >
-          View all
+          {uiCopy.updates.viewAll}
         </Link>
       </div>
       {updates.length > 0 ? (
@@ -221,7 +222,7 @@ export function NewsSection({
           ))}
         </div>
       ) : (
-        <p className="text-sm text-muted">No news yet.</p>
+        <p className="text-sm text-muted">{uiCopy.updates.noNewsYet}</p>
       )}
     </section>
   );

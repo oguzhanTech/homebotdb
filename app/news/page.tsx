@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { uiCopy } from "@/config/ui-copy";
 import { buildPageMetadata } from "@/lib/seo";
 import { getNewsUpdates } from "@/lib/data/repository";
 import { TopBar } from "@/components/layout/TopBar";
@@ -21,13 +22,13 @@ export default function NewsPage() {
       <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
         <div>
           <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
-            News
+            {uiCopy.nav.news}
           </div>
           <h1 className="mt-1 text-3xl font-medium tracking-tight">Robot news</h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#565f6b]">
-            Stories and roundups from the home robot market. Database changes are on{" "}
+            Stories and roundups from the home robot market. Database signals are on{" "}
             <Link href="/updates" className="font-semibold text-blue hover:underline">
-              Updates
+              {uiCopy.nav.radarFeed}
             </Link>
             .
           </p>
@@ -46,7 +47,7 @@ export default function NewsPage() {
           ))}
         </div>
       ) : (
-        <p className="text-sm text-muted">No news yet.</p>
+        <p className="text-sm text-muted">{uiCopy.updates.noNewsYet}</p>
       )}
     </main>
   );

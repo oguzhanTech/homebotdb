@@ -1,5 +1,6 @@
 "use client";
 
+import { uiCopy } from "@/config/ui-copy";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
@@ -75,14 +76,14 @@ export function SidebarContent({
       <div className={cn(isMobile ? "mt-8" : "")}>
         <div className="rounded-[18px] border border-line bg-panel-strong p-[18px] shadow-card">
           <div className="text-[11px] font-medium uppercase tracking-[0.11em] text-muted">
-            Data Freshness
+            {uiCopy.sidebar.freshnessScore}
           </div>
           <div className="my-2 font-mono text-2xl tracking-tight">
             {freshnessScore}%
           </div>
           <ScoreBar value={freshnessScore} className="mb-3.5" />
           <div className="text-[11px] font-medium uppercase tracking-[0.11em] text-muted">
-            Last update
+            {uiCopy.sidebar.lastSignal}
           </div>
           <div className="mt-1 text-[13px]">
             {lastUpdate ? formatDate(lastUpdate) : "Unknown"}
