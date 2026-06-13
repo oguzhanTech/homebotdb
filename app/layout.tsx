@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Space_Mono } from "next/font/google";
 import { siteConfig } from "@/config/site";
-import { buildPageMetadata, buildWebsiteJsonLd } from "@/lib/seo";
+import { buildWebsiteJsonLd } from "@/lib/seo";
 import { AppShell } from "@/components/layout/AppShell";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import "./globals.css";
@@ -20,11 +20,17 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  ...buildPageMetadata({
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
-    description: siteConfig.description,
-    path: "/",
-  }),
+  title: `${siteConfig.name} — ${siteConfig.tagline}`,
+  description: siteConfig.description,
+  openGraph: {
+    siteName: siteConfig.name,
+    locale: siteConfig.locale,
+    type: "website",
+    images: [{ url: siteConfig.defaultOgImage }],
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,

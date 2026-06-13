@@ -183,7 +183,7 @@ export const updates: Update[] = [
     slug: "optimus-gen2-home-data-unchanged",
     type: "data_update",
     authorId: "oguzhan-aydin",
-    robotSlug: "optimus-gen2-dummy",
+    robotSlug: "optimus-gen2",
     summary: "No new home-use specs from Tesla this cycle.",
     content:
       "Tesla did not publish new home deployment specs for Optimus Gen 2. Status stays Coming Soon and our confidence score for consumer home use remains low.",

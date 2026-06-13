@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
 import { createComment, listComments } from "@/lib/data/comments";
+import { revalidateCommentTarget } from "@/lib/revalidate-comments";
 import type { CommentTargetType } from "@/types/comment";
 
 function isTargetType(value: string): value is CommentTargetType {
@@ -73,11 +73,7 @@ export async function POST(request: Request) {
       return NextResponse.json(result, { status: 400 });
     }
 
-    if (targetType === "robot") {
-      revalidatePath(`/robots/${targetSlug}`);
-    } else {
-      revalidatePath(`/news/${targetSlug}`);
-    }
+    revalidateCommentTarget(targetType, targetSlug);
 
     return NextResponse.json(result, { status: 201 });
   } catch (error) {

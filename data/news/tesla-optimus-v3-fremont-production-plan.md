@@ -2,7 +2,7 @@
 title: Tesla plans Optimus V3 production at Fremont this summer
 slug: tesla-optimus-v3-fremont-production-plan
 authorId: oguzhan-aydin
-robotSlug: optimus-gen2-dummy
+robotSlug: optimus-gen2
 summary: Musk tied a Fremont factory conversion to Optimus V3, but warned 2026 output will start slow with no firm volume target yet.
 coverImage: /images/news/optimus-robot.jpg
 sourceUrl: https://electrek.co/2026/04/22/tesla-optimus-production-fremont-model-sx-line/

@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 const FEATURED_PAIRS: { label: string; slugs: string[] }[] = [
   { label: "Figure 02 vs Unitree G1", slugs: ["figure-02", "unitree-g1"] },
   { label: "EMO vs Figure 02", slugs: ["emo-companion", "figure-02"] },
-  { label: "Optimus vs Unitree G1", slugs: ["optimus-gen2-dummy", "unitree-g1"] },
+  { label: "Optimus vs Unitree G1", slugs: ["optimus-gen2", "unitree-g1"] },
 ];
 
 function RobotThumb({

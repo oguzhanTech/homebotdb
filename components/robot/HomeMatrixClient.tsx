@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Robot } from "@/types/robot";
-import { sortRobots, type SortField } from "@/lib/data/repository";
+import { getRobots, sortRobots, type SortField } from "@/lib/data/repository";
 import type { MatrixFilters } from "@/lib/matrix-search-params";
 import { getMaxBatteryHours, parseBatteryHours } from "@/lib/utils";
 import { RobotMatrixFilters } from "@/components/robot/RobotMatrixFilters";
@@ -20,6 +20,7 @@ export function HomeMatrixClient({
   initialSort: SortField;
 }) {
   const [sort, setSort] = useState<SortField>(initialSort);
+  const layoutRobots = getRobots();
 
   const robots = useMemo(
     () => sortRobots(filteredRobots, sort),
@@ -29,9 +30,9 @@ export function HomeMatrixClient({
   const maxBatteryHours = useMemo(
     () =>
       getMaxBatteryHours(
-        robots.map((robot) => parseBatteryHours(robot.batteryLife)),
+        layoutRobots.map((robot) => parseBatteryHours(robot.batteryLife)),
       ),
-    [robots],
+    [layoutRobots],
   );
 
   return (
@@ -42,7 +43,11 @@ export function HomeMatrixClient({
         sort={sort}
         onSortChange={setSort}
       />
-      <RobotCatalogTable robots={robots} maxBatteryHours={maxBatteryHours} />
+      <RobotCatalogTable
+        robots={robots}
+        layoutRobots={layoutRobots}
+        maxBatteryHours={maxBatteryHours}
+      />
     </>
   );
 }

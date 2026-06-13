@@ -23,7 +23,14 @@ function markdownToPlainText(markdown: string): string {
 
 function absoluteUrl(path: string): string {
   if (path.startsWith("http")) return path;
-  return `${siteConfig.url}${path}`;
+  const base = siteConfig.url.replace(/\/$/, "");
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${base}${normalizedPath}`;
+}
+
+function canonicalPath(path: string = ""): string {
+  if (!path || path === "/") return "/";
+  return path.startsWith("/") ? path : `/${path}`;
 }
 
 export function buildPageMetadata({
@@ -39,18 +46,18 @@ export function buildPageMetadata({
   image?: string;
   authors?: { name: string }[];
 }): Metadata {
-  const url = `${siteConfig.url}${path}`;
+  const pagePath = canonicalPath(path);
   const ogImage = image ?? siteConfig.defaultOgImage;
 
   return {
     title,
     description,
     ...(authors ? { authors } : {}),
-    alternates: { canonical: url },
+    alternates: { canonical: pagePath },
     openGraph: {
       title,
       description,
-      url,
+      url: pagePath,
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type: "website",

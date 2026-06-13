@@ -8,6 +8,22 @@ const withSerwist = withSerwistInit({
 
 const nextConfig = withSerwist({
   turbopack: {},
+  poweredByHeader: false,
+  trailingSlash: true,
+  async redirects() {
+    return [
+      {
+        source: "/robots/optimus-gen2-dummy",
+        destination: "/robots/optimus-gen2/",
+        permanent: true,
+      },
+      {
+        source: "/robots/optimus-gen2-dummy/",
+        destination: "/robots/optimus-gen2/",
+        permanent: true,
+      },
+    ];
+  },
 });
 
 export default nextConfig;

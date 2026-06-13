@@ -21,7 +21,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Next-generation humanoid robot designed for real-world tasks in home and personal environments.",
     longDescription:
-      "Figure 02 is a general-purpose humanoid robot being developed by Figure AI. Built to operate in human environments, it is designed to assist with everyday tasks, from household chores to personal assistance. The platform emphasizes bipedal mobility, dexterous manipulation, and onboard AI for autonomous operation in unstructured home settings.",
+      "Figure 02 is a human-shaped robot from Figure AI. It walks on two legs and uses two hands, so it can move through a normal home without special tracks or ramps.\n\nThe company wants it to help with everyday jobs: picking things up, tidying, and giving an extra pair of hands when someone needs support. Cameras and onboard AI help it work in rooms that are not perfectly neat.\n\nFigure 02 is still a prototype. You cannot buy one for your home today, and the price is only an estimate. HomeBotRadar tracks it so you can compare it to other home-focused humanoids like Unitree G1 and Tesla Optimus.",
     price: "$20,000+",
     priceStatus: "estimate",
     batteryLife: "5 h",
@@ -38,7 +38,7 @@ export const robots: Robot[] = [
     dataFreshnessScore: 0,
     dataConfidenceScore: 0,
     commercialStatus: "prototype",
-    availabilityStatus: "limited",
+    availabilityStatus: "prototype",
     countriesAvailable: ["United States"],
     firstAnnounced: "2024",
     lastUpdated: "2026-05-18",
@@ -53,7 +53,7 @@ export const robots: Robot[] = [
       "https://www.figure.ai/",
       "https://techcrunch.com/tag/figure-ai/",
     ],
-    similarRobotSlugs: ["unitree-g1", "neo-gamma", "optimus-gen2-dummy"],
+    similarRobotSlugs: ["unitree-g1", "neo-gamma", "optimus-gen2"],
     capabilities: [
       { name: "Mobility", score: 85 },
       { name: "Manipulation", score: 80 },
@@ -103,7 +103,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Compact humanoid robot platform for research, education, and emerging home assistant applications.",
     longDescription:
-      "The Unitree G1 is a lightweight humanoid robot designed for agile movement and accessible pricing relative to larger humanoid platforms. It targets developers, researchers, and early adopters exploring home and companion use cases. With modular hardware and an active developer community, the G1 has become a reference point in the consumer-adjacent humanoid category.",
+      "The Unitree G1 is a compact humanoid about 127 cm tall. It is lighter and less expensive than many other human-shaped robots, which makes it popular with students, developers, and early adopters.\n\nIt can walk, balance, and move its arms. Buyers use Unitree's software and ROS 2 tools to teach it new skills. Some people experiment with home helper ideas, even though the G1 is mainly sold as a developer platform today.\n\nYou can pre-order the G1 in several countries for around $16,000. Battery life is about two hours per charge. It is one of the most realistic ways to get a capable humanoid without a six-figure budget.",
     price: "$16,000",
     priceStatus: "confirmed",
     batteryLife: "2 h",
@@ -133,7 +133,7 @@ export const robots: Robot[] = [
     videoUrls: ["https://www.youtube.com/watch?v=GzX1qOIO1bE"],
     affiliateUrl: "",
     sourceUrls: ["https://www.unitree.com/g1", "https://www.unitree.com/"],
-    similarRobotSlugs: ["figure-02", "neo-gamma", "optimus-gen2-dummy"],
+    similarRobotSlugs: ["figure-02", "neo-gamma", "optimus-gen2"],
     capabilities: [
       { name: "Mobility", score: 92 },
       { name: "Manipulation", score: 78 },
@@ -178,16 +178,16 @@ export const robots: Robot[] = [
     ],
   },
   {
-    id: "optimus-gen2-dummy",
+    id: "optimus-gen2",
     name: "Optimus Gen 2",
-    slug: "optimus-gen2-dummy",
+    slug: "optimus-gen2",
     brand: "Tesla",
     type: "humanoid",
     primaryTask: "home_assistant",
     shortDescription:
       "Tesla humanoid prototype with home-assistant ambitions; limited public home deployment data.",
     longDescription:
-      "Optimus Gen 2 represents Tesla's ongoing humanoid robotics program. While much of the public narrative focuses on factory tasks, Tesla has discussed future home assistance scenarios. HomeBotRadar tracks home-relevant signals only.",
+      "Optimus Gen 2 is Tesla's human-shaped robot. It has a head, two arms, and two legs. Tesla trains it with the same kind of AI work used in its cars and factory software.\n\nMost public videos show Optimus in factories, carrying boxes and walking on test floors. Tesla has also talked about helping in homes someday, but there is no normal customer price, ship date, or home trial program yet.\n\nOn paper it is roughly person-height (about 173 cm) and can lift heavy loads for a robot. Many specs are still unconfirmed because Tesla shares little detail outside staged demos.\n\nHomeBotRadar lists Optimus so you can compare it to robots you can pre-order or buy today, like Unitree G1 or Figure 02. Status here is Coming Soon, not available for home delivery.",
     price: "Unknown",
     priceStatus: "unknown",
     batteryLife: "8 h",
@@ -255,7 +255,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Desktop companion robot with expressive personality and smart home integrations.",
     longDescription:
-      "EMO is a small companion robot designed for desk and tabletop interaction. It offers facial expression, voice conversation, games, and basic smart home control — a reference point for social companion robots in consumer homes.",
+      "EMO is a small robot that lives on your desk or table. It has an animated face, tiny wheels, and reacts when you talk to it or touch it.\n\nIt can chat, play simple games, answer questions, and control some smart home devices through the Living AI app. It does not walk around your house. It stays on a flat surface and rolls in small circles.\n\nEMO costs about $279 and ships to many countries. It is a good entry point if you want a companion robot without paying for a larger pet bot like Loona or aibo.",
     price: "$279",
     priceStatus: "confirmed",
     batteryLife: "2.5 h",
@@ -318,7 +318,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Soft-covered home humanoid from 1X built for chores, voice control, and safe operation around people.",
     longDescription:
-      "NEO Gamma is 1X Technologies' home-focused humanoid prototype, unveiled in February 2025 as the successor to NEO Beta. It uses tendon-driven actuation, a 3D-knit nylon exterior, and Redwood AI for vision-language task learning. 1X ran limited in-home trials with teleoperation support while autonomy matures. The consumer NEO program now lists $20,000 purchase or $499/month subscription with US deliveries from 2026.",
+      "NEO Gamma is a home-focused humanoid from 1X Technologies. It is about person-height, covered in soft fabric, and built to move safely around people in a house.\n\nIt is meant to help with chores, respond to voice commands, and learn tasks through AI that combines cameras and language models. Early trials used remote human guidance while the robot's own autonomy improved.\n\n1X lists a $20,000 purchase option or about $499 per month on a subscription plan, with limited US deliveries starting around 2026. It is not a mass-market product yet, but it is further along than many lab-only humanoids.\n\nBattery runtime and some movement specs are still unknown on the public site. Treat those fields as unconfirmed until 1X publishes hard numbers.",
     price: "$20,000",
     priceStatus: "confirmed",
     batteryLife: "Unknown",
@@ -406,7 +406,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Palm-sized autonomous desk robot with expressive face, Alexa, and optional ChatGPT voice features via subscription.",
     longDescription:
-      "Vector 2.0 is Digital Dream Labs' refresh of the Anki Vector companion. It keeps the hamster-sized tracked body and curious personality, but adds a user-replaceable battery with roughly 30% longer runtime and a 2MP wide-angle camera aimed at better face and pet recognition. Vector maps desk space with an infrared edge sensor, recognizes faces locally, returns to its charger on its own, and plays with its included cube even without a cloud plan. Voice commands, weather, timers, knowledge answers, and ChatGPT-backed chat require a paid Vector AI subscription ($9.99–11.99/month or about $99.99/year). Alexa smart home control is built in when the service stack is active. HomeBotRadar notes DDL has had extended cloud outages that can limit setup and premium features; some owners restore functionality with community tools such as Wire-Pod.",
+      "Vector 2.0 is a palm-sized robot for your desk. Digital Dream Labs revived the original Anki Vector design with a user-replaceable battery and a wider camera for recognizing faces and pets.\n\nVector rolls on small treads, makes curious sounds, plays with its included cube, and drives back to its charger on its own. Premium voice features, weather, timers, and ChatGPT chat need a paid Vector AI subscription (about $10–12 per month or $100 per year). Amazon Alexa smart home control is built in when the service is active.\n\nThe robot costs about $200 plus that optional subscription. Digital Dream Labs has had cloud outages that can limit setup and premium features. Some owners restore service with community tools such as Wire-Pod.",
     price: "$199.99",
     priceStatus: "confirmed",
     batteryLife: "~2 h",
@@ -511,7 +511,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Expressive ball-bot humanoid for nursing homes, clinics, and hospitality with LLM dialogue and light carrying tasks.",
     longDescription:
-      "Mirokaï is a people-facing humanoid from Enchanted Tools, led by former Pepper designer Jérôme Monceaux. It rolls on an omnidirectional ball base, projects animated facial expressions, and converses through multi-LLM voice AI. Deployments include nursing homes, hospitals, airports, and retail concierge roles in France, Japan, and the United States. It can lift objects up to about 3 kg and pull light trolleys using handle-equipped trays. Sales run through enterprise partners rather than a consumer checkout; pricing and maintenance terms vary by region.",
+      "Mirokaï is a friendly human-shaped robot that rolls on a ball instead of walking on feet. Enchanted Tools, led by a designer who worked on the Pepper robot, built it for places where people need company and light help.\n\nIt shows animated faces, talks using modern AI chat tools, and can carry small items (up to about 3 kg) or pull a light cart. You will see it in nursing homes, hospitals, airports, and hotels in France, Japan, and the United States.\n\nIt is not sold like a normal gadget on a web checkout. Partners quote pricing, often above $30,000, plus service fees. That makes it closer to a professional care or hospitality machine than a home birthday gift.\n\nHomeBotRadar tracks Mirokaï because it shows where elder-care and home-adjacent robots are heading, even if most families cannot order one today.",
     price: "$30,000+",
     priceStatus: "estimate",
     batteryLife: "~4 h",
@@ -602,7 +602,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Lap-size robotic golden retriever puppy for dementia care, designed by Jim Henson's Creature Shop with touch and voice response.",
     longDescription:
-      "Jennie is Tombot's animatronic emotional support puppy for seniors who cannot safely keep a live dog. Jim Henson's Creature Shop shaped the fur, expressions, and movements. Nine servo motors drive head tilts, eyebrow raises, tail wags, and barks triggered by voice or touch. Capacitive sensors across the body distinguish petting from vigorous pats; a companion app renames the pup and adjusts responsiveness over Bluetooth or local Wi-Fi. Tombot targets about $1,500 at launch and is pursuing FDA regulation for clinical use. The first litter sold out; new units ship from the waitlist with timing shared privately.",
+      "Jennie is a robotic golden retriever puppy made for seniors, especially people with dementia who cannot safely keep a live dog. Jim Henson's Creature Shop designed the fur, face, and movements so it feels like a real lap pet.\n\nNine motors drive head tilts, tail wags, and barks. Touch sensors across the body tell the difference between gentle petting and a hard pat. A phone app lets caregivers rename the pup and adjust how it responds.\n\nTombot targets about $1,500 at launch and is working toward FDA clearance for clinical use. The first batch sold out; new units ship from a waitlist with private timing updates.\n\nJennie does not walk around the house. It is meant to stay in your lap or beside a chair for comfort and calm, not for fetching objects or cleaning.",
     price: "$1,500",
     priceStatus: "estimate",
     batteryLife: "4–6 h",
@@ -704,7 +704,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Fully autonomous bionic robot cat that walks, plays, and develops personality through touch, voice, and vision.",
     longDescription:
-      "MarsCat is Elephant Robotics' quadruped pet cat for homes where a live cat is not practical. It walks, runs, stretches, kneads, and self-charges at its station when battery drops below 10% and the dock is in view. Capacitive touch, a 5MP camera, and voice input shape six adjustable personality traits over time. A quad-core Raspberry Pi inside runs open-source MarsAI code and an SDK for custom behaviors. The MarsApp sets eye colors and tracks activity. Official store pricing is often discounted from the list price; no subscription is required for core pet functions.",
+      "MarsCat is a robot cat from Elephant Robotics. It walks on four legs, stretches, kneads, and behaves like a pet when you touch or talk to it.\n\nWhen the battery drops below about 10%, it can roll to its charging station on its own if the dock is in view. A camera and touch sensors help shape six personality traits over time. A Raspberry Pi computer inside runs open-source MarsAI code, so hobbyists can program new behaviors.\n\nIt sells for about $1,199 on the official store (often discounted from list price). No subscription is required for core pet functions. It fits homes where a live cat is not practical but someone still wants animal-like company.",
     price: "$1,199",
     priceStatus: "confirmed",
     batteryLife: "2–4 h",
@@ -815,7 +815,7 @@ export const robots: Robot[] = [
     shortDescription:
       "AI robot puppy with 22 axes of motion, OLED eyes, and a personality that evolves through daily home interaction.",
     longDescription:
-      "Sony's aibo ERS-1000 is a cloud-connected companion dog sold with a three-year AI Cloud Plan that stores memories, enables the My aibo app, and delivers firmware updates. Deep learning shapes a unique personality from praise, play, and routine. Dual cameras support SLAM-style home mapping visible in the app. Battery life is about two hours per charge on the included dock. After the bundled plan expires, a 12-month renewal costs $300. Sony does not sell or ship aibo to Illinois or Baltimore, Maryland. Final sale with no returns.",
+      "Sony's aibo ERS-1000 is a robot puppy with 22 moving parts and expressive OLED eyes. It learns habits from daily play, praise, and routine, so each unit can feel a little different over time.\n\nThe sale includes a three-year AI Cloud Plan that stores memories, powers the My aibo phone app, and delivers firmware updates. After those three years, renewing the cloud plan costs about $300 per year. Without an active plan, many smart features stop working.\n\nIt costs about $3,200 in the US and runs for roughly two hours per charge on its home dock. Sony does not sell or ship aibo to Illinois or Baltimore, Maryland. Sales are final with no returns.\n\naibo maps your home in a simple way you can view in the app. It is one of the most polished companion pets you can buy today, but the long-term cloud cost matters.",
     price: "$3,199.99",
     priceStatus: "confirmed",
     batteryLife: "~2 h",
@@ -925,7 +925,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Wheeled robot pet with face and gesture recognition, ChatGPT chat, auto-docking, and Blockly coding for kids.",
     longDescription:
-      "Loona is KEYi Tech's home robot pet: a compact dog-like companion on wheels with 1,000+ expressions, family face recognition, and games controlled from the Loona app. A 720p camera, 3D ToF sensor, and four-mic array support follow-me play, remote home viewing, and FPV driving. ChatGPT-backed conversation, storytelling, and vision Q&A need Wi-Fi; KEYi says most perception runs on-device for privacy. Loona returns to the included charging dock on its own when battery is low. Google Blockly unlocks custom behaviors for education. Official store pricing often runs below list during promos; no subscription is required for core pet features today.",
+      "Loona is a wheeled robot pet from KEYi Tech. It looks like a small dog, shows over a thousand facial expressions, and recognizes family members by face.\n\nIt follows you, plays games, and supports remote viewing through the Loona app. A camera, 3D depth sensor, and microphones power follow-me play and FPV driving. ChatGPT-backed chat and vision questions need Wi-Fi; KEYi says most sensing stays on the device for privacy.\n\nWhen the battery is low, Loona returns to its charging dock on its own. Kids can also program it with Google Blockly. It sells for about $442 on the official site during promos, with no subscription required for core pet features today.",
     price: "$442",
     priceStatus: "confirmed",
     batteryLife: "2 h",
@@ -1041,7 +1041,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Open-source humanoid research platform with dual 7-DoF arms, optional omni base, VR teleop, and Hugging Face LeRobot support.",
     longDescription:
-      "Reachy 2 is Pollen Robotics' modular humanoid for embodied AI labs. Hugging Face acquired Pollen and open-sourced the stack under Apache 2.0. Each 7-DoF arm uses patented Orbita parallel joints with about 3 kg payload. Configurations range from a single stationary arm ($70,000) to a dual-arm rig on an omnidirectional base with LiDAR ($78,000). Stereo global-shutter cameras, RGB-D depth, ToF, and spatial audio support teleoperation through Meta Quest or Pollen's VR app. The onboard SolidRun Bedrock V3000 PC runs ROS 2 Humble with a Python SDK; AI workloads typically run on a separate GPU machine. Height adjusts between roughly 136 and 166 cm. Universities including Cornell and Carnegie Mellon deploy Reachy 2 for manipulation and human-robot interaction research. It is orderable for institutions, not positioned as a consumer home robot.",
+      "Reachy 2 is a human-shaped research robot from Pollen Robotics, now part of Hugging Face. Labs use it to study how machines see, grab objects, and work with people.\n\nEach arm has seven joints and can lift about 3 kg. You can buy a single arm setup, a dual-arm body, or a version on a rolling base with LiDAR. Operators can control it through a VR headset or Python code built on ROS 2.\n\nPrices start around $70,000 for a stationary arm and about $78,000 for the mobile dual-arm kit. Universities such as Cornell and Carnegie Mellon use Reachy 2 in research, not in family living rooms.\n\nIt is orderable for institutions. HomeBotRadar lists it so you can compare open research platforms to consumer humanoids, not because you should expect a home delivery.",
     price: "$70,000+",
     priceStatus: "confirmed",
     batteryLife: "8–10 h",
@@ -1157,7 +1157,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Spherical home robot with LiDAR patrol, Gemini AI, smart-home control, and a built-in 1080p projector for walls and floors.",
     longDescription:
-      "Ballie is Samsung's rolling home companion: a yellow sphere on three wheels that maps rooms, controls lights and appliances, streams pet check-ins, and projects workouts or video calls onto nearby surfaces. CES 2024 added spatial LiDAR, front and rear cameras, an IR blaster for legacy TVs and AC units, and Google Gemini for natural conversation. Samsung demoed wine pairing, schedule reminders, and posture-aware projection that tracks where you sit. TechCrunch cited about two to three hours of continuous projector use per charge. Samsung targeted US and South Korea launches in summer 2025, but Bloomberg reported in early 2026 that consumer Ballie was indefinitely shelved. Samsung now describes it as an internal innovation platform rather than a retail product. HomeBotRadar tracks Ballie for its influence on mobile home AI even though you cannot buy one today.",
+      "Ballie is Samsung's round yellow home robot. It rolls on three wheels and is small enough to move between rooms like a bowling ball with cameras.\n\nSamsung demos show it controlling lights and appliances through SmartThings, checking on pets, and projecting workouts or video calls onto walls and floors with a built-in 1080p projector. Google Gemini powers natural voice chat in recent prototypes.\n\nSamsung once aimed for US and Korea launches around summer 2025, but press reports in 2026 say the consumer version is shelved. Samsung now treats Ballie as an internal test platform, not a product you can order.\n\nHomeBotRadar still tracks Ballie because it shows where mobile home AI and projection could go. Price, weight, and battery numbers here are mostly unconfirmed from demos, not a retail spec sheet.",
     price: "TBA",
     priceStatus: "unknown",
     batteryLife: "2–3 h",
@@ -1175,7 +1175,7 @@ export const robots: Robot[] = [
     dataFreshnessScore: 0,
     dataConfidenceScore: 0,
     commercialStatus: "prototype",
-    availabilityStatus: "unknown",
+    availabilityStatus: "prototype",
     countriesAvailable: [],
     firstAnnounced: "2020",
     lastUpdated: "2026-06-12",

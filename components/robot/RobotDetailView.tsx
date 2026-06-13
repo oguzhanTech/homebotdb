@@ -303,9 +303,16 @@ export function RobotDetailView({
                 <h3 className="mb-4 text-[13px] uppercase tracking-[0.14em]">
                   About {robot.name}
                 </h3>
-                <p className="mb-4 text-[15px] leading-[1.62] text-[#4d5662]">
-                  {robot.longDescription}
-                </p>
+                <div className="space-y-4">
+                  {robot.longDescription.split(/\n\n+/).map((paragraph, index) => (
+                    <p
+                      key={index}
+                      className="text-[15px] leading-[1.62] text-[#4d5662]"
+                    >
+                      {paragraph.trim()}
+                    </p>
+                  ))}
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {robot.tags.map((tag) => (
                     <Badge key={tag}>{tag}</Badge>
@@ -450,9 +457,14 @@ export function RobotDetailView({
                         News
                       </div>
                       {news.length > 0 ? (
-                        <div className="grid gap-3 md:grid-cols-2">
+                        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                           {news.map((update) => (
-                            <NewsCard key={update.id} update={update} />
+                            <NewsCard
+                              key={update.id}
+                              update={update}
+                              showAuthor={false}
+                              compact
+                            />
                           ))}
                         </div>
                       ) : (

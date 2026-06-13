@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useLayoutEffect, useRef, useState } from "react";
 import type { Robot } from "@/types/robot";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { RobotAvatarHoverPreview } from "@/components/robot/RobotAvatarHoverPreview";
@@ -17,19 +18,199 @@ import {
   RobotTypeTag,
 } from "@/components/ui/MatrixTag";
 import { getPurchaseUrl } from "@/lib/purchase";
-import { formatDate } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 
-export function RobotCatalogTable({
+const sizingRowClass =
+  "pointer-events-none border-0 [&>td]:border-0 [&>td]:py-0 [&>td]:align-top";
+const sizingStackClass = "invisible block h-px overflow-hidden whitespace-nowrap";
+
+const columnWidthCache = new Map<string, number[]>();
+
+function getLayoutKey(robots: Robot[]): string {
+  return robots.map((robot) => robot.slug).join("|");
+}
+
+function TableColumnSizingRow({
   robots,
   maxBatteryHours,
 }: {
   robots: Robot[];
   maxBatteryHours: number;
 }) {
+  if (robots.length === 0) return null;
+
+  return (
+    <tr aria-hidden="true" data-sizing-row className={sizingRowClass}>
+      <td className="px-4">
+        {robots.map((robot) => (
+          <div
+            key={robot.slug}
+            className={`flex items-center gap-3 ${sizingStackClass}`}
+          >
+            <div className="h-10 w-10 shrink-0" />
+            <div>
+              <div className="font-bold uppercase tracking-wide">{robot.name}</div>
+              <BrandLogo
+                brand={robot.brand}
+                size="xs"
+                showName
+                nameClassName="text-xs text-muted font-normal"
+              />
+            </div>
+          </div>
+        ))}
+      </td>
+      <td className="px-3">
+        {robots.map((robot) => (
+          <span key={robot.slug} className={sizingStackClass}>
+            <RobotTypeTag type={robot.type} />
+          </span>
+        ))}
+      </td>
+      <td className="px-3">
+        {robots.map((robot) => (
+          <span key={robot.slug} className={sizingStackClass}>
+            <BatteryBar
+              value={robot.batteryLife}
+              dataStatus={robot.fieldMeta.batteryLife?.status}
+              specNote={robot.fieldMeta.batteryLife?.note}
+              maxHours={maxBatteryHours}
+            />
+          </span>
+        ))}
+      </td>
+      <td className="px-3">
+        {robots.map((robot) => (
+          <span key={robot.slug} className={`font-mono text-[13px] font-bold ${sizingStackClass}`}>
+            <DataValue
+              value={robot.price}
+              fallback="TBA"
+              mono
+              priceStatus={robot.priceStatus}
+              dataStatus={robot.fieldMeta.price?.status}
+            />
+          </span>
+        ))}
+      </td>
+      <td className="px-3">
+        {robots.map((robot) => (
+          <span key={robot.slug} className={sizingStackClass}>
+            <DataStatusTag status={getRobotDataStatus(robot)} />
+          </span>
+        ))}
+      </td>
+      <td className="px-3">
+        {robots.map((robot) => (
+          <span key={robot.slug} className={sizingStackClass}>
+            <CommercialStatusTag
+              status={robot.commercialStatus}
+              purchaseUrl={getPurchaseUrl(robot)}
+            />
+          </span>
+        ))}
+      </td>
+      <td className="px-3">
+        {robots.map((robot) => (
+          <span key={robot.slug} className={sizingStackClass}>
+            <PrimaryTaskTag task={robot.primaryTask} />
+          </span>
+        ))}
+      </td>
+      <td className="px-3">
+        {robots.map((robot) => (
+          <span key={robot.slug} className={`font-mono text-[13px] ${sizingStackClass}`}>
+            <DataValue
+              value={robot.height}
+              mono
+              dataStatus={robot.fieldMeta.height?.status}
+              specNote={robot.fieldMeta.height?.note}
+            />
+          </span>
+        ))}
+      </td>
+      <td className="px-3">
+        {robots.map((robot) => (
+          <span key={robot.slug} className={`font-mono text-[13px] ${sizingStackClass}`}>
+            <DataValue value={robot.weight} mono />
+          </span>
+        ))}
+      </td>
+      <td className="px-3">
+        {robots.map((robot) =>
+          robot.videoUrls[0] ? (
+            <span key={robot.slug} className={sizingStackClass}>
+              <VideoPlayLink
+                href={robot.videoUrls[0]}
+                title={`${robot.name} video`}
+              />
+            </span>
+          ) : null,
+        )}
+        <span className={`text-xs text-muted ${sizingStackClass}`}>—</span>
+      </td>
+      <td className="w-[108px] px-4">
+        <div className={`flex justify-center ${sizingStackClass}`}>
+          <CompareToggleButton slug={robots[0].slug} />
+        </div>
+      </td>
+    </tr>
+  );
+}
+
+export function RobotCatalogTable({
+  robots,
+  layoutRobots,
+  maxBatteryHours,
+}: {
+  robots: Robot[];
+  layoutRobots: Robot[];
+  maxBatteryHours: number;
+}) {
+  const tableRef = useRef<HTMLTableElement>(null);
+  const layoutKey = getLayoutKey(layoutRobots);
+  const [columnWidths, setColumnWidths] = useState<number[] | null>(
+    () => columnWidthCache.get(layoutKey) ?? null,
+  );
+
+  useLayoutEffect(() => {
+    const cached = columnWidthCache.get(layoutKey);
+    if (cached) {
+      setColumnWidths(cached);
+      return;
+    }
+
+    const table = tableRef.current;
+    if (!table) return;
+
+    const headerCells = table.querySelectorAll("thead th");
+    if (headerCells.length === 0) return;
+
+    const widths = Array.from(headerCells).map(
+      (cell) => cell.getBoundingClientRect().width,
+    );
+    if (widths.some((width) => width <= 0)) return;
+
+    columnWidthCache.set(layoutKey, widths);
+    setColumnWidths(widths);
+  }, [layoutKey, maxBatteryHours]);
+
   return (
     <>
       <div className="hidden overflow-hidden rounded-[18px] border border-line bg-panel-strong shadow-card lg:block">
-        <table className="w-full text-left text-sm">
+        <table
+          ref={tableRef}
+          className={cn(
+            "w-full text-left text-sm",
+            columnWidths ? "table-fixed" : "table-auto",
+          )}
+        >
+          {columnWidths ? (
+            <colgroup>
+              {columnWidths.map((width, index) => (
+                <col key={index} style={{ width: `${width}px` }} />
+              ))}
+            </colgroup>
+          ) : null}
           <thead>
             <tr className="border-b border-line bg-ink text-[10px] uppercase tracking-[0.12em] text-white">
               <th className="px-4 py-3 font-bold">Robot</th>
@@ -42,10 +223,14 @@ export function RobotCatalogTable({
               <th className="px-3 py-3 font-bold">Height</th>
               <th className="px-3 py-3 font-bold">Weight</th>
               <th className="px-3 py-3 font-bold">Video</th>
-              <th className="px-4 py-3 font-bold">Compare</th>
+              <th className="w-[108px] px-4 py-3 text-center font-bold">Compare</th>
             </tr>
           </thead>
           <tbody>
+            <TableColumnSizingRow
+              robots={layoutRobots}
+              maxBatteryHours={maxBatteryHours}
+            />
             {robots.map((robot) => (
               <tr
                 key={robot.slug}
@@ -131,7 +316,9 @@ export function RobotCatalogTable({
                   )}
                 </td>
                 <td className="w-[108px] px-4 py-3.5">
-                  <CompareToggleButton slug={robot.slug} />
+                  <div className="flex justify-center">
+                    <CompareToggleButton slug={robot.slug} />
+                  </div>
                 </td>
               </tr>
             ))}

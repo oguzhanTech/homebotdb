@@ -3,11 +3,9 @@
 import { useRouter } from "next/navigation";
 import {
   AVAILABILITY_STATUS_LABELS,
-  COMMERCIAL_STATUS_LABELS,
   PRIMARY_TASKS,
   ROBOT_TYPES,
   type AvailabilityStatus,
-  type CommercialStatus,
   type PrimaryTask,
   type RobotType,
 } from "@/types/robot";
@@ -19,24 +17,6 @@ import {
 import { FilterSelect, filterNumberClassName } from "@/components/ui/FilterSelect";
 import { SearchInput } from "@/components/ui/SearchInput";
 
-const COMMERCIAL_FILTERS: { value: CommercialStatus | "all"; label: string }[] =
-  [
-    { value: "all", label: "All" },
-    ...(
-      [
-        "buy_now",
-        "pre_order",
-        "waitlist",
-        "coming_soon",
-        "prototype",
-        "limited",
-      ] as const
-    ).map((value) => ({
-      value,
-      label: COMMERCIAL_STATUS_LABELS[value],
-    })),
-  ];
-
 const AVAILABILITY_FILTERS: { value: AvailabilityStatus | "all"; label: string }[] =
   [
     { value: "all", label: "All" },
@@ -46,6 +26,7 @@ const AVAILABILITY_FILTERS: { value: AvailabilityStatus | "all"; label: string }
         "limited",
         "waitlist",
         "coming_soon",
+        "prototype",
         "unknown",
       ] as const
     ).map((value) => ({
@@ -107,18 +88,6 @@ export function RobotMatrixFilters({
         {ROBOT_TYPES.map((opt) => (
           <option key={opt.value} value={opt.value}>
             Form: {opt.label}
-          </option>
-        ))}
-      </FilterSelect>
-      <FilterSelect
-        value={filters.status}
-        onChange={(e) =>
-          update({ status: e.target.value as CommercialStatus | "all" })
-        }
-      >
-        {COMMERCIAL_FILTERS.map((opt) => (
-          <option key={opt.value} value={opt.value}>
-            Commercial: {opt.label}
           </option>
         ))}
       </FilterSelect>

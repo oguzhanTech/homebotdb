@@ -84,6 +84,55 @@ export async function listComments(
   return (data as CommentRow[]).map(rowToComment);
 }
 
+export async function listAllComments(): Promise<Comment[]> {
+  const supabase = getSupabase();
+  const { data, error } = await supabase
+    .from("comments")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    throw new Error(`Failed to load comments: ${error.message}`);
+  }
+
+  return (data as CommentRow[]).map(rowToComment);
+}
+
+export async function deleteComment(id: string): Promise<Comment | null> {
+  const supabase = getSupabaseAdmin();
+
+  const { data: existing, error: fetchError } = await supabase
+    .from("comments")
+    .select("*")
+    .eq("id", id)
+    .maybeSingle();
+
+  if (fetchError) {
+    throw new Error(`Failed to load comment: ${fetchError.message}`);
+  }
+
+  if (!existing) return null;
+
+  const { error: deleteError } = await supabase
+    .from("comments")
+    .delete()
+    .eq("id", id);
+
+  if (deleteError) {
+    throw new Error(`Failed to delete comment: ${deleteError.message}`);
+  }
+
+  return rowToComment(existing as CommentRow);
+}
+
+export function getCommentPublicPath(
+  targetType: CommentTargetType,
+  targetSlug: string,
+): string {
+  if (targetType === "robot") return `/robots/${targetSlug}/`;
+  return `/news/${targetSlug}/`;
+}
+
 export function groupCommentsByThread(comments: Comment[]): {
   topLevel: Comment[];
   repliesByParent: Map<string, Comment[]>;

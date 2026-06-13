@@ -1,7 +1,6 @@
 import { isSortField, type SortField } from "@/lib/data/repository";
 import type {
   AvailabilityStatus,
-  CommercialStatus,
   PrimaryTask,
   RobotType,
 } from "@/types/robot";
@@ -10,7 +9,6 @@ import { PRIMARY_TASKS, ROBOT_TYPES } from "@/types/robot";
 export interface MatrixFilters {
   query: string;
   type: RobotType | "all";
-  status: CommercialStatus | "all";
   availability: AvailabilityStatus | "all";
   primaryTask: PrimaryTask | "all";
   sort: SortField;
@@ -18,30 +16,17 @@ export interface MatrixFilters {
   maxPrice: string;
 }
 
-const COMMERCIAL_STATUSES: CommercialStatus[] = [
-  "buy_now",
-  "pre_order",
-  "waitlist",
-  "coming_soon",
-  "prototype",
-  "limited",
-  "unknown",
-];
-
 const AVAILABILITY_STATUSES: AvailabilityStatus[] = [
   "available",
   "limited",
   "waitlist",
   "coming_soon",
+  "prototype",
   "unknown",
 ];
 
 function isRobotType(value: string): value is RobotType {
   return ROBOT_TYPES.some((opt) => opt.value !== "all" && opt.value === value);
-}
-
-function isCommercialStatus(value: string): value is CommercialStatus {
-  return COMMERCIAL_STATUSES.includes(value as CommercialStatus);
 }
 
 function isAvailabilityStatus(value: string): value is AvailabilityStatus {
@@ -66,7 +51,6 @@ export function parseMatrixFilters(
   options?: { defaultSort?: SortField },
 ): MatrixFilters {
   const typeRaw = getParam(searchParams, "type");
-  const statusRaw = getParam(searchParams, "status");
   const availabilityRaw = getParam(searchParams, "availability");
   const taskRaw = getParam(searchParams, "task");
   const sortRaw = getParam(searchParams, "sort");
@@ -74,7 +58,6 @@ export function parseMatrixFilters(
   return {
     query: getParam(searchParams, "q"),
     type: isRobotType(typeRaw) ? typeRaw : "all",
-    status: isCommercialStatus(statusRaw) ? statusRaw : "all",
     availability: isAvailabilityStatus(availabilityRaw) ? availabilityRaw : "all",
     primaryTask: isPrimaryTask(taskRaw) ? taskRaw : "all",
     sort: isSortField(sortRaw)
@@ -88,7 +71,6 @@ export function parseMatrixFilters(
 export function matrixFiltersToRobotFilters(filters: MatrixFilters) {
   return {
     type: filters.type,
-    status: filters.status,
     availability: filters.availability,
     primaryTask: filters.primaryTask,
     query: filters.query,
@@ -106,7 +88,6 @@ export function buildMatrixQueryString(
 
   if (filters.query) sp.set("q", filters.query);
   if (filters.type !== "all") sp.set("type", filters.type);
-  if (filters.status !== "all") sp.set("status", filters.status);
   if (filters.availability !== "all") sp.set("availability", filters.availability);
   if (filters.primaryTask !== "all") sp.set("task", filters.primaryTask);
   if (includeSort) sp.set("sort", filters.sort);

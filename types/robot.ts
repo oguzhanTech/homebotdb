@@ -27,6 +27,7 @@ export type AvailabilityStatus =
   | "limited"
   | "waitlist"
   | "coming_soon"
+  | "prototype"
   | "unknown";
 
 export type DataStatus = "confirmed" | "unconfirmed" | "coming_soon";
@@ -131,6 +132,7 @@ export const AVAILABILITY_STATUS_LABELS: Record<AvailabilityStatus, string> = {
   limited: "Limited",
   waitlist: "Waitlist",
   coming_soon: "Coming Soon",
+  prototype: "Prototype",
   unknown: "Unknown",
 };
 

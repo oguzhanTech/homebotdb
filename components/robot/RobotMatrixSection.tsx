@@ -1,4 +1,4 @@
-import { filterRobots, sortRobots, type SortField } from "@/lib/data/repository";
+import { filterRobots, getRobots, sortRobots, type SortField } from "@/lib/data/repository";
 import {
   matrixFiltersToRobotFilters,
   parseMatrixFilters,
@@ -18,6 +18,7 @@ export async function RobotMatrixSection({
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
   initialSort?: SortField;
 }) {
+  const allRobots = getRobots();
   const params = await resolveSearchParams(searchParams);
   const filters = parseMatrixFilters(params, { defaultSort: initialSort });
   const filteredRobots = filterRobots(matrixFiltersToRobotFilters(filters));
@@ -25,7 +26,7 @@ export async function RobotMatrixSection({
   const effectiveSort = isHome ? initialSort : filters.sort;
   const robots = sortRobots(filteredRobots, effectiveSort);
   const maxBatteryHours = getMaxBatteryHours(
-    robots.map((robot) => parseBatteryHours(robot.batteryLife)),
+    allRobots.map((robot) => parseBatteryHours(robot.batteryLife)),
   );
 
   return (
@@ -56,7 +57,11 @@ export async function RobotMatrixSection({
             filters={filters}
             sort={filters.sort}
           />
-          <RobotCatalogTable robots={robots} maxBatteryHours={maxBatteryHours} />
+          <RobotCatalogTable
+            robots={robots}
+            layoutRobots={allRobots}
+            maxBatteryHours={maxBatteryHours}
+          />
         </>
       )}
     </section>

@@ -53,6 +53,7 @@ export default function AdminDashboardPage() {
           ["/admin/robots/new", "Add robot"],
           ["/admin/updates", "Update list"],
           ["/admin/updates/new", "Add update"],
+          ["/admin/comments", "Comments"],
           ["/", "View site"],
         ].map(([href, label]) => (
           <Link

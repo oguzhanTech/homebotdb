@@ -5,7 +5,6 @@ import { enrichRobotScores } from "@/lib/score";
 import { parseBatteryHours } from "@/lib/utils";
 import type {
   AvailabilityStatus,
-  CommercialStatus,
   PrimaryTask,
   Robot,
   RobotType,
@@ -112,7 +111,6 @@ export function getAllCountries(): string[] {
 
 export interface RobotFilters {
   type?: RobotType | "all";
-  status?: CommercialStatus | "all";
   availability?: AvailabilityStatus | "all";
   primaryTask?: PrimaryTask | "all";
   minPrice?: number;
@@ -128,13 +126,6 @@ function parsePrice(price: string): number | null {
 export function filterRobots(filters: RobotFilters): Robot[] {
   return enrichedRobots.filter((robot) => {
     if (filters.type && filters.type !== "all" && robot.type !== filters.type) {
-      return false;
-    }
-    if (
-      filters.status &&
-      filters.status !== "all" &&
-      robot.commercialStatus !== filters.status
-    ) {
       return false;
     }
     if (
