@@ -11,13 +11,16 @@ export function CommentThread({
   initialComments,
   target,
   pagePath,
-  heading = uiCopy.comments.fieldReports,
+  heading,
 }: {
   initialComments: Comment[];
   target: CommentTarget;
   pagePath: string;
   heading?: string;
 }) {
+  const isNews = target.type === "news";
+  const resolvedHeading =
+    heading ?? (isNews ? uiCopy.comments.heading : uiCopy.comments.fieldReports);
   const [comments, setComments] = useState(initialComments);
 
   const { topLevel, repliesByParent } = useMemo(
@@ -33,12 +36,16 @@ export function CommentThread({
     <>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <h2 id="comments-heading" className="text-lg font-bold tracking-tight">
-          {heading}
+          {resolvedHeading}
         </h2>
         <p className="text-sm text-muted">
           {comments.length === 0
-            ? uiCopy.comments.noFieldReportsYet
-            : uiCopy.comments.reportCount(comments.length)}
+            ? isNews
+              ? uiCopy.comments.noCommentsYet
+              : uiCopy.comments.noFieldReportsYet
+            : isNews
+              ? uiCopy.comments.commentCount(comments.length)
+              : uiCopy.comments.reportCount(comments.length)}
         </p>
       </div>
 
@@ -63,7 +70,13 @@ export function CommentThread({
       )}
 
       <div className="mt-6 border-t border-line pt-6">
-        <CommentForm target={target} onSuccess={handleCommentPosted} />
+        <CommentForm
+          target={target}
+          onSuccess={handleCommentPosted}
+          submitLabel={
+            isNews ? uiCopy.comments.submitLabel : uiCopy.comments.submitFieldReport
+          }
+        />
       </div>
     </>
   );

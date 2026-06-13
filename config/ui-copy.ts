@@ -61,6 +61,11 @@ export const uiCopy = {
     lastSignal: "Last Signal",
   },
   comments: {
+    heading: "Comments",
+    submitLabel: "Post comment",
+    noCommentsYet: "No comments yet",
+    commentCount: (count: number) =>
+      `${count} comment${count === 1 ? "" : "s"}`,
     fieldReports: "Field Reports",
     communityReports: "Community Reports",
     submitFieldReport: "Submit Field Report",

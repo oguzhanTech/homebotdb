@@ -119,7 +119,6 @@ export function UpdateDetailArticle({
             pageDescription={update.summary}
             pagePath={publicPath}
             comments={comments}
-            heading={uiCopy.comments.fieldReports}
           />
         </div>
       ) : null}

@@ -9,7 +9,7 @@ export function CommentSection({
   pageDescription,
   pagePath,
   comments,
-  heading = uiCopy.comments.fieldReports,
+  heading,
 }: {
   target: CommentTarget;
   pageTitle: string;
@@ -18,6 +18,11 @@ export function CommentSection({
   comments: Comment[];
   heading?: string;
 }) {
+  const resolvedHeading =
+    heading ??
+    (target.type === "news"
+      ? uiCopy.comments.heading
+      : uiCopy.comments.fieldReports);
   const jsonLd = buildDiscussionJsonLd({
     target,
     pagePath,
@@ -37,7 +42,7 @@ export function CommentSection({
         initialComments={comments}
         target={target}
         pagePath={pagePath}
-        heading={heading}
+        heading={resolvedHeading}
       />
     </section>
   );
