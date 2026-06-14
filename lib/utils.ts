@@ -36,11 +36,16 @@ export function slugify(text: string): string {
     .replace(/(^-|-$)/g, "");
 }
 
-/** Extract runtime hours from labels like "2.5 h", "2–4 h", "~8 h", or "Unknown". */
+/** Extract runtime hours from labels like "2.5 h", "2–4 h", "~8 h", "90 min", or "Unknown". */
 export function parseBatteryHours(value: string | null | undefined): number | null {
   const text = displayValue(value, "Unknown");
   if (text === "Unknown" || text === "Not specified" || text === "NA" || text === "TBA" || text === "Coming soon") {
     return null;
+  }
+
+  const minuteMatch = text.match(/(\d+(?:\.\d+)?)\s*min(?:ute)?s?\b/i);
+  if (minuteMatch) {
+    return parseFloat(minuteMatch[1]) / 60;
   }
 
   const rangeMatch = text.match(/(\d+(?:\.\d+)?)\s*[–-]\s*(\d+(?:\.\d+)?)/);

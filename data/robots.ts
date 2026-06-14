@@ -1416,7 +1416,7 @@ export const robots: Robot[] = [
       "Spot is a four-legged robot from Boston Dynamics. It walks up stairs, crosses uneven floors, and carries sensors where wheeled robots cannot go.\n\nBoston Dynamics sells Spot mainly to factories, utilities, and research teams for inspection, 3D mapping, and hazardous response. Optional payloads include a Spot Arm for door handles, 360° LiDAR, and zoom cameras. The Python SDK and Autowalk software let operators record routes or run pre-planned missions.\n\nThe base Explorer kit lists at about $74,500 and includes the robot, batteries, charger, and tablet controller. Full enterprise setups with arm, autonomy, and fleet software often exceed $100,000. Sales are limited to qualified commercial, industrial, and academic buyers—not a typical living-room pet.\n\nHomeBotRadar tracks Spot as a reference quadruped platform. Wealthy homeowners sometimes pilot it for estate security or remote walk-throughs, but compare Loona or aibo if you want an affordable companion robot for the home.",
     price: "$74,500+",
     priceStatus: "confirmed",
-    batteryLife: "~90 min",
+    batteryLife: "1.5 h",
     chargeTime: "Hot-swappable batteries",
     height: "61 cm",
     weight: "33.8 kg",
@@ -1507,7 +1507,7 @@ export const robots: Robot[] = [
       batteryLife: {
         status: "confirmed",
         updatedAt: "2026-06-14",
-        note: "~90 min typical runtime; ~60 min with heavy payload",
+        note: "~90 min (1.5 h) typical; ~60 min with heavy payload",
       },
       speed: {
         status: "confirmed",
