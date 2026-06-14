@@ -95,4 +95,10 @@ export const brands: Brand[] = [
     logo: "/brands/embodied.png",
     aliases: ["Embodied", "Embodied Inc.", "Moxie Robots", "Moxie Robots Inc."],
   },
+  {
+    id: "boston-dynamics",
+    name: "Boston Dynamics",
+    logo: "/brands/Boston_Dynamics.svg",
+    aliases: ["Boston Dynamics", "BD"],
+  },
 ];

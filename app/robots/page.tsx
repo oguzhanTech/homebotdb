@@ -30,8 +30,9 @@ export default async function RobotsPage({ searchParams }: PageProps) {
           Home robot catalog
         </h1>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[#565f6b]">
-          Compare specs, readiness scores, and availability for {robots.length}{" "}
-          home-focused robots. Industrial models are excluded.
+          Compare specs, readiness scores, and availability across{" "}
+          {robots.length} tracked robots, from home companions to select
+          enterprise quadrupeds.
         </p>
       </section>
 

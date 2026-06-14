@@ -2,6 +2,21 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-019",
+    title: "Boston Dynamics Spot added to the catalog",
+    slug: "spot-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "spot",
+    summary:
+      "Boston Dynamics' enterprise quadruped joins HomeBotRadar with confirmed Explorer kit pricing, payload specs, and qualified-buyer availability notes.",
+    content:
+      "We added Boston Dynamics Spot to HomeBotRadar. It is the company's four-legged inspection robot: stair climbing, 14 kg payload capacity, Autowalk missions, and an optional Spot Arm for manipulation.\n\nOur profile at /robots/spot covers official dimensions (610 mm walking height, 33.8 kg with battery), ~90 minute battery runtime, 1.6 m/s top speed, and the ~$74,500 Explorer kit starting price. Boston Dynamics sells to commercial, industrial, and academic customers—not general home shoppers.\n\nCompare Spot with aibo or Loona if you want a home companion pet, or Reachy 2 if you need an open research platform.",
+    sourceUrl: "https://bostondynamics.com/products/spot/",
+    createdAt: "2026-06-14T20:30:00Z",
+    updatedAt: "2026-06-14T20:30:00Z",
+  },
+  {
     id: "upd-018",
     title: "MarsCat unavailable on Elephant Robotics store",
     slug: "marscat-store-unavailable",
