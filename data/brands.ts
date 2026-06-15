@@ -101,4 +101,10 @@ export const brands: Brand[] = [
     logo: "/brands/Boston_Dynamics.svg",
     aliases: ["Boston Dynamics", "BD"],
   },
+  {
+    id: "intuition-robotics",
+    name: "Intuition Robotics",
+    logo: "/brands/intuition-robotics.png",
+    aliases: ["Intuition Robotics", "Intuition"],
+  },
 ];

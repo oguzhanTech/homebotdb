@@ -20,8 +20,9 @@ import {
 import { cn, formatDate } from "@/lib/utils";
 
 const sizingRowClass =
-  "pointer-events-none border-0 [&>td]:border-0 [&>td]:py-0 [&>td]:align-top";
-const sizingStackClass = "invisible block h-px overflow-hidden whitespace-nowrap";
+  "pointer-events-none h-0 overflow-hidden border-0 leading-[0] [&>td]:h-0 [&>td]:overflow-hidden [&>td]:border-0 [&>td]:p-0 [&>td]:align-top";
+const sizingStackClass =
+  "invisible block h-0 overflow-hidden whitespace-nowrap leading-none";
 
 const columnWidthCache = new Map<string, number[]>();
 
@@ -91,6 +92,7 @@ function TableColumnSizingRow({
               mono
               priceStatus={robot.priceStatus}
               dataStatus={robot.fieldMeta.price?.status}
+              specNote={robot.fieldMeta.price?.note}
             />
           </span>
         ))}
@@ -229,11 +231,13 @@ export function RobotCatalogTable({
             </tr>
           </thead>
           <tbody>
-            <TableColumnSizingRow
-              robots={layoutRobots}
-              maxBatteryHours={maxBatteryHours}
-              showBrandInTable={showBrandInTable}
-            />
+            {!columnWidths ? (
+              <TableColumnSizingRow
+                robots={layoutRobots}
+                maxBatteryHours={maxBatteryHours}
+                showBrandInTable={showBrandInTable}
+              />
+            ) : null}
             {robots.map((robot) => (
               <tr
                 key={robot.slug}
@@ -285,6 +289,7 @@ export function RobotCatalogTable({
                     mono
                     priceStatus={robot.priceStatus}
                     dataStatus={robot.fieldMeta.price?.status}
+                    specNote={robot.fieldMeta.price?.note}
                   />
                 </td>
                 <td className="px-3 py-3.5">
@@ -376,6 +381,7 @@ export function RobotCatalogTable({
                   mono
                   priceStatus={robot.priceStatus}
                   dataStatus={robot.fieldMeta.price?.status}
+                  specNote={robot.fieldMeta.price?.note}
                 />
               </div>
               <div>

@@ -5,3 +5,5 @@ Optional hero images for news articles. Reference paths in `data/news/*.md` fron
 Recommended: 1200×630 px (or 16:9) for Twitter, Reddit, and Facebook previews.
 
 If omitted, HomeBotRadar falls back to the linked robot image or the site default OG image.
+
+- `deep-robotics-lynx-s10-arctic-ice.jpg` — YouTube still from DEEP Robotics *Into the Arctic | Lynx S10* expedition video

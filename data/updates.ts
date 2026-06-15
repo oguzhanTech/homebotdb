@@ -2,6 +2,21 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-020",
+    title: "Intuition Robotics ElliQ added to the catalog",
+    slug: "elliq-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "elliq",
+    summary:
+      "The US elder-care AI companion joins HomeBotRadar with confirmed ElliQ 3 hardware specs, membership pricing, and plug-in deployment notes.",
+    content:
+      "We added Intuition Robotics ElliQ to HomeBotRadar. It is a proactive AI companion for older adults: an expressive lamp-like body paired with an 8-inch touch screen for reminders, brain games, video calls, and daily wellness prompts.\n\nOur profile at /robots/elliq covers official dimensions (14.4 × 11.0 × 6.3 in, 5.3 lb), plug-in power via a 12V adapter, the $249.99 enrollment fee, and membership tiers from about $39 per month on a 24-month plan. ElliQ ships only in the United States and the device is leased for the length of your paid membership.\n\nCompare ElliQ with Tombot Jennie or Mirokaï if you are evaluating elder-care companions for aging in place at home.",
+    sourceUrl: "https://elliq.com/pages/how-it-works",
+    createdAt: "2026-06-16T14:00:00Z",
+    updatedAt: "2026-06-16T14:00:00Z",
+  },
+  {
     id: "upd-019",
     title: "Boston Dynamics Spot added to the catalog",
     slug: "spot-added-to-catalog",

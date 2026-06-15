@@ -34,6 +34,21 @@ export function MarkdownContent({ content }: { content: string }) {
           strong: ({ children }) => (
             <strong className="font-semibold text-[#2a3038]">{children}</strong>
           ),
+          img: ({ src, alt }) => (
+            <figure className="mt-6">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={src ?? ""}
+                alt={alt ?? ""}
+                className="w-full rounded-[14px] border border-line bg-panel-strong shadow-card"
+              />
+              {alt ? (
+                <figcaption className="mt-2 text-center text-xs leading-relaxed text-muted">
+                  {alt}
+                </figcaption>
+              ) : null}
+            </figure>
+          ),
         }}
       >
         {content}
