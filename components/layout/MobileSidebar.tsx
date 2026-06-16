@@ -21,18 +21,55 @@ export function MobileSidebar({
   }, [pathname, close]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      const html = document.documentElement;
+      const { body } = document;
+      html.style.overflow = "";
+      body.style.overflow = "";
+      body.style.position = "";
+      body.style.top = "";
+      body.style.left = "";
+      body.style.right = "";
+      body.style.width = "";
+      return;
+    }
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") close();
     };
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const html = document.documentElement;
+    const { body } = document;
+    const scrollY = window.scrollY;
+    const previous = {
+      htmlOverflow: html.style.overflow,
+      bodyOverflow: body.style.overflow,
+      bodyPosition: body.style.position,
+      bodyTop: body.style.top,
+      bodyLeft: body.style.left,
+      bodyRight: body.style.right,
+      bodyWidth: body.style.width,
+    };
+
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.width = "100%";
+
     window.addEventListener("keydown", onKeyDown);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      html.style.overflow = previous.htmlOverflow;
+      body.style.overflow = previous.bodyOverflow;
+      body.style.position = previous.bodyPosition;
+      body.style.top = previous.bodyTop;
+      body.style.left = previous.bodyLeft;
+      body.style.right = previous.bodyRight;
+      body.style.width = previous.bodyWidth;
+      window.scrollTo(0, scrollY);
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [isOpen, close]);
@@ -40,8 +77,10 @@ export function MobileSidebar({
   return (
     <div
       className={cn(
-        "fixed inset-0 z-50 xl:hidden",
-        isOpen ? "pointer-events-auto" : "pointer-events-none",
+        "z-50 xl:hidden",
+        isOpen
+          ? "fixed inset-0 w-full max-w-[100vw] overflow-x-hidden pointer-events-auto"
+          : "pointer-events-none",
       )}
       aria-hidden={!isOpen}
     >

@@ -30,7 +30,7 @@ export default async function HomePage({ searchParams }: PageProps) {
   const initialSort = pickRandomSortField();
 
   return (
-    <main className="px-3.5 py-5 sm:px-7 sm:py-7">
+    <main className="min-w-0 px-3.5 py-5 sm:px-7 sm:py-7">
       <TopBar />
 
       <DashboardSpotlight robots={robots} />

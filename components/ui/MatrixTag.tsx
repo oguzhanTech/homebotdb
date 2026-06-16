@@ -100,9 +100,15 @@ export function MatrixTag({
   return <span className={cn(tagBase, className)}>{children}</span>;
 }
 
-export function RobotTypeTag({ type }: { type: RobotType }) {
+export function RobotTypeTag({
+  type,
+  className,
+}: {
+  type: RobotType;
+  className?: string;
+}) {
   return (
-    <MatrixTag className={typeVariants[type]}>
+    <MatrixTag className={cn(typeVariants[type], className)}>
       {ROBOT_TYPE_LABELS[type]}
     </MatrixTag>
   );
@@ -136,31 +142,46 @@ export function CommercialStatusTag({
 
 export function AvailabilityStatusTag({
   status,
+  className,
 }: {
   status: AvailabilityStatus;
+  className?: string;
 }) {
   return (
-    <MatrixTag className={availabilityVariants[status]}>
+    <MatrixTag className={cn(availabilityVariants[status], className)}>
       {AVAILABILITY_STATUS_LABELS[status]}
     </MatrixTag>
   );
 }
 
-export function PrimaryTaskTag({ task }: { task: PrimaryTask }) {
+export function PrimaryTaskTag({
+  task,
+  className,
+}: {
+  task: PrimaryTask;
+  className?: string;
+}) {
   return (
-    <MatrixTag className={taskVariants[task]}>
+    <MatrixTag className={cn(taskVariants[task], className)}>
       {PRIMARY_TASK_LABELS[task]}
     </MatrixTag>
   );
 }
 
-export function DataStatusTag({ status }: { status: RobotDataStatus }) {
+export function DataStatusTag({
+  status,
+  className,
+}: {
+  status: RobotDataStatus;
+  className?: string;
+}) {
   const config = dataStatusVariants[status];
   return (
     <span
       className={cn(
         "inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.1em]",
         config.tag,
+        className,
       )}
     >
       <span className={cn("h-1.5 w-1.5 rounded-full", config.dot)} />
@@ -174,25 +195,32 @@ export function BatteryBar({
   dataStatus,
   specNote,
   maxHours = 8,
+  compact = false,
 }: {
   value: string;
   dataStatus?: DataStatus;
   specNote?: string;
   maxHours?: number;
+  compact?: boolean;
 }) {
   const resolved = resolveSpecDisplay(value, { dataStatus, specNote });
   const hours = parseBatteryHours(resolved.display);
   const pct = getBatteryBarPercent(hours, maxHours);
 
   return (
-    <div className="flex min-w-[88px] items-center gap-2">
-      <div className="h-[5px] flex-1 overflow-hidden rounded-full bg-[#eceff2]">
+    <div
+      className={cn(
+        "flex items-center gap-1.5 xl:gap-2",
+        compact ? "min-w-0" : "min-w-[88px]",
+      )}
+    >
+      <div className="h-[5px] min-w-[28px] flex-1 overflow-hidden rounded-full bg-[#eceff2]">
         <span
           className="block h-full rounded-full bg-ink"
           style={{ width: `${pct}%` }}
         />
       </div>
-      <span className="inline-flex items-center gap-1 font-mono text-[11px] font-bold tracking-wide">
+      <span className="inline-flex shrink-0 items-center gap-1 font-mono text-[10px] font-bold tracking-wide xl:text-[11px]">
         {resolved.emptyTooltip ? (
           <SpecEmptyHint tooltip={resolved.emptyTooltip} label={resolved.display} />
         ) : (

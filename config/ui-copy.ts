@@ -19,12 +19,6 @@ export const uiCopy = {
     freshnessScore: "Data Freshness",
     lastSignal: "Last Signal",
   },
-  mobileDock: {
-    home: "Home",
-    robots: "Robots",
-    compare: "Compare",
-    radar: "Radar",
-  },
   homepage: {
     commandCenter: "Command Center",
     newsEyebrow: "News",

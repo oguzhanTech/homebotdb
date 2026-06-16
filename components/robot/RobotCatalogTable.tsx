@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useLayoutEffect, useRef, useState } from "react";
 import type { Robot } from "@/types/robot";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { RobotAvatarHoverPreview } from "@/components/robot/RobotAvatarHoverPreview";
@@ -19,140 +18,129 @@ import {
 } from "@/components/ui/MatrixTag";
 import { cn, formatDate } from "@/lib/utils";
 
-const sizingRowClass =
-  "pointer-events-none h-0 overflow-hidden border-0 leading-[0] [&>td]:h-0 [&>td]:overflow-hidden [&>td]:border-0 [&>td]:p-0 [&>td]:align-top";
-const sizingStackClass =
-  "invisible block h-0 overflow-hidden whitespace-nowrap leading-none";
+/** Secondary columns — visible from xl (1280px). */
+const colXl = "hidden xl:table-cell";
+const colXlGroup = "hidden xl:table-column";
+/** Tertiary columns — visible from 2xl (1536px). */
+const col2xl = "hidden 2xl:table-cell";
+const col2xlGroup = "hidden 2xl:table-column";
 
-const columnWidthCache = new Map<string, number[]>();
+/** Shared horizontal padding — keeps column rhythm even. */
+const thCell = "px-2.5 py-2.5 font-bold xl:py-3";
+const tdCell = "px-2.5 py-2.5 xl:py-3.5";
 
-function getLayoutKey(robots: Robot[]): string {
-  return robots.map((robot) => robot.slug).join("|");
-}
+/** Percent widths for all 11 columns (sum 100%). Hidden cols drop out at breakpoints. */
+const COL = {
+  robot: "w-[17%]",
+  form: "w-[9%]",
+  battery: "w-[11%]",
+  price: "w-[8%]",
+  dataStatus: "w-[9%]",
+  availability: "w-[10%]",
+  primaryTask: "w-[9%]",
+  height: "w-[6%]",
+  weight: "w-[6%]",
+  video: "w-[5%]",
+  compare: "w-[10%]",
+} as const;
 
-function TableColumnSizingRow({
-  robots,
+const tagCell = cn(tdCell, "overflow-hidden");
+
+function RobotRow({
+  robot,
   maxBatteryHours,
   showBrandInTable,
 }: {
-  robots: Robot[];
+  robot: Robot;
   maxBatteryHours: number;
   showBrandInTable: boolean;
 }) {
-  if (robots.length === 0) return null;
-
   return (
-    <tr aria-hidden="true" data-sizing-row className={sizingRowClass}>
-      <td className="px-4">
-        {robots.map((robot) => (
-          <div
-            key={robot.slug}
-            className={`flex items-center gap-3 ${sizingStackClass}`}
-          >
-            <div className="h-10 w-10 shrink-0" />
-            <div>
-              <div className="font-bold uppercase tracking-wide">{robot.name}</div>
-              {showBrandInTable ? (
-                <BrandLogo
-                  brand={robot.brand}
-                  size="xs"
-                  showName
-                  nameClassName="text-xs text-muted font-normal"
-                />
-              ) : null}
-            </div>
+    <tr className="border-b border-line/80 transition-colors hover:bg-blue-soft/20">
+      <td className={tdCell}>
+        <div className="flex min-w-0 items-center gap-2 xl:gap-3">
+          <div className="h-8 w-8 shrink-0 overflow-hidden rounded-lg border border-line bg-white xl:h-10 xl:w-10">
+            <RobotAvatarHoverPreview
+              name={robot.name}
+              imageUrl={getPrimaryRobotImage(robot)}
+              size="sm"
+              className="h-full w-full"
+            />
           </div>
-        ))}
-      </td>
-      <td className="px-3">
-        {robots.map((robot) => (
-          <span key={robot.slug} className={sizingStackClass}>
-            <RobotTypeTag type={robot.type} />
-          </span>
-        ))}
-      </td>
-      <td className="px-3">
-        {robots.map((robot) => (
-          <span key={robot.slug} className={sizingStackClass}>
-            <BatteryBar
-              value={robot.batteryLife}
-              dataStatus={robot.fieldMeta.batteryLife?.status}
-              specNote={robot.fieldMeta.batteryLife?.note}
-              maxHours={maxBatteryHours}
-            />
-          </span>
-        ))}
-      </td>
-      <td className="px-3">
-        {robots.map((robot) => (
-          <span key={robot.slug} className={`font-mono text-[13px] font-bold ${sizingStackClass}`}>
-            <DataValue
-              value={robot.price}
-              fallback="TBA"
-              mono
-              priceStatus={robot.priceStatus}
-              dataStatus={robot.fieldMeta.price?.status}
-              specNote={robot.fieldMeta.price?.note}
-            />
-          </span>
-        ))}
-      </td>
-      <td className="px-3">
-        {robots.map((robot) => (
-          <span key={robot.slug} className={sizingStackClass}>
-            <DataStatusTag status={getRobotDataStatus(robot)} />
-          </span>
-        ))}
-      </td>
-      <td className="px-3">
-        {robots.map((robot) => (
-          <span key={robot.slug} className={sizingStackClass}>
-            <AvailabilityStatusTag status={robot.availabilityStatus} />
-          </span>
-        ))}
-      </td>
-      <td className="px-3">
-        {robots.map((robot) => (
-          <span key={robot.slug} className={sizingStackClass}>
-            <PrimaryTaskTag task={robot.primaryTask} />
-          </span>
-        ))}
-      </td>
-      <td className="px-3">
-        {robots.map((robot) => (
-          <span key={robot.slug} className={`font-mono text-[13px] ${sizingStackClass}`}>
-            <DataValue
-              value={robot.height}
-              mono
-              dataStatus={robot.fieldMeta.height?.status}
-              specNote={robot.fieldMeta.height?.note}
-            />
-          </span>
-        ))}
-      </td>
-      <td className="px-3">
-        {robots.map((robot) => (
-          <span key={robot.slug} className={`font-mono text-[13px] ${sizingStackClass}`}>
-            <DataValue value={robot.weight} mono />
-          </span>
-        ))}
-      </td>
-      <td className="px-3">
-        {robots.map((robot) =>
-          robot.videoUrls[0] ? (
-            <span key={robot.slug} className={sizingStackClass}>
-              <VideoPlayLink
-                href={robot.videoUrls[0]}
-                title={`${robot.name} video`}
+          <Link
+            href={`/robots/${robot.slug}`}
+            className="min-w-0 cursor-pointer"
+            title={robot.name}
+          >
+            <div className="truncate font-bold uppercase tracking-wide">
+              {robot.name}
+            </div>
+            {showBrandInTable ? (
+              <BrandLogo
+                brand={robot.brand}
+                size="xs"
+                showName
+                nameClassName="truncate text-xs text-muted font-normal"
               />
-            </span>
-          ) : null,
-        )}
-        <span className={`text-xs text-muted ${sizingStackClass}`}>—</span>
+            ) : null}
+          </Link>
+        </div>
       </td>
-      <td className="w-[108px] px-4">
-        <div className={`flex justify-center ${sizingStackClass}`}>
-          <CompareToggleButton slug={robots[0].slug} />
+      <td className={tagCell}>
+        <RobotTypeTag type={robot.type} />
+      </td>
+      <td className={tdCell}>
+        <BatteryBar
+          value={robot.batteryLife}
+          dataStatus={robot.fieldMeta.batteryLife?.status}
+          specNote={robot.fieldMeta.batteryLife?.note}
+          maxHours={maxBatteryHours}
+          compact
+        />
+      </td>
+      <td className={cn(tdCell, "font-mono text-[12px] font-bold xl:text-[13px]")}>
+        <DataValue
+          value={robot.price}
+          fallback="TBA"
+          mono
+          priceStatus={robot.priceStatus}
+          dataStatus={robot.fieldMeta.price?.status}
+          specNote={robot.fieldMeta.price?.note}
+        />
+      </td>
+      <td className={cn(tagCell, colXl)}>
+        <DataStatusTag status={getRobotDataStatus(robot)} />
+      </td>
+      <td className={tagCell}>
+        <AvailabilityStatusTag status={robot.availabilityStatus} />
+      </td>
+      <td className={cn(tagCell, colXl)}>
+        <PrimaryTaskTag task={robot.primaryTask} />
+      </td>
+      <td className={cn(tdCell, "font-mono text-[12px] xl:text-[13px]", col2xl)}>
+        <DataValue
+          value={robot.height}
+          mono
+          dataStatus={robot.fieldMeta.height?.status}
+          specNote={robot.fieldMeta.height?.note}
+        />
+      </td>
+      <td className={cn(tdCell, "font-mono text-[12px] xl:text-[13px]", col2xl)}>
+        <DataValue value={robot.weight} mono />
+      </td>
+      <td className={cn(tdCell, "text-center", col2xl)}>
+        {robot.videoUrls.length > 0 ? (
+          <VideoPlayLink
+            href={robot.videoUrls[0]}
+            title={`${robot.name} video`}
+          />
+        ) : (
+          <span className="text-xs text-muted">—</span>
+        )}
+      </td>
+      <td className={cn(tdCell, "text-center")}>
+        <div className="flex justify-center">
+          <CompareToggleButton slug={robot.slug} />
         </div>
       </td>
     </tr>
@@ -166,168 +154,53 @@ export function RobotCatalogTable({
   showBrandInTable = true,
 }: {
   robots: Robot[];
+  /** Kept for API stability; column layout is breakpoint-driven, not content-measured. */
   layoutRobots: Robot[];
   maxBatteryHours: number;
   showBrandInTable?: boolean;
 }) {
-  const tableRef = useRef<HTMLTableElement>(null);
-  const layoutKey = getLayoutKey(layoutRobots);
-  const [columnWidths, setColumnWidths] = useState<number[] | null>(
-    () => columnWidthCache.get(layoutKey) ?? null,
-  );
-
-  useLayoutEffect(() => {
-    const cached = columnWidthCache.get(layoutKey);
-    if (cached) {
-      setColumnWidths(cached);
-      return;
-    }
-
-    const table = tableRef.current;
-    if (!table) return;
-
-    const headerCells = table.querySelectorAll("thead th");
-    if (headerCells.length === 0) return;
-
-    const widths = Array.from(headerCells).map(
-      (cell) => cell.getBoundingClientRect().width,
-    );
-    if (widths.some((width) => width <= 0)) return;
-
-    columnWidthCache.set(layoutKey, widths);
-    setColumnWidths(widths);
-  }, [layoutKey, maxBatteryHours]);
+  void layoutRobots;
 
   return (
     <>
-      <div className="hidden overflow-hidden rounded-[18px] border border-line bg-panel-strong shadow-card lg:block">
-        <table
-          ref={tableRef}
-          className={cn(
-            "w-full text-left text-sm",
-            columnWidths ? "table-fixed" : "table-auto",
-          )}
-        >
-          {columnWidths ? (
-            <colgroup>
-              {columnWidths.map((width, index) => (
-                <col key={index} style={{ width: `${width}px` }} />
-              ))}
-            </colgroup>
-          ) : null}
+      <div className="hidden min-w-0 max-w-full overflow-hidden rounded-[18px] border border-line bg-panel-strong shadow-card lg:block">
+        <table className="w-full table-fixed text-left text-sm">
+          <colgroup>
+            <col className={COL.robot} />
+            <col className={COL.form} />
+            <col className={COL.battery} />
+            <col className={COL.price} />
+            <col className={cn(colXlGroup, COL.dataStatus)} />
+            <col className={COL.availability} />
+            <col className={cn(colXlGroup, COL.primaryTask)} />
+            <col className={cn(col2xlGroup, COL.height)} />
+            <col className={cn(col2xlGroup, COL.weight)} />
+            <col className={cn(col2xlGroup, COL.video)} />
+            <col className={COL.compare} style={{ minWidth: "7.5rem" }} />
+          </colgroup>
           <thead>
             <tr className="border-b border-line bg-ink text-[10px] uppercase tracking-[0.12em] text-white">
-              <th className="px-4 py-3 font-bold">Robot</th>
-              <th className="px-3 py-3 font-bold">Form</th>
-              <th className="px-3 py-3 font-bold">Battery</th>
-              <th className="px-3 py-3 font-bold">Price</th>
-              <th className="px-3 py-3 font-bold">Data Status</th>
-              <th className="px-3 py-3 font-bold">Availability</th>
-              <th className="px-3 py-3 font-bold">Primary Task</th>
-              <th className="px-3 py-3 font-bold">Height</th>
-              <th className="px-3 py-3 font-bold">Weight</th>
-              <th className="px-3 py-3 font-bold">Video</th>
-              <th className="w-[108px] px-4 py-3 text-center font-bold">Compare</th>
+              <th className={thCell}>Robot</th>
+              <th className={thCell}>Form</th>
+              <th className={thCell}>Battery</th>
+              <th className={thCell}>Price</th>
+              <th className={cn(thCell, colXl)}>Data Status</th>
+              <th className={thCell}>Availability</th>
+              <th className={cn(thCell, colXl)}>Primary Task</th>
+              <th className={cn(thCell, col2xl)}>Height</th>
+              <th className={cn(thCell, col2xl)}>Weight</th>
+              <th className={cn(thCell, "text-center", col2xl)}>Video</th>
+              <th className={cn(thCell, "text-center")}>Compare</th>
             </tr>
           </thead>
           <tbody>
-            {!columnWidths ? (
-              <TableColumnSizingRow
-                robots={layoutRobots}
+            {robots.map((robot) => (
+              <RobotRow
+                key={robot.slug}
+                robot={robot}
                 maxBatteryHours={maxBatteryHours}
                 showBrandInTable={showBrandInTable}
               />
-            ) : null}
-            {robots.map((robot) => (
-              <tr
-                key={robot.slug}
-                className="border-b border-line/80 transition-colors hover:bg-blue-soft/20"
-              >
-                <td className="px-4 py-3.5">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-line bg-white">
-                      <RobotAvatarHoverPreview
-                        name={robot.name}
-                        imageUrl={getPrimaryRobotImage(robot)}
-                        size="sm"
-                        className="h-full w-full"
-                      />
-                    </div>
-                    <Link
-                      href={`/robots/${robot.slug}`}
-                      className="min-w-0 cursor-pointer"
-                    >
-                      <div className="font-bold uppercase tracking-wide">
-                        {robot.name}
-                      </div>
-                      {showBrandInTable ? (
-                        <BrandLogo
-                          brand={robot.brand}
-                          size="xs"
-                          showName
-                          nameClassName="text-xs text-muted font-normal"
-                        />
-                      ) : null}
-                    </Link>
-                  </div>
-                </td>
-                <td className="px-3 py-3.5">
-                  <RobotTypeTag type={robot.type} />
-                </td>
-                <td className="px-3 py-3.5">
-                  <BatteryBar
-                    value={robot.batteryLife}
-                    dataStatus={robot.fieldMeta.batteryLife?.status}
-                    specNote={robot.fieldMeta.batteryLife?.note}
-                    maxHours={maxBatteryHours}
-                  />
-                </td>
-                <td className="px-3 py-3.5 font-mono text-[13px] font-bold">
-                  <DataValue
-                    value={robot.price}
-                    fallback="TBA"
-                    mono
-                    priceStatus={robot.priceStatus}
-                    dataStatus={robot.fieldMeta.price?.status}
-                    specNote={robot.fieldMeta.price?.note}
-                  />
-                </td>
-                <td className="px-3 py-3.5">
-                  <DataStatusTag status={getRobotDataStatus(robot)} />
-                </td>
-                <td className="px-3 py-3.5">
-                  <AvailabilityStatusTag status={robot.availabilityStatus} />
-                </td>
-                <td className="px-3 py-3.5">
-                  <PrimaryTaskTag task={robot.primaryTask} />
-                </td>
-                <td className="px-3 py-3.5 font-mono text-[13px]">
-                  <DataValue
-                    value={robot.height}
-                    mono
-                    dataStatus={robot.fieldMeta.height?.status}
-                    specNote={robot.fieldMeta.height?.note}
-                  />
-                </td>
-                <td className="px-3 py-3.5 font-mono text-[13px]">
-                  <DataValue value={robot.weight} mono />
-                </td>
-                <td className="px-3 py-3.5">
-                  {robot.videoUrls.length > 0 ? (
-                    <VideoPlayLink
-                      href={robot.videoUrls[0]}
-                      title={`${robot.name} video`}
-                    />
-                  ) : (
-                    <span className="text-xs text-muted">—</span>
-                  )}
-                </td>
-                <td className="w-[108px] px-4 py-3.5">
-                  <div className="flex justify-center">
-                    <CompareToggleButton slug={robot.slug} />
-                  </div>
-                </td>
-              </tr>
             ))}
           </tbody>
         </table>

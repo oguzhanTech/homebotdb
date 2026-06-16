@@ -107,4 +107,10 @@ export const brands: Brand[] = [
     logo: "/brands/intuition-robotics.png",
     aliases: ["Intuition Robotics", "Intuition"],
   },
+  {
+    id: "enabot",
+    name: "Enabot",
+    logo: "/brands/enabot.png",
+    aliases: ["Enabot", "Enabot Robotics"],
+  },
 ];

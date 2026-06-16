@@ -19,7 +19,7 @@ export default async function RobotsPage({ searchParams }: PageProps) {
   const robots = getRobots();
 
   return (
-    <main className="px-3.5 py-5 sm:px-7 sm:py-7">
+    <main className="min-w-0 px-3.5 py-5 sm:px-7 sm:py-7">
       <TopBar />
 
       <section className="mb-6">

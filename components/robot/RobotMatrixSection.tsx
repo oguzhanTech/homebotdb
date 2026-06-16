@@ -30,7 +30,7 @@ export async function RobotMatrixSection({
   );
 
   return (
-    <section id="matrix" className="scroll-mt-24">
+    <section id="matrix" className="min-w-0 scroll-mt-24">
       <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">

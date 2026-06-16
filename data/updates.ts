@@ -2,6 +2,21 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-021",
+    title: "Enabot EBO X added to the catalog",
+    slug: "ebo-x-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "ebo-x",
+    summary:
+      "Enabot's mobile family guardian joins HomeBotRadar with confirmed V-SLAM specs, $999 US pricing, and elder-care monitoring features.",
+    content:
+      "We added Enabot EBO X to HomeBotRadar. It is a rolling home guardian with V-SLAM mapping, a stabilized 4K gimbal camera, Alexa and GPT-4o mini voice chat, and safety alerts for falls, crying, and restricted zones.\n\nOur profile at /robots/ebo-x covers official dimensions (168 × 168 × 218 mm, 1.7 kg), 2–3 hour battery runtime, auto-dock charging, and the $999 US store price. Enabot sells through regional stores including the US, Australia, and Singapore.\n\nCompare EBO X with Loona or ElliQ if you are choosing between a mobile family bot and a stationary elder-care companion.",
+    sourceUrl: "https://store.enabot.com/products/ebo-x-familybot",
+    createdAt: "2026-06-16T16:00:00Z",
+    updatedAt: "2026-06-16T16:00:00Z",
+  },
+  {
     id: "upd-020",
     title: "Intuition Robotics ElliQ added to the catalog",
     slug: "elliq-added-to-catalog",

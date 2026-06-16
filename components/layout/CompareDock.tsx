@@ -15,7 +15,7 @@ export function CompareDock() {
     <div
       className="fixed inset-x-3.5 z-50 rounded-[20px] border border-line bg-panel/95 p-3 shadow-[0_18px_50px_rgba(8,11,18,0.18)] backdrop-blur-[18px]"
       style={{
-        bottom: "calc(78px + env(safe-area-inset-bottom))",
+        bottom: "calc(0.875rem + env(safe-area-inset-bottom))",
       }}
     >
       <div className="mb-2 flex items-center justify-between px-1">

@@ -24,7 +24,7 @@ export function CompareToggleButton({
       onClick={() => toggle(slug)}
       className={cn(
         "h-8 min-w-[96px] justify-center px-3 text-[10px]",
-        compact && "flex-1 min-w-0",
+        compact && "min-w-0 flex-1",
         className,
       )}
     >
