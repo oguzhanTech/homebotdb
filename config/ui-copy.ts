@@ -13,7 +13,7 @@ export const uiCopy = {
     compare: "✣",
     radarFeed: "◎",
     news: "✎",
-    robotMatchmaker: "⌁",
+    robotMatchmaker: "◈",
   },
   sidebar: {
     freshnessScore: "Data Freshness",

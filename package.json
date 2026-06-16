@@ -6,7 +6,7 @@
     "news:build": "node scripts/build-news.mjs",
     "predev": "npm run news:build",
     "prebuild": "npm run news:build",
-    "dev": "next dev --webpack",
+    "dev": "node scripts/dev.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

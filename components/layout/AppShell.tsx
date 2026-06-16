@@ -22,9 +22,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <CompareProvider>
       <FavoritesProvider>
         <MobileNavProvider>
-          <div className="grid min-h-screen overflow-x-hidden xl:grid-cols-[178px_minmax(0,1fr)]">
+          <div className="grid min-h-screen xl:grid-cols-[178px_minmax(0,1fr)]">
             <Sidebar freshnessScore={freshnessScore} lastUpdate={lastUpdate} />
-            <div className="flex min-h-full min-w-0 flex-col pb-6 xl:pb-9">
+            <div className="flex min-h-full min-w-0 flex-col overflow-x-hidden pb-6 xl:pb-9">
               <MobileHeader />
               <div className="min-w-0 flex-1">{children}</div>
               <SiteFooter />

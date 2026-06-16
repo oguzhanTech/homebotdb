@@ -77,10 +77,8 @@ export function MobileSidebar({
   return (
     <div
       className={cn(
-        "z-50 xl:hidden",
-        isOpen
-          ? "fixed inset-0 w-full max-w-[100vw] overflow-x-hidden pointer-events-auto"
-          : "pointer-events-none",
+        "fixed inset-0 z-50 overflow-hidden xl:hidden",
+        isOpen ? "pointer-events-auto" : "pointer-events-none",
       )}
       aria-hidden={!isOpen}
     >

@@ -1,4 +1,32 @@
+import { Children, isValidElement, type ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
+
+function MarkdownImage({ src, alt }: { src?: string | null; alt?: string | null }) {
+  return (
+    <figure className="mt-6">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={typeof src === "string" ? src : ""}
+        alt={alt ?? ""}
+        className="w-full rounded-[14px] border border-line bg-panel-strong shadow-card"
+      />
+      {alt ? (
+        <figcaption className="mt-2 text-center text-xs leading-relaxed text-muted">
+          {alt}
+        </figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
+function isImageParagraph(children: ReactNode) {
+  const items = Children.toArray(children);
+  return (
+    items.length === 1 &&
+    isValidElement(items[0]) &&
+    items[0].type === MarkdownImage
+  );
+}
 
 export function MarkdownContent({ content }: { content: string }) {
   return (
@@ -10,11 +38,16 @@ export function MarkdownContent({ content }: { content: string }) {
               {children}
             </h2>
           ),
-          p: ({ children }) => (
-            <p className="mt-4 text-[15px] leading-[1.7] text-[#4d5662] first:mt-0">
-              {children}
-            </p>
-          ),
+          p: ({ children }) => {
+            if (isImageParagraph(children)) {
+              return <>{children}</>;
+            }
+            return (
+              <p className="mt-4 text-[15px] leading-[1.7] text-[#4d5662] first:mt-0">
+                {children}
+              </p>
+            );
+          },
           ul: ({ children }) => (
             <ul className="mt-4 list-disc space-y-2 pl-5 text-[15px] leading-[1.7] text-[#4d5662]">
               {children}
@@ -35,19 +68,10 @@ export function MarkdownContent({ content }: { content: string }) {
             <strong className="font-semibold text-[#2a3038]">{children}</strong>
           ),
           img: ({ src, alt }) => (
-            <figure className="mt-6">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={src ?? ""}
-                alt={alt ?? ""}
-                className="w-full rounded-[14px] border border-line bg-panel-strong shadow-card"
-              />
-              {alt ? (
-                <figcaption className="mt-2 text-center text-xs leading-relaxed text-muted">
-                  {alt}
-                </figcaption>
-              ) : null}
-            </figure>
+            <MarkdownImage
+              src={typeof src === "string" ? src : undefined}
+              alt={typeof alt === "string" ? alt : undefined}
+            />
           ),
         }}
       >
