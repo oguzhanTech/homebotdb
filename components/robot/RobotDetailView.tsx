@@ -25,6 +25,7 @@ import { Badge, StatusPill } from "@/components/ui/Badge";
 import { InfoRow, ScoreBar } from "@/components/ui/ScoreBar";
 import { Tabs } from "@/components/ui/Tabs";
 import { DataValue, MonoValue } from "@/components/ui/DataValue";
+import { SpecQualifierIcon } from "@/components/ui/SpecQualifierIcon";
 import { BuyNowLink } from "@/components/ui/PrimaryLink";
 import { ShareButtons } from "@/components/update/ShareButtons";
 import { formatDate } from "@/lib/utils";
@@ -205,8 +206,12 @@ export function RobotDetailView({
 
         <aside className="grid gap-[18px] md:grid-cols-3 xl:grid-cols-1">
           <Card className="p-5">
-            <div className="text-xs font-bold uppercase tracking-[0.15em]">
-              {uiCopy.scores.readinessScore} ⓘ
+            <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.15em]">
+              <span>{uiCopy.scores.readinessScore}</span>
+              <SpecQualifierIcon
+                label={uiCopy.scores.readinessScoreHint}
+                sentenceCase
+              />
             </div>
             <div className="my-3 font-mono text-[56px] leading-none tracking-[-0.06em]">
               {robot.readinessScore}{" "}

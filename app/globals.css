@@ -73,6 +73,15 @@ button:disabled {
   background: rgba(18, 100, 255, 0.18);
 }
 
+.news-image-caption {
+  margin-top: 0.625rem;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #7d8791;
+}
+
 @media (display-mode: standalone) {
   body {
     padding-top: env(safe-area-inset-top);

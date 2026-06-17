@@ -31,7 +31,7 @@ export function UpdateDetailArticle({
   const listHref = isNews ? "/news" : "/updates";
   const listLabel = isNews ? uiCopy.nav.news : uiCopy.nav.radarFeed;
   const publicPath = getUpdatePublicPath(update);
-  const coverImage = isNews ? getUpdateCoverImage(update) : undefined;
+  const coverImage = getUpdateCoverImage(update);
 
   return (
     <article className="mx-auto max-w-3xl">
@@ -69,14 +69,19 @@ export function UpdateDetailArticle({
       </p>
 
       {coverImage ? (
-        <div className="mt-6 overflow-hidden rounded-[18px] border border-line bg-panel-strong shadow-card">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={coverImage}
-            alt=""
-            className="aspect-[16/9] w-full object-cover"
-          />
-        </div>
+        <figure className="mt-6">
+          <div className="overflow-hidden rounded-[18px] border border-line bg-panel-strong shadow-card">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={coverImage}
+              alt=""
+              className="aspect-[16/9] w-full object-cover"
+            />
+          </div>
+          {update.coverImageCaption ? (
+            <figcaption className="news-image-caption">{update.coverImageCaption}</figcaption>
+          ) : null}
+        </figure>
       ) : null}
 
       {isNews ? (

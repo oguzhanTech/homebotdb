@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { getPrimaryRobotImage } from "@/lib/robot-images";
 import { getEditorById } from "@/lib/editors";
-import { getAbsoluteUpdateCoverImage } from "@/lib/update-images";
+import { getAbsoluteUpdateCoverImage, getUpdateCoverImage } from "@/lib/update-images";
 import { getUpdatePublicPath } from "@/lib/update-paths";
 import type { Robot } from "@/types/robot";
 import type { Update } from "@/types/update";
@@ -92,7 +92,7 @@ export function buildCompareMetadata(robots: Robot[]): Metadata {
 
 export function buildUpdateMetadata(update: Update): Metadata {
   const author = getEditorById(update.authorId);
-  const image = isNewsUpdate(update.type)
+  const image = getUpdateCoverImage(update)
     ? getAbsoluteUpdateCoverImage(update)
     : undefined;
 

@@ -11,9 +11,7 @@ function MarkdownImage({ src, alt }: { src?: string | null; alt?: string | null 
         className="w-full rounded-[14px] border border-line bg-panel-strong shadow-card"
       />
       {alt ? (
-        <figcaption className="mt-2 text-center text-xs leading-relaxed text-muted">
-          {alt}
-        </figcaption>
+        <figcaption className="news-image-caption">{alt}</figcaption>
       ) : null}
     </figure>
   );

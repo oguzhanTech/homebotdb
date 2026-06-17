@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-022",
+    title: "Apptronik Apollo added to the catalog",
+    slug: "apollo-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "apollo",
+    summary:
+      "Apptronik's NASA-heritage humanoid joins HomeBotRadar with confirmed size and payload specs, enterprise pilot notes, and no consumer buy path yet.",
+    content:
+      "We added Apptronik Apollo to HomeBotRadar. It is a person-scale humanoid built for logistics and manufacturing first, with hot-swappable 4-hour battery packs and a 25 kg payload rating on Apptronik's product page.\n\nOur profile at /robots/apollo covers official dimensions (173 cm, 72.5 kg), NVIDIA Jetson and Project GR00T integration, and named enterprise pilots with Mercedes-Benz, GXO, and Jabil. Apptronik sells through contracts — there is no home preorder page or public MSRP today.\n\nCompare Apollo with Figure 02 or Unitree G1 if you are tracking which humanoids are moving from demo floors into real facilities.",
+    coverImage: "/images/updates/apollo-added-to-catalog.jpg",
+    sourceUrl: "https://apptronik.com/apollo",
+    createdAt: "2026-06-18T12:00:00Z",
+    updatedAt: "2026-06-18T12:00:00Z",
+  },
+  {
     id: "upd-021",
     title: "Enabot EBO X added to the catalog",
     slug: "ebo-x-added-to-catalog",

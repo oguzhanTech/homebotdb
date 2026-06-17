@@ -16,6 +16,7 @@ export interface Update {
   summary: string;
   content: string;
   coverImage?: string;
+  coverImageCaption?: string;
   sourceUrl?: string;
   createdAt: string;
   updatedAt: string;

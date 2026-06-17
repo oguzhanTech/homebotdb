@@ -62,6 +62,9 @@ function loadNews() {
       summary: String(data.summary).trim(),
       content: content.trim(),
       coverImage: data.coverImage ? String(data.coverImage).trim() : undefined,
+      coverImageCaption: data.coverImageCaption
+        ? String(data.coverImageCaption).trim()
+        : undefined,
       sourceUrl: data.sourceUrl ? String(data.sourceUrl).trim() : undefined,
       createdAt: toIso(data.createdAt),
       updatedAt: toIso(data.updatedAt ?? data.createdAt),

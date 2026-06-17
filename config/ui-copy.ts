@@ -48,7 +48,11 @@ export const uiCopy = {
   },
   scores: {
     readinessScore: "Readiness Score",
+    readinessScoreHint:
+      "How close this robot is to practical home use, based on specs, demos, and buy signals we track.",
     realityScore: "Reality Score",
+    realityScoreHint:
+      "How verified the robot is in the real world — shipping, pilots, and public proof.",
     marketStatus: "Market Status",
     freshnessScore: "Data Freshness",
     confidenceScore: "Confidence Score",
