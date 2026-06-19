@@ -11,7 +11,6 @@ import {
   buildRobotMetadata,
 } from "@/lib/seo";
 import { TopBar } from "@/components/layout/TopBar";
-import { uiCopy } from "@/config/ui-copy";
 import { CommentSection } from "@/components/comments/CommentSection";
 import { RobotDetailView } from "@/components/robot/RobotDetailView";
 import { listComments } from "@/lib/data/comments";
@@ -68,7 +67,6 @@ export default async function RobotDetailPage({ params }: PageProps) {
               pageDescription={robot.shortDescription}
               pagePath={`/robots/${robot.slug}`}
               comments={comments}
-              heading={uiCopy.comments.communityReports}
             />
           }
         />

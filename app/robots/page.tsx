@@ -31,8 +31,7 @@ export default async function RobotsPage({ searchParams }: PageProps) {
         </h1>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[#565f6b]">
           Compare specs, readiness scores, and availability across{" "}
-          {robots.length} tracked robots, from home companions to select
-          enterprise quadrupeds.
+          {robots.length} tracked home, companion, care, and personal robots.
         </p>
       </section>
 

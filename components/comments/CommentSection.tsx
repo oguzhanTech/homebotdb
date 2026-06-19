@@ -9,20 +9,15 @@ export function CommentSection({
   pageDescription,
   pagePath,
   comments,
-  heading,
 }: {
   target: CommentTarget;
   pageTitle: string;
   pageDescription: string;
   pagePath: string;
   comments: Comment[];
-  heading?: string;
 }) {
-  const resolvedHeading =
-    heading ??
-    (target.type === "news"
-      ? uiCopy.comments.heading
-      : uiCopy.comments.fieldReports);
+  const sectionLabel =
+    target.type === "news" ? "Comments" : uiCopy.robot.tabs.fieldReports;
   const jsonLd = buildDiscussionJsonLd({
     target,
     pagePath,
@@ -32,7 +27,11 @@ export function CommentSection({
   });
 
   return (
-    <section id="comments" aria-labelledby="comments-heading" className="min-w-0 scroll-mt-24">
+    <section
+      id="comments"
+      aria-label={sectionLabel}
+      className="min-w-0 scroll-mt-24"
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -42,7 +41,6 @@ export function CommentSection({
         initialComments={comments}
         target={target}
         pagePath={pagePath}
-        heading={resolvedHeading}
       />
     </section>
   );

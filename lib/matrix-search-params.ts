@@ -14,6 +14,8 @@ export interface MatrixFilters {
   sort: SortField;
   minPrice: string;
   maxPrice: string;
+  showDiscontinued: boolean;
+  showBuyNowOnly: boolean;
 }
 
 const AVAILABILITY_STATUSES: AvailabilityStatus[] = [
@@ -23,6 +25,7 @@ const AVAILABILITY_STATUSES: AvailabilityStatus[] = [
   "coming_soon",
   "prototype",
   "unavailable",
+  "discontinued",
   "unknown",
 ];
 
@@ -66,6 +69,8 @@ export function parseMatrixFilters(
       : (options?.defaultSort ?? "readiness"),
     minPrice: getParam(searchParams, "minPrice"),
     maxPrice: getParam(searchParams, "maxPrice"),
+    showDiscontinued: getParam(searchParams, "discontinued") === "1",
+    showBuyNowOnly: getParam(searchParams, "buyNow") === "1",
   };
 }
 
@@ -77,6 +82,9 @@ export function matrixFiltersToRobotFilters(filters: MatrixFilters) {
     query: filters.query,
     minPrice: filters.minPrice ? Number(filters.minPrice) : undefined,
     maxPrice: filters.maxPrice ? Number(filters.maxPrice) : undefined,
+    includeDiscontinued:
+      filters.showDiscontinued || filters.availability === "discontinued",
+    buyNowOnly: filters.showBuyNowOnly,
   };
 }
 
@@ -94,6 +102,8 @@ export function buildMatrixQueryString(
   if (includeSort) sp.set("sort", filters.sort);
   if (filters.minPrice) sp.set("minPrice", filters.minPrice);
   if (filters.maxPrice) sp.set("maxPrice", filters.maxPrice);
+  if (filters.showDiscontinued) sp.set("discontinued", "1");
+  if (filters.showBuyNowOnly) sp.set("buyNow", "1");
 
   return sp.toString();
 }

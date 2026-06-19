@@ -35,6 +35,7 @@ const commercialVariants: Record<CommercialStatus, string> = {
   coming_soon: "border-slate-300/80 bg-slate-50 text-slate-600",
   prototype: "border-blue/35 bg-blue-soft text-blue",
   limited: "border-amber-400/45 bg-amber-50 text-amber-800",
+  discontinued: "border-slate-400/70 bg-slate-100 text-slate-600",
   unknown: "border-line bg-[#f0f1f3] text-muted",
 };
 
@@ -45,6 +46,7 @@ const availabilityVariants: Record<AvailabilityStatus, string> = {
   coming_soon: "border-slate-300/80 bg-slate-50 text-slate-600",
   prototype: "border-blue/35 bg-blue-soft text-blue",
   unavailable: "border-rose-300/80 bg-rose-50 text-rose-700",
+  discontinued: "border-slate-400/70 bg-slate-100 text-slate-600",
   unknown: "border-line bg-[#f0f1f3] text-muted",
 };
 

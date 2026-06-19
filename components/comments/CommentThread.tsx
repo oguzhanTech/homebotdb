@@ -11,16 +11,12 @@ export function CommentThread({
   initialComments,
   target,
   pagePath,
-  heading,
 }: {
   initialComments: Comment[];
   target: CommentTarget;
   pagePath: string;
-  heading?: string;
 }) {
   const isNews = target.type === "news";
-  const resolvedHeading =
-    heading ?? (isNews ? uiCopy.comments.heading : uiCopy.comments.fieldReports);
   const [comments, setComments] = useState(initialComments);
 
   const { topLevel, repliesByParent } = useMemo(
@@ -34,23 +30,8 @@ export function CommentThread({
 
   return (
     <>
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <h2 id="comments-heading" className="text-lg font-bold tracking-tight">
-          {resolvedHeading}
-        </h2>
-        <p className="text-sm text-muted">
-          {comments.length === 0
-            ? isNews
-              ? uiCopy.comments.noCommentsYet
-              : uiCopy.comments.noFieldReportsYet
-            : isNews
-              ? uiCopy.comments.commentCount(comments.length)
-              : uiCopy.comments.reportCount(comments.length)}
-        </p>
-      </div>
-
       {topLevel.length > 0 ? (
-        <ol className="mt-6 grid gap-4" aria-label="Comment thread">
+        <ol className="grid gap-4" aria-label="Comment thread">
           {topLevel.map((comment) => (
             <li key={comment.id} className="min-w-0">
               <CommentArticle
@@ -64,7 +45,7 @@ export function CommentThread({
           ))}
         </ol>
       ) : (
-        <p className="mt-6 rounded-[18px] border border-dashed border-line px-4 py-8 text-center text-sm text-muted">
+        <p className="rounded-[18px] border border-dashed border-line px-4 py-8 text-center text-sm text-muted">
           {uiCopy.comments.emptyPrompt}
         </p>
       )}

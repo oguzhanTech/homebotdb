@@ -20,6 +20,7 @@ export type CommercialStatus =
   | "coming_soon"
   | "prototype"
   | "limited"
+  | "discontinued"
   | "unknown";
 
 export type AvailabilityStatus =
@@ -29,6 +30,7 @@ export type AvailabilityStatus =
   | "coming_soon"
   | "prototype"
   | "unavailable"
+  | "discontinued"
   | "unknown";
 
 export type DataStatus = "confirmed" | "unconfirmed" | "coming_soon";
@@ -125,6 +127,7 @@ export const COMMERCIAL_STATUS_LABELS: Record<CommercialStatus, string> = {
   coming_soon: "Coming Soon",
   prototype: "Prototype",
   limited: "Limited",
+  discontinued: "Discontinued",
   unknown: "Unknown",
 };
 
@@ -135,8 +138,13 @@ export const AVAILABILITY_STATUS_LABELS: Record<AvailabilityStatus, string> = {
   coming_soon: "Coming Soon",
   prototype: "Prototype",
   unavailable: "Unavailable",
+  discontinued: "Discontinued",
   unknown: "Unknown",
 };
+
+export function isDiscontinuedRobot(robot: Pick<Robot, "availabilityStatus">): boolean {
+  return robot.availabilityStatus === "discontinued";
+}
 
 export const ROBOT_TYPE_LABELS: Record<RobotType, string> = {
   humanoid: "Humanoid",

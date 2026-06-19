@@ -10,6 +10,7 @@ import { formatDate } from "@/lib/utils";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { AuthorCard } from "@/components/update/AuthorCard";
 import { MarkdownContent } from "@/components/update/MarkdownContent";
+import { UpdateContent } from "@/components/update/UpdateContent";
 import { ShareButtons } from "@/components/update/ShareButtons";
 import { SourceLink } from "@/components/update/SourceLink";
 import { UpdateExploreMore } from "@/components/update/UpdateExploreMore";
@@ -91,11 +92,7 @@ export function UpdateDetailArticle({
       {isNews ? (
         <MarkdownContent content={update.content} />
       ) : (
-        <div className="prose prose-sm mt-8 max-w-none">
-          <p className="text-[15px] leading-[1.7] text-[#4d5662]">
-            {update.content}
-          </p>
-        </div>
+        <UpdateContent content={update.content} />
       )}
 
       {robot && (

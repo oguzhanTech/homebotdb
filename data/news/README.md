@@ -48,6 +48,14 @@ Everything below the frontmatter is the article body. Use normal Markdown: headi
 - **Industrial or enterprise-only robots** (factory quadrupeds, lab reference rigs) usually get a **news article only**, not a new row in `data/robots.ts`, unless the team explicitly wants them in the home catalog.
 - Say clearly in **What this means for HomeBotRadar** when a robot is **not** being added.
 
+## Punctuation
+
+- **Default: no em dashes (`—`)** in news body, summary, or title.
+- Prefer a period, comma, colon, or parentheses instead of ` — `.
+- Do not chain em dashes in the same sentence or paragraph.
+- Before `npm run news:build`, search the `.md` file for `—` and rewrite each hit.
+- Full rules and examples: `.cursor/skills/homebotdb-ui-copy/SKILL.md` → **News and Radar Feed updates**.
+
 ## Output
 
 `scripts/build-news.mjs` writes `data/news.generated.json`. Do not edit that file by hand.

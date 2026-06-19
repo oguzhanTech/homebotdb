@@ -2,6 +2,8 @@ import { robots as mockRobots } from "@/data/robots";
 import newsArticles from "@/data/news.generated.json";
 import { updates as dataUpdates } from "@/data/updates";
 import { enrichRobotScores } from "@/lib/score";
+import { isPurchasable } from "@/lib/purchase";
+import { assertRobotCatalogConsistency } from "@/lib/validate-robot-catalog";
 import { parseBatteryHours } from "@/lib/utils";
 import type {
   AvailabilityStatus,
@@ -12,6 +14,7 @@ import type {
 import type { Update, UpdateType } from "@/types/update";
 
 const enrichedRobots = mockRobots.map(enrichRobotScores);
+assertRobotCatalogConsistency(enrichedRobots);
 
 export function getRobots(): Robot[] {
   return enrichedRobots;
@@ -116,6 +119,8 @@ export interface RobotFilters {
   minPrice?: number;
   maxPrice?: number;
   query?: string;
+  includeDiscontinued?: boolean;
+  buyNowOnly?: boolean;
 }
 
 function parsePrice(price: string): number | null {
@@ -125,6 +130,19 @@ function parsePrice(price: string): number | null {
 
 export function filterRobots(filters: RobotFilters): Robot[] {
   return enrichedRobots.filter((robot) => {
+    const hideDiscontinued =
+      !filters.includeDiscontinued &&
+      robot.availabilityStatus === "discontinued" &&
+      filters.availability !== "discontinued";
+
+    if (hideDiscontinued) {
+      return false;
+    }
+
+    if (filters.buyNowOnly && !isPurchasable(robot)) {
+      return false;
+    }
+
     if (filters.type && filters.type !== "all" && robot.type !== filters.type) {
       return false;
     }

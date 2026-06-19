@@ -108,7 +108,7 @@ export function CommentForm({
             autoComplete="username"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
-            placeholder="your_name"
+            placeholder={uiCopy.comments.usernamePlaceholder}
             required
             minLength={3}
             maxLength={40}

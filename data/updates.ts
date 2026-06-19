@@ -2,6 +2,54 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-025",
+    title: "Aeolus aeo added to the catalog",
+    slug: "aeolus-aeo-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "aeolus-aeo",
+    summary:
+      "Aeolus Robotics' dual-arm eldercare service robot joins HomeBotRadar with confirmed arm payload, RaaS deployment notes, and no consumer buy path.",
+    content:
+      "We added Aeolus aeo to HomeBotRadar. It is a dual-arm mobile service robot for eldercare, delivery, UV disinfection, and security patrols in hospitals and senior living sites.\n\nOur profile at /robots/aeolus-aeo covers the 7-DoF arms with 3.6 kg single-arm lift, elevator and door operation, fall-posture vision, and field use in Japan, Hong Kong, and Taipei. Aeolus sells through robot-as-a-service leases. There is no public MSRP or home preorder page.\n\nOpen /compare/aeolus-aeo-vs-elliq or /compare/aeolus-aeo-vs-mirokai to stack aeo against home elder-care companions. Browse /robots/elliq and /robots/tombot-jennie for buyable alternatives.",
+    coverImage: "/images/updates/aeolus-aeo-added-to-catalog.jpg",
+    sourceUrl: "https://www.aeolusbot.com/meet-aeo",
+    createdAt: "2026-06-19T16:00:00Z",
+    updatedAt: "2026-06-19T16:00:00Z",
+  },
+  {
+    id: "upd-024",
+    title: "Hello Robot Stretch 4 added to the catalog",
+    slug: "stretch-4-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "stretch-4",
+    summary:
+      "Hello Robot's open-source mobile manipulator joins HomeBotRadar with confirmed $29,950 pricing, 8-hour runtime, and a research-certified buy path.",
+    content:
+      "We added Hello Robot Stretch 4 to HomeBotRadar. It is a wheeled mobile manipulator with a telescoping arm, omnidirectional base, and sensor-rich navigation built for assistive home pilots and embodied-AI development.\n\nOur profile at /robots/stretch-4 covers official datasheet specs (160 cm height, 46 kg, 8 h battery, 2.5–4 kg payload) and the $29,950 purchase page at hello-robot.com. Hello Robot ships now but certifies Stretch 4 for laboratory and research use while in-home assistive pilots continue.\n\nOpen /compare/stretch-4-vs-reachy-2 for open manipulation research or /compare/stretch-4-vs-ebo-x for a rolling family guardian you can buy for home use today.",
+    coverImage: "/images/updates/stretch-4-added-to-catalog.jpg",
+    sourceUrl: "https://hello-robot.com/stretch-4/",
+    createdAt: "2026-06-19T15:30:00Z",
+    updatedAt: "2026-06-19T15:30:00Z",
+  },
+  {
+    id: "upd-023",
+    title: "Moxie discontinued — no new hardware sales",
+    slug: "moxie-discontinued-no-new-sales",
+    type: "availability_update",
+    authorId: "maya-chen",
+    robotSlug: "moxie",
+    summary:
+      "Moxie Robots confirms new Moxie units are permanently off the market; only Sunlight cloud support remains for existing owners.",
+    content:
+      "We rechecked Moxie Robots, Inc. on June 19, 2026. The company that took over after Embodied's 2024 shutdown still offers the paid Sunlight cloud plan for existing owners, but new Moxie hardware is not for sale and will not return to retail.\n\nWe updated /robots/moxie to set availability and market status to Discontinued. The profile stays in HomeBotRadar for owners researching support options and for shoppers comparing kid-focused companions that you can still buy.\n\nLast known retail was about $799 before Embodied shut down. Owners who keep a unit need the Sunlight subscription for cloud AI. Compare Moxie with EMO, Vector 2.0, or Loona if you want a companion robot with an active buy path today.",
+    coverImage: "/images/updates/moxie-discontinued-no-new-sales.jpg",
+    sourceUrl: "https://moxierobots.com/contact.html",
+    createdAt: "2026-06-19T14:00:00Z",
+    updatedAt: "2026-06-19T14:00:00Z",
+  },
+  {
     id: "upd-022",
     title: "Apptronik Apollo added to the catalog",
     slug: "apollo-added-to-catalog",
@@ -11,7 +59,7 @@ export const updates: Update[] = [
     summary:
       "Apptronik's NASA-heritage humanoid joins HomeBotRadar with confirmed size and payload specs, enterprise pilot notes, and no consumer buy path yet.",
     content:
-      "We added Apptronik Apollo to HomeBotRadar. It is a person-scale humanoid built for logistics and manufacturing first, with hot-swappable 4-hour battery packs and a 25 kg payload rating on Apptronik's product page.\n\nOur profile at /robots/apollo covers official dimensions (173 cm, 72.5 kg), NVIDIA Jetson and Project GR00T integration, and named enterprise pilots with Mercedes-Benz, GXO, and Jabil. Apptronik sells through contracts — there is no home preorder page or public MSRP today.\n\nCompare Apollo with Figure 02 or Unitree G1 if you are tracking which humanoids are moving from demo floors into real facilities.",
+      "We added Apptronik Apollo to HomeBotRadar. It is a person-scale humanoid built for logistics and manufacturing first, with hot-swappable 4-hour battery packs and a 25 kg payload rating on Apptronik's product page.\n\nOur profile at /robots/apollo covers official dimensions (173 cm, 72.5 kg), NVIDIA Jetson and Project GR00T integration, and named enterprise pilots with Mercedes-Benz, GXO, and Jabil. Apptronik sells through contracts. There is no home preorder page or public MSRP today.\n\nOpen /compare/apollo-vs-figure-02 or /compare/apollo-vs-unitree-g1 to see how Apollo stacks against other home-tracked humanoids.",
     coverImage: "/images/updates/apollo-added-to-catalog.jpg",
     sourceUrl: "https://apptronik.com/apollo",
     createdAt: "2026-06-18T12:00:00Z",

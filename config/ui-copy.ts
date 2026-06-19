@@ -28,6 +28,10 @@ export const uiCopy = {
     stayOnRadar: "Stay on Radar",
     viewFullProfile: "View Full Profile",
   },
+  matrix: {
+    showDiscontinued: "Show discontinued robots",
+    showBuyNowOnly: "For sale only",
+  },
   robot: {
     tabs: {
       overview: "Overview",
@@ -59,18 +63,10 @@ export const uiCopy = {
     lastSignal: "Last Signal",
   },
   comments: {
-    heading: "Comments",
     submitLabel: "Post comment",
-    noCommentsYet: "No comments yet",
-    commentCount: (count: number) =>
-      `${count} comment${count === 1 ? "" : "s"}`,
-    fieldReports: "Field Reports",
-    communityReports: "Community Reports",
     submitFieldReport: "Submit Field Report",
-    noFieldReportsYet: "No field reports yet",
-    reportCount: (count: number) =>
-      `${count} report${count === 1 ? "" : "s"}`,
     emptyPrompt: "Be the first to share a question or hands-on note.",
+    usernamePlaceholder: "How should your name appear?",
   },
   updates: {
     pageTitle: "Robot Updates",
@@ -93,5 +89,9 @@ export const uiCopy = {
   links: {
     robotCatalog: "Robot catalog",
     exploreMore: "Explore more",
+    featuredRobot: "Featured robot",
+    compareSideBySide: "Compare side by side",
+    relatedRobots: "Related robots",
+    moreOnSite: "More on HomeBotRadar",
   },
 } as const;

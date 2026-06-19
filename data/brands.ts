@@ -119,4 +119,16 @@ export const brands: Brand[] = [
     logo: "/brands/apptronik.png",
     aliases: ["Apptronik", "Apptronik Inc."],
   },
+  {
+    id: "hello-robot",
+    name: "Hello Robot",
+    logo: "/brands/hello-robot.png",
+    aliases: ["Hello Robot", "Hello Robot Inc."],
+  },
+  {
+    id: "aeolus-robotics",
+    name: "Aeolus Robotics",
+    logo: "/brands/aeolus-robotics.png",
+    aliases: ["Aeolus Robotics", "Aeolus"],
+  },
 ];
