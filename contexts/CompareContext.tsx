@@ -47,11 +47,18 @@ interface CompareContextValue {
 const CompareContext = createContext<CompareContextValue | null>(null);
 
 export function CompareProvider({ children }: { children: React.ReactNode }) {
-  const [slugs, setSlugs] = useState<string[]>(readStoredSlugs);
+  const [slugs, setSlugs] = useState<string[]>([]);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    setSlugs(readStoredSlugs());
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!ready) return;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(slugs));
-  }, [slugs]);
+  }, [slugs, ready]);
 
   const toggle = useCallback((slug: string) => {
     setSlugs((current) => {

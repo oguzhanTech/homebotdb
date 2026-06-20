@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-026",
+    title: "Blue Frog Robotics Buddy added to the catalog",
+    slug: "buddy-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "buddy",
+    summary:
+      "Blue Frog's emotional companion robot joins HomeBotRadar with confirmed size, battery, and distributor pricing for elder-care and education deployments.",
+    content:
+      "We added Blue Frog Robotics Buddy to HomeBotRadar. It is a wheeled emotional companion with an 8-inch expressive face, obstacle and cliff sensing, and apps for elder care, school telepresence, and inclusion.\n\nOur profile at /robots/buddy covers official distributor specs (56 cm height, 8 kg, 4–6 h battery, 2.5 km/h top speed) plus US list pricing around $4,890 through Wellbots. Blue Frog also sells PRO bundles from about €2,500 ex-tax with annual software and SDK subscriptions.\n\nOpen /compare/buddy-vs-elliq or /compare/buddy-vs-mirokai to compare Buddy with other elder-care and facility companions. Browse /robots/loona if you need a smaller conversational robot with a lower price band.",
+    coverImage: "/images/updates/buddy-added-to-catalog.jpg",
+    sourceUrl: "https://www.bluefrogrobotics.com/en/buddy-the-emotional-robot/",
+    createdAt: "2026-06-20T17:30:00Z",
+    updatedAt: "2026-06-20T17:30:00Z",
+  },
+  {
     id: "upd-025",
     title: "Aeolus aeo added to the catalog",
     slug: "aeolus-aeo-added-to-catalog",

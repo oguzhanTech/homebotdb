@@ -10,9 +10,11 @@ import {
 } from "@/types/robot";
 import { getWinningIndices } from "@/lib/compare-metrics";
 import { uiCopy } from "@/config/ui-copy";
-import { pickRobotImage } from "@/lib/robot-images";
 import { BrandLogo } from "@/components/brand/BrandLogo";
-import { RobotImagePlaceholder } from "./RobotImagePlaceholder";
+import {
+  CompareRobotThumb,
+  compareThumbSizes,
+} from "@/components/robot/CompareRobotThumb";
 import { DataValue } from "@/components/ui/DataValue";
 import { cn } from "@/lib/utils";
 
@@ -125,8 +127,6 @@ function CompareRobotHeader({
   robot: Robot;
   compact?: boolean;
 }) {
-  const image = pickRobotImage(robot, `${robot.slug}-compare-header`);
-
   if (compact) {
     return (
       <Link
@@ -148,18 +148,11 @@ function CompareRobotHeader({
       href={`/robots/${robot.slug}`}
       className="flex cursor-pointer items-center gap-3"
     >
-      <div className="h-20 w-[72px] shrink-0 overflow-hidden rounded-xl border border-line bg-gradient-to-b from-white to-[#eef1f4]">
-        {image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={image}
-            alt={robot.name}
-            className="h-full w-full object-contain object-bottom p-1.5"
-          />
-        ) : (
-          <RobotImagePlaceholder name={robot.name} className="h-full w-full" compact />
-        )}
-      </div>
+      <CompareRobotThumb
+        robot={robot}
+        seed={`${robot.slug}-compare-header`}
+        className={compareThumbSizes.header}
+      />
       <div className="min-w-0 text-left">
         <div className="font-bold uppercase tracking-wide">{robot.name}</div>
         <BrandLogo

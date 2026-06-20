@@ -24,11 +24,13 @@ export function PortalTooltip({
   label,
   children,
   className,
+  triggerClassName,
   sentenceCase = false,
 }: {
   label: string;
   children: React.ReactNode;
   className?: string;
+  triggerClassName?: string;
   sentenceCase?: boolean;
 }) {
   const [open, setOpen] = useState(false);
@@ -115,7 +117,7 @@ export function PortalTooltip({
       <span
         ref={triggerRef}
         tabIndex={0}
-        className="inline-flex"
+        className={cn("inline-flex", triggerClassName)}
         aria-describedby={open ? tooltipId : undefined}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}

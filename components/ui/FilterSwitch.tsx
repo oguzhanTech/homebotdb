@@ -1,3 +1,6 @@
+"use client";
+
+import { TruncatedTooltip } from "@/components/ui/TruncatedTooltip";
 import { cn } from "@/lib/utils";
 
 export function FilterSwitch({
@@ -46,14 +49,14 @@ export function FilterSwitch({
         />
       </span>
 
-      <span
+      <TruncatedTooltip
+        label={label}
+        containerClassName="min-w-0 flex-1"
         className={cn(
-          "min-w-0 flex-1 truncate text-[10px] font-bold uppercase tracking-[0.1em] transition-colors",
+          "text-[10px] font-bold uppercase tracking-[0.1em] transition-colors",
           checked ? "text-ink" : "text-[#5d6570] group-hover:text-[#3f4854]",
         )}
-      >
-        {label}
-      </span>
+      />
 
       <span
         aria-hidden

@@ -8,10 +8,9 @@ import { ROBOT_TYPE_LABELS } from "@/types/robot";
 import { useCompare } from "@/contexts/CompareContext";
 import { buildComparePath } from "@/lib/compare";
 import { getRobotsBySlugs } from "@/lib/data/repository";
-import { pickRobotImage } from "@/lib/robot-images";
+import { CompareRobotThumb, compareThumbSizes } from "@/components/robot/CompareRobotThumb";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { CompareToggleButton } from "@/components/robot/CompareToggleButton";
-import { RobotImagePlaceholder } from "@/components/robot/RobotImagePlaceholder";
 import { Button } from "@/components/ui/Button";
 import { SearchInput } from "@/components/ui/SearchInput";
 import { RobotTypeTag } from "@/components/ui/MatrixTag";
@@ -32,27 +31,7 @@ function RobotThumb({
   seed: string;
   className?: string;
 }) {
-  const image = pickRobotImage(robot, seed);
-
-  return (
-    <div
-      className={cn(
-        "relative shrink-0 overflow-hidden rounded-xl border border-line bg-gradient-to-b from-white to-[#eef1f4]",
-        className,
-      )}
-    >
-      {image ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={image}
-          alt={robot.name}
-          className="h-full w-full object-contain object-bottom p-1.5"
-        />
-      ) : (
-        <RobotImagePlaceholder name={robot.name} className="h-full w-full" compact />
-      )}
-    </div>
-  );
+  return <CompareRobotThumb robot={robot} seed={seed} className={className} />;
 }
 
 function CompareSelectionBar() {
@@ -84,7 +63,7 @@ function CompareSelectionBar() {
               key={robot.slug}
               className="flex items-center gap-2 rounded-xl border border-line bg-panel-strong py-1.5 pl-1.5 pr-2.5"
             >
-              <RobotThumb robot={robot} seed={`${robot.slug}-queue`} className="h-11 w-10" />
+              <RobotThumb robot={robot} seed={`${robot.slug}-queue`} className={compareThumbSizes.queue} />
               <span className="text-xs font-bold uppercase tracking-wide">{robot.name}</span>
               <button
                 type="button"
@@ -228,7 +207,7 @@ export function CompareLandingView({ robots }: { robots: Robot[] }) {
                 <RobotThumb
                   robot={robot}
                   seed={`${robot.slug}-compare-list`}
-                  className="h-20 w-[72px] sm:h-24 sm:w-20"
+                  className={compareThumbSizes.list}
                 />
                 <div className="min-w-0 flex-1">
                   <div className="font-bold uppercase tracking-wide">{robot.name}</div>
