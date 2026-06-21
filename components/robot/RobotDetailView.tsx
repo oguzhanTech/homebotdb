@@ -234,6 +234,7 @@ export function RobotDetailView({
                   fallback="Unknown"
                   priceStatus={robot.priceStatus}
                   dataStatus={robot.fieldMeta.price?.status}
+                  specNote={robot.fieldMeta.price?.note}
                 />
               }
             />

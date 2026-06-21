@@ -24,6 +24,10 @@ updatedAt: 2026-05-01T18:30:00Z            # optional — defaults to createdAt
 
 Everything below the frontmatter is the article body. Use normal Markdown: headings, links, lists, bold, **inline images**, etc.
 
+## Internal links
+
+When you mention a robot that is already in `data/robots.ts`, use its **catalog name** in prose (e.g. `LOVOT`, `Figure 02`, `Stretch 4`). The renderer auto-links those names to `/robots/{slug}`. See `.cursor/skills/homebotdb-ui-copy/SKILL.md` → **Internal links (news and Radar Feed)** for full rules. Do not link robots that are not in the catalog.
+
 ## Article length and SEO
 
 - **Do not ship ultra-thin news** (under ~250 words). Google and readers both need enough substance to index and trust the page.

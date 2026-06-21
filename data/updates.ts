@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-027",
+    title: "GROOVE X LOVOT added to the catalog",
+    slug: "lovot-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "lovot",
+    summary:
+      "GROOVE X's warm-bodied companion robot joins HomeBotRadar with confirmed LOVOT 3.0 specs, Japan store pricing, and mandatory LOVOT care subscription notes.",
+    content:
+      "We added GROOVE X LOVOT to HomeBotRadar. It is a wheeled emotional companion built for comfort and play, not chores. LOVOT rolls on omni wheels, maps your home, returns to its Nest dock, and develops personality through daily touch and voice interaction.\n\nOur LOVOT profile covers official LOVOT 3.0 specs (43 to 45 cm height, 4.6 kg without clothes, 30 to 45 minute active cycles, 1 to 2 km/h) plus list pricing around $3,850 for the body (¥577,500 on lovot.life) and mandatory LOVOT care from about $66 per month (¥9,900). GROOVE X sells through lovot.life in Japan. Overseas buyers typically use forwarding services such as BEX for LOVOT.\n\nOpen /compare/lovot-vs-aibo-ers1000 or /compare/lovot-vs-tombot-jennie to stack LOVOT against other premium companion pets. Browse Loona if you want a smaller buyable pet bot at a lower price band.",
+    coverImage: "/images/updates/lovot-added-to-catalog.jpg",
+    sourceUrl: "https://lovot.life/pricing",
+    createdAt: "2026-06-21T10:00:00Z",
+    updatedAt: "2026-06-21T10:00:00Z",
+  },
+  {
     id: "upd-026",
     title: "Blue Frog Robotics Buddy added to the catalog",
     slug: "buddy-added-to-catalog",
@@ -11,7 +27,7 @@ export const updates: Update[] = [
     summary:
       "Blue Frog's emotional companion robot joins HomeBotRadar with confirmed size, battery, and distributor pricing for elder-care and education deployments.",
     content:
-      "We added Blue Frog Robotics Buddy to HomeBotRadar. It is a wheeled emotional companion with an 8-inch expressive face, obstacle and cliff sensing, and apps for elder care, school telepresence, and inclusion.\n\nOur profile at /robots/buddy covers official distributor specs (56 cm height, 8 kg, 4–6 h battery, 2.5 km/h top speed) plus US list pricing around $4,890 through Wellbots. Blue Frog also sells PRO bundles from about €2,500 ex-tax with annual software and SDK subscriptions.\n\nOpen /compare/buddy-vs-elliq or /compare/buddy-vs-mirokai to compare Buddy with other elder-care and facility companions. Browse /robots/loona if you need a smaller conversational robot with a lower price band.",
+      "We added Blue Frog Robotics Buddy to HomeBotRadar. It is a wheeled emotional companion with an 8-inch expressive face, obstacle and cliff sensing, and apps for elder care, school telepresence, and inclusion.\n\nOur Buddy profile covers official distributor specs (56 cm height, 8 kg, 4–6 h battery, 2.5 km/h top speed) plus US list pricing around $4,890 through Wellbots. Blue Frog also sells PRO bundles from about €2,500 ex-tax with annual software and SDK subscriptions.\n\nOpen /compare/buddy-vs-elliq or /compare/buddy-vs-mirokai to compare Buddy with other elder-care and facility companions. Browse Loona if you need a smaller conversational robot with a lower price band.",
     coverImage: "/images/updates/buddy-added-to-catalog.jpg",
     sourceUrl: "https://www.bluefrogrobotics.com/en/buddy-the-emotional-robot/",
     createdAt: "2026-06-20T17:30:00Z",
@@ -27,7 +43,7 @@ export const updates: Update[] = [
     summary:
       "Aeolus Robotics' dual-arm eldercare service robot joins HomeBotRadar with confirmed arm payload, RaaS deployment notes, and no consumer buy path.",
     content:
-      "We added Aeolus aeo to HomeBotRadar. It is a dual-arm mobile service robot for eldercare, delivery, UV disinfection, and security patrols in hospitals and senior living sites.\n\nOur profile at /robots/aeolus-aeo covers the 7-DoF arms with 3.6 kg single-arm lift, elevator and door operation, fall-posture vision, and field use in Japan, Hong Kong, and Taipei. Aeolus sells through robot-as-a-service leases. There is no public MSRP or home preorder page.\n\nOpen /compare/aeolus-aeo-vs-elliq or /compare/aeolus-aeo-vs-mirokai to stack aeo against home elder-care companions. Browse /robots/elliq and /robots/tombot-jennie for buyable alternatives.",
+      "We added Aeolus aeo to HomeBotRadar. It is a dual-arm mobile service robot for eldercare, delivery, UV disinfection, and security patrols in hospitals and senior living sites.\n\nOur aeo profile covers the 7-DoF arms with 3.6 kg single-arm lift, elevator and door operation, fall-posture vision, and field use in Japan, Hong Kong, and Taipei. Aeolus sells through robot-as-a-service leases. There is no public MSRP or home preorder page.\n\nOpen /compare/aeolus-aeo-vs-elliq or /compare/aeolus-aeo-vs-mirokai to stack aeo against home elder-care companions. Browse ElliQ and Jennie for buyable alternatives.",
     coverImage: "/images/updates/aeolus-aeo-added-to-catalog.jpg",
     sourceUrl: "https://www.aeolusbot.com/meet-aeo",
     createdAt: "2026-06-19T16:00:00Z",
@@ -43,7 +59,7 @@ export const updates: Update[] = [
     summary:
       "Hello Robot's open-source mobile manipulator joins HomeBotRadar with confirmed $29,950 pricing, 8-hour runtime, and a research-certified buy path.",
     content:
-      "We added Hello Robot Stretch 4 to HomeBotRadar. It is a wheeled mobile manipulator with a telescoping arm, omnidirectional base, and sensor-rich navigation built for assistive home pilots and embodied-AI development.\n\nOur profile at /robots/stretch-4 covers official datasheet specs (160 cm height, 46 kg, 8 h battery, 2.5–4 kg payload) and the $29,950 purchase page at hello-robot.com. Hello Robot ships now but certifies Stretch 4 for laboratory and research use while in-home assistive pilots continue.\n\nOpen /compare/stretch-4-vs-reachy-2 for open manipulation research or /compare/stretch-4-vs-ebo-x for a rolling family guardian you can buy for home use today.",
+      "We added Hello Robot Stretch 4 to HomeBotRadar. It is a wheeled mobile manipulator with a telescoping arm, omnidirectional base, and sensor-rich navigation built for assistive home pilots and embodied-AI development.\n\nOur Stretch 4 profile covers official datasheet specs (160 cm height, 46 kg, 8 h battery, 2.5–4 kg payload) and the $29,950 purchase page at hello-robot.com. Hello Robot ships now but certifies Stretch 4 for laboratory and research use while in-home assistive pilots continue.\n\nOpen /compare/stretch-4-vs-reachy-2 for open manipulation research or /compare/stretch-4-vs-ebo-x for a rolling family guardian you can buy for home use today.",
     coverImage: "/images/updates/stretch-4-added-to-catalog.jpg",
     sourceUrl: "https://hello-robot.com/stretch-4/",
     createdAt: "2026-06-19T15:30:00Z",
@@ -59,7 +75,7 @@ export const updates: Update[] = [
     summary:
       "Moxie Robots confirms new Moxie units are permanently off the market; only Sunlight cloud support remains for existing owners.",
     content:
-      "We rechecked Moxie Robots, Inc. on June 19, 2026. The company that took over after Embodied's 2024 shutdown still offers the paid Sunlight cloud plan for existing owners, but new Moxie hardware is not for sale and will not return to retail.\n\nWe updated /robots/moxie to set availability and market status to Discontinued. The profile stays in HomeBotRadar for owners researching support options and for shoppers comparing kid-focused companions that you can still buy.\n\nLast known retail was about $799 before Embodied shut down. Owners who keep a unit need the Sunlight subscription for cloud AI. Compare Moxie with EMO, Vector 2.0, or Loona if you want a companion robot with an active buy path today.",
+      "We rechecked Moxie Robots, Inc. on June 19, 2026. The company that took over after Embodied's 2024 shutdown still offers the paid Sunlight cloud plan for existing owners, but new Moxie hardware is not for sale and will not return to retail.\n\nWe updated the Moxie profile to set availability and market status to Discontinued. The profile stays in HomeBotRadar for owners researching support options and for shoppers comparing kid-focused companions that you can still buy.\n\nLast known retail was about $799 before Embodied shut down. Owners who keep a unit need the Sunlight subscription for cloud AI. Compare Moxie with EMO, Vector 2.0, or Loona if you want a companion robot with an active buy path today.",
     coverImage: "/images/updates/moxie-discontinued-no-new-sales.jpg",
     sourceUrl: "https://moxierobots.com/contact.html",
     createdAt: "2026-06-19T14:00:00Z",

@@ -137,4 +137,10 @@ export const brands: Brand[] = [
     logo: "/brands/blue-frog-robotics.png",
     aliases: ["Blue Frog Robotics", "Blue Frog"],
   },
+  {
+    id: "groove-x",
+    name: "GROOVE X",
+    logo: "/brands/groove-x.png",
+    aliases: ["GROOVE X", "Groove X", "GX"],
+  },
 ];

@@ -1,5 +1,18 @@
-import { Children, isValidElement, type ReactNode } from "react";
+import Link from "next/link";
+import {
+  Children,
+  Fragment,
+  cloneElement,
+  isValidElement,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import ReactMarkdown from "react-markdown";
+import {
+  EXTERNAL_PROSE_LINK_CLASS,
+  INTERNAL_LINK_CLASS,
+  linkifyPlainText,
+} from "@/lib/content-internal-links";
 
 function MarkdownImage({ src, alt }: { src?: string | null; alt?: string | null }) {
   return (
@@ -26,6 +39,38 @@ function isImageParagraph(children: ReactNode) {
   );
 }
 
+function shouldLinkifyInside(child: ReactElement): boolean {
+  if (child.type === "a" || child.type === Link) return false;
+  if (child.type === MarkdownImage || child.type === "img") return false;
+  return true;
+}
+
+function LinkifyChildren({ children, keyPrefix }: { children: ReactNode; keyPrefix: string }) {
+  return Children.map(children, (child, index) => {
+    if (typeof child === "string") {
+      return (
+        <Fragment key={`${keyPrefix}-${index}`}>
+          {linkifyPlainText(child, `${keyPrefix}-${index}`)}
+        </Fragment>
+      );
+    }
+
+    if (isValidElement(child) && shouldLinkifyInside(child)) {
+      const element = child as ReactElement<{ children?: ReactNode }>;
+      return cloneElement(element, {
+        key: `${keyPrefix}-${index}`,
+        children: (
+          <LinkifyChildren keyPrefix={`${keyPrefix}-${index}`}>
+            {element.props.children}
+          </LinkifyChildren>
+        ),
+      });
+    }
+
+    return child;
+  });
+}
+
 export function MarkdownContent({ content }: { content: string }) {
   return (
     <div className="news-prose mt-8 max-w-none">
@@ -33,7 +78,7 @@ export function MarkdownContent({ content }: { content: string }) {
         components={{
           h2: ({ children }) => (
             <h2 className="mt-8 text-xl font-semibold tracking-tight text-[#2a3038] first:mt-0">
-              {children}
+              <LinkifyChildren keyPrefix="news-h2">{children}</LinkifyChildren>
             </h2>
           ),
           p: ({ children }) => {
@@ -42,7 +87,7 @@ export function MarkdownContent({ content }: { content: string }) {
             }
             return (
               <p className="mt-4 text-[15px] leading-[1.7] text-[#4d5662] first:mt-0">
-                {children}
+                <LinkifyChildren keyPrefix="news-p">{children}</LinkifyChildren>
               </p>
             );
           },
@@ -51,17 +96,31 @@ export function MarkdownContent({ content }: { content: string }) {
               {children}
             </ul>
           ),
-          li: ({ children }) => <li>{children}</li>,
-          a: ({ href, children }) => (
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold text-blue hover:underline"
-            >
-              {children}
-            </a>
+          li: ({ children }) => (
+            <li>
+              <LinkifyChildren keyPrefix="news-li">{children}</LinkifyChildren>
+            </li>
           ),
+          a: ({ href, children }) => {
+            if (href?.startsWith("/")) {
+              return (
+                <Link href={href} className={INTERNAL_LINK_CLASS}>
+                  {children}
+                </Link>
+              );
+            }
+
+            return (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={EXTERNAL_PROSE_LINK_CLASS}
+              >
+                {children}
+              </a>
+            );
+          },
           strong: ({ children }) => (
             <strong className="font-semibold text-[#2a3038]">{children}</strong>
           ),

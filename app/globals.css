@@ -118,6 +118,15 @@ button:disabled {
   resize: vertical;
 }
 
+.prose-internal-link {
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+strong .prose-internal-link {
+  color: var(--blue);
+}
+
 @keyframes avatar-preview-in {
   from {
     opacity: 0;

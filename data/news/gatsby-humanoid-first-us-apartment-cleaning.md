@@ -26,7 +26,7 @@ Founder **Aron Frishberg**, who left the University of Chicago to launch Gatsby 
 
 Unlike vendors racing to sell a $20,000-plus humanoid you store in a closet, Gatsby says it is building the **consumer distribution layer** on top of other makers' hardware. The company describes itself as **robot-agnostic**: it wants the booking app, navigation stack, and service ops, not a proprietary robot body locked to one supplier.
 
-That matters for HomeBotRadar readers tracking **Figure**, **1X**, **Unitree**, and similar platforms. Gatsby's bet is that the **service layer** (scheduling, liability, home entry, task templates) may arrive before most buyers want to own a humanoid outright.
+Gatsby's bet is that the **service layer** (scheduling, liability, home entry, task templates) may arrive before most buyers want to own a humanoid outright. That matters for HomeBotRadar readers tracking **Figure 02**, **NEO Gamma**, **Unitree G1**, and similar platforms.
 
 ## What we do not know yet
 
@@ -36,7 +36,7 @@ The service is **San Francisco only** today, with a waitlist for other cities. O
 
 ## What this means for HomeBotRadar
 
-**Gatsby is not joining the HomeBotRadar catalog.** We track home and companion **robots** with specs, scores, and buy paths we can verify. Gatsby is an **on-demand cleaning operator**, not a robot SKU you can compare row-for-row with Neo or 1X NEO.
+**Gatsby is not joining the HomeBotRadar catalog.** We track home and companion **robots** with specs, scores, and buy paths we can verify. Gatsby is an **on-demand cleaning operator**, not a robot SKU you can compare row-for-row with NEO Gamma or Unitree G1.
 
 The signal is still worth watching: consumer humanoids are starting to show up as **rented labor** inside real apartments, not only as factory demos or research rigs. If Gatsby or a partner later ships a named home humanoid with confirmed dimensions, pricing, and a consumer purchase link, we will evaluate that hardware on its own merits.
 

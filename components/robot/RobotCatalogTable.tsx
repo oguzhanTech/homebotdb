@@ -37,14 +37,21 @@ const COL = {
   price: "w-[8%]",
   dataStatus: "w-[9%]",
   availability: "w-[10%]",
-  primaryTask: "w-[9%]",
+  /** 15" laptops (xl–2xl): nudge +1% from Compare so tags clear the right edge. */
+  primaryTask: "w-[9%] max-2xl:w-[10%]",
   height: "w-[6%]",
   weight: "w-[6%]",
   video: "w-[5%]",
-  compare: "w-[10%]",
+  compare: "w-[10%] max-2xl:w-[9%]",
 } as const;
 
 const tagCell = cn(tdCell, "overflow-hidden");
+
+const primaryTaskCell = cn(
+  tagCell,
+  colXl,
+  "max-2xl:pl-2 max-2xl:pr-1",
+);
 
 function RobotRow({
   robot,
@@ -114,7 +121,7 @@ function RobotRow({
       <td className={tagCell}>
         <AvailabilityStatusTag status={robot.availabilityStatus} />
       </td>
-      <td className={cn(tagCell, colXl)}>
+      <td className={primaryTaskCell}>
         <PrimaryTaskTag task={robot.primaryTask} />
       </td>
       <td className={cn(tdCell, "font-mono text-[12px] xl:text-[13px]", col2xl)}>
@@ -176,7 +183,7 @@ export function RobotCatalogTable({
             <col className={cn(col2xlGroup, COL.height)} />
             <col className={cn(col2xlGroup, COL.weight)} />
             <col className={cn(col2xlGroup, COL.video)} />
-            <col className={COL.compare} style={{ minWidth: "7.5rem" }} />
+            <col className={cn(COL.compare, "min-w-[7.5rem] max-2xl:min-w-[6.75rem]")} />
           </colgroup>
           <thead>
             <tr className="border-b border-line bg-ink text-[10px] uppercase tracking-[0.12em] text-white">
@@ -186,7 +193,7 @@ export function RobotCatalogTable({
               <th className={thCell}>Price</th>
               <th className={cn(thCell, colXl)}>Data Status</th>
               <th className={thCell}>Availability</th>
-              <th className={cn(thCell, colXl)}>Primary Task</th>
+              <th className={cn(thCell, primaryTaskCell)}>Primary Task</th>
               <th className={cn(thCell, col2xl)}>Height</th>
               <th className={cn(thCell, col2xl)}>Weight</th>
               <th className={cn(thCell, "text-center", col2xl)}>Video</th>
