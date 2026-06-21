@@ -45,12 +45,20 @@ function shouldLinkifyInside(child: ReactElement): boolean {
   return true;
 }
 
-function LinkifyChildren({ children, keyPrefix }: { children: ReactNode; keyPrefix: string }) {
+function LinkifyChildren({
+  children,
+  keyPrefix,
+  usedHrefs,
+}: {
+  children: ReactNode;
+  keyPrefix: string;
+  usedHrefs: Set<string>;
+}) {
   return Children.map(children, (child, index) => {
     if (typeof child === "string") {
       return (
         <Fragment key={`${keyPrefix}-${index}`}>
-          {linkifyPlainText(child, `${keyPrefix}-${index}`)}
+          {linkifyPlainText(child, `${keyPrefix}-${index}`, usedHrefs)}
         </Fragment>
       );
     }
@@ -60,7 +68,10 @@ function LinkifyChildren({ children, keyPrefix }: { children: ReactNode; keyPref
       return cloneElement(element, {
         key: `${keyPrefix}-${index}`,
         children: (
-          <LinkifyChildren keyPrefix={`${keyPrefix}-${index}`}>
+          <LinkifyChildren
+            keyPrefix={`${keyPrefix}-${index}`}
+            usedHrefs={usedHrefs}
+          >
             {element.props.children}
           </LinkifyChildren>
         ),
@@ -72,13 +83,17 @@ function LinkifyChildren({ children, keyPrefix }: { children: ReactNode; keyPref
 }
 
 export function MarkdownContent({ content }: { content: string }) {
+  const usedHrefs = new Set<string>();
+
   return (
     <div className="news-prose mt-8 max-w-none">
       <ReactMarkdown
         components={{
           h2: ({ children }) => (
             <h2 className="mt-8 text-xl font-semibold tracking-tight text-[#2a3038] first:mt-0">
-              <LinkifyChildren keyPrefix="news-h2">{children}</LinkifyChildren>
+              <LinkifyChildren keyPrefix="news-h2" usedHrefs={usedHrefs}>
+                {children}
+              </LinkifyChildren>
             </h2>
           ),
           p: ({ children }) => {
@@ -87,7 +102,9 @@ export function MarkdownContent({ content }: { content: string }) {
             }
             return (
               <p className="mt-4 text-[15px] leading-[1.7] text-[#4d5662] first:mt-0">
-                <LinkifyChildren keyPrefix="news-p">{children}</LinkifyChildren>
+                <LinkifyChildren keyPrefix="news-p" usedHrefs={usedHrefs}>
+                  {children}
+                </LinkifyChildren>
               </p>
             );
           },
@@ -98,11 +115,20 @@ export function MarkdownContent({ content }: { content: string }) {
           ),
           li: ({ children }) => (
             <li>
-              <LinkifyChildren keyPrefix="news-li">{children}</LinkifyChildren>
+              <LinkifyChildren keyPrefix="news-li" usedHrefs={usedHrefs}>
+                {children}
+              </LinkifyChildren>
             </li>
           ),
           a: ({ href, children }) => {
             if (href?.startsWith("/")) {
+              if (usedHrefs.has(href)) {
+                return (
+                  <span className="font-semibold text-[#2a3038]">{children}</span>
+                );
+              }
+
+              usedHrefs.add(href);
               return (
                 <Link href={href} className={INTERNAL_LINK_CLASS}>
                   {children}

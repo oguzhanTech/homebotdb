@@ -138,33 +138,60 @@ function tryMatchAt(text: string, index: number): LinkSegment | null {
   return null;
 }
 
-export function segmentPlainText(text: string): Segment[] {
+function appendTextChar(segments: Segment[], char: string) {
+  const previous = segments.at(-1);
+  if (previous?.type === "text") {
+    previous.value += char;
+  } else {
+    segments.push({ type: "text", value: char });
+  }
+}
+
+function appendPlainText(segments: Segment[], value: string) {
+  if (!value) return;
+  const previous = segments.at(-1);
+  if (previous?.type === "text") {
+    previous.value += value;
+  } else {
+    segments.push({ type: "text", value });
+  }
+}
+
+export function segmentPlainText(
+  text: string,
+  usedHrefs?: Set<string>,
+): Segment[] {
   const segments: Segment[] = [];
   let index = 0;
 
   while (index < text.length) {
     const match = tryMatchAt(text, index);
     if (match) {
+      if (usedHrefs?.has(match.href)) {
+        appendPlainText(segments, text.slice(index, index + match.matchLength));
+        index += match.matchLength;
+        continue;
+      }
+
+      usedHrefs?.add(match.href);
       segments.push(match);
       index += match.matchLength;
       continue;
     }
 
-    const nextIndex = index + 1;
-    const previous = segments.at(-1);
-    if (previous?.type === "text") {
-      previous.value += text[index];
-    } else {
-      segments.push({ type: "text", value: text[index] ?? "" });
-    }
-    index = nextIndex;
+    appendTextChar(segments, text[index] ?? "");
+    index += 1;
   }
 
   return segments;
 }
 
-export function linkifyPlainText(text: string, keyPrefix: string): ReactNode[] {
-  return segmentPlainText(text).map((segment, index) => {
+export function linkifyPlainText(
+  text: string,
+  keyPrefix: string,
+  usedHrefs?: Set<string>,
+): ReactNode[] {
+  return segmentPlainText(text, usedHrefs).map((segment, index) => {
     if (segment.type === "text") {
       return <Fragment key={`${keyPrefix}-${index}`}>{segment.value}</Fragment>;
     }
