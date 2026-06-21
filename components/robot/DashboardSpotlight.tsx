@@ -1,13 +1,10 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { Robot } from "@/types/robot";
 import {
   PRIMARY_TASK_LABELS,
   ROBOT_TYPE_LABELS,
 } from "@/types/robot";
-import { getSessionSpotlightRobot, getSpotlightRobot } from "@/lib/random-robot";
+import { getSpotlightRobot } from "@/lib/random-robot";
 import { getPurchaseUrl } from "@/lib/purchase";
 import { getRobotHeroStatusLabel } from "@/lib/robot-status";
 import { getPrimaryRobotImage } from "@/lib/robot-images";
@@ -18,33 +15,6 @@ import { StatusPill } from "@/components/ui/Badge";
 import { MonoValue } from "@/components/ui/DataValue";
 import { DataValue } from "@/components/ui/DataValue";
 import { BuyNowLink, PrimaryLink } from "@/components/ui/PrimaryLink";
-
-function SpotlightSkeleton() {
-  return (
-    <div className="mt-3 animate-pulse overflow-hidden rounded-[18px] border border-line bg-panel/82 p-5 shadow-card sm:p-6">
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-stretch">
-        <div className="space-y-4">
-          <div className="h-6 w-32 rounded-lg bg-soft" />
-          <div className="h-10 w-56 max-w-full rounded-lg bg-soft" />
-          <div className="h-16 max-w-xl rounded-lg bg-soft" />
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <div key={index} className="h-16 rounded-xl bg-soft" />
-            ))}
-          </div>
-          <div className="h-10 w-48 rounded-xl bg-soft" />
-        </div>
-        <div className="flex w-full flex-col items-end gap-6 lg:justify-between lg:self-stretch">
-          <div className="h-[140px] w-[140px] self-center rounded-full bg-soft lg:self-auto" />
-          <div className="flex gap-3">
-            <div className="h-[72px] w-[108px] rounded-xl bg-soft" />
-            <div className="h-[72px] w-[108px] rounded-xl bg-soft" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function DashboardStats({
   robotCount,
@@ -76,14 +46,7 @@ function DashboardStats({
 }
 
 export function DashboardSpotlight({ robots }: { robots: Robot[] }) {
-  const [robot, setRobot] = useState<Robot | null>(() =>
-    robots.length > 0 ? getSpotlightRobot(robots) : null,
-  );
-
-  useEffect(() => {
-    if (robots.length === 0) return;
-    setRobot(getSessionSpotlightRobot(robots));
-  }, [robots]);
+  const robot = robots.length > 0 ? getSpotlightRobot(robots) : null;
 
   const avgReadiness =
     robots.length > 0
@@ -93,21 +56,19 @@ export function DashboardSpotlight({ robots }: { robots: Robot[] }) {
         )
       : 0;
 
+  if (!robot) return null;
+
   return (
     <section className="mb-8">
       <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
         {uiCopy.homepage.commandCenter}
       </div>
 
-      {!robot ? (
-        <SpotlightSkeleton />
-      ) : (
-        <SpotlightCard
-          robot={robot}
-          robotCount={robots.length}
-          avgReadiness={avgReadiness}
-        />
-      )}
+      <SpotlightCard
+        robot={robot}
+        robotCount={robots.length}
+        avgReadiness={avgReadiness}
+      />
     </section>
   );
 }
