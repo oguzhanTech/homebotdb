@@ -20,7 +20,7 @@ If the deal closes as reported, **SoftBank exits Boston Dynamics entirely**. Hyu
 
 At the contracted price, the $325 million payment implies a **roughly $3.4 billion** headline valuation for 100% of Boston Dynamics. Market chatter cited in Korean press runs much higher as **physical AI** and humanoid hype heat up, but the put mechanics appear to lock in the older formula rather than a fresh auction price.
 
-![Boston Dynamics Atlas in promotional imagery from the company's industrial humanoid lineup. Hyundai's full-ownership bid targets factory and logistics scale-up, not a home companion robot.](/images/news/Boston Dynamics-TRI_hero.jpg)
+![Boston Dynamics Atlas in promotional imagery from the company's industrial humanoid lineup. Hyundai's full-ownership bid targets factory and logistics scale-up, not a home companion robot.](/images/news/Boston_Dynamics-TRI_hero.jpg)
 
 ## Why Atlas matters more than Spot right now
 

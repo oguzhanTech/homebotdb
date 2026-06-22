@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-028",
+    title: "Misa added to the catalog",
+    slug: "misa-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "misa",
+    summary:
+      "Misa Robotics' wheeled family social robot joins HomeBotRadar with confirmed $399 list pricing, 7-inch display specs, and ChatGPT voice features on the official store.",
+    content:
+      "We added Misa to HomeBotRadar. It is a wheeled family social robot with a 7-inch face, Hey Misa voice wake, ChatGPT chat over Wi-Fi, and kid edutainment apps bundled in the box.\n\nOur Misa profile covers official specs from heymisa.com (28.5 cm height, 1.19 kg, 8 h talk time on a 10,000 mAh pack, drop and ultrasonic sensors) plus $399 list pricing on the official store. Promotional prices such as $199 appear on heymisa.com from time to time. Two karaoke microphones and Rooplay/Kidoz kid content ship in the box.\n\nOpen /compare/misa-vs-loona or /compare/misa-vs-emo-companion to stack Misa against other buyable family companions. Browse EBO X if you want a rolling home guardian with patrol alerts instead of karaoke and kid apps.",
+      coverImage: "/images/updates/misa-added-to-catalog.jpg",
+    sourceUrl: "https://www.heymisa.com/specifications/",
+    createdAt: "2026-06-22T14:00:00Z",
+    updatedAt: "2026-06-22T14:00:00Z",
+  },
+  {
     id: "upd-027",
     title: "GROOVE X LOVOT added to the catalog",
     slug: "lovot-added-to-catalog",
