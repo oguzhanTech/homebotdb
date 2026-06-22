@@ -31,6 +31,13 @@ export const uiCopy = {
   matrix: {
     showDiscontinued: "Show discontinued robots",
     showBuyNowOnly: "For sale only",
+    windowEyebrow: "Matrix scan",
+    prevWindow: "Prev scan",
+    nextWindow: "Next scan",
+    unitsRange: (start: number, end: number, total: number) =>
+      `Units ${String(start).padStart(2, "0")}–${String(end).padStart(2, "0")} of ${total}`,
+    windowLabel: (page: number, pageCount: number) =>
+      `Scan ${String(page).padStart(2, "0")}/${String(pageCount).padStart(2, "0")}`,
   },
   robot: {
     tabs: {
