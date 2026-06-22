@@ -2423,7 +2423,7 @@ export const robots: Robot[] = [
     slug: "misa",
     brand: "Misa Robotics",
     type: "mobile",
-    primaryTask: "education",
+    primaryTask: "entertainment",
     shortDescription:
       "Wheeled family social robot with a 7-inch face, Hey Misa voice control, ChatGPT chat, karaoke mics, and kid-safe edutainment apps.",
     longDescription:
@@ -2497,7 +2497,7 @@ export const robots: Robot[] = [
         url: "https://www.gadgetvoize.com/2021/03/02/review-misa-social-robot/",
       },
     ],
-    tags: ["MOBILE", "COMPANION", "EDUCATION", "BUY NOW"],
+    tags: ["MOBILE", "COMPANION", "ENTERTAINMENT", "BUY NOW"],
     degreesOfFreedom: "Limited (wheeled base, animated face)",
     unitId: "MIS-2026-001",
     fieldMeta: {
