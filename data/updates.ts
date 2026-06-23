@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-029",
+    title: "EngineAI PM01 added to the catalog",
+    slug: "pm01-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "pm01",
+    summary:
+      "EngineAI's open-source PM01 humanoid joins HomeBotRadar with confirmed 138 cm specs, 24 DoF education build, and ¥88,000 (~$12,000) China list pricing.",
+    content:
+      "We added EngineAI PM01 to HomeBotRadar. It is a compact open humanoid with a 320° waist joint, Jetson Orin NX dev stack on the education edition, and official training code for ROS, MuJoCo, and Isaac workflows.\n\nOur PM01 profile covers official specs from engineai.com.cn (138 to 140 cm height, ~40 to 42 kg, 23 to 24 DoF by trim, >2 m/s walk speed, 10,000 mAh quick-swap battery with ~2 h runtime). Launch list pricing was widely reported at ¥88,000 (~$12,000) in China. International resellers often quote higher bands.\n\nOpen /compare/pm01-vs-unitree-g1 or /compare/pm01-vs-figure-02 to stack PM01 against other sub-$20k humanoids. Browse NEO Gamma if you want a home-assistant humanoid with a US preorder path instead of a China-first dev platform.",
+    coverImage: "/images/updates/pm01-added-to-catalog.jpg",
+    sourceUrl: "https://www.engineai.com.cn/product-pm01.html",
+    createdAt: "2026-06-23T12:00:00Z",
+    updatedAt: "2026-06-23T12:00:00Z",
+  },
+  {
     id: "upd-028",
     title: "Misa added to the catalog",
     slug: "misa-added-to-catalog",
