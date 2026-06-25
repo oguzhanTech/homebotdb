@@ -2698,7 +2698,7 @@ export const robots: Robot[] = [
       "/images/ropet-kamomo/ropet-kamomo-gesture.png",
       "/images/ropet-kamomo/ropet-kamomo-eyes.png",
     ],
-    videoUrls: ["https://www.youtube.com/watch?v=nRqYQRBxp1A"],
+    videoUrls: ["https://www.youtube.com/watch?v=EFfJ3H2WzW0"],
     affiliateUrl: "https://ropetai.com/?ref=zfdinyqk",
     sourceUrls: [
       "https://ropetai.com/products/ropet%E2%84%A2-ai-comfort-companion-plush-robot",

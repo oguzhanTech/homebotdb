@@ -255,13 +255,6 @@ export function RobotDetailView({
               label={uiCopy.scores.confidenceScore}
               value={`${robot.dataConfidenceScore}%`}
             />
-            <Link
-              href={`/admin/robots/${robot.slug}/price-history`}
-              className="mt-2 flex h-[42px] items-center justify-between rounded-xl border border-line px-3.5 text-xs font-bold uppercase tracking-[0.12em]"
-            >
-              <span>⌁ Price History</span>
-              <span>›</span>
-            </Link>
           </Card>
 
           <Card className="p-3.5">
