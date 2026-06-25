@@ -53,17 +53,32 @@ export function SidebarContent({
                 href={item.href}
                 onClick={onNavigate}
                 className={cn(
-                  "relative flex h-11 cursor-pointer items-center gap-3.5 rounded-2xl px-2.5 text-[13px] font-semibold uppercase tracking-wider text-[#4d5561] transition-colors",
-                  active && "bg-blue/[0.06] text-ink",
+                  "relative flex h-11 cursor-pointer items-center gap-3.5 rounded-2xl px-2.5 text-[13px] font-semibold uppercase tracking-wider",
+                  isMobile
+                    ? cn(
+                        "text-[#4d5561] transition-colors",
+                        active && "bg-blue/[0.06] text-ink",
+                      )
+                    : cn(
+                        "sidebar-nav-item text-[#4d5561]",
+                        active && "sidebar-nav-item--active text-ink",
+                      ),
                 )}
               >
-                <span className="w-[18px] text-center text-[15px]">{item.icon}</span>
+                <span
+                  className={cn(
+                    "w-[18px] text-center text-[15px]",
+                    !isMobile && "sidebar-nav-icon",
+                  )}
+                >
+                  {item.icon}
+                </span>
                 {item.label}
                 {active && (
                   <span
                     className={cn(
                       "absolute h-1.5 w-1.5 rounded-full bg-blue",
-                      isMobile ? "-left-4" : "-right-4",
+                      isMobile ? "-left-4" : "-right-4 sidebar-nav-target",
                     )}
                   />
                 )}

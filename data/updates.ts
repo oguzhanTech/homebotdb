@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-030",
+    title: "Ropet KAMOMO added to the catalog",
+    slug: "ropet-kamomo-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "ropet-kamomo",
+    summary:
+      "Ropet AI's plush desktop KAMOMO companion joins HomeBotRadar with confirmed $349 Pro pricing, 2.5 to 3.5 h battery, and ChatGPT chat over Wi-Fi.",
+    content:
+      "We added Ropet KAMOMO to HomeBotRadar. It is a desk-sized AI pet with a nose camera, capacitive touch, evolving personality archetypes, and optional ChatGPT conversation when Wi-Fi is on.\n\nOur Ropet KAMOMO profile covers official specs from ropetai.com (about 14 cm tall, 600 g, 2.5 to 3.5 h battery, 1 to 2 h charge, KAMOMO Pro at $349 with fur bundles from $339 during promos). Ropet ships to the US and Canada with a 30-day return policy and 1-year warranty.\n\nUse coupon code ETERNALEGENDS at checkout on ropetai.com for $8 off through our affiliate link. Open /compare/ropet-kamomo-vs-loona or /compare/ropet-kamomo-vs-emo-companion to stack Ropet against other buyable companions. Browse LOVOT if you want a warm-bodied mobile pet at a premium price band.",
+    coverImage: "/images/updates/ropet-kamomo-added-to-catalog.jpg",
+    sourceUrl: "https://ropetai.com/products/ropet%E2%84%A2-ai-comfort-companion-plush-robot",
+    createdAt: "2026-06-24T14:00:00Z",
+    updatedAt: "2026-06-24T14:00:00Z",
+  },
+  {
     id: "upd-029",
     title: "EngineAI PM01 added to the catalog",
     slug: "pm01-added-to-catalog",

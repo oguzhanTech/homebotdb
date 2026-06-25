@@ -155,4 +155,10 @@ export const brands: Brand[] = [
     logo: "/brands/engineai.png",
     aliases: ["EngineAI", "ENGINEAI", "Engine AI", "Shenzhen EngineAI Robotics"],
   },
+  {
+    id: "ropet-ai",
+    name: "Ropet AI",
+    logo: "/brands/ropet-ai.png",
+    aliases: ["Ropet AI", "Ropet", "ROPET", "Ropet CO.LTD"],
+  },
 ];
