@@ -8,6 +8,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import { getRobotsBySlugs } from "@/lib/data/repository";
 
 const STORAGE_KEY = "homebotradar-favorites";
 const LEGACY_STORAGE_KEY = "homebotdb-favorites";
@@ -30,17 +31,27 @@ function readStoredFavorites(): string[] {
 interface FavoritesContextValue {
   slugs: string[];
   toggle: (slug: string) => void;
+  remove: (slug: string) => void;
+  clear: () => void;
   isFavorite: (slug: string) => boolean;
+  count: number;
 }
 
 const FavoritesContext = createContext<FavoritesContextValue | null>(null);
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
-  const [slugs, setSlugs] = useState<string[]>(readStoredFavorites);
+  const [slugs, setSlugs] = useState<string[]>([]);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    setSlugs(readStoredFavorites());
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!ready) return;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(slugs));
-  }, [slugs]);
+  }, [slugs, ready]);
 
   const toggle = useCallback((slug: string) => {
     setSlugs((current) =>
@@ -50,14 +61,23 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
     );
   }, []);
 
-  const value = useMemo(
-    () => ({
-      slugs,
+  const remove = useCallback((slug: string) => {
+    setSlugs((current) => current.filter((s) => s !== slug));
+  }, []);
+
+  const clear = useCallback(() => setSlugs([]), []);
+
+  const value = useMemo<FavoritesContextValue>(() => {
+    const validSlugs = getRobotsBySlugs(slugs).map((r) => r.slug);
+    return {
+      slugs: validSlugs,
       toggle,
-      isFavorite: (slug: string) => slugs.includes(slug),
-    }),
-    [slugs, toggle],
-  );
+      remove,
+      clear,
+      isFavorite: (slug: string) => validSlugs.includes(slug),
+      count: validSlugs.length,
+    };
+  }, [slugs, toggle, remove, clear]);
 
   return (
     <FavoritesContext.Provider value={value}>

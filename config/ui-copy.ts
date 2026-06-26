@@ -14,6 +14,7 @@ export const uiCopy = {
     radarFeed: "◎",
     news: "✎",
     robotMatchmaker: "◈",
+    tracked: "♥",
   },
   sidebar: {
     freshnessScore: "Data Freshness",
@@ -88,10 +89,26 @@ export const uiCopy = {
   compare: {
     eyebrow: "Compare",
   },
+  tracked: {
+    eyebrow: "Tracked",
+    pageTitle: "Your tracked robots",
+    pageLead:
+      "Robots you mark with Track Robot on any profile. Saved in this browser only.",
+    emptyTitle: "No robots on your radar yet",
+    emptyLead:
+      "Open any robot profile and tap Track Robot. Your list stays on this device.",
+    browseRobots: "Browse robots",
+    clearAll: "Clear all",
+    localNote:
+      "Tracked robots are stored locally in your browser. Clearing site data removes them.",
+    viewProfile: "View profile",
+    untrack: "Untrack",
+  },
   search: {
     ariaLabel: "Search robots, news, and radar feed",
     sectionNewsAndRadar: "News & Radar Feed",
     compareRobots: "Compare robots",
+    trackedRobots: "Tracked robots",
   },
   links: {
     robotCatalog: "Robot catalog",

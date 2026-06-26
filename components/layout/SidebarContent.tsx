@@ -8,6 +8,7 @@ import { ScoreBar } from "@/components/ui/ScoreBar";
 import { formatDate } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import { isNavItemActive, navItems } from "./nav-config";
+import { useFavorites } from "@/contexts/FavoritesContext";
 
 export function SidebarContent({
   freshnessScore,
@@ -22,6 +23,8 @@ export function SidebarContent({
 }) {
   const pathname = usePathname();
   const isMobile = variant === "mobile";
+  const { count: trackedCount } = useFavorites();
+  const trackedActive = pathname === "/tracked";
 
   return (
     <>
@@ -85,6 +88,48 @@ export function SidebarContent({
               </Link>
             );
           })}
+          {!isMobile ? (
+            <Link
+              href="/tracked"
+              onClick={onNavigate}
+              className={cn(
+                "sidebar-nav-item relative mt-1 flex h-11 cursor-pointer items-center gap-3.5 rounded-2xl px-2.5 text-[13px] font-semibold uppercase tracking-wider text-[#4d5561]",
+                trackedActive && "sidebar-nav-item--active text-ink",
+              )}
+            >
+              <span className="sidebar-nav-icon w-[18px] text-center text-[15px]">
+                {uiCopy.navIcons.tracked}
+              </span>
+              <span className="min-w-0 flex-1">{uiCopy.tracked.eyebrow}</span>
+              {trackedCount > 0 ? (
+                <span className="font-mono text-[11px] font-bold text-blue">
+                  {trackedCount}
+                </span>
+              ) : null}
+              {trackedActive ? (
+                <span className="sidebar-nav-target absolute -right-4 h-1.5 w-1.5 rounded-full bg-blue" />
+              ) : null}
+            </Link>
+          ) : (
+            <Link
+              href="/tracked"
+              onClick={onNavigate}
+              className={cn(
+                "relative mt-1 flex h-11 cursor-pointer items-center gap-3.5 rounded-2xl px-2.5 text-[13px] font-semibold uppercase tracking-wider text-[#4d5561] transition-colors",
+                trackedActive && "bg-blue/[0.06] text-ink",
+              )}
+            >
+              <span className="w-[18px] text-center text-[15px]">
+                {uiCopy.navIcons.tracked}
+              </span>
+              {uiCopy.tracked.eyebrow}
+              {trackedCount > 0 ? (
+                <span className="ml-auto font-mono text-[11px] font-bold text-blue">
+                  {trackedCount}
+                </span>
+              ) : null}
+            </Link>
+          )}
         </nav>
       </div>
 

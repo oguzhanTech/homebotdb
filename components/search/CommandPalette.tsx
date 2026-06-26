@@ -155,6 +155,9 @@ export function CommandPalette() {
             <Link href="/compare" onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-sm hover:bg-blue-soft">
               {uiCopy.search.compareRobots}
             </Link>
+            <Link href="/tracked" onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-sm hover:bg-blue-soft">
+              {uiCopy.search.trackedRobots}
+            </Link>
             <Link href="/wizard" onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-sm hover:bg-blue-soft">
               {uiCopy.nav.robotMatchmaker}
             </Link>
