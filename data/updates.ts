@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-031",
+    title: "Romi added to the catalog",
+    slug: "romi-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "romi",
+    summary:
+      "MIXI's Lacatan-model Romi joins HomeBotRadar with confirmed ¥98,780 pricing, ~3 h battery, vision sharing, and required ¥1,958/mo cloud subscription in Japan.",
+    content:
+      "We added Romi to HomeBotRadar. It is MIXI's palm-sized conversational AI robot. The Lacatan model generates natural Japanese dialogue, shares what its 120° camera sees, and builds long-term memory of daily moments with owners.\n\nOur Romi profile covers official specs from romi.ai and MIXI press releases (10 × 11.2 × 11.1 cm, ~400 g, 2.4-inch face, quad-core 1.6 GHz CPU, 2875 mAh battery with ~180 min runtime). Hardware lists at ¥98,780 tax included with a required cloud plan at ¥1,958 per month or ¥19,580 per year. General sales began July 25, 2025 at shop.romi.ai and about 40 Japanese electronics retailers.\n\nOpen /compare/romi-vs-emo-companion or /compare/romi-vs-lovot to stack Romi against other conversation-first companions. Browse ElliQ if you want a plug-in elder-care desk robot with an English US membership path instead of a Japanese cloud companion.",
+    coverImage: "/images/updates/romi-added-to-catalog.jpg",
+    sourceUrl: "https://romi.ai/lp/lacatan/en/",
+    createdAt: "2026-06-26T12:00:00Z",
+    updatedAt: "2026-06-26T12:00:00Z",
+  },
+  {
     id: "upd-030",
     title: "Ropet KAMOMO added to the catalog",
     slug: "ropet-kamomo-added-to-catalog",

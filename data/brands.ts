@@ -161,4 +161,10 @@ export const brands: Brand[] = [
     logo: "/brands/ropet-ai.png",
     aliases: ["Ropet AI", "Ropet", "ROPET", "Ropet CO.LTD"],
   },
+  {
+    id: "mixi",
+    name: "MIXI",
+    logo: "/brands/mixi.png",
+    aliases: ["MIXI", "MIXI Inc.", "株式会社MIXI"],
+  },
 ];
