@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-032",
+    title: "Reachy Mini added to the catalog",
+    slug: "reachy-mini-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "reachy-mini",
+    summary:
+      "Pollen Robotics and Hugging Face's open-source Reachy Mini desk kit joins HomeBotRadar with $299 Lite and $449 Wireless pricing, 9-DoF head, and Python plus HF Spaces app ecosystem.",
+    content:
+      "We added Reachy Mini to HomeBotRadar. It is an open-source desk robot kit from Pollen Robotics and Hugging Face. You assemble it in about two to three hours, then drive a 6-DoF head, spinning body, and animated antennas with Python or one-click Hugging Face Spaces apps.\n\nOur Reachy Mini profile covers official specs from pollen-robotics.com and Hugging Face hardware docs (28 cm tall, ~1.5 kg wireless, 120° 12MP camera, four-mic array, Raspberry Pi CM4 on the $449 wireless SKU, USB-tethered $299 Lite). Software is Apache 2.0 with a web dashboard, MuJoCo simulation, and 15+ launch behaviors.\n\nOpen /compare/reachy-mini-vs-reachy-2 or /compare/reachy-mini-vs-emo-companion to stack Reachy Mini against the lab humanoid or finished desk companions. Browse Vector 2.0 if you want a smaller plug-and-play pet bot without a kit build step.",
+    coverImage: "/images/updates/reachy-mini-added-to-catalog.png",
+    sourceUrl: "https://www.pollen-robotics.com/reachy-mini/",
+    createdAt: "2026-06-28T14:00:00Z",
+    updatedAt: "2026-06-28T14:00:00Z",
+  },
+  {
     id: "upd-031",
     title: "Romi added to the catalog",
     slug: "romi-added-to-catalog",
@@ -9,9 +25,9 @@ export const updates: Update[] = [
     authorId: "maya-chen",
     robotSlug: "romi",
     summary:
-      "MIXI's Lacatan-model Romi joins HomeBotRadar with confirmed ¥98,780 pricing, ~3 h battery, vision sharing, and required ¥1,958/mo cloud subscription in Japan.",
+      "MIXI's Lacatan-model Romi joins HomeBotRadar with confirmed $658 pricing (~¥98,780), ~3 h battery, vision sharing, and required ~$13/mo cloud subscription in Japan.",
     content:
-      "We added Romi to HomeBotRadar. It is MIXI's palm-sized conversational AI robot. The Lacatan model generates natural Japanese dialogue, shares what its 120° camera sees, and builds long-term memory of daily moments with owners.\n\nOur Romi profile covers official specs from romi.ai and MIXI press releases (10 × 11.2 × 11.1 cm, ~400 g, 2.4-inch face, quad-core 1.6 GHz CPU, 2875 mAh battery with ~180 min runtime). Hardware lists at ¥98,780 tax included with a required cloud plan at ¥1,958 per month or ¥19,580 per year. General sales began July 25, 2025 at shop.romi.ai and about 40 Japanese electronics retailers.\n\nOpen /compare/romi-vs-emo-companion or /compare/romi-vs-lovot to stack Romi against other conversation-first companions. Browse ElliQ if you want a plug-in elder-care desk robot with an English US membership path instead of a Japanese cloud companion.",
+      "We added Romi to HomeBotRadar. It is MIXI's palm-sized conversational AI robot. The Lacatan model generates natural Japanese dialogue, shares what its 120° camera sees, and builds long-term memory of daily moments with owners.\n\nOur Romi profile covers official specs from romi.ai and MIXI press releases (10 × 11.2 × 11.1 cm, ~400 g, 2.4-inch face, quad-core 1.6 GHz CPU, 2875 mAh battery with ~180 min runtime). Hardware lists at about $658 (¥98,780 tax included) with a required cloud plan at ~$13 per month or ~$131 per year. General sales began July 25, 2025 at shop.romi.ai and about 40 Japanese electronics retailers.\n\nOpen /compare/romi-vs-emo-companion or /compare/romi-vs-lovot to stack Romi against other conversation-first companions. Browse ElliQ if you want a plug-in elder-care desk robot with an English US membership path instead of a Japanese cloud companion.",
     coverImage: "/images/updates/romi-added-to-catalog.jpg",
     sourceUrl: "https://romi.ai/lp/lacatan/en/",
     createdAt: "2026-06-26T12:00:00Z",
