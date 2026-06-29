@@ -36,7 +36,18 @@ function asciiFold(value: string): string {
 }
 
 function robotNamePattern(name: string): RegExp {
-  return new RegExp(`(?<![A-Za-z0-9_/])${escapeRegex(name)}(?![A-Za-z0-9])`, "i");
+  return new RegExp(`${escapeRegex(name)}`, "i");
+}
+
+function hasValidRobotNameBoundaries(
+  text: string,
+  start: number,
+  length: number,
+): boolean {
+  const before = start > 0 ? text[start - 1]! : "";
+  const after =
+    start + length < text.length ? text[start + length]! : "";
+  return !/[A-Za-z0-9_/]/.test(before) && !/[A-Za-z0-9]/.test(after);
 }
 
 function buildRobotMatchers(): RobotMatcher[] {
@@ -126,11 +137,16 @@ function tryMatchAt(text: string, index: number): LinkSegment | null {
   for (const matcher of getRobotMatchers()) {
     const robotMatch = rest.match(matcher.pattern);
     if (robotMatch?.index === 0) {
+      const matchLength = robotMatch[0].length;
+      if (!hasValidRobotNameBoundaries(text, index, matchLength)) {
+        continue;
+      }
+
       return {
         type: "link",
         href: matcher.href,
         label: robotMatch[0],
-        matchLength: robotMatch[0].length,
+        matchLength,
       };
     }
   }

@@ -13,6 +13,8 @@ import {
   INTERNAL_LINK_CLASS,
   linkifyPlainText,
 } from "@/lib/content-internal-links";
+import { isEmbeddableVideo } from "@/lib/video";
+import { NewsYouTubeEmbed } from "@/components/update/NewsYouTubeEmbed";
 
 function MarkdownImage({ src, alt }: { src?: string | null; alt?: string | null }) {
   return (
@@ -37,6 +39,40 @@ function isImageParagraph(children: ReactNode) {
     isValidElement(items[0]) &&
     items[0].type === MarkdownImage
   );
+}
+
+function extractText(node: ReactNode): string {
+  if (typeof node === "string") return node;
+  if (Array.isArray(node)) return node.map(extractText).join("");
+  if (isValidElement<{ children?: ReactNode }>(node)) {
+    return extractText(node.props.children);
+  }
+  return "";
+}
+
+function getYouTubeEmbedFromParagraph(
+  children: ReactNode,
+): { url: string; caption?: string } | null {
+  const items = Children.toArray(children);
+  if (items.length !== 1) return null;
+
+  const child = items[0];
+  if (typeof child === "string") {
+    const url = child.trim();
+    return isEmbeddableVideo(url) ? { url } : null;
+  }
+
+  if (!isValidElement<{ href?: string; children?: ReactNode }>(child)) {
+    return null;
+  }
+
+  const href = child.props.href;
+  if (typeof href !== "string" || !isEmbeddableVideo(href)) {
+    return null;
+  }
+
+  const caption = extractText(child.props.children).trim();
+  return { url: href, caption: caption || undefined };
 }
 
 function shouldLinkifyInside(child: ReactElement): boolean {
@@ -100,6 +136,17 @@ export function MarkdownContent({ content }: { content: string }) {
             if (isImageParagraph(children)) {
               return <>{children}</>;
             }
+
+            const youtube = getYouTubeEmbedFromParagraph(children);
+            if (youtube) {
+              return (
+                <NewsYouTubeEmbed
+                  url={youtube.url}
+                  caption={youtube.caption}
+                />
+              );
+            }
+
             return (
               <p className="mt-4 text-[15px] leading-[1.7] text-[#4d5662] first:mt-0">
                 <LinkifyChildren keyPrefix="news-p" usedHrefs={usedHrefs}>
