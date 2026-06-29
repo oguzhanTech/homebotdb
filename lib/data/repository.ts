@@ -128,7 +128,71 @@ function parsePrice(price: string): number | null {
   return match ? parseInt(match[1], 10) : null;
 }
 
+function tokenizeSearchText(text: string): string[] {
+  return text.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+}
+
+function buildRobotSearchIndex(robot: Robot) {
+  const slugWords = robot.slug.replace(/-/g, " ");
+  const primaryText = `${robot.name} ${robot.brand} ${slugWords}`;
+  const capabilityNames = robot.capabilities.map((cap) => cap.name).join(" ");
+  const secondaryText = `${robot.shortDescription} ${robot.tags.join(" ")} ${robot.primaryTask} ${capabilityNames}`;
+
+  return {
+    primaryWords: tokenizeSearchText(primaryText),
+    secondaryWords: tokenizeSearchText(secondaryText),
+    priceValue: parsePrice(robot.price),
+  };
+}
+
+function matchSearchTerm(
+  term: string,
+  primaryWords: string[],
+  secondaryWords: string[],
+): boolean {
+  if (term.length >= 2) {
+    const primaryHit = primaryWords.some(
+      (word) => word === term || word.startsWith(term),
+    );
+    if (primaryHit) return true;
+  } else if (primaryWords.some((word) => word === term)) {
+    return true;
+  }
+
+  if (term.length <= 3) {
+    return secondaryWords.some((word) => word === term);
+  }
+
+  return secondaryWords.some(
+    (word) => word === term || word.startsWith(term),
+  );
+}
+
+export function matchesRobotSearchQuery(
+  primaryWords: string[],
+  secondaryWords: string[],
+  query: string,
+): boolean {
+  const terms = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  if (terms.length === 0) return true;
+
+  return terms.every((term) =>
+    matchSearchTerm(term, primaryWords, secondaryWords),
+  );
+}
+
+const robotFilterIndex = new Map(
+  enrichedRobots.map((robot) => [
+    robot.slug,
+    buildRobotSearchIndex(robot),
+  ]),
+);
+
 export function filterRobots(filters: RobotFilters): Robot[] {
+  const query = filters.query?.trim().toLowerCase() ?? "";
+  const hasPriceFilter =
+    filters.minPrice != null || filters.maxPrice != null;
+
   return enrichedRobots.filter((robot) => {
     const hideDiscontinued =
       !filters.includeDiscontinued &&
@@ -160,17 +224,23 @@ export function filterRobots(filters: RobotFilters): Robot[] {
     ) {
       return false;
     }
-    if (filters.query) {
-      const q = filters.query.toLowerCase();
-      const capabilityNames = robot.capabilities.map((cap) => cap.name).join(" ");
-      const haystack =
-        `${robot.name} ${robot.brand} ${robot.shortDescription} ${robot.tags.join(" ")} ${robot.primaryTask} ${capabilityNames}`.toLowerCase();
-      if (!haystack.includes(q)) return false;
+
+    const index = robotFilterIndex.get(robot.slug);
+    if (!index) return false;
+
+    if (
+      query &&
+      !matchesRobotSearchQuery(
+        index.primaryWords,
+        index.secondaryWords,
+        query,
+      )
+    ) {
+      return false;
     }
-    const hasPriceFilter =
-      filters.minPrice != null || filters.maxPrice != null;
+
     if (hasPriceFilter) {
-      const price = parsePrice(robot.price);
+      const price = index.priceValue;
       if (price == null) {
         return false;
       }

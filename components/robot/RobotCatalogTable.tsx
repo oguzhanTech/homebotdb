@@ -16,6 +16,11 @@ import {
   PrimaryTaskTag,
   RobotTypeTag,
 } from "@/components/ui/MatrixTag";
+import {
+  matrixRowDelayStyle,
+  matrixRowEnterClass,
+  type MatrixTransitionDirection,
+} from "@/lib/matrix-row-transition";
 import { cn, formatDate } from "@/lib/utils";
 
 /** Secondary columns — visible from xl (1280px). */
@@ -57,13 +62,27 @@ function RobotRow({
   robot,
   maxBatteryHours,
   showBrandInTable,
+  rowIndex,
+  transitionSignal,
+  transitionDirection,
 }: {
   robot: Robot;
   maxBatteryHours: number;
   showBrandInTable: boolean;
+  rowIndex: number;
+  transitionSignal: number;
+  transitionDirection: MatrixTransitionDirection;
 }) {
+  const enterClass = matrixRowEnterClass(transitionSignal, transitionDirection);
+
   return (
-    <tr className="border-b border-line/80 transition-colors hover:bg-blue-soft/20">
+    <tr
+      className={cn(
+        "border-b border-line/80 transition-colors hover:bg-blue-soft/20",
+        enterClass,
+      )}
+      style={matrixRowDelayStyle(rowIndex, transitionSignal)}
+    >
       <td className={tdCell}>
         <div className="flex min-w-0 items-center gap-2 xl:gap-3">
           <div className="h-8 w-8 shrink-0 overflow-hidden rounded-lg border border-line bg-white xl:h-10 xl:w-10">
@@ -154,22 +173,133 @@ function RobotRow({
   );
 }
 
+function RobotMobileCard({
+  robot,
+  maxBatteryHours,
+  showBrandInTable,
+  rowIndex,
+  transitionSignal,
+  transitionDirection,
+}: {
+  robot: Robot;
+  maxBatteryHours: number;
+  showBrandInTable: boolean;
+  rowIndex: number;
+  transitionSignal: number;
+  transitionDirection: MatrixTransitionDirection;
+}) {
+  const enterClass = matrixRowEnterClass(transitionSignal, transitionDirection);
+
+  return (
+    <div
+      className={cn(
+        "rounded-[18px] border border-line bg-panel-strong p-4 shadow-card",
+        enterClass,
+      )}
+      style={matrixRowDelayStyle(rowIndex, transitionSignal)}
+    >
+      <div className="flex gap-3">
+        <div className="h-16 w-14 shrink-0 overflow-hidden rounded-xl border border-line bg-white">
+          <RobotAvatarHoverPreview
+            name={robot.name}
+            imageUrl={getPrimaryRobotImage(robot)}
+            size="sm"
+            className="h-full w-full"
+          />
+        </div>
+        <Link
+          href={`/robots/${robot.slug}`}
+          className="min-w-0 flex-1 cursor-pointer"
+        >
+          <div className="font-bold uppercase tracking-wide">{robot.name}</div>
+          {showBrandInTable ? (
+            <BrandLogo
+              brand={robot.brand}
+              size="xs"
+              showName
+              nameClassName="text-sm text-muted font-normal"
+              className="mt-0.5"
+            />
+          ) : null}
+        </Link>
+      </div>
+      <div className="mt-2 flex flex-wrap gap-1.5">
+        <RobotTypeTag type={robot.type} />
+        <AvailabilityStatusTag status={robot.availabilityStatus} />
+      </div>
+      <div className="mt-3 flex flex-wrap gap-1.5">
+        <PrimaryTaskTag task={robot.primaryTask} />
+        <DataStatusTag status={getRobotDataStatus(robot)} />
+      </div>
+      <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
+        <div>
+          <div className="text-muted">Price</div>
+          <DataValue
+            value={robot.price}
+            fallback="TBA"
+            mono
+            priceStatus={robot.priceStatus}
+            dataStatus={robot.fieldMeta.price?.status}
+            specNote={robot.fieldMeta.price?.note}
+          />
+        </div>
+        <div>
+          <div className="text-muted">Battery</div>
+          <BatteryBar
+            value={robot.batteryLife}
+            dataStatus={robot.fieldMeta.batteryLife?.status}
+            specNote={robot.fieldMeta.batteryLife?.note}
+            maxHours={maxBatteryHours}
+          />
+        </div>
+        <div>
+          <div className="text-muted">Height</div>
+          <DataValue
+            value={robot.height}
+            mono
+            dataStatus={robot.fieldMeta.height?.status}
+            specNote={robot.fieldMeta.height?.note}
+          />
+        </div>
+        <div>
+          <div className="text-muted">Updated</div>
+          {formatDate(robot.lastUpdated)}
+        </div>
+      </div>
+      <div className="mt-3 flex gap-2">
+        <CompareToggleButton slug={robot.slug} compact />
+        {robot.videoUrls[0] ? (
+          <VideoPlayLink
+            href={robot.videoUrls[0]}
+            size="sm"
+            title={`${robot.name} video`}
+          />
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
 export function RobotCatalogTable({
   robots,
   layoutRobots,
   maxBatteryHours,
   showBrandInTable = true,
+  transitionSignal = 0,
+  transitionDirection = "reset",
 }: {
   robots: Robot[];
   /** Kept for API stability; column layout is breakpoint-driven, not content-measured. */
   layoutRobots: Robot[];
   maxBatteryHours: number;
   showBrandInTable?: boolean;
+  transitionSignal?: number;
+  transitionDirection?: MatrixTransitionDirection;
 }) {
   void layoutRobots;
 
   return (
-    <>
+    <div id="matrix-table" className="scroll-mt-28">
       <div className="hidden min-w-0 max-w-full overflow-hidden rounded-[18px] border border-line bg-panel-strong shadow-card lg:block">
         <table className="w-full table-fixed text-left text-sm">
           <colgroup>
@@ -201,12 +331,15 @@ export function RobotCatalogTable({
             </tr>
           </thead>
           <tbody>
-            {robots.map((robot) => (
+            {robots.map((robot, rowIndex) => (
               <RobotRow
-                key={robot.slug}
+                key={`${robot.slug}-${transitionSignal}`}
                 robot={robot}
                 maxBatteryHours={maxBatteryHours}
                 showBrandInTable={showBrandInTable}
+                rowIndex={rowIndex}
+                transitionSignal={transitionSignal}
+                transitionDirection={transitionDirection}
               />
             ))}
           </tbody>
@@ -214,90 +347,16 @@ export function RobotCatalogTable({
       </div>
 
       <div className="grid gap-3 lg:hidden">
-        {robots.map((robot) => (
-          <div
-            key={robot.slug}
-            className="rounded-[18px] border border-line bg-panel-strong p-4 shadow-card"
-          >
-            <div className="flex gap-3">
-              <div className="h-16 w-14 shrink-0 overflow-hidden rounded-xl border border-line bg-white">
-                <RobotAvatarHoverPreview
-                  name={robot.name}
-                  imageUrl={getPrimaryRobotImage(robot)}
-                  size="sm"
-                  className="h-full w-full"
-                />
-              </div>
-              <Link
-                href={`/robots/${robot.slug}`}
-                className="min-w-0 flex-1 cursor-pointer"
-              >
-                <div className="font-bold uppercase tracking-wide">{robot.name}</div>
-                {showBrandInTable ? (
-                  <BrandLogo
-                    brand={robot.brand}
-                    size="xs"
-                    showName
-                    nameClassName="text-sm text-muted font-normal"
-                    className="mt-0.5"
-                  />
-                ) : null}
-              </Link>
-            </div>
-            <div className="mt-2 flex flex-wrap gap-1.5">
-              <RobotTypeTag type={robot.type} />
-              <AvailabilityStatusTag status={robot.availabilityStatus} />
-            </div>
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              <PrimaryTaskTag task={robot.primaryTask} />
-              <DataStatusTag status={getRobotDataStatus(robot)} />
-            </div>
-            <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
-              <div>
-                <div className="text-muted">Price</div>
-                <DataValue
-                  value={robot.price}
-                  fallback="TBA"
-                  mono
-                  priceStatus={robot.priceStatus}
-                  dataStatus={robot.fieldMeta.price?.status}
-                  specNote={robot.fieldMeta.price?.note}
-                />
-              </div>
-              <div>
-                <div className="text-muted">Battery</div>
-                <BatteryBar
-                  value={robot.batteryLife}
-                  dataStatus={robot.fieldMeta.batteryLife?.status}
-                  specNote={robot.fieldMeta.batteryLife?.note}
-                  maxHours={maxBatteryHours}
-                />
-              </div>
-              <div>
-                <div className="text-muted">Height</div>
-                <DataValue
-                  value={robot.height}
-                  mono
-                  dataStatus={robot.fieldMeta.height?.status}
-                  specNote={robot.fieldMeta.height?.note}
-                />
-              </div>
-              <div>
-                <div className="text-muted">Updated</div>
-                {formatDate(robot.lastUpdated)}
-              </div>
-            </div>
-            <div className="mt-3 flex gap-2">
-              <CompareToggleButton slug={robot.slug} compact />
-              {robot.videoUrls[0] ? (
-                <VideoPlayLink
-                  href={robot.videoUrls[0]}
-                  size="sm"
-                  title={`${robot.name} video`}
-                />
-              ) : null}
-            </div>
-          </div>
+        {robots.map((robot, rowIndex) => (
+          <RobotMobileCard
+            key={`${robot.slug}-${transitionSignal}`}
+            robot={robot}
+            maxBatteryHours={maxBatteryHours}
+            showBrandInTable={showBrandInTable}
+            rowIndex={rowIndex}
+            transitionSignal={transitionSignal}
+            transitionDirection={transitionDirection}
+          />
         ))}
       </div>
 
@@ -306,6 +365,6 @@ export function RobotCatalogTable({
           No robots match your filters.
         </div>
       ) : null}
-    </>
+    </div>
   );
 }

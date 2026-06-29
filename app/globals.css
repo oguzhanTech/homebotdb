@@ -127,25 +127,55 @@ strong .prose-internal-link {
   color: var(--blue);
 }
 
-@keyframes matrix-window-in {
+@keyframes matrix-row-forward {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translate3d(14px, 0, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
-.matrix-window-in {
-  animation: matrix-window-in 220ms ease-out;
+@keyframes matrix-row-back {
+  from {
+    opacity: 0;
+    transform: translate3d(-14px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .matrix-window-in {
-    animation: none;
+@keyframes matrix-row-reset {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 5px, 0);
   }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.matrix-row-enter {
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+
+.matrix-row-enter--forward {
+  animation-name: matrix-row-forward;
+}
+
+.matrix-row-enter--back {
+  animation-name: matrix-row-back;
+}
+
+.matrix-row-enter--reset {
+  animation-name: matrix-row-reset;
 }
 
 /* Desktop sidebar nav — stormtrooper / HUD micro-interactions */

@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import {
   AVAILABILITY_STATUS_LABELS,
   PRIMARY_TASKS,
@@ -10,10 +9,7 @@ import {
   type RobotType,
 } from "@/types/robot";
 import type { SortField } from "@/lib/data/repository";
-import {
-  buildMatrixQueryString,
-  type MatrixFilters,
-} from "@/lib/matrix-search-params";
+import type { MatrixFilters } from "@/lib/matrix-search-params";
 import { FilterSelect, filterNumberClassName } from "@/components/ui/FilterSelect";
 import { FilterSwitch } from "@/components/ui/FilterSwitch";
 import { SearchInput } from "@/components/ui/SearchInput";
@@ -47,48 +43,29 @@ const SORT_OPTIONS: { value: SortField; label: string }[] = [
 ];
 
 export function RobotMatrixFilters({
-  listingPath,
   filters,
   sort,
+  onFiltersChange,
   onSortChange,
 }: {
-  listingPath: string;
   filters: MatrixFilters;
   sort: SortField;
-  onSortChange?: (sort: SortField) => void;
+  onFiltersChange: (patch: Partial<MatrixFilters>) => void;
+  onSortChange: (sort: SortField) => void;
 }) {
-  const router = useRouter();
-  const includeSortInUrl = listingPath !== "/";
-
-  const navigate = (next: MatrixFilters) => {
-    const qs = buildMatrixQueryString(next, { includeSort: includeSortInUrl });
-    const href = qs ? `${listingPath}?${qs}` : listingPath;
-    router.replace(href, { scroll: false });
-  };
-
-  const update = (patch: Partial<MatrixFilters>) => {
-    navigate({ ...filters, ...patch, sort });
-  };
-
-  const handleSortChange = (nextSort: SortField) => {
-    if (includeSortInUrl) {
-      navigate({ ...filters, sort: nextSort });
-    } else {
-      onSortChange?.(nextSort);
-    }
-  };
-
   return (
     <div className="mb-4 rounded-[18px] border border-line bg-panel/82 p-4 shadow-card">
       <div className="grid gap-3 lg:grid-cols-2 xl:grid-cols-4">
         <SearchInput
           placeholder="Search..."
           value={filters.query}
-          onChange={(e) => update({ query: e.target.value })}
+          onChange={(e) => onFiltersChange({ query: e.target.value })}
         />
         <FilterSelect
           value={filters.type}
-          onChange={(e) => update({ type: e.target.value as RobotType | "all" })}
+          onChange={(e) =>
+            onFiltersChange({ type: e.target.value as RobotType | "all" })
+          }
         >
           {ROBOT_TYPES.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -99,7 +76,9 @@ export function RobotMatrixFilters({
         <FilterSelect
           value={filters.availability}
           onChange={(e) =>
-            update({ availability: e.target.value as AvailabilityStatus | "all" })
+            onFiltersChange({
+              availability: e.target.value as AvailabilityStatus | "all",
+            })
           }
         >
           {AVAILABILITY_FILTERS.map((opt) => (
@@ -110,7 +89,7 @@ export function RobotMatrixFilters({
         </FilterSelect>
         <FilterSelect
           value={sort}
-          onChange={(e) => handleSortChange(e.target.value as SortField)}
+          onChange={(e) => onSortChange(e.target.value as SortField)}
         >
           {SORT_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -121,7 +100,9 @@ export function RobotMatrixFilters({
         <FilterSelect
           value={filters.primaryTask}
           onChange={(e) =>
-            update({ primaryTask: e.target.value as PrimaryTask | "all" })
+            onFiltersChange({
+              primaryTask: e.target.value as PrimaryTask | "all",
+            })
           }
         >
           {PRIMARY_TASKS.map((opt) => (
@@ -134,26 +115,26 @@ export function RobotMatrixFilters({
           type="number"
           placeholder="Min price"
           value={filters.minPrice}
-          onChange={(e) => update({ minPrice: e.target.value })}
+          onChange={(e) => onFiltersChange({ minPrice: e.target.value })}
           className={filterNumberClassName}
         />
         <input
           type="number"
           placeholder="Max price"
           value={filters.maxPrice}
-          onChange={(e) => update({ maxPrice: e.target.value })}
+          onChange={(e) => onFiltersChange({ maxPrice: e.target.value })}
           className={filterNumberClassName}
         />
         <div className="flex flex-col gap-2 sm:flex-row">
           <FilterSwitch
             checked={filters.showDiscontinued}
-            onChange={(showDiscontinued) => update({ showDiscontinued })}
+            onChange={(showDiscontinued) => onFiltersChange({ showDiscontinued })}
             label={uiCopy.matrix.showDiscontinued}
             className="min-w-0 flex-1"
           />
           <FilterSwitch
             checked={filters.showBuyNowOnly}
-            onChange={(showBuyNowOnly) => update({ showBuyNowOnly })}
+            onChange={(showBuyNowOnly) => onFiltersChange({ showBuyNowOnly })}
             label={uiCopy.matrix.showBuyNowOnly}
             className="min-w-0 flex-1"
           />
