@@ -12,7 +12,7 @@ export const updates: Update[] = [
       "Realbotix's F-Series humanoid companion Aria joins HomeBotRadar with confirmed $125,000+ starting price, 44 DoF, 4 to 8 h battery, and magnetic face-swap modular design.",
     content:
       "We added Aria to HomeBotRadar. It is Realbotix's flagship female-presenting character on the F-Series full-bodied humanoid line, built in the USA with silicone skin, 17 facial motors, and AI conversation tuned for companionship.\n\nOur Aria profile covers official specs from realbotix.com (44 degrees of freedom, motorized wheeled base with manual remote, plug-in or 4 to 8 h battery, orders quoted in as soon as 12 weeks). F-Series hardware starts at $125,000 with customization extras. CES 2025 press widely quoted a fully configured Aria near $175,000. The Robot Controller AI subscription lists at $199.99 per month.\n\nOpen /compare/realbotix-aria-vs-lovot or /compare/realbotix-aria-vs-elliq to stack Aria against other premium companions. Browse Buddy if you want a rolling social robot at a lower professional price band.",
-    coverImage: "/images/updates/realbotix-aria-added-to-catalog.jpg",
+    coverImage: "/images/updates/realbotix-aria-added-to-catalog.png",
     sourceUrl: "https://www.realbotix.com/robots",
     createdAt: "2026-07-01T12:00:00Z",
     updatedAt: "2026-07-01T12:00:00Z",
