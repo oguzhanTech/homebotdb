@@ -167,4 +167,10 @@ export const brands: Brand[] = [
     logo: "/brands/mixi.png",
     aliases: ["MIXI", "MIXI Inc.", "株式会社MIXI"],
   },
+  {
+    id: "realbotix",
+    name: "Realbotix",
+    logo: "/brands/realbotix.png",
+    aliases: ["Realbotix", "Realbotix Corp."],
+  },
 ];
