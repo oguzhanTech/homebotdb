@@ -81,13 +81,39 @@ export function buildRobotMetadata(robot: Robot): Metadata {
   });
 }
 
-export function buildCompareMetadata(robots: Robot[]): Metadata {
+export function buildCompareMetadata(
+  robots: Robot[],
+  descriptionOverride?: string,
+): Metadata {
   const names = robots.map((robot) => robot.name).join(" vs ");
+  const description =
+    descriptionOverride ??
+    `Compare ${names} side by side. Specs, scores, availability, and home capabilities on ${siteConfig.name}.`;
   return buildPageMetadata({
     title: `${names} — Home Robot Comparison`,
-    description: `Compare ${names} side by side. Specs, scores, availability, and home capabilities on ${siteConfig.name}.`,
+    description,
     path: `/compare/${robots.map((r) => r.slug).sort().join("-vs-")}`,
   });
+}
+
+export function buildCompareFaqJsonLd(robots: Robot[], answer: string) {
+  const names = robots.map((r) => r.name).join(" or ");
+  const pagePath = `/compare/${robots.map((r) => r.slug).sort().join("-vs-")}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `Should I buy ${names}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: answer,
+        },
+      },
+    ],
+    url: absoluteUrl(pagePath),
+  };
 }
 
 export function buildUpdateMetadata(update: Update): Metadata {

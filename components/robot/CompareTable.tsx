@@ -1,144 +1,51 @@
 "use client";
 
-import { useCallback, useLayoutEffect, useRef, type CSSProperties } from "react";
+import { Fragment, useCallback, useLayoutEffect, useRef, type CSSProperties } from "react";
 import Link from "next/link";
 import type { Robot } from "@/types/robot";
-import {
-  AVAILABILITY_STATUS_LABELS,
-  COMMERCIAL_STATUS_LABELS,
-  ROBOT_TYPE_LABELS,
-} from "@/types/robot";
-import { getWinningIndices } from "@/lib/compare-metrics";
+import type { CompareSection } from "@/lib/compare-summary";
 import { uiCopy } from "@/config/ui-copy";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import {
   CompareRobotThumb,
   compareThumbSizes,
 } from "@/components/robot/CompareRobotThumb";
+import {
+  CompareSegmentScoreBar,
+  parseScoreValue,
+} from "@/components/compare/CompareSegmentScoreBar";
 import { DataValue } from "@/components/ui/DataValue";
 import { cn } from "@/lib/utils";
 
-interface CompareRow {
-  label: string;
-  values: string[];
-  winners: number[];
-}
-
-function buildRows(robots: Robot[]): CompareRow[] {
-  const rows: { label: string; values: string[] }[] = [
-    {
-      label: uiCopy.scores.readinessScore,
-      values: robots.map((r) => String(r.readinessScore)),
-    },
-    {
-      label: uiCopy.scores.realityScore,
-      values: robots.map((r) => String(r.realityScore)),
-    },
-    {
-      label: uiCopy.scores.freshnessScore,
-      values: robots.map((r) => `${r.dataFreshnessScore}%`),
-    },
-    {
-      label: "Price",
-      values: robots.map((r) => r.price || "Unknown"),
-    },
-    {
-      label: uiCopy.scores.marketStatus,
-      values: robots.map((r) => COMMERCIAL_STATUS_LABELS[r.commercialStatus]),
-    },
-    {
-      label: "Availability",
-      values: robots.map(
-        (r) => AVAILABILITY_STATUS_LABELS[r.availabilityStatus],
-      ),
-    },
-    {
-      label: "Form",
-      values: robots.map((r) => ROBOT_TYPE_LABELS[r.type]),
-    },
-    {
-      label: "Height",
-      values: robots.map((r) => r.height || "Not specified"),
-    },
-    {
-      label: "Weight",
-      values: robots.map((r) => r.weight || "Not specified"),
-    },
-    {
-      label: "Battery",
-      values: robots.map((r) => r.batteryLife || "Not specified"),
-    },
-    {
-      label: "Speed",
-      values: robots.map((r) => r.speed || "Not specified"),
-    },
-    {
-      label: "Payload",
-      values: robots.map((r) => r.payload || "Not specified"),
-    },
-    {
-      label: "Sensors",
-      values: robots.map((r) => r.sensors || "Not specified"),
-    },
-    {
-      label: "Connectivity",
-      values: robots.map((r) => r.connectivity || "Not specified"),
-    },
-    {
-      label: "Countries",
-      values: robots.map((r) =>
-        r.countriesAvailable.length > 0
-          ? r.countriesAvailable.join(", ")
-          : "Unknown",
-      ),
-    },
-    {
-      label: "Social Interaction",
-      values: robots.map((r) => {
-        const cap = r.capabilities.find((c) => c.name === "Social Interaction");
-        return cap ? String(cap.score) : "Not specified";
-      }),
-    },
-    {
-      label: "Home Navigation",
-      values: robots.map((r) => {
-        const cap = r.capabilities.find((c) => c.name === "Home Navigation");
-        return cap ? String(cap.score) : "Not specified";
-      }),
-    },
-    {
-      label: "Ecosystem",
-      values: robots.map((r) =>
-        r.ecosystem.length > 0 ? r.ecosystem.join("; ") : "Coming soon",
-      ),
-    },
-  ];
-
-  return rows.map((row) => ({
-    ...row,
-    winners: getWinningIndices(row.label, row.values),
-  }));
-}
-
 function CompareRobotHeader({
   robot,
+  winCount,
   compact = false,
 }: {
   robot: Robot;
+  winCount?: number;
   compact?: boolean;
 }) {
+  const badge =
+    winCount !== undefined && winCount > 0 ? (
+      <span className="inline-flex w-fit rounded-full bg-emerald-50 px-2 py-0.5 text-[9px] font-bold uppercase leading-none tracking-wider text-emerald-700 ring-1 ring-inset ring-emerald-100">
+        {uiCopy.compare.verdict.leadsBadge(winCount)}
+      </span>
+    ) : null;
+
   if (compact) {
     return (
       <Link
         href={`/robots/${robot.slug}`}
-        className="block min-w-0 cursor-pointer text-left"
+        className="flex min-w-0 cursor-pointer flex-col gap-1 text-left"
       >
-        <div className="truncate text-xs font-bold uppercase tracking-wide">
+        <div className="truncate text-xs font-bold uppercase leading-snug tracking-wide">
           {robot.name}
         </div>
-        <div className="mt-0.5 truncate text-[10px] font-normal normal-case text-muted">
+        <div className="truncate text-[10px] font-normal normal-case leading-snug text-muted">
           {robot.brand}
         </div>
+        {badge}
       </Link>
     );
   }
@@ -146,24 +53,56 @@ function CompareRobotHeader({
   return (
     <Link
       href={`/robots/${robot.slug}`}
-      className="flex cursor-pointer items-center gap-3"
+      className="flex cursor-pointer items-start gap-3"
     >
       <CompareRobotThumb
         robot={robot}
         seed={`${robot.slug}-compare-header`}
-        className={compareThumbSizes.header}
+        className={cn(compareThumbSizes.header, "shrink-0")}
       />
-      <div className="min-w-0 text-left">
-        <div className="font-bold uppercase tracking-wide">{robot.name}</div>
+      <div className="flex min-w-0 flex-col gap-1.5 text-left">
+        <div className="font-bold uppercase leading-snug tracking-wide">
+          {robot.name}
+        </div>
         <BrandLogo
           brand={robot.brand}
           size="xs"
           showName
           nameClassName="text-xs text-muted font-normal"
-          className="mt-1"
         />
+        {badge}
       </div>
     </Link>
+  );
+}
+
+function CompareScoreCell({
+  value,
+  isWinner,
+}: {
+  value: string;
+  isWinner: boolean;
+}) {
+  const score = parseScoreValue(value);
+
+  return (
+    <td
+      className={cn(
+        "px-4 py-3 align-top",
+        isWinner &&
+          "bg-emerald-50/55 ring-1 ring-inset ring-emerald-100/70",
+      )}
+    >
+      <div
+        className={cn(
+          "font-mono text-[13px]",
+          isWinner && "font-semibold text-emerald-700/90",
+        )}
+      >
+        <DataValue value={value} fallback="Unknown" />
+      </div>
+      {score !== null ? <CompareSegmentScoreBar value={score} /> : null}
+    </td>
   );
 }
 
@@ -179,8 +118,15 @@ const mobileStickyTop =
 const robotColWidthClass =
   "w-[var(--compare-robot-w)] min-w-[var(--compare-robot-w)] max-w-[var(--compare-robot-w)] shrink-0 px-4 py-3";
 
-export function CompareTable({ robots }: { robots: Robot[] }) {
-  const rows = buildRows(robots);
+export function CompareTable({
+  robots,
+  sections,
+  winCounts,
+}: {
+  robots: Robot[];
+  sections: CompareSection[];
+  winCounts?: number[];
+}) {
   const colCount = robots.length;
   const tableScrollRef = useRef<HTMLDivElement>(null);
   const mobileHeaderTrackRef = useRef<HTMLDivElement>(null);
@@ -196,12 +142,15 @@ export function CompareTable({ robots }: { robots: Robot[] }) {
     syncMobileHeaderScroll();
   }, [syncMobileHeaderScroll, colCount]);
 
+  const robotColWidth = colCount >= 3 ? "188px" : colCount === 2 ? "180px" : "160px";
+
   return (
     <div
       className="rounded-[18px] border border-line bg-panel-strong shadow-card [--compare-robot-w:160px] xl:[--compare-robot-w:180px]"
       style={
         {
           "--compare-spec-w": SPEC_COL_WIDTH,
+          "--compare-robot-w": robotColWidth,
         } as CSSProperties
       }
     >
@@ -213,19 +162,23 @@ export function CompareTable({ robots }: { robots: Robot[] }) {
         )}
       >
         <div className="z-10 w-[var(--compare-spec-w)] shrink-0 bg-panel-strong px-4 py-3 text-[10px] uppercase tracking-[0.12em] text-muted">
-          Spec
+          {uiCopy.compare.table.specColumn}
         </div>
         <div className="min-w-0 flex-1 overflow-hidden">
           <div
             ref={mobileHeaderTrackRef}
             className="flex w-max will-change-transform"
           >
-            {robots.map((robot) => (
+            {robots.map((robot, index) => (
               <div
                 key={robot.slug}
                 className={cn(robotColWidthClass, "bg-panel-strong")}
               >
-                <CompareRobotHeader robot={robot} compact />
+                <CompareRobotHeader
+                  robot={robot}
+                  winCount={winCounts?.[index]}
+                  compact
+                />
               </div>
             ))}
           </div>
@@ -260,52 +213,82 @@ export function CompareTable({ robots }: { robots: Robot[] }) {
           <thead className="hidden xl:table-header-group">
             <tr className="border-b border-line">
               <th className="sticky left-0 z-30 w-[var(--compare-spec-w)] bg-panel-strong px-4 py-3 text-[10px] uppercase tracking-[0.12em] text-muted">
-                Spec
+                {uiCopy.compare.table.specColumn}
               </th>
-              {robots.map((robot) => (
+              {robots.map((robot, index) => (
                 <th
                   key={robot.slug}
-                  className="min-w-[180px] bg-panel-strong px-4 py-4 align-middle"
+                  className="min-w-[var(--compare-robot-w)] bg-panel-strong px-4 py-4 align-top"
                 >
-                  <CompareRobotHeader robot={robot} />
+                  <CompareRobotHeader
+                    robot={robot}
+                    winCount={winCounts?.[index]}
+                  />
                 </th>
               ))}
             </tr>
           </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.label} className="border-b border-line/80">
-              <td
-                className={cn(
-                  "sticky left-0 z-10 w-[var(--compare-spec-w)] bg-panel-strong px-4 py-3 text-[11px] font-bold uppercase tracking-wider text-muted",
-                  "max-xl:shadow-[4px_0_12px_rgba(8,11,18,0.04)]",
-                )}
-              >
-                {row.label}
-              </td>
-              {row.values.map((value, i) => {
-                const isWinner = row.winners.includes(i);
-
-                return (
-                  <td
-                    key={`${row.label}-${i}`}
-                    className={cn(
-                      "px-4 py-3 font-mono text-[13px]",
-                      isWinner &&
-                        "bg-emerald-50/55 font-semibold text-emerald-700/90 ring-1 ring-inset ring-emerald-100/70",
-                    )}
+          <tbody>
+            {sections.map((section) => (
+              <Fragment key={section.id}>
+                <tr
+                  key={`section-${section.id}`}
+                  className="border-b border-line bg-panel/60"
+                >
+                  <th
+                    colSpan={colCount + 1}
+                    scope="colgroup"
+                    className="sticky left-0 px-4 py-2.5 text-left text-[10px] font-bold uppercase tracking-[0.12em] text-muted"
                   >
-                    <DataValue value={value} fallback="Unknown" />
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
-        </tbody>
+                    {section.title}
+                  </th>
+                </tr>
+                {section.rows.map((row) => (
+                  <tr key={row.label} className="border-b border-line/80">
+                    <th
+                      scope="row"
+                      className={cn(
+                        "sticky left-0 z-10 w-[var(--compare-spec-w)] bg-panel-strong px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-muted",
+                        "max-xl:shadow-[4px_0_12px_rgba(8,11,18,0.04)]",
+                      )}
+                    >
+                      {row.label}
+                    </th>
+                    {row.values.map((value, i) => {
+                      const isWinner = row.winners.includes(i);
+
+                      if (row.kind === "score") {
+                        return (
+                          <CompareScoreCell
+                            key={`${row.label}-${i}`}
+                            value={value}
+                            isWinner={isWinner}
+                          />
+                        );
+                      }
+
+                      return (
+                        <td
+                          key={`${row.label}-${i}`}
+                          className={cn(
+                            "px-4 py-3 font-mono text-[13px]",
+                            isWinner &&
+                              "bg-emerald-50/55 font-semibold text-emerald-700/90 ring-1 ring-inset ring-emerald-100/70",
+                          )}
+                        >
+                          <DataValue value={value} fallback="Unknown" />
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </Fragment>
+            ))}
+          </tbody>
         </table>
       </div>
       <div className="px-4 py-3 text-xs text-muted">
-        Green cells mark the stronger value in each row across {colCount} robots.
+        {uiCopy.compare.table.footer(colCount)}
       </div>
     </div>
   );

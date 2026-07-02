@@ -88,6 +88,29 @@ export const uiCopy = {
   },
   compare: {
     eyebrow: "Compare",
+    sections: {
+      performance: "Performance",
+      specs: "Specs",
+      availability: "Availability",
+      intelligence: "Intelligence",
+    },
+    verdict: {
+      title: "Quick verdict",
+      headline: (leader: string, wins: number, total: number) =>
+        `${leader} leads on ${wins} of ${total} comparable rows`,
+      noComparableRows: "No clear leader on comparable numeric rows in this matchup.",
+      leadsBadge: (count: number) => `Leads ${count}`,
+    },
+    chooseGuide: {
+      title: "Who should choose which?",
+      choosePrefix: "Choose",
+      chooseSuffix: "if…",
+    },
+    table: {
+      specColumn: "Spec",
+      footer: (count: number) =>
+        `Green cells mark the stronger value in each row across ${count} robots.`,
+    },
   },
   tracked: {
     eyebrow: "Tracked",

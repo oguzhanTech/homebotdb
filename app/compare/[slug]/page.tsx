@@ -7,13 +7,23 @@ import {
 import {
   buildCompareMetadata,
   buildBreadcrumbJsonLd,
+  buildCompareFaqJsonLd,
 } from "@/lib/seo";
 import {
   isValidCompareSlug,
   parseCompareSlug,
 } from "@/lib/compare";
+import {
+  buildChooseGuidance,
+  buildCompareSections,
+  buildCompareFaqAnswer,
+  buildCompareVerdict,
+} from "@/lib/compare-summary";
 import { TopBar } from "@/components/layout/TopBar";
 import { CompareTable } from "@/components/robot/CompareTable";
+import { CompareVerdict } from "@/components/compare/CompareVerdict";
+import { CompareChooseGuide } from "@/components/compare/CompareChooseGuide";
+import { uiCopy } from "@/config/ui-copy";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -28,7 +38,9 @@ export async function generateMetadata({ params }: PageProps) {
   if (!isValidCompareSlug(slug)) return {};
   const robots = getRobotsBySlugs(parseCompareSlug(slug));
   if (robots.length < 2) return {};
-  return buildCompareMetadata(robots);
+  const sections = buildCompareSections(robots);
+  const verdict = buildCompareVerdict(robots, sections);
+  return buildCompareMetadata(robots, verdict.summaryForMeta);
 }
 
 export default async function ComparePage({ params }: PageProps) {
@@ -39,6 +51,12 @@ export default async function ComparePage({ params }: PageProps) {
   const robots = getRobotsBySlugs(slugs);
   if (robots.length < 2) notFound();
 
+  const sections = buildCompareSections(robots);
+  const verdict = buildCompareVerdict(robots, sections);
+  const guidance = buildChooseGuidance(robots);
+  const winCounts = verdict.winsByRobot.map((entry) => entry.winCount);
+  const faqAnswer = buildCompareFaqAnswer(robots, verdict, guidance);
+
   const breadcrumbLd = buildBreadcrumbJsonLd([
     { name: "Home", path: "/" },
     { name: "Compare", path: "/compare" },
@@ -48,18 +66,24 @@ export default async function ComparePage({ params }: PageProps) {
     },
   ]);
 
+  const faqLd = buildCompareFaqJsonLd(robots, faqAnswer);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+      />
       <main className="px-3.5 py-5 sm:px-7 sm:py-7">
         <TopBar />
         <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
           <div>
             <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
-              Compare
+              {uiCopy.compare.eyebrow}
             </div>
             <h1 className="mt-1 text-2xl font-medium tracking-tight sm:text-3xl">
               {robots.map((r) => r.name).join(" vs ")}
@@ -72,7 +96,13 @@ export default async function ComparePage({ params }: PageProps) {
             ← Back to robots
           </Link>
         </div>
-        <CompareTable robots={robots} />
+        <CompareVerdict verdict={verdict} />
+        <CompareChooseGuide robots={robots} guidance={guidance} />
+        <CompareTable
+          robots={robots}
+          sections={sections}
+          winCounts={winCounts}
+        />
         <div className="mt-6 flex flex-wrap gap-3">
           {robots.map((robot) => (
             <Link
