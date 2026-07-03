@@ -3230,8 +3230,10 @@ export const robots: Robot[] = [
       "/images/ubtech-u1/ubtech-u1-guest-interaction.png",
       "/images/ubtech-u1/ubtech-u1-robot-closeup.png",
     ],
-    videoUrls: ["https://www.youtube.com/watch?v=hrsvBpZzJe0",
-               "https://www.youtube.com/watch?v=zW-gP73Qp0c"],
+    videoUrls: [
+      "https://www.youtube.com/watch?v=wdf3BORclRA",
+      "https://www.youtube.com/watch?v=hrsvBpZzJe0",
+    ],
     affiliateUrl:
       "https://www.prnewswire.com/news-releases/ubtech-launches-uworld-u1-the-worlds-first-full-size-mass-produced-ultra-bionic-humanoid-robot-302815272.html",
     sourceUrls: [
