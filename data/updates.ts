@@ -2,6 +2,23 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-034",
+    title: "UWORLD U1 added to the catalog",
+    slug: "ubtech-u1-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "ubtech-u1",
+    summary:
+      "UBTech's UWORLD U1 joins HomeBotRadar with China-first pre-order pricing from about $17,600, 88 DoF, 2 to 4 h battery, and emotion-aware companion AI.",
+    content:
+      "We added UWORLD U1 to HomeBotRadar. It is UBTech's full-size consumer companion humanoid line, positioned for emotional support, daily conversation, elder-care scenarios, and hospitality rather than housework.\n\nOur UWORLD U1 profile covers official launch details and presale reporting: U1 Lite from ¥119,800 (~$17,600), U1 Pro at ¥169,800, Ultra builds from ¥880,000 to ¥990,000, 88 degrees of freedom, male and female body options, 2 to 4 h battery, and China-first deliveries targeted from September 2026.\n\nOpen /compare/realbotix-aria-vs-ubtech-u1 or /compare/lovot-vs-ubtech-u1 to stack U1 against other premium companion robots. Browse ElliQ if you want a lower-cost elder-care companion with a US service path today.",
+    coverImage: "/images/updates/ubtech-u1-added-to-catalog.jpg",
+    sourceUrl:
+      "https://www.prnewswire.com/news-releases/ubtech-launches-uworld-u1-the-worlds-first-full-size-mass-produced-ultra-bionic-humanoid-robot-302815272.html",
+    createdAt: "2026-07-04T12:00:00Z",
+    updatedAt: "2026-07-04T12:00:00Z",
+  },
+  {
     id: "upd-033",
     title: "Aria added to the catalog",
     slug: "realbotix-aria-added-to-catalog",

@@ -7,7 +7,7 @@ sourceUrl: https://www.sixthtone.com/news/1018634
 coverImage: /images/news/ubtech-u1-emotional-companion-presale.png
 coverImageCaption: UBTech's U1 companion humanoid line, shown in promotional footage cited by Sixth Tone and trade press. Photo via Sixth Tone / UBTech promo stills.
 createdAt: 2026-06-21T14:00:00Z
-updatedAt: 2026-06-21T14:00:00Z
+updatedAt: 2026-07-04T12:30:00Z
 ---
 
 Chinese humanoid maker **UBTech** has moved its consumer strategy into presales for the **U1**, a full-size companion robot sold under its new **UWORLD** brand. [Sixth Tone](https://www.sixthtone.com/news/1018634) reports that sales opened **June 2, 2026** on **JD.com**, with a refundable **3,000 yuan (~$440) deposit** through **July 15** and an official online launch set for **June 30**. The company had **not published full retail pricing** at press time, though trade coverage cites roughly **3,000+ early reservations** in the first week and nearly **4,000 within ten days** by mid-June.
@@ -40,8 +40,8 @@ Treat this as a **high-interest presale**, not a product you can compare on a fi
 
 ## What this means for HomeBotRadar
 
-**The U1 is not joining the HomeBotRadar catalog today.** We list home and companion robots with verified specs, scores, and buy paths. A refundable JD.com deposit without public MSRP does not meet that bar.
+**June 21 note:** the U1 was not joining the HomeBotRadar catalog at presale time because UBTech had not yet published final MSRP bands. **July 4 update:** UWORLD U1 is now in the catalog after the June 30 launch confirmed pricing, trims, and China-first delivery targets.
 
 The signal still matters for readers tracking **social and emotional robots**: a major Chinese humanoid vendor is betting on **affective AI plus encrypted on-device memory** as the product, not arm payload or warehouse throughput. That is closer to **LOVOT, aibo, and Mirokaï** territory than to **Walker** or **Figure 02**, even if the body looks humanoid rather than pet-like.
 
-We are **not updating any robot scores** on this story alone. We **do plan to expand our social and companion robot coverage** over the coming months as more vendors publish confirmed pricing, ship windows, and regional storefronts. When UBTech releases final U1 MSRP, battery and autonomy details, and a stable consumer purchase page we can verify, we will evaluate whether it belongs in the database alongside our existing companion listings.
+We are **not updating any robot scores** on this presale story alone. The newer catalog entry reflects the later launch data and keeps the remaining caveats visible: China-first availability, limited independent home proof, and unclear global support.

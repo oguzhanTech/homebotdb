@@ -7,7 +7,7 @@ coverImage: /images/news/ubtech-u1-launch-topshot.jpg
 coverImageCaption: UWORLD U1 companion humanoids on stage at the Shenzhen launch. Photo by Adek Berry / AFP.
 sourceUrl: https://www.prnewswire.com/news-releases/ubtech-launches-uworld-u1-the-worlds-first-full-size-mass-produced-ultra-bionic-humanoid-robot-302815272.html
 createdAt: 2026-07-03T10:00:00Z
-updatedAt: 2026-07-03T10:00:00Z
+updatedAt: 2026-07-04T12:30:00Z
 ---
 
 **UBTech** wants you to think of the **U1** as a roommate who never ghosts you. [AFP](https://thepeninsulaqatar.com/article/01/07/2026/chinese-firm-sells-hyper-real-always-loyal-humanoid-robots) reporting from Shenzhen quotes UWORLD brand lead **Michael Tam** saying the bionic robots can offer "a lifetime of friendship," stay loyal, and "love you unconditionally." That is a lot of emotional weight for a product category that already triggers privacy debates and uncanny-valley discomfort.
@@ -75,10 +75,10 @@ Treat the **13,300** order figure as a company-reported launch metric, not proof
 
 ## What this means for HomeBotRadar
 
-**We are tracking the U1 closely but it is not in our robot catalog yet.** Our bar is verified specs, scores, and a stable buy path readers can trust. A refundable JD.com deposit and syndicated launch photos are not enough for a full matrix row.
+**July 4 update:** UWORLD U1 is now in the HomeBotRadar catalog. The official launch pricing, China-first delivery window, and published U1 trim details give us enough structure for a tracked profile, while the scores still reflect limited home proof and no independent long-term reviews yet.
 
-We already covered the [June JD.com presale opening](/news/ubtech-u1-emotional-companion-presale-china). This syndicated launch coverage adds public **yuan MSRP bands**, on-stage customization demos, and order counts we will watch as **September** shipments begin. When **UBTech** posts durable consumer specs, regional availability, and a purchase page we can verify, we will evaluate a **UBTech U1** catalog entry alongside companions like **Realbotix Aria** and **LOVOT**.
+We already covered the [June JD.com presale opening](/news/ubtech-u1-emotional-companion-presale-china). This syndicated launch coverage adds public **yuan MSRP bands**, on-stage customization demos, and order counts we will watch as **September** shipments begin.
 
-Until then, compare buyable emotional robots on our matrix: **LOVOT** and **ElliQ** for proven elder-care and comfort paths, **Realbotix Aria** for ultra-premium humanoid companionship at a similar price band, or **EMO** if you want a desk pet at four figures instead of six.
+Compare **UWORLD U1** with **Realbotix Aria** if you are watching six-figure humanoid companions. Compare it with **LOVOT** or **ElliQ** if you want a more proven emotional robot path at a lower price band, or **EMO** if you want a desk pet at four figures instead of six.
 
 We are **not updating any robot scores** on this story alone.

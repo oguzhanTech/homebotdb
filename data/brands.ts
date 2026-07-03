@@ -173,4 +173,10 @@ export const brands: Brand[] = [
     logo: "/brands/realbotix.png",
     aliases: ["Realbotix", "Realbotix Corp."],
   },
+  {
+    id: "ubtech",
+    name: "UBTech",
+    logo: "/brands/ubtech.png",
+    aliases: ["UBTech", "UBTECH", "UBTech Robotics", "UBTECH Robotics"],
+  },
 ];

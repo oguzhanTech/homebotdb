@@ -189,19 +189,12 @@ strong .prose-internal-link {
 
 .compare-segment-bar__fill {
   transform-origin: left center;
-  animation: compare-segment-fill 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: calc(var(--segment-index, 0) * 42ms);
+  animation: compare-segment-fill 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--segment-index, 0) * 400ms);
 }
 
 .compare-segment-bar__fill--partial {
   width: var(--partial-pct, 0%);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .compare-segment-bar__fill {
-    animation: none;
-    transform: scaleX(1);
-  }
 }
 
 /* Desktop sidebar nav — stormtrooper / HUD micro-interactions */
