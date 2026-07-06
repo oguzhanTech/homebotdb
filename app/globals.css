@@ -342,6 +342,51 @@ strong .prose-internal-link {
   }
 }
 
+/* Homepage dashboard hub cards — stormtrooper visor scan on hover */
+.dashboard-hub-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-hub-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(18, 100, 255, 0.06) 45%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(18, 100, 255, 0.06) 55%,
+    transparent 100%
+  );
+  transform: translateX(-120%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.dashboard-hub-card:hover::before {
+  animation: sidebar-visor-scan 0.85s ease-out;
+  opacity: 1;
+}
+
+.dashboard-hub-target {
+  animation: sidebar-target-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-hub-card:hover::before {
+    animation: none;
+    opacity: 0;
+  }
+
+  .dashboard-hub-target {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 @keyframes avatar-preview-in {
   from {
     opacity: 0;

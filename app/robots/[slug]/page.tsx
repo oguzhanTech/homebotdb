@@ -10,28 +10,54 @@ import {
   buildRobotJsonLd,
   buildRobotMetadata,
 } from "@/lib/seo";
+import {
+  getAllCategorySlugs,
+  getRobotCategoryBySlug,
+} from "@/lib/robot-categories";
 import { TopBar } from "@/components/layout/TopBar";
 import { CommentSection } from "@/components/comments/CommentSection";
 import { RobotDetailView } from "@/components/robot/RobotDetailView";
+import {
+  buildCategoryPageMetadata,
+  RobotCategoryLanding,
+} from "@/components/robot/RobotCategoryLanding";
 import { listComments } from "@/lib/data/comments";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
 
 export async function generateStaticParams() {
-  return getAllRobotSlugs().map((slug) => ({ slug }));
+  return [
+    ...getAllRobotSlugs().map((slug) => ({ slug })),
+    ...getAllCategorySlugs().map((slug) => ({ slug })),
+  ];
 }
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
+  const category = getRobotCategoryBySlug(slug);
+  if (category) return buildCategoryPageMetadata(category);
+
   const robot = getRobotBySlug(slug);
   if (!robot) return {};
   return buildRobotMetadata(robot);
 }
 
-export default async function RobotDetailPage({ params }: PageProps) {
+export default async function RobotSlugPage({
+  params,
+  searchParams,
+}: PageProps) {
   const { slug } = await params;
+  const category = getRobotCategoryBySlug(slug);
+
+  if (category) {
+    return (
+      <RobotCategoryLanding category={category} searchParams={searchParams} />
+    );
+  }
+
   const robot = getRobotBySlug(slug);
   if (!robot) notFound();
 
@@ -60,6 +86,7 @@ export default async function RobotDetailPage({ params }: PageProps) {
           robot={robot}
           similarRobots={similarRobots}
           updates={updates}
+          reviewCount={comments.length}
           reviewsSection={
             <CommentSection
               target={{ type: "robot", slug: robot.slug }}

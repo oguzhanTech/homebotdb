@@ -35,7 +35,7 @@ export default async function RobotsPage({ searchParams }: PageProps) {
         </p>
       </section>
 
-      <RobotMatrixSection listingPath="/robots" searchParams={searchParams} />
+      <RobotMatrixSection listingPath="/robots" searchParams={searchParams} showBrandInTable />
     </main>
   );
 }

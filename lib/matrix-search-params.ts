@@ -90,15 +90,25 @@ export function matrixFiltersToRobotFilters(filters: MatrixFilters) {
 
 export function buildMatrixQueryString(
   filters: MatrixFilters,
-  options?: { includeSort?: boolean },
+  options?: {
+    includeSort?: boolean;
+    lockedFilters?: Partial<Pick<MatrixFilters, "type" | "primaryTask">>;
+  },
 ): string {
   const sp = new URLSearchParams();
   const includeSort = options?.includeSort ?? true;
+  const locked = options?.lockedFilters;
 
   if (filters.query) sp.set("q", filters.query);
-  if (filters.type !== "all") sp.set("type", filters.type);
-  if (filters.availability !== "all") sp.set("availability", filters.availability);
-  if (filters.primaryTask !== "all") sp.set("task", filters.primaryTask);
+  if (filters.type !== "all" && locked?.type == null) {
+    sp.set("type", filters.type);
+  }
+  if (filters.availability !== "all") {
+    sp.set("availability", filters.availability);
+  }
+  if (filters.primaryTask !== "all" && locked?.primaryTask == null) {
+    sp.set("task", filters.primaryTask);
+  }
   if (includeSort) sp.set("sort", filters.sort);
   if (filters.minPrice) sp.set("minPrice", filters.minPrice);
   if (filters.maxPrice) sp.set("maxPrice", filters.maxPrice);
@@ -106,6 +116,21 @@ export function buildMatrixQueryString(
   if (filters.showBuyNowOnly) sp.set("buyNow", "1");
 
   return sp.toString();
+}
+
+export function mergeMatrixFilters(
+  filters: MatrixFilters,
+  lockedFilters?: Partial<Pick<MatrixFilters, "type" | "primaryTask">>,
+): MatrixFilters {
+  if (!lockedFilters) return filters;
+
+  return {
+    ...filters,
+    ...(lockedFilters.type ? { type: lockedFilters.type } : {}),
+    ...(lockedFilters.primaryTask
+      ? { primaryTask: lockedFilters.primaryTask }
+      : {}),
+  };
 }
 
 export async function resolveSearchParams(

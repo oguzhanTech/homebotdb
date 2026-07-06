@@ -98,6 +98,22 @@ export async function listAllComments(): Promise<Comment[]> {
   return (data as CommentRow[]).map(rowToComment);
 }
 
+export async function listRecentComments(limit = 5): Promise<Comment[]> {
+  const supabase = getSupabase();
+  const { data, error } = await supabase
+    .from("comments")
+    .select("*")
+    .is("parent_id", null)
+    .order("created_at", { ascending: false })
+    .limit(limit);
+
+  if (error) {
+    throw new Error(`Failed to load recent comments: ${error.message}`);
+  }
+
+  return (data as CommentRow[]).map(rowToComment);
+}
+
 export async function deleteComment(id: string): Promise<Comment | null> {
   const supabase = getSupabaseAdmin();
 

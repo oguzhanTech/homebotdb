@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { Robot } from "@/types/robot";
 import type { Update } from "@/types/update";
@@ -47,13 +47,23 @@ export function RobotDetailView({
   similarRobots,
   updates,
   reviewsSection,
+  reviewCount = 0,
 }: {
   robot: Robot;
   similarRobots: Robot[];
   updates: Update[];
   reviewsSection: React.ReactNode;
+  reviewCount?: number;
 }) {
-  const [activeTab, setActiveTab] = useState<string>(uiCopy.robot.tabs.overview);
+  const [activeTab, setActiveTab] = useState<string>(() => {
+    if (
+      typeof window !== "undefined" &&
+      window.location.hash.startsWith("#comment-")
+    ) {
+      return uiCopy.robot.tabs.fieldReports;
+    }
+    return uiCopy.robot.tabs.overview;
+  });
   const { toggle, isSelected, isFull } = useCompare();
   const { toggle: toggleFavorite, isFavorite } = useFavorites();
   const purchaseUrl = getPurchaseUrl(robot);
@@ -61,6 +71,35 @@ export function RobotDetailView({
     () => getRobotImages(robot),
     [robot.slug, robot.imageUrl, robot.imageUrls?.join("|")],
   );
+
+  useEffect(() => {
+    function openReviewsForCommentHash() {
+      const hash = window.location.hash;
+      if (!hash.startsWith("#comment-")) return;
+
+      setActiveTab(uiCopy.robot.tabs.fieldReports);
+    }
+
+    openReviewsForCommentHash();
+    window.addEventListener("hashchange", openReviewsForCommentHash);
+    return () => window.removeEventListener("hashchange", openReviewsForCommentHash);
+  }, []);
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash.startsWith("#comment-")) return;
+    if (activeTab !== uiCopy.robot.tabs.fieldReports) return;
+
+    const commentId = hash.slice(1);
+    const timer = window.setTimeout(() => {
+      document.getElementById(commentId)?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }, 50);
+
+    return () => window.clearTimeout(timer);
+  }, [activeTab]);
 
   const ghostNumber = robot.name.match(/\d+/)?.[0] ?? "";
 
@@ -303,7 +342,14 @@ export function RobotDetailView({
       </div>
 
       <Card className="mt-5 overflow-hidden">
-        <Tabs tabs={[...TAB_LIST]} active={activeTab} onChange={setActiveTab} />
+        <Tabs
+          tabs={[...TAB_LIST]}
+          active={activeTab}
+          onChange={setActiveTab}
+          tabBadges={{
+            [uiCopy.robot.tabs.fieldReports]: reviewCount,
+          }}
+        />
         <div className="grid gap-6 p-6 lg:grid-cols-[1.1fr_0.9fr]">
           {activeTab === uiCopy.robot.tabs.overview && (
             <>

@@ -1,7 +1,9 @@
 import { getRobots, type SortField } from "@/lib/data/repository";
 import {
+  mergeMatrixFilters,
   parseMatrixFilters,
   resolveSearchParams,
+  type MatrixFilters,
 } from "@/lib/matrix-search-params";
 import { HomeMatrixClient } from "@/components/robot/HomeMatrixClient";
 
@@ -9,14 +11,22 @@ export async function RobotMatrixSection({
   listingPath = "/",
   searchParams,
   initialSort = "readiness",
+  lockedFilters,
+  defaultSearchParams,
+  showBrandInTable = false,
 }: {
   listingPath?: string;
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
   initialSort?: SortField;
+  lockedFilters?: Partial<Pick<MatrixFilters, "type" | "primaryTask">>;
+  defaultSearchParams?: Record<string, string>;
+  showBrandInTable?: boolean;
 }) {
   const allRobots = getRobots();
   const params = await resolveSearchParams(searchParams);
-  const filters = parseMatrixFilters(params, { defaultSort: initialSort });
+  const mergedParams = { ...defaultSearchParams, ...params };
+  const parsed = parseMatrixFilters(mergedParams, { defaultSort: initialSort });
+  const filters = mergeMatrixFilters(parsed, lockedFilters);
   const isHome = listingPath === "/";
   const effectiveSort = isHome ? initialSort : filters.sort;
 
@@ -27,7 +37,8 @@ export async function RobotMatrixSection({
         allRobots={allRobots}
         initialFilters={filters}
         initialSort={effectiveSort}
-        showBrandInTable={!isHome}
+        lockedFilters={lockedFilters}
+        showBrandInTable={showBrandInTable}
         sectionHeader={
           isHome ? (
             <>

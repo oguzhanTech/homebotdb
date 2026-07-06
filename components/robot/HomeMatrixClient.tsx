@@ -11,6 +11,7 @@ import {
 import {
   buildMatrixQueryString,
   matrixFiltersToRobotFilters,
+  mergeMatrixFilters,
   parseMatrixFilters,
   type MatrixFilters,
 } from "@/lib/matrix-search-params";
@@ -40,6 +41,7 @@ export function HomeMatrixClient({
   allRobots,
   initialFilters,
   initialSort,
+  lockedFilters,
   sectionHeader,
   showBrandInTable = false,
 }: {
@@ -47,13 +49,17 @@ export function HomeMatrixClient({
   allRobots: Robot[];
   initialFilters: MatrixFilters;
   initialSort: SortField;
+  lockedFilters?: Partial<Pick<MatrixFilters, "type" | "primaryTask">>;
   sectionHeader?: ReactNode;
   showBrandInTable?: boolean;
 }) {
   const router = useRouter();
   const includeSortInUrl = listingPath !== "/";
   const lastSyncedQueryRef = useRef(
-    buildMatrixQueryString(initialFilters, { includeSort: includeSortInUrl }),
+    buildMatrixQueryString(initialFilters, {
+      includeSort: includeSortInUrl,
+      lockedFilters,
+    }),
   );
   const defaultSortRef = useRef(initialSort);
 
@@ -65,6 +71,11 @@ export function HomeMatrixClient({
     direction: MatrixTransitionDirection;
   }>({ signal: 0, direction: "reset" });
   const scrollTableAfterPageChangeRef = useRef(false);
+
+  const effectiveFilters = useMemo(
+    () => mergeMatrixFilters(filters, lockedFilters),
+    [filters, lockedFilters],
+  );
 
   const playTransition = (direction: MatrixTransitionDirection) => {
     setTransition((current) => ({
@@ -79,25 +90,31 @@ export function HomeMatrixClient({
         Object.fromEntries(new URLSearchParams(window.location.search)),
         { defaultSort: defaultSortRef.current },
       );
-      setFilters(parsed);
+      const next = mergeMatrixFilters(parsed, lockedFilters);
+      setFilters(next);
       if (includeSortInUrl) {
-        setSort(parsed.sort);
+        setSort(next.sort);
       }
-      lastSyncedQueryRef.current = buildMatrixQueryString(parsed, {
+      lastSyncedQueryRef.current = buildMatrixQueryString(next, {
         includeSort: includeSortInUrl,
+        lockedFilters,
       });
     };
 
     window.addEventListener("popstate", syncFromUrl);
     return () => window.removeEventListener("popstate", syncFromUrl);
-  }, [includeSortInUrl]);
+  }, [includeSortInUrl, lockedFilters]);
 
   const syncUrl = useDebouncedCallback(
     (nextFilters: MatrixFilters, nextSort: SortField) => {
-      const qs = buildMatrixQueryString(
+      const merged = mergeMatrixFilters(
         { ...nextFilters, sort: nextSort },
-        { includeSort: includeSortInUrl },
+        lockedFilters,
       );
+      const qs = buildMatrixQueryString(merged, {
+        includeSort: includeSortInUrl,
+        lockedFilters,
+      });
       lastSyncedQueryRef.current = qs;
       const href = qs ? `${listingPath}?${qs}` : listingPath;
       router.replace(href, { scroll: false });
@@ -106,8 +123,8 @@ export function HomeMatrixClient({
   );
 
   const filteredRobots = useMemo(
-    () => filterRobots(matrixFiltersToRobotFilters(filters)),
-    [filters],
+    () => filterRobots(matrixFiltersToRobotFilters(effectiveFilters)),
+    [effectiveFilters],
   );
 
   const robots = useMemo(
@@ -132,7 +149,11 @@ export function HomeMatrixClient({
   );
 
   const handleFiltersChange = (patch: Partial<MatrixFilters>) => {
-    const next = { ...filters, ...patch };
+    const sanitized = { ...patch };
+    if (lockedFilters?.type) delete sanitized.type;
+    if (lockedFilters?.primaryTask) delete sanitized.primaryTask;
+
+    const next = mergeMatrixFilters({ ...filters, ...sanitized }, lockedFilters);
     setFilters(next);
     setPage(1);
     playTransition("reset");
@@ -144,7 +165,7 @@ export function HomeMatrixClient({
     setPage(1);
     playTransition("reset");
     if (includeSortInUrl) {
-      const next = { ...filters, sort: nextSort };
+      const next = mergeMatrixFilters({ ...filters, sort: nextSort }, lockedFilters);
       setFilters(next);
       syncUrl(next, nextSort);
     } else {
@@ -172,8 +193,9 @@ export function HomeMatrixClient({
       ) : null}
 
       <RobotMatrixFilters
-        filters={filters}
+        filters={effectiveFilters}
         sort={sort}
+        lockedFilters={lockedFilters}
         onFiltersChange={handleFiltersChange}
         onSortChange={handleSortChange}
       />

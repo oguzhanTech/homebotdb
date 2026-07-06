@@ -5,11 +5,10 @@ import {
   getLatestUpdates,
   getNewsUpdates,
   getRobots,
-  pickRandomSortField,
 } from "@/lib/data/repository";
 import { TopBar } from "@/components/layout/TopBar";
-import { RobotMatrixSection } from "@/components/robot/RobotMatrixSection";
 import { DashboardSpotlight } from "@/components/robot/DashboardSpotlight";
+import { HomeDashboard } from "@/components/home/HomeDashboard";
 import { UpdatesSection, NewsSection } from "@/components/robot/UpdatesSection";
 import { EmailAlertPlaceholder } from "@/components/marketing/EmailAlertPlaceholder";
 
@@ -19,15 +18,10 @@ export const metadata = buildPageMetadata({
   path: "/",
 });
 
-interface PageProps {
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
-}
-
-export default async function HomePage({ searchParams }: PageProps) {
+export default async function HomePage() {
   const robots = getRobots();
   const latestUpdates = getLatestUpdates(6);
   const newsUpdates = getNewsUpdates(4);
-  const initialSort = pickRandomSortField();
 
   return (
     <main className="min-w-0 px-3.5 py-5 sm:px-7 sm:py-7">
@@ -35,11 +29,7 @@ export default async function HomePage({ searchParams }: PageProps) {
 
       <DashboardSpotlight robots={robots} />
 
-      <RobotMatrixSection
-        listingPath="/"
-        searchParams={searchParams}
-        initialSort={initialSort}
-      />
+      <HomeDashboard robots={robots} />
 
       <NewsSection updates={newsUpdates} />
 

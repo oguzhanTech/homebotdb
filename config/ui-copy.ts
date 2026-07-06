@@ -28,6 +28,20 @@ export const uiCopy = {
     latestRobotUpdates: "Latest Robot Updates",
     stayOnRadar: "Stay on Radar",
     viewFullProfile: "View Full Profile",
+    dashboard: {
+      browseByMission: "Browse by mission",
+      popularToday: "Popular today",
+      latestAdded: "Latest added robots",
+      latestComments: "Latest comments",
+      openFullMatrix: "Open full matrix",
+      noCommentsYet:
+        "No recent comments yet. Be the first to share your thoughts on a robot profile.",
+      browseRobots: "Browse robots",
+      unitsTracked: (count: number) => `${count} units tracked`,
+      addedOn: "Added",
+      onRobot: "on",
+      onStory: "on story",
+    },
   },
   matrix: {
     showDiscontinued: "Show discontinued robots",

@@ -45,14 +45,19 @@ const SORT_OPTIONS: { value: SortField; label: string }[] = [
 export function RobotMatrixFilters({
   filters,
   sort,
+  lockedFilters,
   onFiltersChange,
   onSortChange,
 }: {
   filters: MatrixFilters;
   sort: SortField;
+  lockedFilters?: Partial<Pick<MatrixFilters, "type" | "primaryTask">>;
   onFiltersChange: (patch: Partial<MatrixFilters>) => void;
   onSortChange: (sort: SortField) => void;
 }) {
+  const lockType = lockedFilters?.type != null;
+  const lockTask = lockedFilters?.primaryTask != null;
+
   return (
     <div className="mb-4 rounded-[18px] border border-line bg-panel/82 p-4 shadow-card">
       <div className="grid gap-3 lg:grid-cols-2 xl:grid-cols-4">
@@ -61,18 +66,20 @@ export function RobotMatrixFilters({
           value={filters.query}
           onChange={(e) => onFiltersChange({ query: e.target.value })}
         />
-        <FilterSelect
-          value={filters.type}
-          onChange={(e) =>
-            onFiltersChange({ type: e.target.value as RobotType | "all" })
-          }
-        >
-          {ROBOT_TYPES.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              Form: {opt.label}
-            </option>
-          ))}
-        </FilterSelect>
+        {lockType ? null : (
+          <FilterSelect
+            value={filters.type}
+            onChange={(e) =>
+              onFiltersChange({ type: e.target.value as RobotType | "all" })
+            }
+          >
+            {ROBOT_TYPES.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                Form: {opt.label}
+              </option>
+            ))}
+          </FilterSelect>
+        )}
         <FilterSelect
           value={filters.availability}
           onChange={(e) =>
@@ -97,20 +104,22 @@ export function RobotMatrixFilters({
             </option>
           ))}
         </FilterSelect>
-        <FilterSelect
-          value={filters.primaryTask}
-          onChange={(e) =>
-            onFiltersChange({
-              primaryTask: e.target.value as PrimaryTask | "all",
-            })
-          }
-        >
-          {PRIMARY_TASKS.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              Primary task: {opt.label}
-            </option>
-          ))}
-        </FilterSelect>
+        {lockTask ? null : (
+          <FilterSelect
+            value={filters.primaryTask}
+            onChange={(e) =>
+              onFiltersChange({
+                primaryTask: e.target.value as PrimaryTask | "all",
+              })
+            }
+          >
+            {PRIMARY_TASKS.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                Primary task: {opt.label}
+              </option>
+            ))}
+          </FilterSelect>
+        )}
         <input
           type="number"
           placeholder="Min price"

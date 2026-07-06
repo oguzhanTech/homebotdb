@@ -61,6 +61,35 @@ export function getUpdatesByRobotSlug(robotSlug: string, limit = 5): Update[] {
     .slice(0, limit);
 }
 
+export interface CatalogAddition {
+  robot: Robot;
+  addedAt: string;
+  updateSlug: string;
+}
+
+export function getLatestCatalogAdditions(limit = 5): CatalogAddition[] {
+  const results: CatalogAddition[] = [];
+
+  for (const update of getUpdates()) {
+    if (!update.robotSlug || !update.slug.endsWith("-added-to-catalog")) {
+      continue;
+    }
+
+    const robot = getRobotBySlug(update.robotSlug);
+    if (!robot) continue;
+
+    results.push({
+      robot,
+      addedAt: update.createdAt,
+      updateSlug: update.slug,
+    });
+
+    if (results.length >= limit) break;
+  }
+
+  return results;
+}
+
 export function getLatestUpdates(limit = 6): Update[] {
   return getDataUpdates(limit);
 }

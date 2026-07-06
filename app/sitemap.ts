@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
+import { getAllCategorySlugs } from "@/lib/robot-categories";
 import {
   getAllDataUpdateSlugs,
   getAllNewsSlugs,
@@ -31,6 +32,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  const categoryRoutes = getAllCategorySlugs().map((slug) => ({
+    url: `${base}/robots/${slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
   const updateRoutes = getAllDataUpdateSlugs().map((slug) => ({
     url: `${base}/updates/${slug}`,
     lastModified: now,
@@ -52,5 +60,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticRoutes, ...robotRoutes, ...updateRoutes, ...newsRoutes, ...compareRoutes];
+  return [
+    ...staticRoutes,
+    ...robotRoutes,
+    ...categoryRoutes,
+    ...updateRoutes,
+    ...newsRoutes,
+    ...compareRoutes,
+  ];
 }

@@ -7,4 +7,5 @@ export function revalidateCommentTarget(
   targetSlug: string,
 ): void {
   revalidatePath(getCommentPublicPath(targetType, targetSlug));
+  revalidatePath("/");
 }
