@@ -24,22 +24,22 @@ function DashboardStats({
   avgReadiness: number;
 }) {
   return (
-    <div className="flex shrink-0 gap-2 sm:gap-3">
-      <div className="min-w-[96px] rounded-xl border border-line bg-panel-strong px-3 py-2.5 shadow-card sm:min-w-[108px] sm:px-4 sm:py-3">
-        <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
-          Robots tracked
+    <div className="flex shrink-0 gap-2 sm:gap-2.5">
+      <div className="flex h-10 items-center gap-2 rounded-xl border border-line bg-panel-strong px-3 shadow-card sm:gap-2.5 sm:px-3.5">
+        <div className="text-[9px] font-bold uppercase leading-[1.15] tracking-[0.1em] text-muted">
+          Robots
+          <br />
+          tracked
         </div>
-        <div className="mt-0.5 font-mono text-xl font-bold sm:text-2xl">
-          {robotCount}
-        </div>
+        <div className="font-mono text-lg font-bold leading-none">{robotCount}</div>
       </div>
-      <div className="min-w-[96px] rounded-xl border border-line bg-panel-strong px-3 py-2.5 shadow-card sm:min-w-[108px] sm:px-4 sm:py-3">
-        <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
-          Avg readiness
+      <div className="flex h-10 items-center gap-2 rounded-xl border border-line bg-panel-strong px-3 shadow-card sm:gap-2.5 sm:px-3.5">
+        <div className="text-[9px] font-bold uppercase leading-[1.15] tracking-[0.1em] text-muted">
+          Avg
+          <br />
+          readiness
         </div>
-        <div className="mt-0.5 font-mono text-xl font-bold sm:text-2xl">
-          {avgReadiness}
-        </div>
+        <div className="font-mono text-lg font-bold leading-none">{avgReadiness}</div>
       </div>
     </div>
   );
@@ -108,9 +108,13 @@ function SpotlightCard({
             </span>
           </div>
 
-          <div className="mt-3 flex flex-wrap items-center gap-3">
-            <BrandLogo brand={robot.brand} size="lg" />
-            <h1 className="text-3xl font-medium tracking-tight sm:text-4xl">
+          <div className="mt-3 flex flex-wrap items-center gap-3.5">
+            <BrandLogo
+              brand={robot.brand}
+              size="lg"
+              className="[&_img]:!h-[3.85rem] [&_img]:!w-[3.85rem]"
+            />
+            <h1 className="text-[2.0625rem] font-medium tracking-tight sm:text-[2.475rem]">
               {robot.name}
             </h1>
           </div>
@@ -118,11 +122,11 @@ function SpotlightCard({
             {robot.shortDescription}
           </p>
 
-          <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="mt-5 grid grid-cols-2 gap-2.5 min-[520px]:grid-cols-3 lg:grid-cols-5 lg:gap-3">
             {highlights.map((item) => (
               <div
                 key={item.label}
-                className="rounded-xl border border-line bg-panel-strong px-3 py-2.5"
+                className="min-w-0 rounded-xl border border-line bg-panel-strong px-3 py-2.5"
               >
                 <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
                   {item.label}
@@ -140,7 +144,7 @@ function SpotlightCard({
             ))}
           </div>
 
-          <div className="mt-5 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-wrap gap-3">
             <PrimaryLink href={`/robots/${robot.slug}`}>
               {uiCopy.homepage.viewFullProfile}
             </PrimaryLink>
@@ -154,17 +158,25 @@ function SpotlightCard({
           </div>
         </div>
 
-        <div className="flex w-full flex-col items-end gap-6 lg:justify-between lg:self-stretch">
+        <div className="flex w-full flex-col items-center gap-6 sm:items-end lg:justify-between lg:self-stretch">
           <RobotAvatar
             name={robot.name}
             imageUrl={getPrimaryRobotImage(robot)}
-            size="lg"
-            className="self-center lg:self-auto"
+            size="md"
+            className="scale-110 sm:hidden"
           />
-          <DashboardStats
-            robotCount={robotCount}
-            avgReadiness={avgReadiness}
+          <RobotAvatar
+            name={robot.name}
+            imageUrl={getPrimaryRobotImage(robot)}
+            size="spotlight"
+            className="hidden sm:flex lg:self-auto"
           />
+          <div className="mt-7 w-full sm:w-auto">
+            <DashboardStats
+              robotCount={robotCount}
+              avgReadiness={avgReadiness}
+            />
+          </div>
         </div>
       </div>
     </div>

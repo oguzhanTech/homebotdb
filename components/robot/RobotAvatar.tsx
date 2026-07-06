@@ -22,6 +22,14 @@ const sizes = {
     avatarSurface:
       "border border-line/60 bg-bg shadow-[0_18px_50px_rgba(8,11,18,0.08)]",
   },
+  spotlight: {
+    outer: "h-[240px] w-[240px]",
+    avatar: "h-[209px] w-[209px]",
+    ringMiddle: "inset-[24px]",
+    ringInner: "inset-[59px]",
+    avatarSurface:
+      "border border-line/60 bg-bg shadow-[0_18px_50px_rgba(8,11,18,0.08)]",
+  },
   md: {
     outer: "h-[120px] w-[120px]",
     avatar: "h-[104px] w-[104px]",
