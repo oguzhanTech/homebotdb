@@ -179,4 +179,16 @@ export const brands: Brand[] = [
     logo: "/brands/ubtech.png",
     aliases: ["UBTech", "UBTECH", "UBTech Robotics", "UBTECH Robotics"],
   },
+  {
+    id: "leju-robotics",
+    name: "Leju Robotics",
+    logo: "/brands/leju-robotics.png",
+    aliases: [
+      "Leju Robotics",
+      "Leju",
+      "Leju Robot",
+      "乐聚机器人",
+      "Suzhou Leju Robotics",
+    ],
+  },
 ];

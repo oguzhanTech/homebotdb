@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-035",
+    title: "Kuavo 5 added to the catalog",
+    slug: "kuavo-5-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "kuavo-5",
+    summary:
+      "Leju Robotics' modular Kuavo 5 joins HomeBotRadar with official MaxB specs, a ~$50,000+ estimate band, and China-first enterprise availability.",
+    content:
+      "We added Kuavo 5 to HomeBotRadar. It is Leju Robotics' fifth-generation humanoid platform: a 173 cm biped with 29 body degrees of freedom, tactile dexterous hands, Intel Core Ultra 7 plus Jetson AGX Orin compute, and an optional Kuavo 5-W wheel base for faster indoor service runs.\n\nOur Kuavo 5 profile pulls from Leju's official Kuavo manuals: 63.5 kg weight, about one hour of biped walk endurance, ≤1.5 h charge time, Gemini 335L and D405 vision, Livox mid-360 LiDAR, and HarmonyOS/KaihongOS with Huawei Pangu integration. Leju sells by enterprise quote rather than public MSRP, so we list a $50,000+ estimate band until an official price lands.\n\nOpen /compare/kuavo-5-vs-pm01 or /compare/kuavo-5-vs-unitree-g1 if you are cross-shopping affordable developer humanoids against Leju's full-size modular platform.",
+      coverImage: "/images/updates/kuavo-5-added-to-catalog.jpg",
+    sourceUrl: "https://www.lejurobot.com/en/",
+    createdAt: "2026-07-07T12:00:00Z",
+    updatedAt: "2026-07-07T12:00:00Z",
+  },
+  {
     id: "upd-034",
     title: "UWORLD U1 added to the catalog",
     slug: "ubtech-u1-added-to-catalog",

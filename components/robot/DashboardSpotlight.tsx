@@ -97,8 +97,8 @@ function SpotlightCard({
 
   return (
     <div className="mt-3 overflow-hidden rounded-[18px] border border-line bg-panel/82 shadow-card backdrop-blur-[18px]">
-      <div className="grid items-center gap-6 p-5 sm:p-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-stretch lg:gap-8">
-        <div className="min-w-0">
+      <div className="grid gap-6 p-5 sm:p-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-stretch lg:gap-8">
+        <div className="flex min-h-0 flex-col">
           <div className="flex flex-wrap items-center gap-3">
             <StatusPill>
               {getRobotHeroStatusLabel(robot).toUpperCase()}
@@ -144,7 +144,7 @@ function SpotlightCard({
             ))}
           </div>
 
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-auto flex flex-wrap gap-3 pt-7 lg:pt-8">
             <PrimaryLink href={`/robots/${robot.slug}`}>
               {uiCopy.homepage.viewFullProfile}
             </PrimaryLink>
@@ -158,7 +158,7 @@ function SpotlightCard({
           </div>
         </div>
 
-        <div className="flex w-full flex-col items-center gap-6 sm:items-end lg:justify-between lg:self-stretch">
+        <div className="flex flex-col items-center justify-between gap-6 sm:items-end">
           <RobotAvatar
             name={robot.name}
             imageUrl={getPrimaryRobotImage(robot)}
@@ -169,14 +169,9 @@ function SpotlightCard({
             name={robot.name}
             imageUrl={getPrimaryRobotImage(robot)}
             size="spotlight"
-            className="hidden sm:flex lg:self-auto"
+            className="hidden sm:flex"
           />
-          <div className="mt-7 w-full sm:w-auto">
-            <DashboardStats
-              robotCount={robotCount}
-              avgReadiness={avgReadiness}
-            />
-          </div>
+          <DashboardStats robotCount={robotCount} avgReadiness={avgReadiness} />
         </div>
       </div>
     </div>

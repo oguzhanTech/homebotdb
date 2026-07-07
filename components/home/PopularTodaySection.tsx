@@ -21,15 +21,15 @@ function PopularProfileCard({ robot }: { robot: Robot }) {
   return (
     <Link
       href={`/robots/${robot.slug}`}
-      className="group flex h-full min-h-[168px] flex-col overflow-hidden rounded-[14px] border border-line bg-panel-strong shadow-card transition-[border-color,box-shadow] hover:border-blue/25 hover:shadow-[0_12px_32px_rgba(18,100,255,0.08)]"
+      className="group flex h-full min-h-[148px] flex-col overflow-hidden rounded-[14px] border border-line bg-panel-strong shadow-card transition-[border-color,box-shadow] hover:border-blue/25 hover:shadow-[0_12px_32px_rgba(18,100,255,0.08)]"
     >
       <div
-        className="h-12 shrink-0 bg-gradient-to-r from-blue-soft via-panel-strong to-blue-soft/40"
+        className="h-14 shrink-0 bg-gradient-to-r from-blue-soft via-panel-strong to-blue-soft/40"
         aria-hidden
       />
       <div className="flex flex-1 flex-col px-3.5 pb-3.5">
-        <div className="-mt-7 flex flex-col items-center text-center">
-          <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-panel-strong bg-bg shadow-card">
+        <div className="-mt-8 flex flex-col items-center text-center">
+          <div className="h-[4.5rem] w-[4.5rem] shrink-0 overflow-hidden rounded-full border-2 border-panel-strong bg-bg shadow-card">
             {imageUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -51,11 +51,7 @@ function PopularProfileCard({ robot }: { robot: Robot }) {
           </div>
         </div>
 
-        <p className="mt-2.5 line-clamp-2 text-center text-[12px] leading-relaxed text-[#565f6b] sm:text-left">
-          {robot.shortDescription}
-        </p>
-
-        <dl className="mt-auto grid grid-cols-2 gap-x-3 gap-y-2 border-t border-line/80 pt-3 text-[11px]">
+        <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2 border-t border-line/80 pt-3 text-[11px]">
           <div>
             <dt className="text-muted">Readiness</dt>
             <dd className="mt-0.5">
