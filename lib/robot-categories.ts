@@ -1,4 +1,5 @@
 import type { PrimaryTask, RobotType } from "@/types/robot";
+import { uiCopy } from "@/config/ui-copy";
 import { filterRobots } from "@/lib/data/repository";
 
 export interface RobotCategoryHub {
@@ -15,7 +16,7 @@ export const ROBOT_CATEGORY_HUBS: RobotCategoryHub[] = [
     slug: "humanoid",
     title: "Humanoid",
     description: "Bipedal home and companion robots with arms and mobility.",
-    icon: "◉",
+    icon: uiCopy.categoryMissionIcons.humanoid,
     filterType: "type",
     filterValue: "humanoid",
   },
@@ -23,7 +24,7 @@ export const ROBOT_CATEGORY_HUBS: RobotCategoryHub[] = [
     slug: "home-assistant",
     title: "Home Assistant",
     description: "Robots built for daily help, presence, and household tasks.",
-    icon: "⌂",
+    icon: uiCopy.categoryMissionIcons.homeAssistant,
     filterType: "task",
     filterValue: "home_assistant",
   },
@@ -31,7 +32,7 @@ export const ROBOT_CATEGORY_HUBS: RobotCategoryHub[] = [
     slug: "elder-care",
     title: "Elder Care",
     description: "Companions and assistants focused on aging in place.",
-    icon: "◎",
+    icon: uiCopy.categoryMissionIcons.elderCare,
     filterType: "task",
     filterValue: "elder_care",
   },
@@ -39,7 +40,7 @@ export const ROBOT_CATEGORY_HUBS: RobotCategoryHub[] = [
     slug: "conversation",
     title: "Conversation",
     description: "Social bots tuned for chat, memory, and emotional presence.",
-    icon: "✎",
+    icon: uiCopy.categoryMissionIcons.conversation,
     filterType: "task",
     filterValue: "conversation",
   },
@@ -47,7 +48,7 @@ export const ROBOT_CATEGORY_HUBS: RobotCategoryHub[] = [
     slug: "zoomorphic",
     title: "Animal-like",
     description: "Pet-form companions and zoomorphic desk robots.",
-    icon: "♥",
+    icon: uiCopy.categoryMissionIcons.zoomorphic,
     filterType: "type",
     filterValue: "zoomorphic",
   },
@@ -55,7 +56,7 @@ export const ROBOT_CATEGORY_HUBS: RobotCategoryHub[] = [
     slug: "desktop",
     title: "Desktop",
     description: "Tabletop assistants, kits, and compact desk companions.",
-    icon: "◈",
+    icon: uiCopy.categoryMissionIcons.desktop,
     filterType: "type",
     filterValue: "desktop",
   },

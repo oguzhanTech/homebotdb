@@ -16,6 +16,15 @@ export const uiCopy = {
     robotMatchmaker: "◈",
     tracked: "♥",
   },
+  /** Browse-by-mission hub icons — distinct from navIcons so cards read by task, not nav slot. */
+  categoryMissionIcons: {
+    humanoid: "⬭",
+    homeAssistant: "⊞",
+    elderCare: "⊚",
+    conversation: "∿",
+    zoomorphic: "⊙",
+    desktop: "▭",
+  },
   sidebar: {
     freshnessScore: "Data Freshness",
     lastSignal: "Last Signal",
