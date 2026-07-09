@@ -191,4 +191,10 @@ export const brands: Brand[] = [
       "Suzhou Leju Robotics",
     ],
   },
+  {
+    id: "keenon-robotics",
+    name: "KEENON Robotics",
+    logo: "/brands/keenon-robotics.png",
+    aliases: ["KEENON Robotics", "Keenon Robotics", "Keenon", "KEENON"],
+  },
 ];

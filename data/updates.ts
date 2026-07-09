@@ -2,6 +2,23 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-036",
+    title: "XMAN-R1 added to the catalog",
+    slug: "xman-r1-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "xman-r1",
+    summary:
+      "KEENON's wheeled hospitality humanoid joins HomeBotRadar with verified Shangri-La hotel deployment, KOM2.0 VLA stack, and a ~$100,000+ estimate band.",
+    content:
+      "We added XMAN-R1 to HomeBotRadar. It is KEENON Robotics' wheeled humanoid service robot for hotels, airports, and other commercial venues. KEENON unveiled it March 31, 2025 and deployed it at the Shangri-La Traders Hotel, Shanghai Hongqiao Airport in October 2025, where it greets guests while DINERBOT, KLEENBOT, BUTLERBOT, and S100 units cover delivery, cleaning, and luggage tasks.\n\nOur XMAN-R1 profile covers official launch and deployment PR: KOM2.0 vision-language-action models, KEENON ProS hotel training, fleet coordination with other KEENON robots, and CES 2026 demos in Las Vegas. Physical specs such as 172 cm height, 110 kg weight, 36 degrees of freedom, ~3 h runtime, and 3 kg payload come from buyer guides and remain unconfirmed on KEENON's own product pages. KEENON sells by enterprise quote, so we list a $100,000+ estimate band.\n\nOpen /compare/xman-r1-vs-mirokai or /compare/xman-r1-vs-buddy if you are cross-shopping hospitality humanoids against elder-care or home-adjacent companions.",
+    coverImage: "/images/updates/xman-r1-added-to-catalog.jpg",
+    sourceUrl:
+      "https://www.prnewswire.com/news-releases/keenon-robotics-marks-a-new-milestone-with-the-unveiling-of-the-humanoid-robot-xman-r1-and-the-latest-kleenbot-additions-302415464.html",
+    createdAt: "2026-07-10T12:00:00Z",
+    updatedAt: "2026-07-10T12:00:00Z",
+  },
+  {
     id: "upd-035",
     title: "Kuavo 5 added to the catalog",
     slug: "kuavo-5-added-to-catalog",
