@@ -1,9 +1,6 @@
 import Link from "next/link";
 import type { Comment } from "@/types/comment";
-import {
-  CommentAuthor,
-  formatCommentDate,
-} from "@/components/comments/CommentAuthor";
+import { CommentAuthor } from "@/components/comments/CommentAuthor";
 import { getCommentPublicPath } from "@/lib/data/comments";
 import { getRobotBySlug, getUpdateBySlug } from "@/lib/data/repository";
 import { uiCopy } from "@/config/ui-copy";
@@ -14,6 +11,16 @@ function truncateBody(body: string, max = 88): string {
   const trimmed = body.trim();
   if (trimmed.length <= max) return trimmed;
   return `${trimmed.slice(0, max - 1).trimEnd()}…`;
+}
+
+function formatDashboardCommentDate(iso: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
 }
 
 function getCommentTargetTitle(comment: Comment): string {
@@ -38,11 +45,7 @@ export function LatestCommentsPanel({
 }) {
   return (
     <section
-      className={cn(
-        "flex h-full flex-col",
-        dashboardPanelClassName,
-        className,
-      )}
+      className={cn("h-full self-stretch", dashboardPanelClassName, className)}
     >
       <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
         {uiCopy.homepage.dashboard.latestComments}
@@ -61,7 +64,7 @@ export function LatestCommentsPanel({
           </Link>
         </div>
       ) : (
-        <ul className="mt-2.5 flex-1 space-y-0.5 lg:space-y-1">
+        <ul className="mt-2.5 space-y-1 lg:space-y-0.5">
           {comments.map((comment, index) => {
             const targetTitle = getCommentTargetTitle(comment);
 
@@ -69,7 +72,7 @@ export function LatestCommentsPanel({
               <li key={comment.id} className={cn(index >= 3 && "hidden lg:block")}>
                 <Link
                   href={getCommentHref(comment)}
-                  className="group block rounded-lg border border-transparent px-1.5 py-1.5 transition-colors hover:border-line hover:bg-panel-strong lg:px-2 lg:py-2"
+                  className="group block rounded-lg border border-transparent px-2 py-2 transition-colors hover:border-line hover:bg-panel-strong lg:py-1.5"
                 >
                   <div className="flex items-baseline justify-between gap-2">
                     <CommentAuthor comment={comment} />
@@ -77,13 +80,13 @@ export function LatestCommentsPanel({
                       dateTime={comment.createdAt}
                       className="shrink-0 text-[11px] text-muted"
                     >
-                      {formatCommentDate(comment.createdAt)}
+                      {formatDashboardCommentDate(comment.createdAt)}
                     </time>
                   </div>
-                  <p className="mt-1 line-clamp-2 text-[13px] leading-snug text-[#565f6b]">
+                  <p className="mt-0.5 line-clamp-2 text-[13px] leading-snug text-[#565f6b] lg:line-clamp-1">
                     {truncateBody(comment.body)}
                   </p>
-                  <p className="mt-1 truncate text-[11px] text-muted">
+                  <p className="mt-0.5 truncate text-[11px] text-muted">
                     <span className="font-medium text-ink group-hover:text-blue">
                       {targetTitle}
                     </span>

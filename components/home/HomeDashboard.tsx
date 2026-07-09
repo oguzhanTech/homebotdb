@@ -26,7 +26,7 @@ export async function HomeDashboard({ robots }: { robots?: Robot[] }) {
     <div className="mb-8 space-y-3.5">
       <CategoryHubGrid />
 
-      <div className="grid grid-cols-1 items-stretch gap-3.5 lg:grid-cols-2 xl:grid-cols-12">
+      <div className="grid grid-cols-1 items-start gap-3.5 lg:grid-cols-2 xl:grid-cols-12">
         <PopularTodaySection
           robots={catalog}
           className="lg:col-span-2 xl:col-span-5"
