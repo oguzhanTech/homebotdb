@@ -47,7 +47,7 @@ function addPair(
   pool.set(pairKey(pair.slugs), pair);
 }
 
-/** All same-segment pairs we might rotate through on /compare. */
+/** All same-segment pairs we might rotate through on /compare */
 export function buildFeaturedComparePool(robots: Robot[]): FeaturedComparePair[] {
   const bySlug = new Map(robots.map((robot) => [robot.slug, robot]));
   const pool = new Map<string, FeaturedComparePair>();
