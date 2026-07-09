@@ -11,7 +11,7 @@ import { LatestCommentsPanel } from "@/components/home/LatestCommentsPanel";
 
 async function loadRecentComments() {
   try {
-    return await listRecentComments(3);
+    return await listRecentComments(4);
   } catch {
     return [];
   }

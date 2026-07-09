@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { buildPageMetadata } from "@/lib/seo";
 import { getRobots } from "@/lib/data/repository";
+import { getFeaturedComparisonsToday } from "@/lib/featured-comparisons";
 import { CompareLandingView } from "@/components/compare/CompareLandingView";
 import { TopBar } from "@/components/layout/TopBar";
 
@@ -13,6 +14,7 @@ export const metadata = buildPageMetadata({
 
 export default function CompareLandingPage() {
   const robots = getRobots();
+  const featuredPairs = getFeaturedComparisonsToday(robots, 3);
 
   return (
     <main className="px-3.5 py-5 sm:px-7 sm:py-7">
@@ -29,7 +31,7 @@ export default function CompareLandingPage() {
       </p>
 
       <div className="mt-6">
-        <CompareLandingView robots={robots} />
+        <CompareLandingView robots={robots} featuredPairs={featuredPairs} />
       </div>
     </main>
   );

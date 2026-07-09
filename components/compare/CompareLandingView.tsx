@@ -7,6 +7,7 @@ import type { Robot } from "@/types/robot";
 import { ROBOT_TYPE_LABELS } from "@/types/robot";
 import { useCompare } from "@/contexts/CompareContext";
 import { buildComparePath } from "@/lib/compare";
+import type { FeaturedComparePair } from "@/lib/featured-comparisons";
 import { getRobotsBySlugs } from "@/lib/data/repository";
 import { CompareRobotThumb, compareThumbSizes } from "@/components/robot/CompareRobotThumb";
 import { BrandLogo } from "@/components/brand/BrandLogo";
@@ -15,12 +16,6 @@ import { Button } from "@/components/ui/Button";
 import { SearchInput } from "@/components/ui/SearchInput";
 import { RobotTypeTag } from "@/components/ui/MatrixTag";
 import { cn } from "@/lib/utils";
-
-const FEATURED_PAIRS: { label: string; slugs: string[] }[] = [
-  { label: "Figure 02 vs Unitree G1", slugs: ["figure-02", "unitree-g1"] },
-  { label: "EMO vs Figure 02", slugs: ["emo-companion", "figure-02"] },
-  { label: "Optimus vs Unitree G1", slugs: ["optimus-gen2", "unitree-g1"] },
-];
 
 function RobotThumb({
   robot,
@@ -136,7 +131,13 @@ function FeaturedCompareCard({
   );
 }
 
-export function CompareLandingView({ robots }: { robots: Robot[] }) {
+export function CompareLandingView({
+  robots,
+  featuredPairs,
+}: {
+  robots: Robot[];
+  featuredPairs: FeaturedComparePair[];
+}) {
   const [query, setQuery] = useState("");
   const robotsBySlug = useMemo(
     () => new Map(robots.map((robot) => [robot.slug, robot])),
@@ -165,9 +166,9 @@ export function CompareLandingView({ robots }: { robots: Robot[] }) {
           Featured comparisons
         </div>
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-          {FEATURED_PAIRS.map((pair) => (
+          {featuredPairs.map((pair) => (
             <FeaturedCompareCard
-              key={pair.label}
+              key={pair.slugs.join("-vs-")}
               label={pair.label}
               slugs={pair.slugs}
               robotsBySlug={robotsBySlug}

@@ -8,6 +8,8 @@ function hashString(value: string): number {
   return hash;
 }
 
+export { hashString };
+
 /** UTC day key — same picks all day for SSR stability. */
 export function getPopularDayKey(now = new Date()): string {
   const year = now.getUTCFullYear();

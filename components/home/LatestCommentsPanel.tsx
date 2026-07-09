@@ -61,15 +61,15 @@ export function LatestCommentsPanel({
           </Link>
         </div>
       ) : (
-        <ul className="mt-2.5 space-y-1">
-          {comments.map((comment) => {
+        <ul className="mt-2.5 flex-1 space-y-0.5 lg:space-y-1">
+          {comments.map((comment, index) => {
             const targetTitle = getCommentTargetTitle(comment);
 
             return (
-              <li key={comment.id}>
+              <li key={comment.id} className={cn(index >= 3 && "hidden lg:block")}>
                 <Link
                   href={getCommentHref(comment)}
-                  className="group block rounded-lg border border-transparent px-2 py-2 transition-colors hover:border-line hover:bg-panel-strong"
+                  className="group block rounded-lg border border-transparent px-1.5 py-1.5 transition-colors hover:border-line hover:bg-panel-strong lg:px-2 lg:py-2"
                 >
                   <div className="flex items-baseline justify-between gap-2">
                     <CommentAuthor comment={comment} />
