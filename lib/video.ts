@@ -47,3 +47,30 @@ export function getYouTubeThumbnail(url: string): string | null {
 export function isEmbeddableVideo(url: string): boolean {
   return getYouTubeVideoId(url) !== null;
 }
+
+export function getTwitterStatusId(url: string): string | null {
+  try {
+    const parsed = new URL(url.trim());
+    const host = parsed.hostname.replace(/^www\./, "");
+
+    if (host !== "twitter.com" && host !== "x.com") {
+      return null;
+    }
+
+    const match = parsed.pathname.match(/\/status\/(\d+)/);
+    return match?.[1] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export function getTwitterEmbedUrl(url: string): string | null {
+  const id = getTwitterStatusId(url);
+  if (!id) return null;
+
+  return `https://platform.twitter.com/embed/Tweet.html?id=${id}&theme=light&dnt=true&width=550`;
+}
+
+export function isEmbeddableTweet(url: string): boolean {
+  return getTwitterStatusId(url) !== null;
+}

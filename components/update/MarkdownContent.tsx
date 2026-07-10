@@ -13,8 +13,9 @@ import {
   INTERNAL_LINK_CLASS,
   linkifyPlainText,
 } from "@/lib/content-internal-links";
-import { isEmbeddableVideo } from "@/lib/video";
+import { isEmbeddableTweet, isEmbeddableVideo } from "@/lib/video";
 import { NewsYouTubeEmbed } from "@/components/update/NewsYouTubeEmbed";
+import { NewsTwitterEmbed } from "@/components/update/NewsTwitterEmbed";
 
 function MarkdownImage({ src, alt }: { src?: string | null; alt?: string | null }) {
   return (
@@ -50,16 +51,18 @@ function extractText(node: ReactNode): string {
   return "";
 }
 
-function getYouTubeEmbedFromParagraph(
+function getEmbedFromParagraph(
   children: ReactNode,
-): { url: string; caption?: string } | null {
+): { type: "youtube" | "twitter"; url: string; caption?: string } | null {
   const items = Children.toArray(children);
   if (items.length !== 1) return null;
 
   const child = items[0];
   if (typeof child === "string") {
     const url = child.trim();
-    return isEmbeddableVideo(url) ? { url } : null;
+    if (isEmbeddableVideo(url)) return { type: "youtube", url };
+    if (isEmbeddableTweet(url)) return { type: "twitter", url };
+    return null;
   }
 
   if (!isValidElement<{ href?: string; children?: ReactNode }>(child)) {
@@ -67,12 +70,12 @@ function getYouTubeEmbedFromParagraph(
   }
 
   const href = child.props.href;
-  if (typeof href !== "string" || !isEmbeddableVideo(href)) {
-    return null;
-  }
+  if (typeof href !== "string") return null;
 
-  const caption = extractText(child.props.children).trim();
-  return { url: href, caption: caption || undefined };
+  const caption = extractText(child.props.children).trim() || undefined;
+  if (isEmbeddableVideo(href)) return { type: "youtube", url: href, caption };
+  if (isEmbeddableTweet(href)) return { type: "twitter", url: href, caption };
+  return null;
 }
 
 function shouldLinkifyInside(child: ReactElement): boolean {
@@ -137,12 +140,20 @@ export function MarkdownContent({ content }: { content: string }) {
               return <>{children}</>;
             }
 
-            const youtube = getYouTubeEmbedFromParagraph(children);
-            if (youtube) {
+            const embed = getEmbedFromParagraph(children);
+            if (embed?.type === "youtube") {
               return (
                 <NewsYouTubeEmbed
-                  url={youtube.url}
-                  caption={youtube.caption}
+                  url={embed.url}
+                  caption={embed.caption}
+                />
+              );
+            }
+            if (embed?.type === "twitter") {
+              return (
+                <NewsTwitterEmbed
+                  url={embed.url}
+                  caption={embed.caption}
                 />
               );
             }
