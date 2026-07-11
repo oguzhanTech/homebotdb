@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/tracked`, lastModified: now, changeFrequency: "weekly", priority: 0.45 },
     { url: `${base}/updates`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${base}/news`, lastModified: now, changeFrequency: "daily", priority: 0.85 },
+    { url: `${base}/feeds`, lastModified: now, changeFrequency: "daily", priority: 0.75 },
     { url: `${base}/wizard`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${base}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${base}/cookies`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },

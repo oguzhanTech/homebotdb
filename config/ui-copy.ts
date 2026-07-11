@@ -51,6 +51,21 @@ export const uiCopy = {
       onRobot: "on",
       onStory: "on story",
     },
+    socialFeed: {
+      eyebrow: "On X",
+      heading: "Robot social feed",
+      viewAll: "View all feeds",
+      viewRobot: "View robot",
+      readStory: "Read story",
+      compare: "Compare",
+      openPost: "Open on X",
+      loadingPost: "Loading post…",
+      footerNote:
+        "Posts load from X when cards scroll into view. Robot and story links below each post are on HomeBotRadar.",
+      pageTitle: "Robot social feed on X",
+      pageLead:
+        "Hand-picked posts from robot makers on X, with video. Each card links to robot profiles, news, and compare on HomeBotRadar.",
+    },
   },
   matrix: {
     showDiscontinued: "Show discontinued robots",

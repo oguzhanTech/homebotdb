@@ -93,54 +93,56 @@ export function NewsCard({
   return (
     <Link
       href={getUpdatePublicPath(update)}
-      className="group block cursor-pointer rounded-[18px] border border-line bg-panel/82 p-4 shadow-card transition-colors hover:border-blue/30"
+      className="group flex h-full cursor-pointer flex-col rounded-[18px] border border-line bg-panel/82 p-4 shadow-card transition-colors hover:border-blue/30"
     >
       <NewsCoverThumb
         src={coverImage}
         alt={update.title}
         variant="banner"
-        className="mb-3"
+        className="mb-3 shrink-0"
       />
 
-      <div className="flex items-center justify-between gap-2">
-        <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-blue">
-          {UPDATE_TYPE_LABELS[update.type]}
-        </span>
-        <span className="shrink-0 text-[10px] text-muted sm:text-[11px]">
-          {formatDate(update.createdAt)}
-        </span>
-      </div>
+      <div className="flex min-h-0 flex-1 flex-col">
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-blue">
+            {UPDATE_TYPE_LABELS[update.type]}
+          </span>
+          <span className="shrink-0 text-[10px] text-muted sm:text-[11px]">
+            {formatDate(update.createdAt)}
+          </span>
+        </div>
 
-      {showAuthor && editor ? (
-        <div className="mt-1.5 text-[11px] text-muted">{editor.name}</div>
-      ) : null}
+        {showAuthor && editor ? (
+          <div className="mt-1.5 text-[11px] text-muted">{editor.name}</div>
+        ) : null}
 
-      <h3
-        className={
-          compact
-            ? "mt-2 line-clamp-2 text-sm font-semibold leading-snug tracking-tight"
-            : "mt-2 font-semibold tracking-tight"
-        }
-      >
-        {update.title}
-      </h3>
-      <p
-        className={
-          compact
-            ? "mt-1.5 line-clamp-2 text-xs leading-relaxed text-[#565f6b]"
-            : "mt-2 line-clamp-2 text-sm leading-relaxed text-[#565f6b]"
-        }
-      >
-        {update.summary}
-      </p>
+        <h3
+          className={
+            compact
+              ? "mt-2 line-clamp-2 text-sm font-semibold leading-snug tracking-tight"
+              : "mt-2 font-semibold tracking-tight"
+          }
+        >
+          {update.title}
+        </h3>
+        <p
+          className={
+            compact
+              ? "mt-1.5 line-clamp-2 text-xs leading-relaxed text-[#565f6b]"
+              : "mt-2 line-clamp-2 text-sm leading-relaxed text-[#565f6b]"
+          }
+        >
+          {update.summary}
+        </p>
 
-      <div className="mt-2.5 flex items-center justify-between gap-2">
-        <span className="text-[10px] font-bold uppercase tracking-wider text-muted sm:text-[11px]">
-          {uiCopy.updates.readStory}
-        </span>
-        <span className="shrink-0 text-[10px] font-medium text-muted sm:text-[11px]">
-          {formatUpdateReadingTime(update)}
-        </span>
+        <div className="mt-auto flex items-center justify-between gap-2 pt-2.5">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-muted sm:text-[11px]">
+            {uiCopy.updates.readStory}
+          </span>
+          <span className="shrink-0 text-[10px] font-medium text-muted sm:text-[11px]">
+            {formatUpdateReadingTime(update)}
+          </span>
+        </div>
       </div>
     </Link>
   );
@@ -216,7 +218,7 @@ export function NewsSection({
         </Link>
       </div>
       {updates.length > 0 ? (
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid items-stretch gap-3 sm:grid-cols-2 xl:grid-cols-4">
           {updates.map((update) => (
             <NewsCard key={update.id} update={update} showAuthor={false} compact />
           ))}

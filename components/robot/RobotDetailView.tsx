@@ -513,7 +513,7 @@ export function RobotDetailView({
                         {uiCopy.robot.news}
                       </div>
                       {news.length > 0 ? (
-                        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                        <div className="grid items-stretch gap-3 sm:grid-cols-2 xl:grid-cols-4">
                           {news.map((update) => (
                             <NewsCard
                               key={update.id}

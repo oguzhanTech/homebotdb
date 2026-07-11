@@ -64,11 +64,22 @@ export function getTwitterStatusId(url: string): string | null {
   }
 }
 
-export function getTwitterEmbedUrl(url: string): string | null {
+export function getTwitterEmbedUrl(
+  url: string,
+  options?: { width?: number },
+): string | null {
   const id = getTwitterStatusId(url);
   if (!id) return null;
 
-  return `https://platform.twitter.com/embed/Tweet.html?id=${id}&theme=light&dnt=true&width=550`;
+  const width = options?.width ?? 550;
+  const params = new URLSearchParams({
+    id,
+    theme: "light",
+    dnt: "true",
+    width: String(width),
+  });
+
+  return `https://platform.twitter.com/embed/Tweet.html?${params.toString()}`;
 }
 
 export function isEmbeddableTweet(url: string): boolean {
