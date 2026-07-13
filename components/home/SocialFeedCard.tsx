@@ -4,9 +4,22 @@ import { uiCopy } from "@/config/ui-copy";
 import { buildCompareSlug } from "@/lib/compare";
 import { getRobotBySlug } from "@/lib/data/repository";
 import { formatDate } from "@/lib/utils";
-import { SocialFeedEmbed } from "@/components/home/SocialFeedEmbed";
+import {
+  SocialFeedEmbed,
+  type SocialFeedEmbedLoadStrategy,
+} from "@/components/home/SocialFeedEmbed";
 
-export function SocialFeedCard({ item }: { item: SocialFeedItem }) {
+export function SocialFeedCard({
+  item,
+  embedLoadStrategy = "lazy",
+  preloadEmbed = false,
+  embedStaggerMs = 0,
+}: {
+  item: SocialFeedItem;
+  embedLoadStrategy?: SocialFeedEmbedLoadStrategy;
+  preloadEmbed?: boolean;
+  embedStaggerMs?: number;
+}) {
   const robot = item.robotSlug ? getRobotBySlug(item.robotSlug) : null;
   const compareHref = item.compareSlugs
     ? `/compare/${buildCompareSlug(item.compareSlugs)}`
@@ -32,6 +45,9 @@ export function SocialFeedCard({ item }: { item: SocialFeedItem }) {
       <SocialFeedEmbed
         url={item.tweetUrl}
         title={`${item.brandLabel} on X`}
+        loadStrategy={embedLoadStrategy}
+        preload={preloadEmbed}
+        staggerMs={embedStaggerMs}
       />
 
       <div className="flex min-h-[7.5rem] flex-1 flex-col px-4 py-3.5">

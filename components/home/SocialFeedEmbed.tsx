@@ -11,12 +11,22 @@ import { uiCopy } from "@/config/ui-copy";
 const FEED_EMBED_WIDTH = 380;
 const INITIAL_EMBED_HEIGHT = 280;
 
+export type SocialFeedEmbedLoadStrategy = "lazy" | "idle";
+
 export function SocialFeedEmbed({
   url,
   title,
+  loadStrategy = "lazy",
+  preload = false,
+  staggerMs = 0,
 }: {
   url: string;
   title: string;
+  loadStrategy?: SocialFeedEmbedLoadStrategy;
+  /** When true, begin loading (used with idle strategy from parent). */
+  preload?: boolean;
+  /** Delay after preload signal to stagger multiple embeds. */
+  staggerMs?: number;
 }) {
   const embedUrl = getTwitterEmbedUrl(url, { width: FEED_EMBED_WIDTH });
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,8 +34,10 @@ export function SocialFeedEmbed({
   const [height, setHeight] = useState(INITIAL_EMBED_HEIGHT);
 
   useEffect(() => {
+    if (loadStrategy !== "lazy" || isVisible) return;
+
     const node = containerRef.current;
-    if (!node || isVisible) return;
+    if (!node) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -39,7 +51,14 @@ export function SocialFeedEmbed({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [isVisible]);
+  }, [isVisible, loadStrategy]);
+
+  useEffect(() => {
+    if (loadStrategy !== "idle" || !preload || isVisible) return;
+
+    const timer = window.setTimeout(() => setIsVisible(true), staggerMs);
+    return () => window.clearTimeout(timer);
+  }, [isVisible, loadStrategy, preload, staggerMs]);
 
   useEffect(() => {
     if (!isVisible) return;
@@ -60,7 +79,11 @@ export function SocialFeedEmbed({
   if (!embedUrl) return null;
 
   return (
-    <div ref={containerRef} className="w-full border-b border-line/80 bg-panel-strong">
+    <div
+      ref={containerRef}
+      className="w-full border-b border-line/80 bg-panel-strong"
+      style={{ minHeight: height }}
+    >
       {isVisible ? (
         <iframe
           src={embedUrl}
@@ -68,10 +91,13 @@ export function SocialFeedEmbed({
           className="block w-full border-0"
           style={{ height }}
           scrolling="no"
-          loading="lazy"
+          loading={loadStrategy === "idle" ? "eager" : "lazy"}
         />
       ) : (
-        <div className="flex min-h-[200px] items-center justify-center px-4 text-center text-xs text-muted">
+        <div
+          className="flex items-center justify-center px-4 text-center text-xs text-muted"
+          style={{ minHeight: INITIAL_EMBED_HEIGHT }}
+        >
           {uiCopy.homepage.socialFeed.loadingPost}
         </div>
       )}

@@ -3,6 +3,16 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-007",
+    tweetUrl: "https://x.com/TheHumanoidHub/status/2076724230402818122",
+    handle: "TheHumanoidHub",
+    brandLabel: "The Humanoid Hub",
+    summary:
+      "Asimov's open-source DIY humanoid kit starts shipping in August. It arrives as a parts kit you build yourself, not a finished robot, with a group-buy price around $20k.",
+    publishedAt: "2026-07-13T17:43:34Z",
+    compareSlugs: ["reachy-2", "unitree-g1"],
+  },
+  {
     id: "sf-004",
     tweetUrl: "https://x.com/BostonDynamics/status/2075625943012368443",
     handle: "BostonDynamics",
@@ -48,18 +58,6 @@ export const socialFeedItems: SocialFeedItem[] = [
     robotSlug: "neo-gamma",
     newsSlug: "neo-gamma-hands-25-dof-tactile-sensing",
     compareSlugs: ["neo-gamma", "figure-02"],
-  },
-  {
-    id: "sf-002",
-    tweetUrl: "https://x.com/BostonDynamics/status/2051655843691610226",
-    handle: "BostonDynamics",
-    brandLabel: "Boston Dynamics",
-    summary:
-      "Boston Dynamics ran a live demo of production Atlas doing a handstand and an L-sit. It is the clearest look yet at the mass-produced humanoid line.",
-    publishedAt: "2026-05-05T13:30:45Z",
-    robotSlug: "spot",
-    newsSlug: "atlas-world-cup-match-ball-delivery",
-    compareSlugs: ["figure-02", "unitree-g1"],
   },
   {
     id: "sf-003",

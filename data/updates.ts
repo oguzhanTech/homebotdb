@@ -2,6 +2,23 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-037",
+    title: "CASBOT 01 added to the catalog",
+    slug: "casbot-01-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "casbot-01",
+    summary:
+      "Lingbao CASBOT's full-size biped Wednesday joins HomeBotRadar with confirmed CES specs, Lenovo factory pilots, and a ~$45,000+ enterprise estimate band.",
+    content:
+      "We added CASBOT 01 to HomeBotRadar. It is Lingbao CASBOT's first full-size biped humanoid, nicknamed Wednesday, unveiled in November 2024 and showcased at CES 2025. Official press lists 179 cm height, 60 kg weight, 52 degrees of freedom, 550 TOPS compute, and more than four hours of runtime.\n\nOur CASBOT 01 profile covers verified Lenovo Fire Seed factory pilots for notebook micro-assembly, dexterous 13-DoF hands, and staged home demos such as lamp assembly and clothes folding. CASBOT sells by enterprise quote in China. Sister model CASBOT 02 listed on JD.com at ¥328,800 in June 2025, so we list a $45,000+ estimate band for CASBOT 01 until an official MSRP lands.\n\nOpen /compare/casbot-01-vs-kuavo-5 or /compare/casbot-01-vs-pm01 if you are cross-shopping full-size Chinese humanoids against modular research platforms.",
+      coverImage: "/images/updates/casbot-01-added-to-catalog.jpg",
+    sourceUrl:
+      "https://www.prnewswire.com/news-releases/ces-2025-casbot-unveils-full-size-biped-humanoid-robot-casbot-01-pioneering-a-vision-of-human-machine-harmony-302347006.html",
+    createdAt: "2026-07-13T12:00:00Z",
+    updatedAt: "2026-07-13T12:00:00Z",
+  },
+  {
     id: "upd-036",
     title: "XMAN-R1 added to the catalog",
     slug: "xman-r1-added-to-catalog",

@@ -53,7 +53,7 @@ export const uiCopy = {
     },
     socialFeed: {
       eyebrow: "On X",
-      heading: "Robot social feed",
+      heading: "Social feed",
       viewAll: "View all feeds",
       viewRobot: "View robot",
       readStory: "Read story",
@@ -62,7 +62,7 @@ export const uiCopy = {
       loadingPost: "Loading post…",
       footerNote:
         "Posts load from X when cards scroll into view. Robot and story links below each post are on HomeBotRadar.",
-      pageTitle: "Robot social feed on X",
+      pageTitle: "Social feed on X",
       pageLead:
         "Hand-picked posts from robot makers on X, with video. Each card links to robot profiles, news, and compare on HomeBotRadar.",
     },

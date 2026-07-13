@@ -197,4 +197,10 @@ export const brands: Brand[] = [
     logo: "/brands/keenon-robotics.png",
     aliases: ["KEENON Robotics", "Keenon Robotics", "Keenon", "KEENON"],
   },
+  {
+    id: "casbot",
+    name: "CASBOT",
+    logo: "/brands/casbot.png",
+    aliases: ["CASBOT", "Lingbao CASBOT", "灵宝CASBOT"],
+  },
 ];
