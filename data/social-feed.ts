@@ -4,13 +4,14 @@ import type { SocialFeedItem } from "@/types/social-feed";
 export const socialFeedItems: SocialFeedItem[] = [
   {
     id: "sf-007",
-    tweetUrl: "https://x.com/TheHumanoidHub/status/2076724230402818122",
+    tweetUrl: "https://x.com/TheHumanoidHub/status/2076731175046127622",
     handle: "TheHumanoidHub",
     brandLabel: "The Humanoid Hub",
     summary:
-      "Asimov's open-source DIY humanoid kit starts shipping in August. It arrives as a parts kit you build yourself, not a finished robot, with a group-buy price around $20k.",
-    publishedAt: "2026-07-13T17:43:34Z",
-    compareSlugs: ["reachy-2", "unitree-g1"],
+      "A giant EngineAI T800 figure is up at Shenzhen's Coco Park mall. T800 is not in our catalog yet; EngineAI's listed platform is PM01.",
+    publishedAt: "2026-07-13T18:11:10Z",
+    robotSlug: "pm01",
+    compareSlugs: ["pm01", "unitree-g1"],
   },
   {
     id: "sf-004",
