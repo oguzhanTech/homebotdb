@@ -3,6 +3,17 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-008",
+    tweetUrl: "https://x.com/BostonDynamics/status/2077031281095819386",
+    handle: "BostonDynamics",
+    brandLabel: "Boston Dynamics",
+    summary:
+      "Boston Dynamics is testing a last-mile delivery run from van to doorstep. It is an enterprise logistics pilot, not a consumer home product.",
+    publishedAt: "2026-07-14T14:03:41Z",
+    robotSlug: "spot",
+    compareSlugs: ["figure-02", "spot"],
+  },
+  {
     id: "sf-007",
     tweetUrl: "https://x.com/TheHumanoidHub/status/2076731175046127622",
     handle: "TheHumanoidHub",

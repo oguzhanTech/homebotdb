@@ -4,6 +4,7 @@ slug: ucsd-surgie-unitree-g1-teleoperated-surgery
 authorId: chuck-steward
 robotSlug: unitree-g1
 summary: UC San Diego's Surgie humanoids, built on Unitree G1, finished two preclinical gallbladder removals under remote surgeon control, detailed in Nature on July 8.
+coverImage: /images/news/ucsd-surgie-unitree-g1-teleoperated-surgery.jpg
 sourceUrl: https://today.ucsd.edu/story/surgeons-use-teleoperated-humanoid-robots-to-perform-live-surgery-a-world-first
 createdAt: 2026-07-13T14:00:00Z
 updatedAt: 2026-07-13T14:00:00Z
