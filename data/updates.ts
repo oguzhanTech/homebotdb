@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-038",
+    title: "Kiki added to the catalog",
+    slug: "kiki-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "kiki",
+    summary:
+      "Zoetic AI's reinforcement-learning desktop pet Kiki joins HomeBotRadar as a discontinued CES 2019 project with a planned $1,499 MSRP and no retail ship path after 2021 refunds.",
+    content:
+      "We added Kiki to HomeBotRadar. It is Zoetic AI's stationary desktop companion robot from ex-Google founders Mita Yun and Jitu Das, debuted at CES 2019 with anime-style eyes, a nose camera, 16 touch sensors, and a personality engine that adapts through reinforcement learning.\n\nOur Kiki profile covers the Kickstarter campaign ($799 early bird, $1,499 planned MSRP), Engadget and IEEE Spectrum demos, and Zoetic's August 2021 decision to halt manufacturing and refund backers. Kiki has no wheels and never reached a buy-now store, so we mark it discontinued for shoppers researching social robot history.\n\nOpen /compare/kiki-vs-emo-companion or /compare/kiki-vs-vector-2 if you want a desktop companion cross-shop against robots you can actually order today.",
+      coverImage: "/images/updates/kiki-added-to-catalog.jpg",
+      sourceUrl: "https://www.kickstarter.com/projects/zoeticai/kiki",
+    createdAt: "2026-07-15T12:00:00Z",
+    updatedAt: "2026-07-15T12:00:00Z",
+  },
+  {
     id: "upd-037",
     title: "CASBOT 01 added to the catalog",
     slug: "casbot-01-added-to-catalog",

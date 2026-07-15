@@ -203,4 +203,10 @@ export const brands: Brand[] = [
     logo: "/brands/casbot.png",
     aliases: ["CASBOT", "Lingbao CASBOT", "灵宝CASBOT"],
   },
+  {
+    id: "zoetic-ai",
+    name: "Zoetic AI",
+    logo: "/brands/zoetic-ai.png",
+    aliases: ["Zoetic AI", "Zoetic", "Zoetic Inc."],
+  },
 ];
