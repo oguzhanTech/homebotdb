@@ -44,6 +44,7 @@ export interface CompareSection {
 export interface CompareRobotWins {
   robotIndex: number;
   robotName: string;
+  robotSlug: string;
   winCount: number;
   categories: string[];
 }
@@ -196,6 +197,7 @@ export function buildCompareVerdict(
   const winsByRobot: CompareRobotWins[] = robots.map((robot, robotIndex) => ({
     robotIndex,
     robotName: robot.name,
+    robotSlug: robot.slug,
     winCount: 0,
     categories: [],
   }));

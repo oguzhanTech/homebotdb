@@ -65,6 +65,13 @@ export const uiCopy = {
       pageTitle: "Social feed on X",
       pageLead:
         "Hand-picked posts from robot makers on X, with video. Each card links to robot profiles, news, and compare on HomeBotRadar.",
+      subscribeEyebrow: "Also subscribe",
+      subscribeLead:
+        "X cards stay on this page. For article RSS, use News and Radar Feed:",
+      newsRss: "News RSS",
+      updatesRss: "Radar Feed RSS",
+      browseNews: "Browse news",
+      browseUpdates: "Browse Radar Feed",
     },
   },
   matrix: {
@@ -143,6 +150,8 @@ export const uiCopy = {
       title: "Who should choose which?",
       choosePrefix: "Choose",
       chooseSuffix: "if…",
+      scoreboardEyebrow: "Scoreboard",
+      winsLine: (count: number) => `wins ${count}`,
     },
     table: {
       specColumn: "Spec",

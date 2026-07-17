@@ -15,6 +15,7 @@ import {
   parseScoreValue,
 } from "@/components/compare/CompareSegmentScoreBar";
 import { DataValue } from "@/components/ui/DataValue";
+import { COMPARE_SPEC_COL_WIDTH } from "@/lib/compare-layout";
 import { cn } from "@/lib/utils";
 
 function CompareRobotHeader({
@@ -37,15 +38,22 @@ function CompareRobotHeader({
     return (
       <Link
         href={`/robots/${robot.slug}`}
-        className="flex min-w-0 cursor-pointer flex-col gap-1 text-left"
+        className="flex min-w-0 cursor-pointer items-start gap-2.5 text-left"
       >
-        <div className="truncate text-xs font-bold uppercase leading-snug tracking-wide">
-          {robot.name}
+        <CompareRobotThumb
+          robot={robot}
+          seed={`${robot.slug}-compare-header`}
+          className={cn(compareThumbSizes.queue, "shrink-0")}
+        />
+        <div className="flex min-w-0 flex-col gap-1">
+          <div className="truncate text-xs font-bold uppercase leading-snug tracking-wide">
+            {robot.name}
+          </div>
+          <div className="truncate text-[10px] font-normal normal-case leading-snug text-muted">
+            {robot.brand}
+          </div>
+          {badge}
         </div>
-        <div className="truncate text-[10px] font-normal normal-case leading-snug text-muted">
-          {robot.brand}
-        </div>
-        {badge}
       </Link>
     );
   }
@@ -88,7 +96,7 @@ function CompareScoreCell({
   return (
     <td
       className={cn(
-        "px-4 py-3 align-top",
+        "min-w-0 px-4 py-3 align-top",
         isWinner &&
           "bg-emerald-50/55 ring-1 ring-inset ring-emerald-100/70",
       )}
@@ -106,17 +114,25 @@ function CompareScoreCell({
   );
 }
 
-const SPEC_COL_WIDTH = "120px";
+const SPEC_COL_WIDTH = COMPARE_SPEC_COL_WIDTH;
 
 function compareTableMinWidth(robotCount: number) {
   return `calc(${SPEC_COL_WIDTH} + ${robotCount} * var(--compare-robot-w))`;
 }
 
-const mobileStickyTop =
-  "top-[calc(max(0.75rem,env(safe-area-inset-top))+4rem)]";
+/** Clears MobileHeader + safe-area on small screens; flush to viewport on xl. */
+const stickyHeaderTop =
+  "top-[calc(max(0.75rem,env(safe-area-inset-top))+4rem)] xl:top-0";
+
+const stickyHeaderChrome =
+  "bg-panel-strong/95 backdrop-blur-md shadow-[0_10px_24px_rgba(8,11,18,0.06)]";
 
 const robotColWidthClass =
   "w-[var(--compare-robot-w)] min-w-[var(--compare-robot-w)] max-w-[var(--compare-robot-w)] shrink-0 px-4 py-3";
+
+/** Long free-text specs wrap inside equal-width columns instead of stretching them. */
+const compareTextCellClass =
+  "min-w-0 break-words [overflow-wrap:anywhere] whitespace-normal leading-snug";
 
 export function CompareTable({
   robots,
@@ -131,34 +147,49 @@ export function CompareTable({
   const tableScrollRef = useRef<HTMLDivElement>(null);
   const mobileHeaderTrackRef = useRef<HTMLDivElement>(null);
 
-  const syncMobileHeaderScroll = useCallback(() => {
+  const syncStickyHeaderScroll = useCallback(() => {
     const tableScroll = tableScrollRef.current;
     const headerTrack = mobileHeaderTrackRef.current;
     if (!tableScroll || !headerTrack) return;
+    // Desktop equal-width columns don't scroll horizontally.
+    if (tableScroll.scrollWidth <= tableScroll.clientWidth + 1) {
+      headerTrack.style.transform = "";
+      return;
+    }
     headerTrack.style.transform = `translateX(-${tableScroll.scrollLeft}px)`;
   }, []);
 
   useLayoutEffect(() => {
-    syncMobileHeaderScroll();
-  }, [syncMobileHeaderScroll, colCount]);
+    syncStickyHeaderScroll();
+  }, [syncStickyHeaderScroll, colCount]);
 
   const robotColWidth = colCount >= 3 ? "188px" : colCount === 2 ? "180px" : "160px";
 
   return (
     <div
-      className="rounded-[18px] border border-line bg-panel-strong shadow-card [--compare-robot-w:160px] xl:[--compare-robot-w:180px]"
+      className={cn(
+        "rounded-[18px] border border-line bg-panel-strong shadow-card",
+        "[--compare-robot-col:var(--compare-robot-w)]",
+        "xl:[--compare-robot-col:calc((100%-var(--compare-spec-w))/var(--compare-robot-count))]",
+      )}
       style={
         {
           "--compare-spec-w": SPEC_COL_WIDTH,
           "--compare-robot-w": robotColWidth,
+          "--compare-robot-count": String(colCount),
         } as CSSProperties
       }
     >
+      {/*
+        Sticky robot labels live outside the horizontal scrollport so they can
+        stick to the viewport. overflow-x:clip on AppShell/body is required —
+        overflow-x:hidden creates a scroll container and breaks position:sticky.
+      */}
       <div
         className={cn(
-          "sticky z-20 flex overflow-hidden border-b border-line bg-panel-strong/95 backdrop-blur-md xl:hidden",
-          mobileStickyTop,
-          "shadow-[0_10px_24px_rgba(8,11,18,0.06)]",
+          "sticky z-20 flex border-b border-line",
+          stickyHeaderTop,
+          stickyHeaderChrome,
         )}
       >
         <div className="z-10 w-[var(--compare-spec-w)] shrink-0 bg-panel-strong px-4 py-3 text-[10px] uppercase tracking-[0.12em] text-muted">
@@ -167,12 +198,15 @@ export function CompareTable({
         <div className="min-w-0 flex-1 overflow-hidden">
           <div
             ref={mobileHeaderTrackRef}
-            className="flex w-max will-change-transform"
+            className="flex w-max will-change-transform xl:w-full xl:will-change-auto"
           >
             {robots.map((robot, index) => (
               <div
                 key={robot.slug}
-                className={cn(robotColWidthClass, "bg-panel-strong")}
+                className={cn(
+                  robotColWidthClass,
+                  "bg-panel-strong xl:w-auto xl:min-w-0 xl:max-w-none xl:flex-1",
+                )}
               >
                 <CompareRobotHeader
                   robot={robot}
@@ -188,12 +222,12 @@ export function CompareTable({
       <div
         ref={tableScrollRef}
         className="max-xl:overflow-x-auto"
-        onScroll={syncMobileHeaderScroll}
+        onScroll={syncStickyHeaderScroll}
       >
         <table
           className={cn(
-            "w-full text-left text-sm",
-            "max-xl:table-fixed max-xl:w-[var(--compare-table-w)] max-xl:min-w-[var(--compare-table-w)]",
+            "w-full table-fixed text-left text-sm",
+            "max-xl:w-[var(--compare-table-w)] max-xl:min-w-[var(--compare-table-w)]",
           )}
           style={
             {
@@ -206,28 +240,10 @@ export function CompareTable({
             {robots.map((robot) => (
               <col
                 key={robot.slug}
-                className="max-xl:w-[var(--compare-robot-w)]"
+                style={{ width: "var(--compare-robot-col)" }}
               />
             ))}
           </colgroup>
-          <thead className="hidden xl:table-header-group">
-            <tr className="border-b border-line">
-              <th className="sticky left-0 z-30 w-[var(--compare-spec-w)] bg-panel-strong px-4 py-3 text-[10px] uppercase tracking-[0.12em] text-muted">
-                {uiCopy.compare.table.specColumn}
-              </th>
-              {robots.map((robot, index) => (
-                <th
-                  key={robot.slug}
-                  className="min-w-[var(--compare-robot-w)] bg-panel-strong px-4 py-4 align-top"
-                >
-                  <CompareRobotHeader
-                    robot={robot}
-                    winCount={winCounts?.[index]}
-                  />
-                </th>
-              ))}
-            </tr>
-          </thead>
           <tbody>
             {sections.map((section) => (
               <Fragment key={section.id}>
@@ -238,7 +254,7 @@ export function CompareTable({
                   <th
                     colSpan={colCount + 1}
                     scope="colgroup"
-                    className="sticky left-0 px-4 py-2.5 text-left text-[10px] font-bold uppercase tracking-[0.12em] text-muted"
+                    className="sticky left-0 px-4 py-3 text-left text-[11px] font-extrabold uppercase tracking-[0.14em] text-ink"
                   >
                     {section.title}
                   </th>
@@ -271,7 +287,8 @@ export function CompareTable({
                         <td
                           key={`${row.label}-${i}`}
                           className={cn(
-                            "px-4 py-3 font-mono text-[13px]",
+                            "px-4 py-3 align-top font-mono text-[13px]",
+                            compareTextCellClass,
                             isWinner &&
                               "bg-emerald-50/55 font-semibold text-emerald-700/90 ring-1 ring-inset ring-emerald-100/70",
                           )}

@@ -1,6 +1,8 @@
 import { robots as mockRobots } from "@/data/robots";
 import newsArticles from "@/data/news.generated.json";
 import { updates as dataUpdates } from "@/data/updates";
+import { buildCompareSlug } from "@/lib/compare";
+import { buildFeaturedComparePool } from "@/lib/featured-comparisons";
 import { enrichRobotScores } from "@/lib/score";
 import { isPurchasable } from "@/lib/purchase";
 import { assertRobotCatalogConsistency } from "@/lib/validate-robot-catalog";
@@ -334,6 +336,7 @@ export function getUpdatesByType(type: UpdateType): Update[] {
   return getUpdates().filter((update) => update.type === type);
 }
 
+/** Every unordered 2-robot pair. Prefer getIndexableComparePairs for SEO surfaces. */
 export function getComparePairs(): string[] {
   const slugs = getAllRobotSlugs();
   const pairs: string[] = [];
@@ -343,4 +346,20 @@ export function getComparePairs(): string[] {
     }
   }
   return pairs;
+}
+
+/**
+ * Compare URLs worth indexing: similarRobotSlugs peers plus same type/task
+ * top pairs from the featured compare pool. Used by sitemap and SSG.
+ */
+export function getIndexableComparePairs(): string[] {
+  return buildFeaturedComparePool(getRobots()).map((pair) =>
+    buildCompareSlug(pair.slugs),
+  );
+}
+
+const indexableComparePairSet = new Set(getIndexableComparePairs());
+
+export function isIndexableCompareSlug(slug: string): boolean {
+  return indexableComparePairSet.has(slug);
 }

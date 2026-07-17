@@ -2,6 +2,23 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-039",
+    title: "AiMe added to the catalog",
+    slug: "tcl-aime-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "tcl-aime",
+    summary:
+      "TCL's CES 2025 modular companion AiMe joins HomeBotRadar as a prototype with Baby Core, Drive Core, and Mini Core, and no public MSRP or ship date yet.",
+    content:
+      "We added AiMe to HomeBotRadar. It is TCL's modular AI companion concept, unveiled at CES 2025 and still shown as a prototype at later shows such as IFA 2025. Official TCL Design materials call out three detachable parts: Baby Core for expressive chat, Drive Core for wheeled home patrol and docking, and Mini Core for portable photo and video capture.\n\nOur AiMe profile covers the official design story, Verge and Designboom CES coverage, and planned TCL AIOS / Google Gemini language features. TCL has not published price, battery life, dimensions, or a consumer order path, so we mark commercial status as prototype with TBA pricing.\n\nOpen /compare/tcl-aime-vs-ballie or /compare/tcl-aime-vs-emo-companion if you are stacking concept mobile companions against shipping desk pets.",
+    coverImage: "/images/updates/tcl-aime-added-to-catalog.jpg",
+    sourceUrl:
+      "https://www.tcl.com/global/en/tcl-design/design-works/tcl-ai-me-design-story",
+    createdAt: "2026-07-17T12:00:00Z",
+    updatedAt: "2026-07-17T12:00:00Z",
+  },
+  {
     id: "upd-038",
     title: "Kiki added to the catalog",
     slug: "kiki-added-to-catalog",

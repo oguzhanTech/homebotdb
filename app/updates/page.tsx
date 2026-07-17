@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { uiCopy } from "@/config/ui-copy";
 import { buildPageMetadata } from "@/lib/seo";
@@ -6,12 +7,22 @@ import { getDataUpdates } from "@/lib/data/repository";
 import { TopBar } from "@/components/layout/TopBar";
 import { UpdateCard } from "@/components/robot/UpdatesSection";
 
-export const metadata = buildPageMetadata({
+const pageMeta = buildPageMetadata({
   title: `Radar Feed — ${siteConfig.name}`,
   description:
     "Radar feed: spec changes, score revisions, price updates, and availability checks for home robots.",
   path: "/updates",
 });
+
+export const metadata: Metadata = {
+  ...pageMeta,
+  alternates: {
+    ...pageMeta.alternates,
+    types: {
+      "application/rss+xml": `${siteConfig.url.replace(/\/$/, "")}/updates/feed.xml`,
+    },
+  },
+};
 
 export default function UpdatesPage() {
   const updates = getDataUpdates();
@@ -30,15 +41,22 @@ export default function UpdatesPage() {
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#565f6b]">
             Spec, score, price, and availability signals from the {siteConfig.name} team.
             News lives on a{" "}
-            <Link href="/news" className="font-semibold text-blue hover:underline">
+            <Link href="/news" className="cursor-pointer font-semibold text-blue hover:underline">
               {uiCopy.nav.news}
+            </Link>
+            . Subscribe via{" "}
+            <Link
+              href="/updates/feed.xml"
+              className="cursor-pointer font-semibold text-blue hover:underline"
+            >
+              RSS
             </Link>
             .
           </p>
         </div>
         <Link
           href="/updates/feed.xml"
-          className="text-xs font-bold uppercase tracking-wider text-blue"
+          className="cursor-pointer text-xs font-bold uppercase tracking-wider text-blue"
         >
           RSS Feed
         </Link>

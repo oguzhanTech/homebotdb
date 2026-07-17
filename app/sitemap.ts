@@ -5,7 +5,7 @@ import {
   getAllDataUpdateSlugs,
   getAllNewsSlugs,
   getAllRobotSlugs,
-  getComparePairs,
+  getIndexableComparePairs,
 } from "@/lib/data/repository";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -16,7 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: base, lastModified: now, changeFrequency: "daily", priority: 1 },
     { url: `${base}/robots`, lastModified: now, changeFrequency: "daily", priority: 0.95 },
     { url: `${base}/compare`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${base}/tracked`, lastModified: now, changeFrequency: "weekly", priority: 0.45 },
     { url: `${base}/updates`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${base}/news`, lastModified: now, changeFrequency: "daily", priority: 0.85 },
     { url: `${base}/feeds`, lastModified: now, changeFrequency: "daily", priority: 0.75 },
@@ -54,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  const compareRoutes = getComparePairs().map((slug) => ({
+  const compareRoutes = getIndexableComparePairs().map((slug) => ({
     url: `${base}/compare/${slug}`,
     lastModified: now,
     changeFrequency: "weekly" as const,

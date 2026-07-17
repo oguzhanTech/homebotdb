@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
-  getComparePairs,
+  getIndexableComparePairs,
   getRobotsBySlugs,
+  isIndexableCompareSlug,
 } from "@/lib/data/repository";
 import {
   buildCompareMetadata,
@@ -29,8 +30,9 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+/** Prebuild relevant pairs only; other valid URLs still render on demand. */
 export async function generateStaticParams() {
-  return getComparePairs().map((slug) => ({ slug }));
+  return getIndexableComparePairs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -40,7 +42,9 @@ export async function generateMetadata({ params }: PageProps) {
   if (robots.length < 2) return {};
   const sections = buildCompareSections(robots);
   const verdict = buildCompareVerdict(robots, sections);
-  return buildCompareMetadata(robots, verdict.summaryForMeta);
+  return buildCompareMetadata(robots, verdict.summaryForMeta, {
+    indexable: isIndexableCompareSlug(slug),
+  });
 }
 
 export default async function ComparePage({ params }: PageProps) {
@@ -51,6 +55,7 @@ export default async function ComparePage({ params }: PageProps) {
   const robots = getRobotsBySlugs(slugs);
   if (robots.length < 2) notFound();
 
+  const indexable = isIndexableCompareSlug(slug);
   const sections = buildCompareSections(robots);
   const verdict = buildCompareVerdict(robots, sections);
   const guidance = buildChooseGuidance(robots);
@@ -66,7 +71,9 @@ export default async function ComparePage({ params }: PageProps) {
     },
   ]);
 
-  const faqLd = buildCompareFaqJsonLd(robots, faqAnswer);
+  const faqLd = indexable
+    ? buildCompareFaqJsonLd(robots, faqAnswer)
+    : null;
 
   return (
     <>
@@ -74,10 +81,12 @@ export default async function ComparePage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
-      />
+      {faqLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+        />
+      ) : null}
       <main className="px-3.5 py-5 sm:px-7 sm:py-7">
         <TopBar />
         <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
@@ -97,7 +106,11 @@ export default async function ComparePage({ params }: PageProps) {
           </Link>
         </div>
         <CompareVerdict verdict={verdict} />
-        <CompareChooseGuide robots={robots} guidance={guidance} />
+        <CompareChooseGuide
+          robots={robots}
+          guidance={guidance}
+          winsByRobot={verdict.winsByRobot}
+        />
         <CompareTable
           robots={robots}
           sections={sections}

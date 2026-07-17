@@ -21,12 +21,21 @@ export function getSpotlightWindowKey(now = new Date()): string {
 
 /** Stable per UTC 3-hour window — same robot on SSR and client. */
 export function getSpotlightRobot(robots: Robot[]): Robot {
-  if (robots.length === 0) {
-    throw new Error("No robots available");
-  }
-  if (robots.length === 1) return robots[0];
+  const pool = robots.filter(
+    (robot) =>
+      robot.commercialStatus !== "discontinued" &&
+      robot.availabilityStatus !== "discontinued",
+  );
 
-  const sorted = [...robots].sort((left, right) =>
+  if (pool.length === 0) {
+    if (robots.length === 0) {
+      throw new Error("No robots available");
+    }
+    return robots[0];
+  }
+  if (pool.length === 1) return pool[0];
+
+  const sorted = [...pool].sort((left, right) =>
     left.slug.localeCompare(right.slug),
   );
   const index = hashString(getSpotlightWindowKey()) % sorted.length;

@@ -3,6 +3,17 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-009",
+    tweetUrl: "https://x.com/TheHumanoidHub/status/2077896972082778583",
+    handle: "TheHumanoidHub",
+    brandLabel: "The Humanoid Hub",
+    summary:
+      "A longer robot-fight cut is making the rounds, the spectacle end of humanoids rather than home chores. Related: REK's San Francisco fighting-bot shop.",
+    publishedAt: "2026-07-16T23:23:38Z",
+    newsSlug: "rek-san-francisco-humanoid-robot-fighting-storefront",
+    compareSlugs: ["figure-02", "unitree-g1"],
+  },
+  {
     id: "sf-008",
     tweetUrl: "https://x.com/BostonDynamics/status/2077031281095819386",
     handle: "BostonDynamics",

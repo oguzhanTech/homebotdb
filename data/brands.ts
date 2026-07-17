@@ -209,4 +209,10 @@ export const brands: Brand[] = [
     logo: "/brands/zoetic-ai.png",
     aliases: ["Zoetic AI", "Zoetic", "Zoetic Inc."],
   },
+  {
+    id: "tcl",
+    name: "TCL",
+    logo: "/brands/tcl.png",
+    aliases: ["TCL", "TCL Electronics", "TCL Technology"],
+  },
 ];

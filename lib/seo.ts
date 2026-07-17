@@ -84,16 +84,26 @@ export function buildRobotMetadata(robot: Robot): Metadata {
 export function buildCompareMetadata(
   robots: Robot[],
   descriptionOverride?: string,
+  options?: { indexable?: boolean },
 ): Metadata {
   const names = robots.map((robot) => robot.name).join(" vs ");
   const description =
     descriptionOverride ??
     `Compare ${names} side by side. Specs, scores, availability, and home capabilities on ${siteConfig.name}.`;
-  return buildPageMetadata({
+  const metadata = buildPageMetadata({
     title: `${names} — Home Robot Comparison`,
     description,
     path: `/compare/${robots.map((r) => r.slug).sort().join("-vs-")}`,
   });
+
+  if (options?.indexable === false) {
+    return {
+      ...metadata,
+      robots: { index: false, follow: true },
+    };
+  }
+
+  return metadata;
 }
 
 export function buildCompareFaqJsonLd(robots: Robot[], answer: string) {
