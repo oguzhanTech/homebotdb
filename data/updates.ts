@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-040",
+    title: "Atom added to the catalog",
+    slug: "dobot-atom-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "dobot-atom",
+    summary:
+      "Dobot's full-size Atom humanoid joins HomeBotRadar with Atom Max brochure specs, a $27,500+ China start band, and industrial-first positioning.",
+    content:
+      "We added Atom to HomeBotRadar. It is Dobot Robotics' first full-size humanoid from collaborative-arm maker Shenzhen Yuejiang Technology. Official materials highlight straight-knee walking, five-finger dexterous hands, ±0.05 mm arm repeatability, and the ROM-1 operator model for assembly, café, and pharmacy-style demos.\n\nOur Atom profile centers on the Atom Max brochure: about 165 cm, ~58 kg without hands, 41 DoF with dual 6-DoF hands, ~2 h battery, RealSense and RoboSense Airy sensing, and an optional 1500 TOPS compute module. China pre-sales opened around March 2025 at ¥199,000 (~$27,500). Dobot US lists near $79,000 and EU Max quotes run higher, so we show a $27,500+ band.\n\nOpen /compare/dobot-atom-vs-unitree-g1 or /compare/dobot-atom-vs-pm01 if you are cross-shopping mid-price Chinese humanoids against developer platforms.",
+    coverImage: "/images/updates/dobot-atom-added-to-catalog.jpg",
+    sourceUrl: "https://www.dobot-robots.com/products/humanoid-robots/atom.html",
+    createdAt: "2026-07-20T12:00:00Z",
+    updatedAt: "2026-07-20T12:00:00Z",
+  },
+  {
     id: "upd-039",
     title: "AiMe added to the catalog",
     slug: "tcl-aime-added-to-catalog",

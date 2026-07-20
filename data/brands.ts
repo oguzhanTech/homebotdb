@@ -215,4 +215,17 @@ export const brands: Brand[] = [
     logo: "/brands/tcl.png",
     aliases: ["TCL", "TCL Electronics", "TCL Technology"],
   },
+  {
+    id: "dobot",
+    name: "Dobot",
+    logo: "/brands/dobot.png",
+    aliases: [
+      "Dobot",
+      "DOBOT",
+      "Dobot Robotics",
+      "Shenzhen Dobot",
+      "Yuejiang Technology",
+      "Shenzhen Yuejiang Technology",
+    ],
+  },
 ];

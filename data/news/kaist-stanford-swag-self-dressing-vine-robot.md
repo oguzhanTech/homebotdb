@@ -11,7 +11,7 @@ updatedAt: 2026-07-17T12:00:00Z
 
 [Reuters coverage republished by AnewZ](https://anewz.tv/ai-next/innovations-technology/21969/scientists-unveil-self-dressing-robot/news) put a new assistive dressing demo in front of a wide audience on **July 17, 2026**: soft robotic "vines" built into clothing that pull a suit onto a person in about **10 seconds**, without needing hands or a helper. The work comes from **KAIST** and **Stanford**, with lead author **Kim Nam Gyun** and senior voices including KAIST's **Ryu Jee-Hwan** and Stanford's **Allison M. Okamura**.
 
-The technical name is **SWAG** (**Self-Wearing Adaptive Garment**). The peer-reviewed paper, *Self-Wearing Adaptive Garments via Soft Robotic Unfurling*, ran in [IEEE Robotics and Automation Letters](https://doi.org/10.1109/LRA.2025.3634909). KAIST later flagged the same paper with an [IEEE RA-L Best Paper Award](https://news.kaist.ac.kr/newsen/html/news/?mng_no=63411&mode=V) at ICRA 2026.
+The technical name is **SWAG** (**Self-Wearing Adaptive Garment**). The peer-reviewed paper, _Self-Wearing Adaptive Garments via Soft Robotic Unfurling_, ran in [IEEE Robotics and Automation Letters](https://doi.org/10.1109/LRA.2025.3634909). KAIST later flagged the same paper with an [IEEE RA-L Best Paper Award](https://news.kaist.ac.kr/newsen/html/news/?mng_no=63411&mode=V) at ICRA 2026.
 
 ## How the vines dress you
 

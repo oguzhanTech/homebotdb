@@ -3,6 +3,28 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-010",
+    tweetUrl: "https://x.com/CobotMy/status/2079159381833425140",
+    handle: "CobotMy",
+    brandLabel: "Elephant Robotics",
+    summary:
+      "Elephant Robotics shows Drag-and-Teach on the myCobot 280 arm: guide it by hand, no code. myCobot is not in our catalog; MarsCat is their listed home pet.",
+    publishedAt: "2026-07-20T11:00:00Z",
+    robotSlug: "marscat",
+    compareSlugs: ["loona", "marscat"],
+  },
+  {
+    id: "sf-011",
+    tweetUrl: "https://x.com/UnitreeRobotics/status/2079113095188984161",
+    handle: "UnitreeRobotics",
+    brandLabel: "Unitree",
+    summary:
+      "Unitree demos UnifoLM-OminiA-0.3 for whole-body mobile manipulation on home-care and wellness tasks, with omni-modal interaction and disturbance-resistant runs.",
+    publishedAt: "2026-07-20T07:56:04Z",
+    robotSlug: "unitree-g1",
+    compareSlugs: ["neo-gamma", "unitree-g1"],
+  },
+  {
     id: "sf-009",
     tweetUrl: "https://x.com/TheHumanoidHub/status/2077896972082778583",
     handle: "TheHumanoidHub",
