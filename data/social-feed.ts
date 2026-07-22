@@ -116,4 +116,15 @@ export const socialFeedItems: SocialFeedItem[] = [
     newsSlug: "atlas-world-cup-match-ball-delivery",
     compareSlugs: ["unitree-g1", "figure-02"],
   },
+  {
+    id: "sf-012",
+    tweetUrl: "https://x.com/livinoffwater/status/2017172436119331133",
+    handle: "livinoffwater",
+    brandLabel: "Natalie",
+    summary:
+      "Maker Natalie built a physical OpenClaw desk robot that dances while thinking and thumbs-up when tasks finish. Not in our catalog; closest buyable desk pets are EMO and Vector 2.0.",
+    publishedAt: "2026-01-30T09:46:00Z",
+    robotSlug: "emo-companion",
+    compareSlugs: ["emo-companion", "vector-2"],
+  },
 ];
