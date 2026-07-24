@@ -1,5 +1,8 @@
 export const TWITTER_EMBED_ORIGIN = "https://platform.twitter.com";
 
+/** X oEmbed/embed docs clamp tweet width to 250–550. */
+export const TWITTER_EMBED_MAX_WIDTH = 550;
+
 export function readTwitterEmbedHeight(data: unknown): number | null {
   if (!data || typeof data !== "object") return null;
 

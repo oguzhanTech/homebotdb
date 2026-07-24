@@ -1,3 +1,5 @@
+import { TWITTER_EMBED_MAX_WIDTH } from "@/lib/twitter-embed";
+
 export function getYouTubeVideoId(url: string): string | null {
   try {
     const parsed = new URL(url.trim());
@@ -71,7 +73,12 @@ export function getTwitterEmbedUrl(
   const id = getTwitterStatusId(url);
   if (!id) return null;
 
-  const width = options?.width ?? 550;
+  // X oEmbed/embed docs: width is clamped to 250–550. Larger width helps the
+  // in-player ABR pick a higher starting video bitrate than a narrow card.
+  const width = Math.min(
+    TWITTER_EMBED_MAX_WIDTH,
+    Math.max(250, options?.width ?? TWITTER_EMBED_MAX_WIDTH),
+  );
   const params = new URLSearchParams({
     id,
     theme: "light",

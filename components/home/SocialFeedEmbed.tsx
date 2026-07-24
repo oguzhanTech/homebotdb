@@ -4,14 +4,19 @@ import { useEffect, useRef, useState } from "react";
 import { getTwitterEmbedUrl } from "@/lib/video";
 import {
   readTwitterEmbedHeight,
+  TWITTER_EMBED_MAX_WIDTH,
   TWITTER_EMBED_ORIGIN,
 } from "@/lib/twitter-embed";
 import { uiCopy } from "@/config/ui-copy";
 
-const FEED_EMBED_WIDTH = 380;
-const INITIAL_EMBED_HEIGHT = 280;
+const INITIAL_EMBED_HEIGHT = 320;
+const WIDTH_SNAP_PX = 8;
 
 export type SocialFeedEmbedLoadStrategy = "lazy" | "idle";
+
+function clampEmbedWidth(width: number) {
+  return Math.min(TWITTER_EMBED_MAX_WIDTH, Math.max(250, Math.round(width)));
+}
 
 export function SocialFeedEmbed({
   url,
@@ -28,10 +33,28 @@ export function SocialFeedEmbed({
   /** Delay after preload signal to stagger multiple embeds. */
   staggerMs?: number;
 }) {
-  const embedUrl = getTwitterEmbedUrl(url, { width: FEED_EMBED_WIDTH });
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [height, setHeight] = useState(INITIAL_EMBED_HEIGHT);
+  const [embedWidth, setEmbedWidth] = useState(TWITTER_EMBED_MAX_WIDTH);
+  const embedUrl = getTwitterEmbedUrl(url, { width: embedWidth });
+
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node) return;
+
+    const syncWidth = () => {
+      const next = clampEmbedWidth(node.getBoundingClientRect().width);
+      setEmbedWidth((prev) =>
+        Math.abs(prev - next) >= WIDTH_SNAP_PX ? next : prev,
+      );
+    };
+
+    syncWidth();
+    const observer = new ResizeObserver(syncWidth);
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (loadStrategy !== "lazy" || isVisible) return;
@@ -76,20 +99,26 @@ export function SocialFeedEmbed({
     return () => window.removeEventListener("message", onMessage);
   }, [isVisible]);
 
+  // Remount when width snaps so X rebuilds the tweet at the card width.
+  useEffect(() => {
+    setHeight(INITIAL_EMBED_HEIGHT);
+  }, [embedWidth]);
+
   if (!embedUrl) return null;
 
   return (
     <div
       ref={containerRef}
-      className="w-full border-b border-line/80 bg-panel-strong"
+      className="w-full overflow-hidden border-b border-line/80 bg-panel-strong"
       style={{ minHeight: height }}
     >
       {isVisible ? (
         <iframe
+          key={embedWidth}
           src={embedUrl}
           title={title}
-          className="block w-full border-0"
-          style={{ height }}
+          className="block w-full max-w-full border-0"
+          style={{ height, width: "100%" }}
           scrolling="no"
           loading={loadStrategy === "idle" ? "eager" : "lazy"}
         />

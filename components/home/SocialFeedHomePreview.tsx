@@ -3,39 +3,33 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { SocialFeedItem } from "@/types/social-feed";
 import { SocialFeedCard } from "@/components/home/SocialFeedCard";
+import { getSocialFeedColumnCount } from "@/lib/social-feed-layout";
 
-/** Matches SocialFeedCard carousel width + gap-3 spacing. */
-const CARD_WIDTH = 400;
-const GAP = 12;
 /** Stagger iframe loads so multiple X embeds do not hit the network at once. */
 const EMBED_STAGGER_MS = 120;
 const IDLE_PRELOAD_TIMEOUT_MS = 2000;
 
-function countCardsThatFit(containerWidth: number): number {
-  return Math.max(1, Math.floor((containerWidth + GAP) / (CARD_WIDTH + GAP)));
-}
-
 export function SocialFeedHomePreview({ items }: { items: SocialFeedItem[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [visibleCount, setVisibleCount] = useState(1);
+  const [columnCount, setColumnCount] = useState(1);
   const [preloadEmbeds, setPreloadEmbeds] = useState(false);
 
-  const updateVisibleCount = useCallback(() => {
+  const updateLayout = useCallback(() => {
     const el = containerRef.current;
     if (!el) return;
-    setVisibleCount(countCardsThatFit(el.clientWidth));
+    setColumnCount(getSocialFeedColumnCount(el.clientWidth));
   }, []);
 
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
-    updateVisibleCount();
+    updateLayout();
 
-    const observer = new ResizeObserver(updateVisibleCount);
+    const observer = new ResizeObserver(updateLayout);
     observer.observe(el);
     return () => observer.disconnect();
-  }, [updateVisibleCount]);
+  }, [updateLayout]);
 
   useEffect(() => {
     const enablePreload = () => setPreloadEmbeds(true);
@@ -51,16 +45,17 @@ export function SocialFeedHomePreview({ items }: { items: SocialFeedItem[] }) {
     return () => window.clearTimeout(timerId);
   }, []);
 
+  const visibleCount = Math.min(columnCount, items.length);
   const visibleItems = items.slice(0, visibleCount);
 
-  if (visibleItems.length === 0) return null;
+  if (items.length === 0) return null;
 
   return (
     <div
       ref={containerRef}
-      className="grid items-stretch gap-3"
+      className="grid w-full items-stretch gap-3"
       style={{
-        gridTemplateColumns: `repeat(${visibleItems.length}, minmax(0, 1fr))`,
+        gridTemplateColumns: `repeat(${Math.max(visibleCount, 1)}, minmax(0, 1fr))`,
       }}
     >
       {visibleItems.map((item, index) => (
