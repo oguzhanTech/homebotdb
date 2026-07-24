@@ -3,6 +3,17 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-013",
+    tweetUrl: "https://x.com/UnitreeRobotics/status/2080549171661295907",
+    handle: "UnitreeRobotics",
+    brandLabel: "Unitree",
+    summary:
+      "Unitree shows the wheeled Super Athlete AS2-W: compact motion, continuous 16 kg payload, and 30+ km unloaded range. AS2-W is not in our catalog; G1 is the listed Unitree home-adjacent platform.",
+    publishedAt: "2026-07-24T07:02:31Z",
+    robotSlug: "unitree-g1",
+    compareSlugs: ["spot", "unitree-g1"],
+  },
+  {
     id: "sf-010",
     tweetUrl: "https://x.com/CobotMy/status/2079159381833425140",
     handle: "CobotMy",

@@ -228,4 +228,10 @@ export const brands: Brand[] = [
       "Shenzhen Yuejiang Technology",
     ],
   },
+  {
+    id: "yukai-engineering",
+    name: "Yukai Engineering",
+    logo: "/brands/yukai-engineering.png",
+    aliases: ["Yukai Engineering", "Yukai", "ユカイ工学"],
+  },
 ];

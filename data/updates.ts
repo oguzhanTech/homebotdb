@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-041",
+    title: "mirumi added to the catalog",
+    slug: "mirumi-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "mirumi",
+    summary:
+      "Yukai Engineering's bag-charm companion mirumi joins HomeBotRadar with Japan ¥19,800 retail (~$132), ~8 h battery, and glance-toward-sound behaviors.",
+    content:
+      "We added mirumi to HomeBotRadar. It is Yukai Engineering's palm-sized charm robot that clips onto a bag or hugs an arm, then turns toward voices and touch with baby-like glances. There is no chat subscription. Behaviors come from motion patterns, a microphone, and a head touch sensor.\n\nOur mirumi profile covers the Japan launch sheet: ¥19,800 tax included (~$132), about 10 × 11 × 14 cm, 155 g, ~8 h runtime and ~2 h charge, plus Pink, Ivory, and Gray fur. mirumi debuted at CES 2025, raised a record Kickstarter for Yukai, and went on sale April 23, 2026 at Tsutaya stores and the official Japan online store.\n\nOpen /compare/mirumi-vs-romi or /compare/mirumi-vs-ropet-kamomo if you are cross-shopping emotional desk pets against a wearable fashion-tech companion.",
+    coverImage: "/images/updates/mirumi-added-to-catalog.jpg",
+    sourceUrl: "https://mirumi.tokyo/",
+    createdAt: "2026-07-24T12:00:00Z",
+    updatedAt: "2026-07-24T12:00:00Z",
+  },
+  {
     id: "upd-040",
     title: "Atom added to the catalog",
     slug: "dobot-atom-added-to-catalog",
