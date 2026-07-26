@@ -2,6 +2,38 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-044",
+    title: "Optimus Gen 2 price set to Musk $20K-$30K target estimate",
+    slug: "optimus-gen2-price-estimate-musk-target",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "optimus-gen2",
+    summary:
+      "Optimus Gen 2 moves from Unknown to a $20,000-$30,000 estimate band. Treat it as Musk's at-scale target, not a store price. Still coming soon.",
+    content:
+      "We refreshed Optimus Gen 2 on HomeBotRadar after a freshness pass. Tesla still has no public Optimus checkout or reservation page as of late July 2026. Commercial status stays coming soon.\n\nPrice was Unknown. We now show $20,000-$30,000 as an estimate, matching Elon Musk's repeated at-scale consumer target (including the We, Robot era framing). Treat this as an estimate, not a store price. There is still no executable MSRP and no verified consumer shipments.\n\nOpen /robots/optimus-gen2 or /compare/optimus-gen2-vs-unitree-g1 if you are stacking Tesla's roadmap against robots you can actually order today. Start with Tesla's AI page for program context, not a buy button.",
+    coverImage: "/images/updates/optimus-gen2-price-estimate-musk-target.jpg",
+    sourceUrl: "https://deploy.report/explainers/tesla-optimus-price",
+    createdAt: "2026-07-26T19:00:00Z",
+    updatedAt: "2026-07-26T19:00:00Z",
+  },
+  {
+    id: "upd-042",
+    title: "Melody added to the catalog",
+    slug: "realbotix-melody-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "realbotix-melody",
+    summary:
+      "Realbotix M-Series Melody joins HomeBotRadar with a $95,000+ start price, 39 DoF upper body, and quote-order greeter positioning.",
+    content:
+      "We added Melody to HomeBotRadar. It is Realbotix's named M-Series companion humanoid from CES 2025: modular upper body, stationary from the waist down, and built to pack into suitcase cases for travel between venues. Official materials list 39 degrees of freedom, eye cameras, swappable faces and body panels, and AI that can run Realbotix software or third-party stacks such as ChatGPT.\n\nOur Melody profile uses the published M-Series start band of $95,000+. Final quotes rise with custom characters and AI subscriptions. Power for greeter demos is plug-in all-day from a standard outlet. There is no walk-up consumer cart like a desk pet. Orders go through Realbotix contact and quote, same enterprise path as Aria.\n\nOpen /compare/realbotix-melody-vs-realbotix-aria or /compare/realbotix-melody-vs-ubtech-u1 if you are cross-shopping six-figure social humanoids against Realbotix's wheeled F-Series Aria.",
+    coverImage: "/images/updates/realbotix-melody-added-to-catalog.jpg",
+    sourceUrl: "https://realbotix.ai/contact-us#contact",
+    createdAt: "2026-07-26T12:00:00Z",
+    updatedAt: "2026-07-26T12:00:00Z",
+  },
+  {
     id: "upd-041",
     title: "mirumi added to the catalog",
     slug: "mirumi-added-to-catalog",

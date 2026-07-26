@@ -3,6 +3,17 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-014",
+    tweetUrl: "https://x.com/irvinxyz/status/2081023625470333356",
+    handle: "irvinxyz",
+    brandLabel: "Irvin",
+    summary:
+      "Video from Japan shows an autonomous cage-fight robot trying to leave the ring mid-bout. Spectacle humanoids, not home chores. Related: REK's San Francisco fighting-bot shop.",
+    publishedAt: "2026-07-25T14:27:50Z",
+    newsSlug: "rek-san-francisco-humanoid-robot-fighting-storefront",
+    compareSlugs: ["figure-02", "unitree-g1"],
+  },
+  {
     id: "sf-013",
     tweetUrl: "https://x.com/UnitreeRobotics/status/2080549171661295907",
     handle: "UnitreeRobotics",

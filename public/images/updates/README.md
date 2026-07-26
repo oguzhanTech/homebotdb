@@ -1,8 +1,18 @@
 # Radar Feed update cover images
 
-Optional hero images for `/updates/{slug}` Robot Signal posts. Set `coverImage` in `data/updates.ts`.
+Hero images for `/updates/{slug}` Robot Signal posts. Always set `coverImage` in `data/updates.ts` when adding a post:
 
-- `apollo-added-to-catalog.jpg` — placeholder for upd-022 (replace with your image)
-- `moxie-discontinued-no-new-sales.jpg` — placeholder for upd-023 (replace with your image)
+```ts
+coverImage: "/images/updates/{slug}.jpg",
+```
+
+Path `{slug}` must match the update `slug`. Agent declares the filename; editor adds the binary under this folder.
+
+Examples:
+
+- `mirumi-added-to-catalog.jpg`
+- `optimus-gen2-price-estimate-musk-target.jpg`
+- `realbotix-melody-quote-only-not-buy-now.jpg`
+- `realbotix-melody-added-to-catalog.jpg`
 
 Recommended: 1200×630 px or 16:9.

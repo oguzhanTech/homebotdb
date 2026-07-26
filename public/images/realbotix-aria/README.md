@@ -7,4 +7,5 @@ Product stills sourced from the CNET CES 2025 interview (YouTube `2HQ84TVcbMw`):
 
 Paths are referenced in `data/robots.ts`.
 
-Official reference: https://www.realbotix.com/robots
+Official reference: https://realbotix.ai/contact-us#contact
+(Former product URL realbotix.com/robots now 404s after redirect.)
