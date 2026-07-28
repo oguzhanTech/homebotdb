@@ -12,7 +12,8 @@ Examples:
 
 - `mirumi-added-to-catalog.jpg`
 - `optimus-gen2-price-estimate-musk-target.jpg`
-- `realbotix-melody-quote-only-not-buy-now.jpg`
+- `figure-02-price-unknown-figure-03-focus.jpg`
+- `neo-gamma-battery-payload-order-sheet.jpg`
 - `realbotix-melody-added-to-catalog.jpg`
 
 Recommended: 1200×630 px or 16:9.

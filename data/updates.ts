@@ -2,6 +2,38 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-046",
+    title: "NEO Gamma battery and payload confirmed from 1X order sheet",
+    slug: "neo-gamma-battery-payload-order-sheet",
+    type: "data_update",
+    authorId: "oguzhan-aydin",
+    robotSlug: "neo-gamma",
+    summary:
+      "NEO Gamma battery moves from Unknown to 4 h. Charge, walk speed, and arm/carry payload now match the live 1X order sheet.",
+    content:
+      "We refreshed NEO Gamma after a July 29 freshness pass against 1x.tech/order. Battery was Unknown. It is now 4 h on the published 842 Wh pack. Charge is self-dock with a quick-charge note of about 6 minutes per hour of runtime.\n\nPayload is now 8 kg arm / 25 kg carry, and walking speed is listed as 1.4 m/s (about 5 km/h). Price stays $20,000 Early Access or $499 per month with a $200 deposit. 1X brands the consumer SKU as NEO and calls Gamma/Beta prior models. Our catalog slug stays neo-gamma.\n\nReality score moves from 76 to 78 on the stronger official sheet. Open /robots/neo-gamma or /compare/neo-gamma-vs-unitree-g1 if you are cross-shopping home humanoid pre-orders.",
+    coverImage: "/images/updates/neo-gamma-battery-payload-order-sheet.jpg",
+    sourceUrl: "https://www.1x.tech/order",
+    createdAt: "2026-07-29T12:00:00Z",
+    updatedAt: "2026-07-29T12:00:00Z",
+  },
+  {
+    id: "upd-045",
+    title: "Figure 02 price cleared to Unknown; public focus is Figure 03",
+    slug: "figure-02-price-unknown-figure-03-focus",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "figure-02",
+    summary:
+      "Figure 02 drops the unsupported $20,000+ estimate. Price is Unknown. Still prototype. Figure's public site now leads with Figure 03.",
+    content:
+      "We refreshed Figure 02 on a July 29 freshness pass. There is still no public MSRP and no home checkout. Our old $20,000+ estimate was not backed by an official list, so price is now Unknown.\n\nCommercial status stays prototype. Figure's public pages now market Figure 03 for home-oriented messaging. We are not adding Figure 03 in this pass. F.02 stays in the catalog for compare history against robots you can actually order.\n\nReadiness moved from 74 to 72 and reality from 68 to 66 to match the clearer no-list-price picture. Open /robots/figure-02 or /compare/figure-02-vs-neo-gamma if you are stacking workforce-era Figure hardware against 1X pre-orders. Start at figure.ai for current company positioning.",
+    coverImage: "/images/updates/figure-02-price-unknown-figure-03-focus.jpg",
+    sourceUrl: "https://www.figure.ai/figure",
+    createdAt: "2026-07-29T11:30:00Z",
+    updatedAt: "2026-07-29T11:30:00Z",
+  },
+  {
     id: "upd-044",
     title: "Optimus Gen 2 price set to Musk $20K-$30K target estimate",
     slug: "optimus-gen2-price-estimate-musk-target",
