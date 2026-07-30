@@ -2,6 +2,54 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-049",
+    title: "Self-Driving AI Home Hub added to the catalog",
+    slug: "lg-q9-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "lg-q9",
+    summary:
+      "LG's wheeled Q9 Self-Driving AI Home Hub joins HomeBotRadar as a ThinQ prototype with ROS 2 SDK demos and no public consumer MSRP.",
+    content:
+      "We added Self-Driving AI Home Hub to HomeBotRadar. It is LG Electronics' mobile AI home agent (project code Q9), shown from CES 2024 through IFA and ROSCon. Official materials frame a roughly 30 cm wheeled hub with an expressive face screen, ThinQ appliance control, and Qualcomm Robotics RB5 on-device AI for recognition and multimodal chat.\n\nOur Self-Driving AI Home Hub profile covers LG press and Red Dot notes, plus the open ROS 2 SDK at q9.developer.lge.com for samples and third-party apps. There is still no retail cart or official MSRP. We mark it prototype. Ignore phone-model LG Q9 pages and unverified pilot price guesses. CLOiD (CES 2026) is LG's later wheeled chore robot with arms; it builds on Q9 ideas but is a separate product.\n\nOpen /compare/lg-q9-vs-ballie or /compare/lg-q9-vs-ebo-x if you are stacking concept mobile home hubs against Samsung Ballie or a buyable familybot. Start at the developer site for SDK access, not a consumer checkout.",
+    coverImage: "/images/updates/lg-q9-added-to-catalog.jpg",
+    sourceUrl: "https://q9.developer.lge.com/",
+    createdAt: "2026-07-30T18:00:00Z",
+    updatedAt: "2026-07-30T18:00:00Z",
+  },
+  {
+    id: "upd-048",
+    title: "Vector 2.0 price history aligned to $199.99 black MSRP",
+    slug: "vector-2-price-history-aligned-199",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "vector-2",
+    summary:
+      "Vector 2.0 priceHistory now matches the $199.99 black MSRP on anki.bot. AI subscription confirmed at $11.99/mo or $99.99/yr.",
+    content:
+      "We refreshed Vector 2.0 on a July 30 freshness pass. The main price field was already $199.99, but priceHistory still showed $249.99. Latest history now matches the black hardware MSRP on anki.bot. Other colors cost more.\n\nVoice AI still needs a paid Vector AI subscription. Official copy lists $11.99 per month or $99.99 per year. Without it, Vector keeps basic autonomy but will not answer Hey Vector. The store page said in stock with shipping within one business day when we checked.\n\nOpen /robots/vector-2 or /compare/vector-2-vs-emo-companion if you are cross-shopping desk companions. Start at anki.bot for the live cart and subscription terms.",
+    coverImage: "/images/updates/vector-2-price-history-aligned-199.jpg",
+    sourceUrl: "https://anki.bot/products/vector-robot",
+    createdAt: "2026-07-30T12:30:00Z",
+    updatedAt: "2026-07-30T12:30:00Z",
+  },
+  {
+    id: "upd-047",
+    title: "Unitree G1 list price cut to $13,500 on official pages",
+    slug: "unitree-g1-price-13500-official",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "unitree-g1",
+    summary:
+      "Unitree G1 moves from $16,000 to $13,500 to match unitree.com and UniStore. Cart is live but often backordered.",
+    content:
+      "We refreshed Unitree G1 after a July 30 freshness pass. Official unitree.com/g1 and shop.unitree.com both list the base G1 at $13,500 (tax and shipping excluded). Our catalog had been stuck at $16,000.\n\nStatus moves from pre-order to buy now with limited availability. The UniStore page has Add to Cart, but stock is often backordered. EDU remains sales-quote only. Standing height on the parameter table is 1320 mm (about 132 cm), so we corrected the old 127 cm figure too.\n\nOpen /robots/unitree-g1 or /compare/unitree-g1-vs-neo-gamma if you are stacking developer humanoids against home pre-orders. Verify the live list on unitree.com/g1 before you treat any third-party quote as current.",
+    coverImage: "/images/updates/unitree-g1-price-13500-official.jpg",
+    sourceUrl: "https://www.unitree.com/g1",
+    createdAt: "2026-07-30T12:00:00Z",
+    updatedAt: "2026-07-30T12:00:00Z",
+  },
+  {
     id: "upd-046",
     title: "NEO Gamma battery and payload confirmed from 1X order sheet",
     slug: "neo-gamma-battery-payload-order-sheet",

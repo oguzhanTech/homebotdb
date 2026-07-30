@@ -3,6 +3,17 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-015",
+    tweetUrl: "https://x.com/GoogleDeepMind/status/2082844168154435957",
+    handle: "GoogleDeepMind",
+    brandLabel: "Google DeepMind",
+    summary:
+      "DeepMind shows Gemini Robotics 2 whole-body control on Apptronik Apollo 2: one prompt to reach, bend, and pick up a watering can. Apollo is in our catalog as the enterprise logistics humanoid.",
+    publishedAt: "2026-07-30T15:02:01Z",
+    robotSlug: "apollo",
+    compareSlugs: ["apollo", "figure-02"],
+  },
+  {
     id: "sf-014",
     tweetUrl: "https://x.com/irvinxyz/status/2081023625470333356",
     handle: "irvinxyz",

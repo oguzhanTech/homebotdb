@@ -234,4 +234,10 @@ export const brands: Brand[] = [
     logo: "/brands/yukai-engineering.png",
     aliases: ["Yukai Engineering", "Yukai", "ユカイ工学"],
   },
+  {
+    id: "lg",
+    name: "LG",
+    logo: "/brands/lg.png",
+    aliases: ["LG", "LG Electronics", "LG Electronics Inc."],
+  },
 ];

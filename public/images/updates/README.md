@@ -13,7 +13,8 @@ Examples:
 - `mirumi-added-to-catalog.jpg`
 - `optimus-gen2-price-estimate-musk-target.jpg`
 - `figure-02-price-unknown-figure-03-focus.jpg`
-- `neo-gamma-battery-payload-order-sheet.jpg`
-- `realbotix-melody-added-to-catalog.jpg`
+- `unitree-g1-price-13500-official.jpg`
+- `vector-2-price-history-aligned-199.jpg`
+- `lg-q9-added-to-catalog.jpg`
 
 Recommended: 1200×630 px or 16:9.
