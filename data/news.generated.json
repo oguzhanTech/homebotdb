@@ -221,6 +221,21 @@
     "updatedAt": "2026-07-15T10:00:00.000Z"
   },
   {
+    "id": "mitsubishi-motors-highlanders-kyoto-humanoid-production",
+    "title": "Mitsubishi Motors signs MOU to build Highlanders humanoids at its Kyoto plant",
+    "slug": "mitsubishi-motors-highlanders-kyoto-humanoid-production",
+    "type": "news",
+    "authorId": "chuck-steward",
+    "robotSlug": "figure-02",
+    "summary": "Mitsubishi Motors and University of Tokyo spinout Highlanders plan factory humanoids first, then Kyoto mass production aimed at early 2027, with a ~1,000 units a month ramp target in Japanese reporting.",
+    "content": "**Mitsubishi Motors** and **Highlanders**, a **University of Tokyo** spinout, signed an **MOU** on **July 9, 2026** to jointly develop humanoid robots for Mitsubishi factories and to explore **mass production** of Highlanders machines at Mitsubishi's **Kyoto Plant**.\n\nThis is factory robotics, not a living-room companion. HomeBotRadar is covering it because automakers keep turning idle plants into humanoid lines, the same pattern we watch with **Figure 02**, **Unitree G1**, and Hyundai's Boston Dynamics path around **Spot**.\n\n## What the deal covers\n\nMitsubishi and Highlanders will:\n\n- Put Highlanders humanoids on **Mitsubishi manufacturing floors** first, to collect real operational data\n- Study **mass production** of Highlanders products using **unused buildings** at the Kyoto plant\n- Aim for production to become feasible in **early 2027**\n\nMitsubishi already invested in Highlanders and says it plans more. CEO **Takao Kato** framed the deal as building a foundation where humans and robots work together, and as a way for the carmaker to learn humanoid robotics as a business. Highlanders CEO **Hiroya Masuoka** called domestic mass production with an auto partner a step toward solving industrial labor gaps through physical AI.\n\nMitsubishi also calls this the **first** auto-maker plus humanoid-developer collaboration built around **mass production**.\n\n## Scale and plant plans\n\nJapanese reporting puts the ramp target near **1,000 units per month** once production matures, with idle **engine** line space in Kyoto reused for robot assembly. Treat that volume as a **reported ramp goal**. The companies' own wording sticks to early-2027 feasibility and unused Kyoto buildings, not a locked monthly quota.\n\n## Factory first, then maybe other buyers\n\nThe first robots are expected to handle material moves, part placement, and other repetitive line tasks inside Mitsubishi. The partners may later sell to other manufacturers short on labor. Highlanders also lists general-purpose humanoids and quadrupeds plus simulators on its company profile. There is still **no consumer MSRP**, **no home ship date**, and **no retail cart**.\n\n## What this means for HomeBotRadar\n\nWe are **not** adding a Highlanders humanoid to the catalog. This is an **industrial production and partnership story**.\n\nFor shoppers, the signal is indirect: Japan is pairing **OEM manufacturing muscle** with a young humanoid startup the same way other groups scale factory bipeds before any home SKU. Open **Figure 02** and **Unitree G1** on [Compare](/compare) if you want the catalog view of developer/factory humanoids you can already research. Watch Kyoto for whether early-2027 production actually starts, and whether any Highlanders unit ever leaves the plant floor for a home buyer path.",
+    "coverImage": "/images/news/mitsubishi-motors-highlanders-kyoto-humanoid-production.jpg",
+    "coverImageCaption": "Factory-class humanoid imagery for context. Highlanders' platform is not in the HomeBotRadar catalog; this story is industrial production, not a home SKU.",
+    "sourceUrl": "https://www.mitsubishi-motors.com/en/newsroom/newsrelease/2026/20260709_1.html",
+    "createdAt": "2026-08-05T20:30:00.000Z",
+    "updatedAt": "2026-08-05T20:45:00.000Z"
+  },
+  {
     "id": "neo-gamma-hands-25-dof-tactile-sensing",
     "title": "1X unveils 25-DoF hands for NEO Gamma with tactile sensing and washable IP68 build",
     "slug": "neo-gamma-hands-25-dof-tactile-sensing",

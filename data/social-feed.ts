@@ -3,6 +3,26 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-017",
+    tweetUrl: "https://x.com/NoriRobotics/status/2085073763750817915",
+    handle: "NoriRobotics",
+    brandLabel: "Nori",
+    summary:
+      "Nori introduced L3, an affordable US-made bimanual robot you can teach tasks, with pre-orders and fall 2026 shipping claims. L3 is not in our catalog yet.",
+    publishedAt: "2026-08-05T18:41:38Z",
+    compareSlugs: ["reachy-2", "stretch-4"],
+  },
+  {
+    id: "sf-016",
+    tweetUrl: "https://x.com/RoboStrategy/status/2082902522927149550",
+    handle: "RoboStrategy",
+    brandLabel: "RoboStrategy",
+    summary:
+      "RoboStrategy posted a short Invest in Robotics video montage on physical AI and humanoids. Industry hype reel, not a product launch. Useful context while factory lines scale.",
+    publishedAt: "2026-07-30T18:53:54Z",
+    compareSlugs: ["figure-02", "unitree-g1"],
+  },
+  {
     id: "sf-015",
     tweetUrl: "https://x.com/GoogleDeepMind/status/2082844168154435957",
     handle: "GoogleDeepMind",

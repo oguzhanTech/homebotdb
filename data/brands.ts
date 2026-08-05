@@ -240,4 +240,15 @@ export const brands: Brand[] = [
     logo: "/brands/lg.png",
     aliases: ["LG", "LG Electronics", "LG Electronics Inc."],
   },
+  {
+    id: "kawasaki",
+    name: "Kawasaki Heavy Industries",
+    logo: "/brands/kawasaki.png",
+    aliases: [
+      "Kawasaki Heavy Industries",
+      "Kawasaki",
+      "Kawasaki Heavy Industries, Ltd.",
+      "KHI",
+    ],
+  },
 ];

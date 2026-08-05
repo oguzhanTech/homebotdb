@@ -2,6 +2,39 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-051",
+    title: "CORLEO added to the catalog",
+    slug: "corleo-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "corleo",
+    summary:
+      "Kawasaki's hydrogen four-legged off-road ride CORLEO joins HomeBotRadar as a coming-soon concept aimed at Expo 2030 Riyadh and 2035 commercialization.",
+    content:
+      "We added CORLEO to HomeBotRadar. It is Kawasaki Heavy Industries' four-legged off-road personal mobility vehicle: weight-shift riding like a horse, motorcycle-style rear swingarm, and a hydrogen engine that generates electricity for the legs.\n\nOur CORLEO profile covers Kawasaki's Expo 2025 Osaka concept and the December 2025 commercialization launch. A dedicated SAFE ADVENTURE team targets on-site mobility at Expo 2030 Riyadh and consumer-facing sales around 2035. A riding simulator is planned for about 2027. There is no public MSRP, height, weight, or retail cart yet.\n\nOpen /compare/corleo-vs-spot if you are stacking long-horizon rideable quadrupeds against a buyable enterprise dog. Spot ships today to qualified buyers. CORLEO does not.",
+    coverImage: "/images/updates/corleo-added-to-catalog.jpg",
+    sourceUrl:
+      "https://global.kawasaki.com/en/corp/newsroom/news/detail/?f=20251211_7502",
+    createdAt: "2026-08-05T21:00:00Z",
+    updatedAt: "2026-08-05T21:00:00Z",
+  },
+  {
+    id: "upd-050",
+    title: "Mirokaï connectivity and commercial deployment status refreshed",
+    slug: "mirokai-connectivity-commercial-deployments",
+    type: "data_update",
+    authorId: "oguzhan-aydin",
+    robotSlug: "mirokai",
+    summary:
+      "Mirokaï connectivity moves to Wi-Fi 6E plus cellular. Official pages now open first commercial deployments; readiness 81→83, reality 74→76.",
+    content:
+      "We refreshed Mirokaï after an August 5 freshness pass against enchanted.tools. Connectivity was listed as Wi-Fi 2.4/5 GHz. The product page now cites Wi-Fi 6E and an embedded cellular modem. We also note the self-aligning charge dock on that page.\n\nCommercial status stays limited (B2B quote, no consumer cart), but Enchanted Tools now says first commercial deployments are open and shows Buy Mirokaï / demo inquiry paths. Height, weight, payload, and the $30,000+ estimate band are unchanged. No public MSRP landed.\n\nReadiness moves from 81 to 83 and reality from 74 to 76 on the stronger commercial and connectivity signals. Autonomy capability ticks from 76 to 78. Open /robots/mirokai or /compare/mirokai-vs-elliq if you are stacking care companions against a US elder-care desk unit.",
+    coverImage: "/images/updates/mirokai-connectivity-commercial-deployments.jpg",
+    sourceUrl: "https://enchanted.tools/robot",
+    createdAt: "2026-08-05T20:00:00Z",
+    updatedAt: "2026-08-05T20:00:00Z",
+  },
+  {
     id: "upd-049",
     title: "Self-Driving AI Home Hub added to the catalog",
     slug: "lg-q9-added-to-catalog",
