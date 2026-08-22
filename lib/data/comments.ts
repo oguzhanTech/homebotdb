@@ -69,19 +69,26 @@ export async function listComments(
   targetType: CommentTargetType,
   targetSlug: string,
 ): Promise<Comment[]> {
-  const supabase = getSupabase();
-  const { data, error } = await supabase
-    .from("comments")
-    .select("*")
-    .eq("target_type", targetType)
-    .eq("target_slug", targetSlug)
-    .order("created_at", { ascending: true });
+  try {
+    const supabase = getSupabase();
+    const { data, error } = await supabase
+      .from("comments")
+      .select("*")
+      .eq("target_type", targetType)
+      .eq("target_slug", targetSlug)
+      .order("created_at", { ascending: true });
 
-  if (error) {
-    throw new Error(`Failed to load comments: ${error.message}`);
+    if (error) {
+      console.error(`Failed to load comments: ${error.message}`);
+      return [];
+    }
+
+    return (data as CommentRow[]).map(rowToComment);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(`Failed to load comments: ${message}`);
+    return [];
   }
-
-  return (data as CommentRow[]).map(rowToComment);
 }
 
 export async function listAllComments(): Promise<Comment[]> {

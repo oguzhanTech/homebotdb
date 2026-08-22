@@ -251,4 +251,10 @@ export const brands: Brand[] = [
       "KHI",
     ],
   },
+  {
+    id: "semi-robotics",
+    name: "Semi Robotics",
+    logo: "/brands/semi-robotics.png",
+    aliases: ["Semi Robotics", "Semi Robotics Sp. z o.o.", "SemiRobotics"],
+  },
 ];

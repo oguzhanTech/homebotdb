@@ -32,6 +32,6 @@ There is **no public MSRP**, **no confirmed ship date**, and **no US or EU retai
 
 ## What this means for HomeBotRadar
 
-**FIDI is not in the HomeBotRadar catalog today.** We list home and companion robots once we can verify **specs, pricing, availability, and scores** against primary sources. FIDI is still between **prototype and series production**, with a waitlist only.
+**FIDI is now in the HomeBotRadar catalog** as a waitlist assistive feeding arm. Price, dimensions, and a consumer ship date are still unpublished. Open the FIDI profile to compare it with ElliQ and Buddy.
 
-We are **watching closely**. Assistive feeding at the table is a concrete home-adjacent task, and FIDI's **vision-guided autonomy** is a clearer product story than many viral robot clips. When Semi Robotics publishes **confirmed dimensions, price, and regional sales**, we plan to **evaluate a full catalog entry** so readers can compare FIDI with elder-care and desktop platforms already on the matrix. Until then, treat this as an **early signal**, not a buy recommendation.
+Assistive feeding at the table is a concrete home-adjacent task, and FIDI's vision-guided autonomy is a clearer product story than many viral robot videos. Treat the waitlist as an early signal, not a buy recommendation, until Semi Robotics publishes confirmed dimensions, price, and regional sales.

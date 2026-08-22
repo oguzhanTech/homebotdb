@@ -3,6 +3,28 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-018",
+    tweetUrl: "https://x.com/TheHumanoidHub/status/2091185502385057972",
+    handle: "TheHumanoidHub",
+    brandLabel: "The Humanoid Hub",
+    summary:
+      "A humanoid takes a fall so a teammate can finish the race at Beijing's World Humanoid Robot Games. Sports spectacle, not a home chore.",
+    publishedAt: "2026-08-22T15:27:30Z",
+    newsSlug: "world-humanoid-robot-games-2026-beijing",
+    compareSlugs: ["figure-02", "unitree-g1"],
+  },
+  {
+    id: "sf-019",
+    tweetUrl: "https://x.com/TheHumanoidHub/status/2090826889694982307",
+    handle: "TheHumanoidHub",
+    brandLabel: "The Humanoid Hub",
+    summary:
+      "Galbot-trained humanoids play tennis ahead of Beijing's World Humanoid Robot Games. The post claims full autonomy; Galbot is not in our catalog.",
+    publishedAt: "2026-08-21T15:42:30Z",
+    newsSlug: "world-humanoid-robot-games-2026-beijing",
+    compareSlugs: ["figure-02", "unitree-g1"],
+  },
+  {
     id: "sf-017",
     tweetUrl: "https://x.com/NoriRobotics/status/2085073763750817915",
     handle: "NoriRobotics",

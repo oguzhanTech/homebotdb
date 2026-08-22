@@ -2,6 +2,38 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-053",
+    title: "FIDI added to the catalog",
+    slug: "fidi-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "fidi",
+    summary:
+      "Semi Robotics' tabletop feeding arm FIDI joins HomeBotRadar as a Poland waitlist product. No public MSRP. Care-home pilots reported in Łódź.",
+    content:
+      "We added FIDI to HomeBotRadar. It is Semi Robotics' tabletop feeding arm from Łódź: a 3D camera, replaceable cutlery, and a plate base that scoops food and brings it to a seated user's mouth after one screen tap.\n\nOur FIDI profile covers the official English waitlist on semirobotics.pl. There is still no list price, height, weight, or battery figure. The company says public videos show working prototypes while it prepares series production and medical-device certification. Łódź care homes have used units in mealtime pilots, per August 2025 city reporting. Leave a name and email on the official site if you want first-delivery notices. Do not treat that form as a paid pre-order.\n\nOpen /compare/elliq-vs-fidi if you are stacking a single-purpose feeding arm against a US elder-care desk companion you can lease today. ElliQ ships in the United States. FIDI does not have a consumer cart yet.",
+    coverImage: "/images/updates/fidi-added-to-catalog.jpg",
+    sourceUrl: "https://www.semirobotics.pl/en/",
+    createdAt: "2026-08-22T19:45:00Z",
+    updatedAt: "2026-08-22T19:45:00Z",
+  },
+  {
+    id: "upd-052",
+    title: "Loona official promo price now $439",
+    slug: "loona-promo-price-439",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "loona",
+    summary:
+      "KEYi store lists Loona Petbot Premium at $439 (from $529 list), down from our last catalog promo of $442. Still buy now, no subscription.",
+    content:
+      "We refreshed Loona after an August 22 freshness pass against keyirobot.com. The US Petbot Premium page now shows $439 versus a $529 compare-at price. Our catalog still had the prior $442 promo.\n\nCore specs on that page are unchanged: about 2 hours of continuous play, 6.8 in body height, 2.42 lb, auto-dock, and ChatGPT chat with no required subscription today. Shipping copy still covers the US, UK, Germany, the EU, Canada, Australia, and Singapore, with dispatch in about 3 business days.\n\nOpen /robots/loona or /compare/loona-vs-vector-2 if you are cross-shopping a wheeled family pet against a desk companion. Check the live cart on the official Petbot page; promo prices move.",
+    coverImage: "/images/updates/loona-promo-price-439.jpg",
+    sourceUrl: "https://keyirobot.com/en-us/products/petbot",
+    createdAt: "2026-08-22T19:15:00Z",
+    updatedAt: "2026-08-22T19:15:00Z",
+  },
+  {
     id: "upd-051",
     title: "CORLEO added to the catalog",
     slug: "corleo-added-to-catalog",
