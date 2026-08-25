@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-054",
+    title: "Reachy 2 battery and weight confirmed from official docs",
+    slug: "reachy-2-battery-weight-official-docs",
+    type: "data_update",
+    authorId: "oguzhan-aydin",
+    robotSlug: "reachy-2",
+    summary:
+      "Reachy 2 battery moves from 8–10 h (unconfirmed) to 8 h. Weight is now up to 50 kg from official Pollen pages.",
+    content:
+      "We refreshed Reachy 2 after an August 26 freshness pass against pollen-robotics.com and the hardware docs. Battery was listed as 8–10 h from field reports. The official mobile-base spec now says 8 hours. We mark that confirmed for omni-base kits.\n\nWeight was a 32–50 kg band. The product page lists up to 50 kg for the full robot, and the unbox guide cites 50 kg for the dual-arm mobile unit. Price stays $70,000+ via the Hugging Face sales email. Status stays limited. This is still a lab order, not a home cart.\n\nOpen /robots/reachy-2 or /compare/reachy-2-vs-unitree-g1 if you are stacking open research humanoids against a buyable developer biped. Start at pollen-robotics.com/reachy-2 for the current kits.",
+    coverImage: "/images/updates/reachy-2-battery-weight-official-docs.jpg",
+    sourceUrl: "https://www.pollen-robotics.com/reachy-2/",
+    createdAt: "2026-08-26T09:15:00Z",
+    updatedAt: "2026-08-26T09:15:00Z",
+  },
+  {
     id: "upd-053",
     title: "FIDI added to the catalog",
     slug: "fidi-added-to-catalog",

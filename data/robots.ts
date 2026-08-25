@@ -1301,10 +1301,10 @@ export const robots: Robot[] = [
       "Reachy 2 is a human-shaped research robot from Pollen Robotics, now part of Hugging Face. Labs use it to study how machines see, grab objects, and work with people.\n\nEach arm has seven joints and can lift about 3 kg. You can buy a single arm setup, a dual-arm body, or a version on a rolling base with LiDAR. Operators can control it through a VR headset or Python code built on ROS 2.\n\nPrices start around $70,000 for a stationary arm and about $78,000 for the mobile dual-arm kit. Universities such as Cornell and Carnegie Mellon use Reachy 2 in research, not in family living rooms.\n\nIt is orderable for institutions. HomeBotRadar lists it so you can compare open research platforms to consumer humanoids, not because you should expect a home delivery.",
     price: "$70,000+",
     priceStatus: "confirmed",
-    batteryLife: "8–10 h",
+    batteryLife: "8 h",
     chargeTime: "Not specified",
     height: "136–166 cm",
-    weight: "32–50 kg",
+    weight: "Up to 50 kg",
     speed: "Not specified",
     payload: "3 kg per arm",
     sensors:
@@ -1319,7 +1319,7 @@ export const robots: Robot[] = [
     availabilityStatus: "limited",
     countriesAvailable: ["United States", "France", "Global (direct order)"],
     firstAnnounced: "2024",
-    lastUpdated: "2026-06-12",
+    lastUpdated: "2026-08-26",
     imageUrl: "/images/reachy-2/reachy-2-front.png",
     imageUrls: [
       "/images/reachy-2/reachy-2-front.png",
@@ -1331,7 +1331,9 @@ export const robots: Robot[] = [
     sourceUrls: [
       "https://www.pollen-robotics.com/reachy-2/",
       "https://docs.pollen-robotics.com/hardware-guide/specifications/general/",
-      "https://www.deeplearning.ai/the-batch/hugging-face-acquires-pollen-robotics-launches-reachy-2-robot-for-open-source-research/",
+      "https://docs.pollen-robotics.com/hardware-guide/specifications/mobile-base/",
+      "https://docs.pollen-robotics.com/getting-started/setup-reachy2/unbox-reachy2/",
+      "https://huggingface.co/blog/hugging-face-pollen-robotics-acquisition",
     ],
     similarRobotSlugs: ["unitree-g1", "figure-02", "mirokai", "reachy-mini"],
     capabilities: [
@@ -1364,29 +1366,39 @@ export const robots: Robot[] = [
     fieldMeta: {
       ...baseFieldMeta({
         price: "confirmed",
-        batteryLife: "unconfirmed",
+        batteryLife: "confirmed",
         chargeTime: "coming_soon",
         height: "confirmed",
-        weight: "unconfirmed",
+        weight: "confirmed",
         speed: "coming_soon",
         payload: "confirmed",
         commercialStatus: "confirmed",
         readinessScore: "confirmed",
       }),
       batteryLife: {
-        status: "unconfirmed",
-        updatedAt: "2026-06-12",
-        note: "Mobile base LiFePO₄ pack; ~8–10 h cited in field reports",
+        status: "confirmed",
+        updatedAt: "2026-08-26",
+        note: "Official mobile-base spec: 8 h. Applies to omni-base kits",
       },
       weight: {
-        status: "unconfirmed",
-        updatedAt: "2026-06-12",
-        note: "32 kg stationary to ~50 kg dual-arm mobile per config",
+        status: "confirmed",
+        updatedAt: "2026-08-26",
+        note: "Official product page: up to 50 kg full robot. Unbox guide cites 50 kg for the dual-arm mobile unit",
       },
       height: {
         status: "confirmed",
-        updatedAt: "2026-06-12",
+        updatedAt: "2026-08-26",
         note: "Manual height adjustment between 136 and 166 cm",
+      },
+      price: {
+        status: "confirmed",
+        updatedAt: "2026-08-26",
+        note: "Hugging Face order path still $70,000 via sales@pollen-robotics.com. Kit quotes vary; product page has no public cart",
+      },
+      commercialStatus: {
+        status: "confirmed",
+        updatedAt: "2026-08-26",
+        note: "Still institutional order (Get your Reachy 2 / sales email). Not a home checkout",
       },
     },
     priceHistory: [
@@ -1435,7 +1447,7 @@ export const robots: Robot[] = [
     availabilityStatus: "prototype",
     countriesAvailable: [],
     firstAnnounced: "2020",
-    lastUpdated: "2026-06-12",
+    lastUpdated: "2026-08-26",
     imageUrl: "/images/ballie/ballie-front.png",
     imageUrls: [
       "/images/ballie/ballie-front.png",
@@ -1448,6 +1460,8 @@ export const robots: Robot[] = [
       "https://news.samsung.com/us/samsung-ballie-ai-companion-robot-home-video-ces-2024",
       "https://techcrunch.com/2024/01/08/samsung-brings-back-ballie-its-home-robot-at-ces-2024-with-a-few-upgrades/",
       "https://arstechnica.com/gadgets/2026/01/samsung-squashes-hopes-that-it-will-release-its-ballie-home-robot/",
+      "https://www.theverge.com/news/857864/samsung-ballie-robot-shelved-ces-2026",
+      "https://www.sammobile.com/news/gone-for-good-samsung-ballies-final-lifeline-has-vanished/",
     ],
     similarRobotSlugs: ["loona", "vector-2", "emo-companion", "ebo-x", "tcl-aime", "lg-q9"],
     capabilities: [
@@ -1496,18 +1510,23 @@ export const robots: Robot[] = [
       }),
       batteryLife: {
         status: "unconfirmed",
-        updatedAt: "2026-06-12",
+        updatedAt: "2026-08-26",
         note: "2–3 h continuous projector use per Samsung CES 2024 briefing",
       },
       height: {
         status: "unconfirmed",
-        updatedAt: "2026-06-12",
+        updatedAt: "2026-08-26",
         note: "Bowling-ball class sphere (~20 cm diameter, press demos)",
       },
       price: {
         status: "coming_soon",
-        updatedAt: "2026-06-12",
-        note: "No MSRP; trade press floated ~$2,000–2,500 before shelving",
+        updatedAt: "2026-08-26",
+        note: "No MSRP. Consumer path still unpublished after Jan 2026 shelving",
+      },
+      commercialStatus: {
+        status: "confirmed",
+        updatedAt: "2026-08-26",
+        note: "Still internal R&D. samsung.com/us/explore/ballie 404s; US sign-up page removed. Spokesperson: active innovation platform, not a store SKU",
       },
     },
     priceHistory: [

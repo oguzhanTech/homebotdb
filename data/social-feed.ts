@@ -3,6 +3,28 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-020",
+    tweetUrl: "https://x.com/Figure_robot/status/2092303621392376314",
+    handle: "Figure_robot",
+    brandLabel: "Figure AI",
+    summary:
+      "Figure comes out of stealth with Index, a crowdsourced robot-training dataset: 264,000 app downloads and 16 million videos. Not a new home SKU.",
+    publishedAt: "2026-08-25T17:30:31Z",
+    robotSlug: "figure-02",
+    compareSlugs: ["figure-02", "neo-gamma"],
+  },
+  {
+    id: "sf-021",
+    tweetUrl: "https://x.com/TheHumanoidHub/status/2092295143764504626",
+    handle: "TheHumanoidHub",
+    brandLabel: "The Humanoid Hub",
+    summary:
+      "The Humanoid Hub posts an 8.86-second humanoid 100m from the Beijing Games. The finish is a mattress crash, not a home demo.",
+    publishedAt: "2026-08-25T16:56:49Z",
+    newsSlug: "world-humanoid-robot-games-2026-beijing",
+    compareSlugs: ["figure-02", "unitree-g1"],
+  },
+  {
     id: "sf-018",
     tweetUrl: "https://x.com/TheHumanoidHub/status/2091185502385057972",
     handle: "TheHumanoidHub",
