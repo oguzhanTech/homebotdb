@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-055",
+    title: "Spot has no public list price; $74,500 is the 2020 Explorer figure",
+    slug: "spot-quote-only-no-public-msrp",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "spot",
+    summary:
+      "Boston Dynamics sells Spot by quote only. We mark $74,500+ as an estimate from the 2020 Explorer kit, not a live MSRP.",
+    content:
+      "We refreshed Spot after an August 28 freshness pass against bostondynamics.com. The product page has Contact Sales and specs, not a checkout price. The FAQ says Spot is for commercial, industrial, enterprise, and university research. It is not for individuals buying for non-commercial or in-home use.\n\nOur catalog still shows $74,500+ because that was the June 2020 Explorer kit launch figure. We now mark it as an estimate. Configured packages with an arm, sensors, and Orbit software cost more. Boston Dynamics does not publish those numbers.\n\nOfficial specs we re-checked are unchanged: 33.8 kg with battery, 61 cm walking height, 1.6 m/s, 14 kg payload, about 90 minutes runtime. Battery recharge is listed as 60 minutes on the product page. Packs stay hot-swappable.\n\nOpen /compare/spot-vs-loona if you want an enterprise quadruped next to a home pet you can actually buy. Start at bostondynamics.com/products/spot/ for sales.",
+    coverImage: "/images/updates/spot-quote-only-no-public-msrp.jpg",
+    sourceUrl: "https://bostondynamics.com/products/spot/",
+    createdAt: "2026-08-28T20:30:00Z",
+    updatedAt: "2026-08-28T20:30:00Z",
+  },
+  {
     id: "upd-054",
     title: "Reachy 2 battery and weight confirmed from official docs",
     slug: "reachy-2-battery-weight-official-docs",

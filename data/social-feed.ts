@@ -3,6 +3,27 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-022",
+    tweetUrl: "https://x.com/joshgreaves_ml/status/2093117401084866979",
+    handle: "joshgreaves_ml",
+    brandLabel: "Josh Greaves",
+    summary:
+      "Josh Greaves posts 2015 DARPA challenge footage. Eleven years later, home humanoids still have a long way to go.",
+    publishedAt: "2026-08-27T23:24:11Z",
+    compareSlugs: ["figure-02", "unitree-g1"],
+  },
+  {
+    id: "sf-023",
+    tweetUrl: "https://x.com/ErenChenAI/status/2092602632582177179",
+    handle: "ErenChenAI",
+    brandLabel: "Eren Chen",
+    summary:
+      "Mini-Pi takes a long jump at Beijing's World Humanoid Robot Games. Sports heat, not a home SKU, and Mini-Pi is not in our catalog.",
+    publishedAt: "2026-08-26T13:18:40Z",
+    newsSlug: "world-humanoid-robot-games-2026-beijing",
+    compareSlugs: ["figure-02", "unitree-g1"],
+  },
+  {
     id: "sf-020",
     tweetUrl: "https://x.com/Figure_robot/status/2092303621392376314",
     handle: "Figure_robot",

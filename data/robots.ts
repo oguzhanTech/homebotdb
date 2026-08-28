@@ -929,7 +929,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Fully autonomous bionic robot cat that walks, plays, and develops personality through touch, voice, and vision.",
     longDescription:
-      "MarsCat is a robot cat from Elephant Robotics. It walks on four legs, stretches, kneads, and behaves like a pet when you touch or talk to it.\n\nWhen the battery drops below about 10%, it can roll to its charging station on its own if the dock is in view. A camera and touch sensors help shape six personality traits over time. A Raspberry Pi computer inside runs open-source MarsAI code, so hobbyists can program new behaviors.\n\nAs of June 2026, every MarsCat bundle on the Elephant Robotics store shows Unavailable/Sold out, though list pricing still appears at $1,199 (down from $1,399). No subscription is required for core pet functions when units are in stock. It fits homes where a live cat is not practical but someone still wants animal-like company.",
+      "MarsCat is a robot cat from Elephant Robotics. It walks on four legs, stretches, kneads, and behaves like a pet when you touch or talk to it.\n\nWhen the battery drops below about 10%, it can roll to its charging station on its own if the dock is in view. A camera and touch sensors help shape six personality traits over time. A Raspberry Pi computer inside runs open-source MarsAI code, so hobbyists can program new behaviors.\n\nAs of August 2026, every MarsCat bundle on the Elephant Robotics store still shows Unavailable/Sold out, though list pricing still appears at $1,199 (down from $1,399). No subscription is required for core pet functions when units are in stock. It fits homes where a live cat is not practical but someone still wants animal-like company.",
     price: "$1,199",
     priceStatus: "confirmed",
     batteryLife: "2–4 h",
@@ -956,7 +956,7 @@ export const robots: Robot[] = [
       "China",
     ],
     firstAnnounced: "2020",
-    lastUpdated: "2026-06-13",
+    lastUpdated: "2026-08-28",
     imageUrl: "/images/marscat/marscat-front.png",
     imageUrls: [
       "/images/marscat/marscat-front.png",
@@ -1014,10 +1014,20 @@ export const robots: Robot[] = [
         updatedAt: "2026-05-18",
         note: "Standing",
       },
+      price: {
+        status: "confirmed",
+        updatedAt: "2026-08-28",
+        note: "Standard Set still $1,199 (was $1,399) on Elephant Robotics shop; all colors sold out",
+      },
       availabilityStatus: {
         status: "confirmed",
-        updatedAt: "2026-06-13",
-        note: "All store bundles Unavailable/Sold out on Elephant Robotics shop",
+        updatedAt: "2026-08-28",
+        note: "All store bundles still Unavailable/Sold out on Elephant Robotics shop",
+      },
+      commercialStatus: {
+        status: "confirmed",
+        updatedAt: "2026-08-28",
+        note: "Product page live with list price, but no in-stock cart",
       },
     },
     priceHistory: [
@@ -1695,11 +1705,11 @@ export const robots: Robot[] = [
     shortDescription:
       "Enterprise quadruped for autonomous inspection, mapping, and remote monitoring in buildings, plants, and large estates.",
     longDescription:
-      "Spot is a four-legged robot from Boston Dynamics. It walks up stairs, crosses uneven floors, and carries sensors where wheeled robots cannot go.\n\nBoston Dynamics sells Spot mainly to factories, utilities, and research teams for inspection, 3D mapping, and hazardous response. Optional payloads include a Spot Arm for door handles, 360° LiDAR, and zoom cameras. The Python SDK and Autowalk software let operators record routes or run pre-planned missions.\n\nThe base Explorer kit lists at about $74,500 and includes the robot, batteries, charger, and tablet controller. Full enterprise setups with arm, autonomy, and fleet software often exceed $100,000. Sales are limited to qualified commercial, industrial, and academic buyers—not a typical living-room pet.\n\nHomeBotRadar tracks Spot as a reference quadruped platform. Wealthy homeowners sometimes pilot it for estate security or remote walk-throughs, but compare Loona or aibo if you want an affordable companion robot for the home.",
+      "Spot is a four-legged robot from Boston Dynamics. It walks up stairs, crosses uneven floors, and carries sensors where wheeled robots cannot go.\n\nBoston Dynamics sells Spot mainly to factories, utilities, and research teams for inspection, 3D mapping, and hazardous response. Optional payloads include a Spot Arm for door handles, 360° LiDAR, and zoom cameras. The Python SDK and Autowalk software let operators record routes or run pre-planned missions.\n\nBoston Dynamics no longer publishes a store price. The last public Explorer kit figure was about $74,500 in 2020 (robot, batteries, charger, and tablet). Treat that as an estimate, not a live cart. Configured fleets with an arm, autonomy, and Orbit software cost more; Boston Dynamics quotes qualified buyers only. Sales are limited to commercial, industrial, and academic customers. It is not a living-room pet.\n\nHomeBotRadar tracks Spot as a reference quadruped platform. Wealthy homeowners sometimes pilot it for estate security or remote walk-throughs, but compare Loona or aibo if you want an affordable companion robot for the home.",
     price: "$74,500+",
-    priceStatus: "confirmed",
+    priceStatus: "estimate",
     batteryLife: "1.5 h",
-    chargeTime: "Hot-swappable batteries",
+    chargeTime: "60 min",
     height: "61 cm",
     weight: "33.8 kg",
     speed: "5.8 km/h",
@@ -1724,7 +1734,7 @@ export const robots: Robot[] = [
       "Singapore",
     ],
     firstAnnounced: "2016",
-    lastUpdated: "2026-06-14",
+    lastUpdated: "2026-08-28",
     imageUrl: "/images/spot/spot-front.jpg",
     imageUrls: [
       "/images/spot/spot-front.png",
@@ -1738,6 +1748,8 @@ export const robots: Robot[] = [
     affiliateUrl: "",
     sourceUrls: [
       "https://bostondynamics.com/products/spot/",
+      "https://bostondynamics.com/faq/",
+      "https://bostondynamics.com/spot-sales/",
       "https://support.bostondynamics.com/s/article/Spot-Specifications-49916",
       "https://bostondynamics.com/solutions/inspection/",
     ],
@@ -1771,9 +1783,9 @@ export const robots: Robot[] = [
     unitId: "SP-2026-001",
     fieldMeta: {
       ...baseFieldMeta({
-        price: "confirmed",
+        price: "unconfirmed",
         batteryLife: "confirmed",
-        chargeTime: "unconfirmed",
+        chargeTime: "confirmed",
         height: "confirmed",
         weight: "confirmed",
         speed: "confirmed",
@@ -1783,33 +1795,38 @@ export const robots: Robot[] = [
       }),
       height: {
         status: "confirmed",
-        updatedAt: "2026-06-14",
+        updatedAt: "2026-08-28",
         note: "610 mm default walking height per Boston Dynamics specs",
       },
       batteryLife: {
         status: "confirmed",
-        updatedAt: "2026-06-14",
-        note: "~90 min (1.5 h) typical; ~60 min with heavy payload",
+        updatedAt: "2026-08-28",
+        note: "90 min average runtime on official product page; payload and terrain vary",
+      },
+      chargeTime: {
+        status: "confirmed",
+        updatedAt: "2026-08-28",
+        note: "Official recharge time 60 min; packs are hot-swappable",
       },
       speed: {
         status: "confirmed",
-        updatedAt: "2026-06-14",
+        updatedAt: "2026-08-28",
         note: "1.6 m/s max per Boston Dynamics",
       },
       payload: {
         status: "confirmed",
-        updatedAt: "2026-06-14",
-        note: "14 kg recommended; 20.4 kg max per support docs",
+        updatedAt: "2026-08-28",
+        note: "14 kg max payload on official product page",
       },
       price: {
-        status: "confirmed",
-        updatedAt: "2026-06-14",
-        note: "Explorer kit from ~$74,500; enterprise packages often $100k+",
+        status: "unconfirmed",
+        updatedAt: "2026-08-28",
+        note: "No public list price; $74,500+ is the 2020 Explorer kit figure, now an estimate. Quote-only.",
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-06-14",
-        note: "Sold to qualified commercial, industrial, and academic customers",
+        updatedAt: "2026-08-28",
+        note: "Quote-only to commercial, industrial, and academic buyers. Not for in-home consumer purchase.",
       },
     },
     priceHistory: [
@@ -1824,6 +1841,12 @@ export const robots: Robot[] = [
         price: "$74,500+",
         status: "confirmed",
         note: "Base kit; arm, LiDAR, and Orbit software sold separately",
+      },
+      {
+        date: "2026-08-28",
+        price: "$74,500+",
+        status: "unconfirmed",
+        note: "Product page has no list price; 2020 Explorer kit figure kept as estimate. Quote-only.",
       },
     ],
   },
