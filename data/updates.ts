@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-056",
+    title: "EBO X official promo price now $799",
+    slug: "ebo-x-promo-price-799",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "ebo-x",
+    summary:
+      "Enabot's US store lists EBO X FamilyBot at $799 (from $999 list). Charge time is now 2 h on the official spec table.",
+    content:
+      "We refreshed EBO X after a September 2 freshness pass against store.enabot.com. The US FamilyBot page now shows $799 versus a $999 compare-at price. Our catalog still had the $999 list.\n\nCore specs on that page are unchanged: 2 to 3 hours of battery, 168 × 168 × 218 mm, 1.7 kg, 1.5 m/s, GPT-4o mini chat, and Alexa. Charge time was an unconfirmed ~2 h from reseller sheets. The official spec table now lists 2 hours, so we mark that confirmed. Status stays buy now. Check the live cart; promo prices and stock move.\n\nOpen /robots/ebo-x or /compare/ebo-x-vs-loona if you are cross-shopping a rolling home guardian against a wheeled family pet. Start at the official FamilyBot page before you treat a third-party quote as current.",
+    coverImage: "/images/updates/ebo-x-promo-price-799.jpg",
+    sourceUrl: "https://store.enabot.com/products/ebo-x-familybot",
+    createdAt: "2026-09-02T19:30:00Z",
+    updatedAt: "2026-09-02T19:30:00Z",
+  },
+  {
     id: "upd-055",
     title: "Spot has no public list price; $74,500 is the 2020 Explorer figure",
     slug: "spot-quote-only-no-public-msrp",

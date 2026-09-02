@@ -1860,7 +1860,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Proactive AI companion for older adults with an expressive lamp-like body, 8-inch touch screen, and wellness reminders—sold in the US via membership lease.",
     longDescription:
-      "ElliQ is a tabletop companion from Intuition Robotics built for seniors living at home. A separate lamp-like body turns, nods, and lights up while an 8-inch touch screen shows photos, video calls, brain games, and gentle prompts for hydration, movement, and social connection.\n\nElliQ 3 runs generative AI on an octa-core MediaTek platform with a dedicated AI processor. Four microphones and dual speakers support natural conversation in English. The robot plugs into wall power; it does not roam the house on wheels or legs.\n\nIntuition Robotics sells ElliQ only in the United States through elliq.com. You pay a $249.99 enrollment fee plus a membership from about $39 per month on a 24-month plan ($49.99 on annual, $59.99 monthly). The hardware is leased for the length of your paid membership, not sold outright.\n\nHomeBotRadar tracks ElliQ because it is one of the most deployed elder-care companions in American homes, often through state and municipal programs. Compare it with Tombot Jennie or Mirokaï if you are evaluating social robots for aging in place.",
+      "ElliQ is a tabletop companion from Intuition Robotics built for seniors living at home. A separate lamp-like body turns, nods, and lights up while an 8-inch touch screen shows photos, video calls, brain games, and gentle prompts for hydration, movement, and social connection.\n\nElliQ 3 runs generative AI on an octa-core MediaTek platform with a dedicated AI processor. Four microphones and dual speakers support natural conversation in English. The robot plugs into wall power; it does not roam the house on wheels or legs.\n\nIntuition Robotics sells ElliQ only in the United States through elliq.com. You pay a $249 lease initiation fee plus a membership from about $39 per month on a 24-month plan ($49.99 on annual, $59.99 monthly). The hardware is leased for the length of your paid membership, not sold outright.\n\nHomeBotRadar tracks ElliQ because it is one of the most deployed elder-care companions in American homes, often through state and municipal programs. Compare it with Tombot Jennie or Mirokaï if you are evaluating social robots for aging in place.",
     price: "$250",
     priceStatus: "confirmed",
     batteryLife: "Plug-in",
@@ -1881,7 +1881,7 @@ export const robots: Robot[] = [
     availabilityStatus: "available",
     countriesAvailable: ["United States"],
     firstAnnounced: "2017",
-    lastUpdated: "2026-06-16",
+    lastUpdated: "2026-09-02",
     imageUrl: "/images/elliq/elliq-front.png",
     imageUrls: [
       "/images/elliq/elliq-front.png",
@@ -1939,18 +1939,23 @@ export const robots: Robot[] = [
       }),
       height: {
         status: "confirmed",
-        updatedAt: "2026-06-16",
+        updatedAt: "2026-09-02",
         note: "14.4 × 11.0 × 6.3 in per elliq.com how-it-works",
       },
       batteryLife: {
         status: "confirmed",
-        updatedAt: "2026-06-16",
+        updatedAt: "2026-09-02",
         note: "12V 5A wall adapter; continuous plug-in power",
       },
       price: {
         status: "confirmed",
-        updatedAt: "2026-06-16",
-        note: "From $39/mo on 24-month plan ($49.99/mo annual, $59.99/mo monthly); $249.99 enrollment; device leased for paid term",
+        updatedAt: "2026-09-02",
+        note: "From $39/mo on 24-month plan ($49.99/mo annual, $59.99/mo monthly); $249 lease initiation; device leased for paid term",
+      },
+      commercialStatus: {
+        status: "confirmed",
+        updatedAt: "2026-09-02",
+        note: "US-only membership lease on elliq.com; still buy now",
       },
       processor: {
         status: "confirmed",
@@ -1995,11 +2000,11 @@ export const robots: Robot[] = [
     shortDescription:
       "Mobile family guardian with V-SLAM home mapping, stabilized 4K camera, Alexa, GPT-4o mini chat, and fall and intrusion alerts.",
     longDescription:
-      "EBO X is a rolling home robot from Enabot built for families. It maps rooms with V-SLAM on first use, patrols on omni wheels, and auto-returns to its charging dock when the battery runs low.\n\nA pop-up 4K stabilized camera with night vision supports remote viewing, smart tracking, and two-way video calls through the EBO HOME app. Alexa is built in for smart-home control, and Enabot integrates GPT-4o mini for open-ended voice chat. Harman-tuned speakers handle music and voice prompts.\n\nSafety features include elderly fall alerts during auto-cruise, crying and call-for-help detection, facial-recognition medication reminders, and restricted-zone intrusion alerts. EBO X also follows kids or pets on command and works as a roaming family photographer.\n\nEnabot lists EBO X at $999 on the US store, with regional shops in markets such as Australia and Singapore. HomeBotRadar tracks it as one of the few buyable mobile home guardians with confirmed patrol specs. Compare it with Loona for pet play or ElliQ for a stationary elder-care desk companion.",
-    price: "$999",
+      "EBO X is a rolling home robot from Enabot built for families. It maps rooms with V-SLAM on first use, patrols on omni wheels, and auto-returns to its charging dock when the battery runs low.\n\nA pop-up 4K stabilized camera with night vision supports remote viewing, smart tracking, and two-way video calls through the EBO HOME app. Alexa is built in for smart-home control, and Enabot integrates GPT-4o mini for open-ended voice chat. Harman-tuned speakers handle music and voice prompts.\n\nSafety features include elderly fall alerts during auto-cruise, crying and call-for-help detection, facial-recognition medication reminders, and restricted-zone intrusion alerts. EBO X also follows kids or pets on command and works as a roaming family photographer.\n\nEnabot lists EBO X at $799 on the US store (from a $999 list). Regional shops still cover markets such as Australia and Singapore. HomeBotRadar tracks it as one of the few buyable mobile home guardians with confirmed patrol specs. Compare it with Loona for pet play or ElliQ for a stationary elder-care desk companion.",
+    price: "$799",
     priceStatus: "confirmed",
     batteryLife: "2–3 h",
-    chargeTime: "~2 h",
+    chargeTime: "2 h",
     height: "~22 cm",
     weight: "1.7 kg",
     speed: "5.4 km/h",
@@ -2024,7 +2029,7 @@ export const robots: Robot[] = [
       "France",
     ],
     firstAnnounced: "2023",
-    lastUpdated: "2026-06-16",
+    lastUpdated: "2026-09-02",
     imageUrl: "/images/ebo-x/ebo-x-front.png",
     imageUrls: [
       "/images/ebo-x/ebo-x-front.png",
@@ -2063,7 +2068,7 @@ export const robots: Robot[] = [
       {
         source: "Enabot store reviews",
         summary:
-          "Owners praise home mapping and daily guardian routines; some note a learning curve for the full feature set at the $999 price point.",
+          "Owners praise home mapping and daily guardian routines; some note a learning curve for the full feature set at the $799 promo price.",
         url: "https://store.enabot.com/products/ebo-x-familybot",
       },
     ],
@@ -2074,7 +2079,7 @@ export const robots: Robot[] = [
       ...baseFieldMeta({
         price: "confirmed",
         batteryLife: "confirmed",
-        chargeTime: "unconfirmed",
+        chargeTime: "confirmed",
         height: "confirmed",
         weight: "confirmed",
         speed: "confirmed",
@@ -2084,23 +2089,28 @@ export const robots: Robot[] = [
       }),
       height: {
         status: "confirmed",
-        updatedAt: "2026-06-16",
+        updatedAt: "2026-09-02",
         note: "168 × 168 × 218 mm excluding charging dock per Enabot store",
       },
       batteryLife: {
         status: "confirmed",
-        updatedAt: "2026-06-16",
+        updatedAt: "2026-09-02",
         note: "2–3 h typical; varies with movement, streaming, and network use",
       },
       speed: {
         status: "confirmed",
-        updatedAt: "2026-06-16",
+        updatedAt: "2026-09-02",
         note: "1.5 m/s max per Enabot specs",
       },
       chargeTime: {
-        status: "unconfirmed",
-        updatedAt: "2026-06-16",
-        note: "~2 h cited on reseller spec sheets; not on Enabot store page",
+        status: "confirmed",
+        updatedAt: "2026-09-02",
+        note: "2 h on the official Enabot store spec table",
+      },
+      price: {
+        status: "confirmed",
+        updatedAt: "2026-09-02",
+        note: "US Enabot store $799 promo vs $999 list. Check live cart; stock can vary.",
       },
     },
     priceHistory: [
@@ -2115,6 +2125,12 @@ export const robots: Robot[] = [
         price: "$999",
         status: "confirmed",
         note: "US Enabot store MSRP",
+      },
+      {
+        date: "2026-09-02",
+        price: "$799",
+        status: "confirmed",
+        note: "Official US store 20% off promo vs $999 list",
       },
     ],
   },

@@ -3,6 +3,38 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-024",
+    tweetUrl: "https://x.com/chris_j_paxton/status/2095157226520650168",
+    handle: "chris_j_paxton",
+    brandLabel: "Chris Paxton",
+    summary:
+      "Chris Paxton quotes footage of Rivr, Amazon's wheeled doorstep-delivery robot (acquired March 2026). Last-mile, not a home SKU. Spot is the quadruped we list.",
+    publishedAt: "2026-09-02T14:29:43Z",
+    robotSlug: "spot",
+    compareSlugs: ["spot", "stretch-4"],
+  },
+  {
+    id: "sf-025",
+    tweetUrl: "https://x.com/andimarafioti/status/2094781803072467435",
+    handle: "andimarafioti",
+    brandLabel: "Andi Marafioti",
+    summary:
+      "Andi Marafioti posts four Pollen Robotics Microducks. The 25 cm desk biped is a $399 pre-order, not in our catalog. Reachy Mini is the Pollen kit we list.",
+    publishedAt: "2026-09-01T13:37:55Z",
+    robotSlug: "reachy-mini",
+    compareSlugs: ["reachy-2", "reachy-mini"],
+  },
+  {
+    id: "sf-026",
+    tweetUrl: "https://x.com/RoboStrategy/status/2094772268287004940",
+    handle: "RoboStrategy",
+    brandLabel: "RoboStrategy",
+    summary:
+      "RoboStrategy posted a short film on Endiatx and PillBot, a swallowable stomach camera. Medical R&D, not a home product. FIDI is the care robot we list.",
+    publishedAt: "2026-09-01T13:00:02Z",
+    compareSlugs: ["elliq", "fidi"],
+  },
+  {
     id: "sf-022",
     tweetUrl: "https://x.com/joshgreaves_ml/status/2093117401084866979",
     handle: "joshgreaves_ml",
