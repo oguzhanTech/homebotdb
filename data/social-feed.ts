@@ -3,6 +3,44 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-027",
+    tweetUrl: "https://x.com/DilumSanjaya/status/2096280244663775423",
+    handle: "DilumSanjaya",
+    brandLabel: "Dilum Sanjaya",
+    summary:
+      "Dilum Sanjaya used GPT-6 Astra to build an interactive V8 engine visualization. AI demo, not a home robot.",
+    publishedAt: "2026-09-05T16:52:11Z",
+  },
+  {
+    id: "sf-028",
+    tweetUrl: "https://x.com/ErenChenAI/status/2096253070552309922",
+    handle: "ErenChenAI",
+    brandLabel: "Eren Chen",
+    summary:
+      "Eren Chen posts high-speed RC cars. Fun hobby video, not a home robot, and there is no catalog match.",
+    publishedAt: "2026-09-05T15:04:13Z",
+  },
+  {
+    id: "sf-029",
+    tweetUrl: "https://x.com/ashebytes/status/2096221988763173186",
+    handle: "ashebytes",
+    brandLabel: "ashe",
+    summary:
+      "ashe used GPT-6 Astra to build a 3D anatomy explorer with 2,234 parts. Learning demo, not a home robot.",
+    publishedAt: "2026-09-05T13:00:42Z",
+  },
+  {
+    id: "sf-030",
+    tweetUrl: "https://x.com/BLKMDL3/status/2095937091163042299",
+    handle: "BLKMDL3",
+    brandLabel: "Zack",
+    summary:
+      "Zack shows a Tesla Cybercab cabin running games from a controller. Robotaxi, not Optimus, and not a home SKU.",
+    publishedAt: "2026-09-04T18:08:37Z",
+    robotSlug: "optimus-gen2",
+    compareSlugs: ["figure-02", "optimus-gen2"],
+  },
+  {
     id: "sf-024",
     tweetUrl: "https://x.com/chris_j_paxton/status/2095157226520650168",
     handle: "chris_j_paxton",

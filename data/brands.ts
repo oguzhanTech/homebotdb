@@ -257,4 +257,10 @@ export const brands: Brand[] = [
     logo: "/brands/semi-robotics.png",
     aliases: ["Semi Robotics", "Semi Robotics Sp. z o.o.", "SemiRobotics"],
   },
+  {
+    id: "tuya-smart",
+    name: "Tuya Smart",
+    logo: "/brands/tuya-smart.png",
+    aliases: ["Tuya Smart", "Tuya", "Tuya Inc."],
+  },
 ];

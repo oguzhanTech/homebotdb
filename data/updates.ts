@@ -2,6 +2,54 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-059",
+    title: "Apollo 2 is the current Apptronik platform; 2023 size figures are unconfirmed",
+    slug: "apollo-2-platform-specs-unconfirmed",
+    type: "data_update",
+    authorId: "oguzhan-aydin",
+    robotSlug: "apollo",
+    summary:
+      "Apollo 2 is Apptronik's current bipedal or wheeled pilot platform. We drop the 4 h battery as unconfirmed. No public MSRP.",
+    content:
+      "We refreshed Apollo after a September 6 freshness pass against apptronik.com. The old /apollo URL returns 404. The live product page is Apollo 2: bipedal or wheeled, Artemis on the robot, Fleet Connect for fleets, and training data for Google DeepMind Gemini Robotics. Apptronik's June 30, 2026 Robot Park note names Mercedes-Benz and GXO and says Apollo 3 is the upcoming commercial fleet.\n\nBattery moves from 4 h (confirmed) to Unknown. The Apollo 2 page claims swappable packs for 7x22 shifts, opportunity charging, and tethering. It does not repeat a 4-hour runtime. Height 173 cm, weight 72.5 kg, and 25 kg payload stay in the table as 2023 unveil figures. We mark them unconfirmed because they are not on the Apollo 2 spec page. Speed and compute are unpublished. Price stays $50,000+ as an estimate. That is a 2023 at-scale cost target, not a cart price.\n\nScores stay 76 readiness and 84 reality. Open /compare/apollo-vs-figure-02 if you are stacking US factory humanoids. Start at apptronik.com/apollo/apollo-2. There is still no home order path.",
+    coverImage: "/images/updates/apollo-2-platform-specs-unconfirmed.jpg",
+    sourceUrl: "https://apptronik.com/apollo/apollo-2",
+    createdAt: "2026-09-06T20:45:00Z",
+    updatedAt: "2026-09-06T20:45:00Z",
+  },
+  {
+    id: "upd-058",
+    title: "Moxie hardware still discontinued; Sunlight day pass is $4.99",
+    slug: "moxie-sunlight-day-pass-4-99",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "moxie",
+    summary:
+      "moxierobots.com still says Moxie is not for sale. Owner Sunlight is $29.99/mo or $4.99 for a day.",
+    content:
+      "We refreshed Moxie after a September 6 freshness pass against moxierobots.com. The Help page still says robots are no longer available for sale. Support is for existing owners through the app. We checked the US owner channel only. Do not treat aggregator posts about a $499 restock as a store price.\n\nSunlight is still required for talk, create, and learn. The official FAQ lists $29.99 per month or $4.99 for a single day with no membership. Last retail hardware was about $799. That figure stays in the catalog as history, not a live cart. Video Call in the app is the same subscription without the robot body.\n\nOpen /compare/elliq-vs-moxie if you want a desk companion you can actually start today. ElliQ still leases in the United States. Moxie does not. Start at moxierobots.com/contact.html before you buy a used unit and assume the cloud is free.",
+    coverImage: "/images/updates/moxie-sunlight-day-pass-4-99.jpg",
+    sourceUrl: "https://moxierobots.com/contact.html",
+    createdAt: "2026-09-06T20:30:00Z",
+    updatedAt: "2026-09-06T20:30:00Z",
+  },
+  {
+    id: "upd-057",
+    title: "Doova added to the catalog",
+    slug: "doova-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "doova",
+    summary:
+      "Tuya Smart's wheeled senior companion Doova joins HomeBotRadar after its IFA 2026 debut. No public MSRP or ship date.",
+    content:
+      "We added Doova to HomeBotRadar. It is Tuya Smart's wheeled companion for seniors living alone, shown at IFA 2026 in Berlin: a short round robot with no arms, a 10.1-inch HD screen, and a \"Hey Tuya, help\" emergency flow that can start a two-way family video call after 60 seconds of silence.\n\nOur Doova profile covers the official Tuya launch note and the PR Newswire write-up. Confirmed from those pages: LDS LiDAR, a four-microphone array, camera pose detection, dual-wheel drive with casters, auto-dock, and Tuya smart-home voice control. Height, weight, battery hours, and a store price are still unpublished. The Verge (September 2, 2026) says Tuya plans to bring it to market but has not named a date or a dollar figure. Treat that as Coming Soon, not a cart you can check out.\n\nOpen /compare/doova-vs-elliq if you are stacking a rolling IFA prototype against a US desk companion you can lease today. ElliQ ships as a membership lease. EBO X is a buyable family guardian with a live US price. Doova does not have a consumer store yet. Start at Tuya's IFA announcement before you treat a third-party rumor as a list price.",
+    coverImage: "/images/updates/doova-added-to-catalog.jpg",
+    sourceUrl: "https://www.tuya.com/news-details/Kfx9813ozlbff",
+    createdAt: "2026-09-06T19:30:00Z",
+    updatedAt: "2026-09-06T19:30:00Z",
+  },
+  {
     id: "upd-056",
     title: "EBO X official promo price now $799",
     slug: "ebo-x-promo-price-799",
