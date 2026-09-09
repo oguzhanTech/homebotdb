@@ -18,5 +18,6 @@ Examples:
 - `lg-q9-added-to-catalog.jpg`
 - `mirokai-connectivity-commercial-deployments.jpg`
 - `corleo-added-to-catalog.jpg`
+- `xpeng-iron-added-to-catalog.jpg`
 
 Recommended: 1200×630 px or 16:9.

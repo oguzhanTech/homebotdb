@@ -263,4 +263,16 @@ export const brands: Brand[] = [
     logo: "/brands/tuya-smart.png",
     aliases: ["Tuya Smart", "Tuya", "Tuya Inc."],
   },
+  {
+    id: "xpeng",
+    name: "XPENG",
+    logo: "/brands/xpeng.png",
+    aliases: [
+      "XPENG",
+      "XPeng",
+      "XPeng Inc.",
+      "Xiaopeng",
+      "小鹏",
+    ],
+  },
 ];

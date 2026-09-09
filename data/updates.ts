@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-060",
+    title: "XPENG IRON: Guangzhou line is live, still no cart",
+    slug: "xpeng-iron-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "xpeng-iron",
+    summary:
+      "XPENG IRON walked off a Guangzhou line on September 8. Mass production is targeted for late 2026. Deliveries are 2027. No public MSRP.",
+    content:
+      "There is no XPENG IRON cart. On September 8, 2026 XPENG said a Guangzhou production line is commissioned and a unit walked off it without remote control. Mass production is targeted by the end of 2026. First placements are XPENG stores and campuses. China and overseas deliveries are planned for 2027.\n\nThe official English note lists 76 degrees of freedom across the body, 21 in each hand, and three Turing chips rated up to 2,250 TOPS. November 2025 AI Day cited 82 DoF and 3,000 TOPS. We follow the September production-line release for the current hardware. Height, weight, battery hours, and payload are not in that release. Ignore $150,000 aggregator guesses. There is no list price.\n\nXPENG IRON sits next to Optimus Gen 2 if you are stacking unbuyable humanoids. Unitree G1 is a developer biped you can actually order. NEO Gamma is the home pre-order with a published Early Access price. Read the line announcement on xpeng.com. There is still no checkout.",
+    coverImage: "/images/updates/xpeng-iron-added-to-catalog.jpg",
+    sourceUrl: "https://www.xpeng.com/news/01a080371029a057bc8e8a02a2c6012b",
+    createdAt: "2026-09-09T21:15:00Z",
+    updatedAt: "2026-09-09T21:15:00Z",
+  },
+  {
     id: "upd-059",
     title: "Apollo 2 is the current Apptronik platform; 2023 size figures are unconfirmed",
     slug: "apollo-2-platform-specs-unconfirmed",

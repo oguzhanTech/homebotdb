@@ -3,6 +3,33 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-032",
+    tweetUrl: "https://x.com/_lyraaaa_/status/2097527368919470162",
+    handle: "_lyraaaa_",
+    brandLabel: "lyra bubbles",
+    summary:
+      "A simulated fly brain swings Beat Saber sabers in this lab video. Research demo, nothing you can buy.",
+    publishedAt: "2026-09-09T03:27:49Z",
+  },
+  {
+    id: "sf-031",
+    tweetUrl: "https://x.com/pamir_ai/status/2097502085269131407",
+    handle: "pamir_ai",
+    brandLabel: "pamir.ai",
+    summary:
+      "Pamir introduces Lapis One, a small Linux box for AI agents at home. Mini PC, not a robot, and not in our catalog.",
+    publishedAt: "2026-09-09T01:47:21Z",
+  },
+  {
+    id: "sf-033",
+    tweetUrl: "https://x.com/thermalpastor/status/2097496200631210136",
+    handle: "thermalpastor",
+    brandLabel: "H",
+    summary:
+      "GPT-6 Astra steers two simulated robots juggling one ball in MuJoCo at real-world speed. Physics on a screen, not a living-room product.",
+    publishedAt: "2026-09-09T01:23:58Z",
+  },
+  {
     id: "sf-027",
     tweetUrl: "https://x.com/DilumSanjaya/status/2096280244663775423",
     handle: "DilumSanjaya",
