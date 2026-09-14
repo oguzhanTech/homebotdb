@@ -2,6 +2,38 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-062",
+    title: "LOVOT 3.0 stays ¥577,500 through October 25",
+    slug: "lovot-3-price-hike-oct-2026",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "lovot",
+    summary:
+      "Japan cart is still ¥577,500 tax-in for the standard LOVOT 3.0 cha body. GROOVE X raises it to ¥599,500 on October 26, then about ¥649,000 in mid-January 2027.",
+    content:
+      "The Japan store still charges ¥577,500 tax-in for LOVOT 3.0 cha. That is the $3,850+ band we already show. GROOVE X posted the hike on September 1: on October 26 the same body goes to ¥599,500 (about $4,000 at our usual yen-to-dollar band). Mid-January 2027 it is planned at ¥649,000 (about $4,325). All 3.0 colors move. LOVOT 2.0 stays ¥449,900.\n\nCheckout on lovot.life/pricing still shows the current body price plus LOVOT care from ¥9,900 a month. A first-six-months care promo runs through September 30. Official sales stay Japan. Specs we re-checked did not move: 30 to 45 minutes of activity, 15 to 30 minutes on Nest, 4.6 kg for 3.0.\n\nIf you are buying a LOVOT this autumn, the dated yen hike is the shopper fact. Stack it next to aibo if you want another Japan pet you can actually order. Start at lovot.life/pricing before you treat a dollar guess as a cart.",
+    coverImage: "/images/updates/lovot-3-price-hike-oct-2026.jpg",
+    sourceUrl: "https://lovot.life/blog/article/qhqm95n78eaw",
+    createdAt: "2026-09-14T19:25:00Z",
+    updatedAt: "2026-09-14T19:25:00Z",
+  },
+  {
+    id: "upd-061",
+    title: "Buddy's Wellbots US page is gone; Blue Frog still quotes",
+    slug: "buddy-us-cart-404-quote-only",
+    type: "availability_update",
+    authorId: "maya-chen",
+    robotSlug: "buddy",
+    summary:
+      "The Wellbots English Buddy listing returns 404. Blue Frog still quotes from Paris, from about €2,500 ex-tax for PRO hardware. Treat $4,890 as the last US list we saw.",
+    content:
+      "The Wellbots English page we used for Buddy's US list is a 404. Blue Frog still sells by quote from Paris. The official form starts around €2,500 ex-tax for Buddy PRO hardware, plus annual Multi-Apps and SDK fees. Treat $4,890 as the last US list we saw, not a live cart.\n\nWe only checked the English Wellbots URL, the Spanish twin, and Blue Frog's marketing and quote pages. RobotShop still lists a PRO bundle in the EU, but we could not load a live price on this pass. Status stays limited. This is a professional quote robot for education, care, and hospitality, not a one-click home SKU.\n\nElliQ is the US elder desk companion you can actually start as a membership. Buddy is the rolling French platform you request a quote for. Start at Blue Frog's quote form before you treat a cached $4,890 snippet as checkout.",
+    coverImage: "/images/updates/buddy-us-cart-404-quote-only.jpg",
+    sourceUrl: "https://m.bluefrogrobotics.com/online-quote/",
+    createdAt: "2026-09-14T19:15:00Z",
+    updatedAt: "2026-09-14T19:15:00Z",
+  },
+  {
     id: "upd-060",
     title: "XPENG IRON: Guangzhou line is live, still no cart",
     slug: "xpeng-iron-added-to-catalog",

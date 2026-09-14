@@ -3,6 +3,35 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-036",
+    tweetUrl: "https://x.com/adcock_brett/status/2099521332824379423",
+    handle: "adcock_brett",
+    brandLabel: "Brett Adcock",
+    summary:
+      "A Figure humanoid steps onto a work van in a silent video from Brett Adcock. Still no home checkout. Figure 02 is the row we list.",
+    publishedAt: "2026-09-14T15:31:07Z",
+    robotSlug: "figure-02",
+    compareSlugs: ["figure-02", "neo-gamma"],
+  },
+  {
+    id: "sf-034",
+    tweetUrl: "https://x.com/h4nkdog/status/2099150077482692994",
+    handle: "h4nkdog",
+    brandLabel: "Hank",
+    summary:
+      "Hank throws 3D models at his printers from a Meta Quest headset. Workshop toy, not a home robot.",
+    publishedAt: "2026-09-13T14:55:53Z",
+  },
+  {
+    id: "sf-035",
+    tweetUrl: "https://x.com/flaceju/status/2099142063807717443",
+    handle: "flaceju",
+    brandLabel: "flaceju",
+    summary:
+      "flaceju credits GPT-6 Astra with this 16-second edit. Graphics on a screen, not a robot you can buy.",
+    publishedAt: "2026-09-13T14:24:02Z",
+  },
+  {
     id: "sf-032",
     tweetUrl: "https://x.com/_lyraaaa_/status/2097527368919470162",
     handle: "_lyraaaa_",

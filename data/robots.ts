@@ -2529,9 +2529,9 @@ export const robots: Robot[] = [
     shortDescription:
       "French emotional companion robot with an 8-inch face, wheeled mobility, and apps for elder care, education, and inclusion.",
     longDescription:
-      "Buddy is a rolling companion robot from Blue Frog Robotics, a French company that has deployed thousands of units across Europe. It shows expressions on an 8-inch touch screen, tilts its head, and moves on omni wheels through homes, schools, and care facilities.\n\nOut of the box, Buddy can chat with generative AI, run telepresence sessions, send reminders, and host cognitive games. Schools use it as a classroom avatar for hospitalized students. Nursing homes use it for social stimulation and activity support. Developers can build custom apps through an Android SDK sold as an annual license.\n\nPricing is not one simple consumer SKU. Blue Frog sells Buddy PRO bundles from about €2,500 ex-tax plus annual software subscriptions, while US distributor Wellbots lists a Buddy social robot package around $4,890 with 1–3 day ship claims. Many deployments are professional quotes for education, health, or hospitality.\n\nHomeBotRadar tracks Buddy because it is one of the longest-running emotional companion platforms in real elder-care and inclusion programs, not just a trade-show prototype. Compare it with ElliQ for stationary home elder companions, Mirokaï for expressive facility robots, or Loona if you want a smaller buyable pet bot for the living room.",
+      "Buddy is a rolling companion robot from Blue Frog Robotics, a French company that has deployed thousands of units across Europe. It shows expressions on an 8-inch touch screen, tilts its head, and moves on omni wheels through homes, schools, and care facilities.\n\nOut of the box, Buddy can chat with generative AI, run telepresence sessions, send reminders, and host cognitive games. Schools use it as a classroom avatar for hospitalized students. Nursing homes use it for social stimulation and activity support. Developers can build custom apps through an Android SDK sold as an annual license.\n\nPricing is not one simple consumer SKU. Blue Frog sells Buddy PRO bundles from about €2,500 ex-tax plus annual software subscriptions. The US Wellbots listing that showed about $4,890 is gone (404 as of September 2026). Treat that figure as the last US list we saw, not a live cart. Many deployments are professional quotes for education, health, or hospitality.\n\nHomeBotRadar tracks Buddy because it is one of the longest-running emotional companion platforms in real elder-care and inclusion programs, not just a trade-show prototype. Compare it with ElliQ for stationary home elder companions, Mirokaï for expressive facility robots, or Loona if you want a smaller buyable pet bot for the living room.",
     price: "$4,890+",
-    priceStatus: "confirmed",
+    priceStatus: "estimate",
     batteryLife: "4–6 h",
     chargeTime: "Wall charger or docking station",
     height: "56 cm",
@@ -2555,7 +2555,7 @@ export const robots: Robot[] = [
       "Global (quote-based)",
     ],
     firstAnnounced: "2015",
-    lastUpdated: "2026-06-20",
+    lastUpdated: "2026-09-14",
     imageUrl: "/images/buddy/buddy-front.png",
     imageUrls: [
       "/images/buddy/buddy-front.png",
@@ -2563,8 +2563,7 @@ export const robots: Robot[] = [
       "/images/buddy/buddy-care.png",
     ],
     videoUrls: ["https://www.youtube.com/watch?v=08XikLaPEuQ"],
-    affiliateUrl:
-      "https://www.wellbots.com/products/blue-frog-robotics-buddy-social-robot",
+    affiliateUrl: "https://m.bluefrogrobotics.com/online-quote/",
     sourceUrls: [
       "https://www.bluefrogrobotics.com/en/buddy-the-emotional-robot/",
       "https://m.bluefrogrobotics.com/online-quote/",
@@ -2601,7 +2600,7 @@ export const robots: Robot[] = [
     unitId: "BDY-2026-001",
     fieldMeta: {
       ...baseFieldMeta({
-        price: "confirmed",
+        price: "unconfirmed",
         batteryLife: "confirmed",
         chargeTime: "confirmed",
         height: "confirmed",
@@ -2612,29 +2611,34 @@ export const robots: Robot[] = [
         readinessScore: "confirmed",
       }),
       price: {
-        status: "confirmed",
-        updatedAt: "2026-06-20",
-        note: "Wellbots US list ~$4,890; Blue Frog PRO+ from €2,500 ex-tax plus annual app/SDK fees",
+        status: "unconfirmed",
+        updatedAt: "2026-09-14",
+        note: "Wellbots English product URL 404 on Sep 14. Last seen US list ~$4,890. Blue Frog quote from about €2,500 ex-tax for Buddy PRO hardware plus annual app/SDK fees",
       },
       batteryLife: {
         status: "confirmed",
-        updatedAt: "2026-06-20",
+        updatedAt: "2026-09-14",
         note: "4–6 h active use on Buddy PRO+ per RobotShop distributor spec",
       },
       height: {
         status: "confirmed",
-        updatedAt: "2026-06-20",
+        updatedAt: "2026-09-14",
         note: "560 mm standing height per RobotShop Pro+ datasheet",
       },
       weight: {
         status: "confirmed",
-        updatedAt: "2026-06-20",
-        note: "8 kg on RobotShop; Wellbots cites 17 lb (~7.7 kg)",
+        updatedAt: "2026-09-14",
+        note: "8 kg on RobotShop; Wellbots cited 17 lb (~7.7 kg)",
       },
       speed: {
         status: "confirmed",
-        updatedAt: "2026-06-20",
+        updatedAt: "2026-09-14",
         note: "Max 70 cm/s (~2.5 km/h) per RobotShop Pro+ spec",
+      },
+      commercialStatus: {
+        status: "confirmed",
+        updatedAt: "2026-09-14",
+        note: "Quote-based via Blue Frog (Paris). Education, care, hospitality. No live Wellbots US cart on this pass",
       },
     },
     priceHistory: [
@@ -2650,6 +2654,12 @@ export const robots: Robot[] = [
         status: "confirmed",
         note: "Buddy PRO + Multi-Apps hardware ex-tax on Blue Frog quote page",
       },
+      {
+        date: "2026-09-14",
+        price: "$4,890+",
+        status: "unconfirmed",
+        note: "Wellbots English URL 404. Last US list kept as estimate. Official path is Blue Frog quote",
+      },
     ],
   },
   {
@@ -2662,7 +2672,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Warm-bodied companion robot from GROOVE X built for emotional comfort, not chores, with a Nest dock and personality that grows over time.",
     longDescription:
-      "LOVOT is a companion robot from Tokyo startup GROOVE X, founded by former Pepper lead Kaname Hayashi. It looks like a soft, penguin-like pet on omni wheels and is designed to be loved, not to vacuum or fetch groceries.\n\nLOVOT 3.0 uses Emotional Robotics with touch sensors across its body, layered OLED eyes, a warm skin temperature, and more than 50 sensors including horn-mounted cameras for home mapping and person detection. It rolls slowly through your home, asks for hugs, and returns to its Nest charging dock when tired. A typical cycle is about 30 to 45 minutes of activity followed by 15 to 30 minutes on the dock.\n\nGROOVE X sells LOVOT through lovot.life in Japan. LOVOT 3.0 lists at about $3,850 for the body (¥577,500 tax included, standard color) with mandatory LOVOT care from about $66 per month (¥9,900) for software updates, cloud features, and repair coordination. LOVOT 2.0 remains available from about $3,000 (¥449,900). Official sales and warranty service are Japan-first; overseas fans often use forwarding partners such as BEX for LOVOT.\n\nHomeBotRadar tracks LOVOT because it is one of the few premium home companions sold at scale that explicitly rejects utility tasks in favor of comfort and play. Compare it with aibo or Tombot Jennie if you want a buyable emotional pet, or Loona if you need a smaller global storefront.",
+      "LOVOT is a companion robot from Tokyo startup GROOVE X, founded by former Pepper lead Kaname Hayashi. It looks like a soft, penguin-like pet on omni wheels and is designed to be loved, not to vacuum or fetch groceries.\n\nLOVOT 3.0 uses Emotional Robotics with touch sensors across its body, layered OLED eyes, a warm skin temperature, and more than 50 sensors including horn-mounted cameras for home mapping and person detection. It rolls slowly through your home, asks for hugs, and returns to its Nest charging dock when tired. A typical cycle is about 30 to 45 minutes of activity followed by 15 to 30 minutes on the dock.\n\nGROOVE X sells LOVOT through lovot.life in Japan. LOVOT 3.0 still lists at about $3,850 for the body (¥577,500 tax included, standard cha color) through October 25, 2026, with mandatory LOVOT care from about $66 per month (¥9,900) for software updates, cloud features, and repair coordination. GROOVE X will raise the 3.0 body to ¥599,500 (about $4,000) on October 26, then a planned ¥649,000 (about $4,325) in mid-January 2027. LOVOT 2.0 stays ¥449,900. Official sales and warranty service are Japan-first; overseas fans often use forwarding partners such as BEX for LOVOT.\n\nHomeBotRadar tracks LOVOT because it is one of the few premium home companions sold at scale that explicitly rejects utility tasks in favor of comfort and play. Compare it with aibo or Tombot Jennie if you want a buyable emotional pet, or Loona if you need a smaller global storefront.",
     price: "$3,850+",
     priceStatus: "confirmed",
     batteryLife: "30–45 min",
@@ -2684,7 +2694,7 @@ export const robots: Robot[] = [
     availabilityStatus: "limited",
     countriesAvailable: ["Japan"],
     firstAnnounced: "2018",
-    lastUpdated: "2026-06-21",
+    lastUpdated: "2026-09-14",
     imageUrl: "/images/lovot/lovot-front.png",
     imageUrls: [
       "/images/lovot/lovot-front.png",
@@ -2696,9 +2706,10 @@ export const robots: Robot[] = [
     sourceUrls: [
       "https://lovot.life/lovot-3",
       "https://lovot.life/pricing",
+      "https://lovot.life/blog/article/qhqm95n78eaw",
       "https://help.lovot.life/other/specifications/lv110/",
+      "https://prtimes.jp/main/html/rd/p/000000523.000055543.html",
       "https://groove-x.com/en/",
-      "https://www.prnewswire.com/news-releases/groove-x-introduce-a-new-companion-robot-lovot-300767937.html",
     ],
     similarRobotSlugs: ["aibo-ers1000", "tombot-jennie", "marscat", "loona", "moxie", "ropet-kamomo", "romi", "realbotix-aria", "ubtech-u1", "tcl-aime", "mirumi", "realbotix-melody"],
     capabilities: [
@@ -2741,32 +2752,32 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "confirmed",
-        updatedAt: "2026-06-21",
-        note: "Sold in yen on lovot.life: ¥577,500 tax-in for LOVOT 3.0 body (~$3,850 USD). LOVOT care from ¥9,900/mo required",
+        updatedAt: "2026-09-14",
+        note: "Still ¥577,500 tax-in for LOVOT 3.0 cha through Oct 25 (~$3,850). Official hike to ¥599,500 (~$4,000) on Oct 26, planned ¥649,000 (~$4,325) mid-Jan 2027. LOVOT 2.0 unchanged at ¥449,900. Care from ¥9,900/mo required",
       },
       batteryLife: {
         status: "confirmed",
-        updatedAt: "2026-06-21",
+        updatedAt: "2026-09-14",
         note: "30–45 min active cycle before returning to Nest per LV110 spec",
       },
       chargeTime: {
         status: "confirmed",
-        updatedAt: "2026-06-21",
+        updatedAt: "2026-09-14",
         note: "15–30 min on Nest per normal operating cycle",
       },
       height: {
         status: "confirmed",
-        updatedAt: "2026-06-21",
+        updatedAt: "2026-09-14",
         note: "430 mm held / 450 mm moving per LOVOT 3.0 datasheet",
       },
       weight: {
         status: "confirmed",
-        updatedAt: "2026-06-21",
+        updatedAt: "2026-09-14",
         note: "4.6 kg without clothes on LOVOT 3.0",
       },
       speed: {
         status: "confirmed",
-        updatedAt: "2026-06-21",
+        updatedAt: "2026-09-14",
         note: "About 1–2 km/h per official LV110 spec",
       },
     },
@@ -2788,6 +2799,12 @@ export const robots: Robot[] = [
         price: "$66/mo",
         status: "confirmed",
         note: "LOVOT care subscription from ¥9,900/mo (promo vs ¥12,980 list)",
+      },
+      {
+        date: "2026-09-14",
+        price: "$3,850+",
+        status: "confirmed",
+        note: "Still ¥577,500 tax-in through Oct 25. Official hike to ¥599,500 (~$4,000) Oct 26, planned ¥649,000 (~$4,325) mid-Jan 2027. LOVOT 2.0 unchanged",
       },
     ],
   },

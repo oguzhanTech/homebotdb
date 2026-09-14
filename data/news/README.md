@@ -34,6 +34,7 @@ When you mention a robot that is already in `data/robots.ts`, use its **catalog 
 - **Target 320–480 words** when the source has real detail (field tests, specs, quotes, context). Shorter is fine only for genuinely thin announcements with little to add honestly.
 - **Expand with facts**, not filler: who, where, when, hardware changes, limits, and what HomeBotRadar readers should take away.
 - If the source is thin, say what is **unknown** instead of padding with hype.
+- **Few external links.** `sourceUrl` is the main cite. One inline link to that page is enough; a second body link only when a material fact is not on the primary page. Skip translations, local roundups, and "also covered by" lists. Full rule: `.cursor/skills/homebotdb-ui-copy/SKILL.md` → **News articles**.
 
 ## Images
 
