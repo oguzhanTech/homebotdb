@@ -3,6 +3,49 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-040",
+    tweetUrl: "https://x.com/GoingBallistic5/status/2100676635729051821",
+    handle: "GoingBallistic5",
+    brandLabel: "Humanoid Scott",
+    summary:
+      "Humanoid Scott jokes a Figure humanoid looks annoyed over an unmade bed. Fan cut from the Helix 2.5 home trial. Figure 02 is the row we list.",
+    publishedAt: "2026-09-17T20:01:53Z",
+    robotSlug: "figure-02",
+    compareSlugs: ["figure-02", "neo-gamma"],
+  },
+  {
+    id: "sf-037",
+    tweetUrl: "https://x.com/Figure_robot/status/2100657350952779925",
+    handle: "Figure_robot",
+    brandLabel: "Figure AI",
+    summary:
+      "Figure put Helix 2.5 into 30 Bay Area rentals with no extra training. Chores on camera. Still no home checkout.",
+    publishedAt: "2026-09-17T18:45:15Z",
+    robotSlug: "figure-02",
+    compareSlugs: ["figure-02", "neo-gamma"],
+  },
+  {
+    id: "sf-038",
+    tweetUrl: "https://x.com/neuralink/status/2100342084011978896",
+    handle: "neuralink",
+    brandLabel: "Neuralink",
+    summary:
+      "Neuralink shares a trial participant using the implant to speak. Medical experiment, not a home robot, and not in our catalog.",
+    publishedAt: "2026-09-16T21:52:29Z",
+  },
+  {
+    id: "sf-039",
+    tweetUrl: "https://x.com/Optimus_RH/status/2100341226545279086",
+    handle: "Optimus_RH",
+    brandLabel: "Optimus",
+    summary:
+      "A fan account posts an AI-made Optimus video. Not Tesla's camera. Optimus Gen 2 is still Coming Soon with no cart.",
+    publishedAt: "2026-09-16T21:49:05Z",
+    robotSlug: "optimus-gen2",
+    newsSlug: "tesla-optimus-v3-fremont-production-plan",
+    compareSlugs: ["figure-02", "optimus-gen2"],
+  },
+  {
     id: "sf-036",
     tweetUrl: "https://x.com/adcock_brett/status/2099521332824379423",
     handle: "adcock_brett",
@@ -113,10 +156,10 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "andimarafioti",
     brandLabel: "Andi Marafioti",
     summary:
-      "Andi Marafioti posts four Pollen Robotics Microducks. The 25 cm desk biped is a $399 pre-order, not in our catalog. Reachy Mini is the Pollen kit we list.",
+      "Andi Marafioti posts four Pollen Robotics Microducks. The 25 cm desk biped is a $399 pre-order. Microduck is the catalog row.",
     publishedAt: "2026-09-01T13:37:55Z",
-    robotSlug: "reachy-mini",
-    compareSlugs: ["reachy-2", "reachy-mini"],
+    robotSlug: "microduck",
+    compareSlugs: ["microduck", "reachy-mini"],
   },
   {
     id: "sf-026",

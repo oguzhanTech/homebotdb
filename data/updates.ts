@@ -2,6 +2,38 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-064",
+    title: "Microduck is a $399 walking duck you can pre-order",
+    slug: "microduck-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "microduck",
+    summary:
+      "Pollen Robotics' 25 cm biped duck is $399 before tax and shipping. First deliveries are aimed at before Christmas 2026.",
+    content:
+      "The official Pollen shop takes $399 for Microduck before tax and shipping. That is a paid pre-order, not a unit sitting in a warehouse. First deliveries are aimed at before Christmas 2026 in the US, Canada, the EU, the UK, Norway, Switzerland, Japan, and South Korea. Four shells: Cream, Graphite, Lavender, and Sky. A gamepad is in the box.\n\nMicroduck is Pollen's second consumer robot after Reachy Mini. Official numbers: 25 cm, 780 g, 15 motors, about one hour on a removable camera battery, a grasping beak, a front camera, and an 8×8 depth grid. Software for walking and reinforcement learning is open source. The hardware files are not. Camera resolution and LiDAR range are still unpublished.\n\nIt is on HomeBotRadar so you can stack a walking duck against Reachy Mini, the talking desk kit from the same team. Open /compare/microduck-vs-reachy-mini. Loona is the wheeled pet that already ships. Start at store.pollen-robotics.com/products/microduck before you treat $399 as a delivered price.",
+    coverImage: "/images/updates/microduck-added-to-catalog.jpg",
+    sourceUrl: "https://store.pollen-robotics.com/products/microduck",
+    createdAt: "2026-09-17T21:50:00Z",
+    updatedAt: "2026-09-17T21:50:00Z",
+  },
+  {
+    id: "upd-063",
+    title: "PM01 China list is now ¥188,000, about $26,000",
+    slug: "pm01-china-list-188000-yuan",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "pm01",
+    summary:
+      "EngineAI's China shop lists PM01 at ¥188,000. We still had the ¥88,000 launch figure, about $12,000.",
+    content:
+      "The China buy page lists PM01 at ¥188,000. That is about $26,000 at the same yuan-to-dollar band we used when the launch list was ¥88,000 (about $12,000). Overseas reseller quotes in the mid-$20,000s now match the official number, not a markup on the old promo.\n\nThe 2026 spec tables on the product page also moved. Height is 140 cm. Weight with battery is about 44.5 kg. Both education and navigation trims list 24 joints, an 8-core CPU plus Jetson Orin NX, and about two hours on the 10,000 mAh pack. LiDAR is on the navigation trim. Battery hours did not change.\n\nPM01 stays China buy-now. Unitree G1 is still the developer biped with a public US shop price. Check engineai.com.cn/product-purchase.html before you treat $12,000 as current.",
+    coverImage: "/images/updates/pm01-china-list-188000-yuan.jpg",
+    sourceUrl: "https://www.engineai.com.cn/product-purchase.html",
+    createdAt: "2026-09-17T21:20:00Z",
+    updatedAt: "2026-09-17T21:20:00Z",
+  },
+  {
     id: "upd-062",
     title: "LOVOT 3.0 stays ¥577,500 through October 25",
     slug: "lovot-3-price-hike-oct-2026",
