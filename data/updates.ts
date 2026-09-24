@@ -2,6 +2,38 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-066",
+    title: "Ropet's official shop ships KAMOMO in the US only",
+    slug: "ropet-kamomo-us-only-shipping",
+    type: "availability_update",
+    authorId: "maya-chen",
+    robotSlug: "ropet-kamomo",
+    summary:
+      "ropetai.com ships KAMOMO to the US mainland only. Canada, the UK, the EU, and Australia are not on the official policy.",
+    content:
+      "The official shipping page is blunt. Ropet ships only to non-remote parts of the United States. Alaska, Hawaii, Puerto Rico, and other US territories are called out as no. Canada, Japan, and the EU are named as places they plan to add, not places you can check out today.\n\nWe still had Canada, the UK, Germany, France, and Australia on the Ropet KAMOMO row. Those were wrong for the brand shop. Third-party toy stores may quote other countries. That is not the ropetai.com cart. Pro is still $349 and in stock. Fur bundles are $359. Battery on the product FAQ is still 2.5 to 3.5 hours.\n\nIf you are outside the US, do not treat our old country list as a buy path. Loona is the wheeled pet with a wider consumer shop. EMO is the desk companion that already ships. Confirm the address on ropetai.com/policies/shipping-policy before you pay.",
+    coverImage: "/images/updates/ropet-kamomo-us-only-shipping.jpg",
+    sourceUrl: "https://ropetai.com/policies/shipping-policy",
+    createdAt: "2026-09-24T19:30:00Z",
+    updatedAt: "2026-09-24T19:30:00Z",
+  },
+  {
+    id: "upd-065",
+    title: "Romi official store is 10% off through September 27",
+    slug: "romi-official-store-10-percent-off",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "romi",
+    summary:
+      "shop.romi.ai is ¥88,902 for Lacatan through September 27, 10% off the ¥98,780 list. The required cloud fee did not move.",
+    content:
+      "The official Romi store is charging ¥88,902 tax-in for Lacatan, not ¥98,780. That is a dated 10% off on romi.ai/price: September 12 through September 27, 2026, with a gift bag and a 30-day return. After Sunday the list is still ¥98,780, about $658 at the band we already show. We are not moving the catalog price for a three-day remainder.\n\nThe cloud plan is unchanged: ¥1,958 a month or ¥19,580 a year, about $13 or $131. Specs we re-checked on the English Lacatan page did not move: 10 cm tall, about 400 g, about three hours, Japan only.\n\nIf you already wanted a Japanese desk talker, this is a cheaper cart until the 27th. LOVOT is the other Japan pet with a dated yen hike coming. Check shop.romi.ai/products/romi-lacatan before you treat $658 as what the official store charges this week.",
+    coverImage: "/images/updates/romi-official-store-10-percent-off.jpg",
+    sourceUrl: "https://shop.romi.ai/products/romi-lacatan",
+    createdAt: "2026-09-24T19:20:00Z",
+    updatedAt: "2026-09-24T19:20:00Z",
+  },
+  {
     id: "upd-064",
     title: "Microduck is a $399 walking duck you can pre-order",
     slug: "microduck-added-to-catalog",

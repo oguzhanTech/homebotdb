@@ -3,6 +3,39 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-043",
+    tweetUrl: "https://x.com/Optimus_RH/status/2103112054953374052",
+    handle: "Optimus_RH",
+    brandLabel: "Optimus",
+    summary:
+      "Fan account Optimus_RH posts another AI-made morning greeting. Not Tesla footage. Optimus Gen 2 still has no cart.",
+    publishedAt: "2026-09-24T13:19:22Z",
+    robotSlug: "optimus-gen2",
+    newsSlug: "tesla-optimus-v3-fremont-production-plan",
+    compareSlugs: ["figure-02", "optimus-gen2"],
+  },
+  {
+    id: "sf-041",
+    tweetUrl: "https://x.com/SkildAI/status/2102807730331492500",
+    handle: "SkildAI",
+    brandLabel: "Skild AI",
+    summary:
+      "Skild AI's #Messinator plays football after 140 years of simulated self-play. Lab biped, not a home product. Spot is the Boston Dynamics row we list.",
+    publishedAt: "2026-09-23T17:10:05Z",
+    robotSlug: "spot",
+    newsSlug: "atlas-world-cup-match-ball-delivery",
+    compareSlugs: ["spot", "unitree-g1"],
+  },
+  {
+    id: "sf-042",
+    tweetUrl: "https://x.com/princedoesai/status/2102719300587143489",
+    handle: "princedoesai",
+    brandLabel: "Prince does AI",
+    summary:
+      "Prince does AI made a Rick and Morty-style video about Jev AI in ComfyUI and Hailuo. Animation on a screen, not a robot you can buy.",
+    publishedAt: "2026-09-23T11:18:42Z",
+  },
+  {
     id: "sf-040",
     tweetUrl: "https://x.com/GoingBallistic5/status/2100676635729051821",
     handle: "GoingBallistic5",

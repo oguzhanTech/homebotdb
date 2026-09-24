@@ -3075,7 +3075,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Plush desktop AI pet with face tracking, touch sensing, evolving personality, and ChatGPT chat over Wi-Fi.",
     longDescription:
-      "Ropet KAMOMO is a desk-sized AI companion from Ropet AI that behaves more like a plush pet than a gadget. Its nose hides a camera, its screen acts as expressive eyes, and capacitive touch plus an IMU let it react to strokes, taps, and being picked up. Daily care rituals (feeding, cuddling, soothing) shape personality archetypes such as Fireball or Joybean over time.\n\nMost sensing and interaction run on-device, per Ropet's FAQ. Wi-Fi unlocks ChatGPT-backed conversation when you want open-ended chat. The iOS and Android app lets you customize eye styles, fur, masks, and accessories. Optional Dream Sketch photo features stay off by default and encrypt images before any cloud processing.\n\nThe KAMOMO Pro lists at $349 on ropetai.com (bundles from about $339 during promos). Expect 2.5 to 3.5 hours of battery per charge, or leave it on the included colorful charging base. Ropet ships to the US and Canada with 5 to 8 business day delivery, a 30-day return window, and a 1-year warranty.\n\nHomeBotRadar tracks Ropet KAMOMO for buyers cross-shopping desk companions like EMO or Vector 2.0 and mobile pet bots like Loona or aibo. It debuted at CES 2025 as an emotional AI pet alternative to live animals for busy households.",
+      "Ropet KAMOMO is a desk-sized AI companion from Ropet AI that behaves more like a plush pet than a gadget. Its nose hides a camera, its screen acts as expressive eyes, and capacitive touch plus an IMU let it react to strokes, taps, and being picked up. Daily care rituals (feeding, cuddling, soothing) shape personality archetypes such as Fireball or Joybean over time.\n\nMost sensing and interaction run on-device, per Ropet's FAQ. Wi-Fi unlocks ChatGPT-backed conversation when you want open-ended chat. The iOS and Android app lets you customize eye styles, fur, masks, and accessories. Optional Dream Sketch photo features stay off by default and encrypt images before any cloud processing.\n\nThe KAMOMO Pro still lists at $349 on ropetai.com, with a $469 compare-at. Fur bundles are $359. Battery is still 2.5 to 3.5 hours, or leave it on the included colorful charging base. Official shipping is the US mainland only. Alaska, Hawaii, Puerto Rico, and other US territories are excluded. Canada, Japan, and the EU are named as future expansion, not current checkout. 30-day returns and a 1-year warranty stay on the US shop.\n\nHomeBotRadar tracks Ropet KAMOMO for buyers cross-shopping desk companions like EMO or Vector 2.0 and mobile pet bots like Loona or aibo. It debuted at CES 2025 as an emotional AI pet alternative to live animals for busy households.",
     price: "$349",
     priceStatus: "confirmed",
     batteryLife: "2.5–3.5 h",
@@ -3094,16 +3094,9 @@ export const robots: Robot[] = [
     dataConfidenceScore: 0,
     commercialStatus: "buy_now",
     availabilityStatus: "available",
-    countriesAvailable: [
-      "United States",
-      "Canada",
-      "United Kingdom",
-      "Germany",
-      "France",
-      "Australia",
-    ],
+    countriesAvailable: ["United States"],
     firstAnnounced: "2025",
-    lastUpdated: "2026-06-24",
+    lastUpdated: "2026-09-24",
     imageUrl: "/images/ropet-kamomo/ropet-kamomo-front.png",
     imageUrls: [
       "/images/ropet-kamomo/ropet-kamomo-front.png",
@@ -3114,9 +3107,9 @@ export const robots: Robot[] = [
     affiliateUrl: "https://ropetai.com/?ref=zfdinyqk",
     sourceUrls: [
       "https://ropetai.com/products/ropet%E2%84%A2-ai-comfort-companion-plush-robot",
+      "https://ropetai.com/policies/shipping-policy",
       "https://ropetai.com/pages/kamomo-intro",
       "https://www.forbes.com/sites/prakharkhanna/2025/01/07/ces-2025-ropet-can-be-your-emotional-ai-pet-companion-for-299/",
-      "https://finance.yahoo.com/news/ropet-showcasing-ai-powered-robot-170000219.html",
     ],
     similarRobotSlugs: ["loona", "aibo-ers1000", "emo-companion", "lovot", "vector-2", "romi", "kiki", "mirumi"],
     capabilities: [
@@ -3166,28 +3159,33 @@ export const robots: Robot[] = [
       }),
       height: {
         status: "confirmed",
-        updatedAt: "2026-06-24",
+        updatedAt: "2026-09-24",
         note: "~14 × 15 × 14 cm (5.5 × 5.9 × 5.6 in) per CES 2025 press coverage",
       },
       weight: {
         status: "confirmed",
-        updatedAt: "2026-06-24",
+        updatedAt: "2026-09-24",
         note: "600 g per Forbes CES 2025 hands-on",
       },
       batteryLife: {
         status: "confirmed",
-        updatedAt: "2026-06-24",
-        note: "2.5 to 3.5 h average per official FAQ; safe to stay on charging dock",
+        updatedAt: "2026-09-24",
+        note: "2.5 to 3.5 h average per official product FAQ; safe to stay on charging dock",
       },
       chargeTime: {
         status: "confirmed",
-        updatedAt: "2026-06-24",
-        note: "~1 h fast charge, 1.5 to 2 h standard per official FAQ",
+        updatedAt: "2026-09-24",
+        note: "~1 h fast charge, 1.5 to 2 h standard per official product FAQ",
       },
       price: {
         status: "confirmed",
-        updatedAt: "2026-06-24",
-        note: "KAMOMO Pro $349 list on ropetai.com; fur bundles from $339 during promos",
+        updatedAt: "2026-09-24",
+        note: "KAMOMO Pro $349 in stock on ropetai.com (compare-at $469). Fur bundles $359. Basic $299 without dock is listed but unavailable",
+      },
+      commercialStatus: {
+        status: "confirmed",
+        updatedAt: "2026-09-24",
+        note: "Official shop ships to non-remote US only. Canada, Japan, and the EU are planned expansion, not current checkout",
       },
     },
     priceHistory: [
@@ -3236,7 +3234,7 @@ export const robots: Robot[] = [
     availabilityStatus: "limited",
     countriesAvailable: ["Japan"],
     firstAnnounced: "2024",
-    lastUpdated: "2026-06-26",
+    lastUpdated: "2026-09-24",
     imageUrl: "/images/romi/romi-front.png",
     imageUrls: [
       "/images/romi/romi-side.png",
@@ -3249,10 +3247,10 @@ export const robots: Robot[] = [
     ],
     affiliateUrl: "https://shop.romi.ai/",
     sourceUrls: [
-      "https://romi.ai/",
+      "https://shop.romi.ai/products/romi-lacatan",
+      "https://romi.ai/price/",
       "https://romi.ai/lp/lacatan/en/",
       "https://mixi.co.jp/news/2025/0725/43452/",
-      "https://mixi.co.jp/en/news/2025/0826/52345/",
     ],
     similarRobotSlugs: ["emo-companion", "vector-2", "ropet-kamomo", "elliq", "lovot", "kiki", "mirumi"],
     capabilities: [
@@ -3302,23 +3300,23 @@ export const robots: Robot[] = [
       }),
       height: {
         status: "confirmed",
-        updatedAt: "2026-06-26",
+        updatedAt: "2026-09-24",
         note: "10.0 × 11.2 × 11.1 cm (H × W × D) per romi.ai Lacatan spec page",
       },
       weight: {
         status: "confirmed",
-        updatedAt: "2026-06-26",
+        updatedAt: "2026-09-24",
         note: "~400 g per romi.ai Lacatan English spec page",
       },
       batteryLife: {
         status: "confirmed",
-        updatedAt: "2026-06-26",
+        updatedAt: "2026-09-24",
         note: "~180 min maximum runtime; 2875 mAh battery per MIXI press release",
       },
       price: {
         status: "confirmed",
-        updatedAt: "2026-06-26",
-        note: "¥98,780 tax included (~$658 USD); required cloud ¥1,958/mo (~$13) or ¥19,580/yr (~$131)",
+        updatedAt: "2026-09-24",
+        note: "List remains ¥98,780 tax included (~$658). Official store cart is ¥88,902 (10% off) through 2026-09-27. Required cloud ¥1,958/mo (~$13) or ¥19,580/yr (~$131)",
       },
     },
     priceHistory: [
