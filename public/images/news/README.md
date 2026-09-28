@@ -8,3 +8,4 @@ If omitted, HomeBotRadar falls back to the linked robot image or the site defaul
 
 - `deep-robotics-lynx-s10-arctic-ice.jpg` — YouTube still from DEEP Robotics *Into the Arctic | Lynx S10* expedition video
 - `citi-us-humanoid-10x-weekly-production.jpg` — factory / assembly-line humanoid or China parts-supplier context for the Citi 10x weekly output note (not a Tesla Optimus hero shot; Citi did not name the US maker)
+- `yansyn-x2-cries-on-command.jpg` — Yansyn-X2 silicone face at the 2026 Inclusion Conference in Shanghai (tear / frown still; not a walking humanoid)

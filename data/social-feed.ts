@@ -3,12 +3,50 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-047",
+    tweetUrl: "https://x.com/OpenAI/status/2104651136699609518",
+    handle: "OpenAI",
+    brandLabel: "OpenAI",
+    summary:
+      "OpenAI teases a new model. The video is twelve seconds of two black marks and the words Get ready.",
+    publishedAt: "2026-09-28T19:15:08Z",
+  },
+  {
+    id: "sf-046",
+    tweetUrl: "https://x.com/DynaRobotics/status/2104602246529044940",
+    handle: "DynaRobotics",
+    brandLabel: "Dyna Robotics",
+    summary:
+      "Dyna Robotics gives a first look at its next robot: a close-up of a smooth white joint, coming soon.",
+    publishedAt: "2026-09-28T16:00:51Z",
+  },
+  {
+    id: "sf-045",
+    tweetUrl: "https://x.com/KKawaharazuka/status/2104348320386740286",
+    handle: "KKawaharazuka",
+    brandLabel: "Kento Kawaharazuka",
+    summary:
+      "A new aibo walks a show floor in a white shirt, still on a tether. The aibo you can order today is the ERS-1000.",
+    publishedAt: "2026-09-27T23:11:51Z",
+    robotSlug: "aibo-ers1000",
+    compareSlugs: ["aibo-ers1000", "lovot"],
+  },
+  {
+    id: "sf-044",
+    tweetUrl: "https://x.com/mikepat711/status/2104256370757521502",
+    handle: "mikepat711",
+    brandLabel: "Mike P",
+    summary:
+      "Mike P records a long voice prompt from the driver's seat of a Tesla, then shows the result with no edits.",
+    publishedAt: "2026-09-27T17:06:28Z",
+  },
+  {
     id: "sf-043",
     tweetUrl: "https://x.com/Optimus_RH/status/2103112054953374052",
     handle: "Optimus_RH",
     brandLabel: "Optimus",
     summary:
-      "Fan account Optimus_RH posts another AI-made morning greeting. Not Tesla footage. Optimus Gen 2 still has no cart.",
+      "Fan account Optimus_RH posts another AI-made Optimus morning greeting. The camera is not Tesla's.",
     publishedAt: "2026-09-24T13:19:22Z",
     robotSlug: "optimus-gen2",
     newsSlug: "tesla-optimus-v3-fremont-production-plan",
@@ -20,11 +58,8 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "SkildAI",
     brandLabel: "Skild AI",
     summary:
-      "Skild AI's #Messinator plays football after 140 years of simulated self-play. Lab biped, not a home product. Spot is the Boston Dynamics row we list.",
+      "Skild AI's #Messinator plays football after 140 years of simulated self-play.",
     publishedAt: "2026-09-23T17:10:05Z",
-    robotSlug: "spot",
-    newsSlug: "atlas-world-cup-match-ball-delivery",
-    compareSlugs: ["spot", "unitree-g1"],
   },
   {
     id: "sf-042",
@@ -32,7 +67,7 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "princedoesai",
     brandLabel: "Prince does AI",
     summary:
-      "Prince does AI made a Rick and Morty-style video about Jev AI in ComfyUI and Hailuo. Animation on a screen, not a robot you can buy.",
+      "Prince does AI made a Rick and Morty-style short about Jev AI in ComfyUI and Hailuo.",
     publishedAt: "2026-09-23T11:18:42Z",
   },
   {
@@ -41,7 +76,7 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "GoingBallistic5",
     brandLabel: "Humanoid Scott",
     summary:
-      "Humanoid Scott jokes a Figure humanoid looks annoyed over an unmade bed. Fan cut from the Helix 2.5 home trial. Figure 02 is the row we list.",
+      "Humanoid Scott jokes that a Figure humanoid looks annoyed over an unmade bed, in a fan cut from the Helix 2.5 home trial.",
     publishedAt: "2026-09-17T20:01:53Z",
     robotSlug: "figure-02",
     compareSlugs: ["figure-02", "neo-gamma"],
@@ -63,7 +98,7 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "neuralink",
     brandLabel: "Neuralink",
     summary:
-      "Neuralink shares a trial participant using the implant to speak. Medical experiment, not a home robot, and not in our catalog.",
+      "Neuralink shares a trial participant using the implant to speak.",
     publishedAt: "2026-09-16T21:52:29Z",
   },
   {
@@ -72,7 +107,7 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "Optimus_RH",
     brandLabel: "Optimus",
     summary:
-      "A fan account posts an AI-made Optimus video. Not Tesla's camera. Optimus Gen 2 is still Coming Soon with no cart.",
+      "A fan account posts an AI-made Optimus video. The camera is not Tesla's.",
     publishedAt: "2026-09-16T21:49:05Z",
     robotSlug: "optimus-gen2",
     newsSlug: "tesla-optimus-v3-fremont-production-plan",
@@ -84,7 +119,7 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "adcock_brett",
     brandLabel: "Brett Adcock",
     summary:
-      "A Figure humanoid steps onto a work van in a silent video from Brett Adcock. Still no home checkout. Figure 02 is the row we list.",
+      "Brett Adcock posts a silent video of a Figure humanoid stepping onto a work van.",
     publishedAt: "2026-09-14T15:31:07Z",
     robotSlug: "figure-02",
     compareSlugs: ["figure-02", "neo-gamma"],
@@ -95,7 +130,7 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "h4nkdog",
     brandLabel: "Hank",
     summary:
-      "Hank throws 3D models at his printers from a Meta Quest headset. Workshop toy, not a home robot.",
+      "Hank throws 3D models at his printers from a Meta Quest headset.",
     publishedAt: "2026-09-13T14:55:53Z",
   },
   {
@@ -104,7 +139,7 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "flaceju",
     brandLabel: "flaceju",
     summary:
-      "flaceju credits GPT-6 Astra with this 16-second edit. Graphics on a screen, not a robot you can buy.",
+      "flaceju credits GPT-6 Astra with this 16-second edit.",
     publishedAt: "2026-09-13T14:24:02Z",
   },
   {
@@ -113,7 +148,7 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "_lyraaaa_",
     brandLabel: "lyra bubbles",
     summary:
-      "A simulated fly brain swings Beat Saber sabers in this lab video. Research demo, nothing you can buy.",
+      "A simulated fly brain swings Beat Saber sabers in a lab video.",
     publishedAt: "2026-09-09T03:27:49Z",
   },
   {
@@ -122,7 +157,7 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "pamir_ai",
     brandLabel: "pamir.ai",
     summary:
-      "Pamir introduces Lapis One, a small Linux box for AI agents at home. Mini PC, not a robot, and not in our catalog.",
+      "Pamir introduces Lapis One, a small Linux box that runs AI agents at home.",
     publishedAt: "2026-09-09T01:47:21Z",
   },
   {
@@ -131,7 +166,7 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "thermalpastor",
     brandLabel: "H",
     summary:
-      "GPT-6 Astra steers two simulated robots juggling one ball in MuJoCo at real-world speed. Physics on a screen, not a living-room product.",
+      "GPT-6 Astra steers two simulated robots juggling one ball in MuJoCo at real-world speed.",
     publishedAt: "2026-09-09T01:23:58Z",
   },
   {
@@ -140,7 +175,7 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "DilumSanjaya",
     brandLabel: "Dilum Sanjaya",
     summary:
-      "Dilum Sanjaya used GPT-6 Astra to build an interactive V8 engine visualization. AI demo, not a home robot.",
+      "Dilum Sanjaya used GPT-6 Astra to build an interactive V8 engine you can spin around.",
     publishedAt: "2026-09-05T16:52:11Z",
   },
   {
@@ -149,7 +184,7 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "ErenChenAI",
     brandLabel: "Eren Chen",
     summary:
-      "Eren Chen posts high-speed RC cars. Fun hobby video, not a home robot, and there is no catalog match.",
+      "Eren Chen posts high-speed RC cars.",
     publishedAt: "2026-09-05T15:04:13Z",
   },
   {
@@ -158,7 +193,7 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "ashebytes",
     brandLabel: "ashe",
     summary:
-      "ashe used GPT-6 Astra to build a 3D anatomy explorer with 2,234 parts. Learning demo, not a home robot.",
+      "ashe used GPT-6 Astra to build a 3D anatomy explorer with 2,234 parts.",
     publishedAt: "2026-09-05T13:00:42Z",
   },
   {
@@ -167,10 +202,8 @@ export const socialFeedItems: SocialFeedItem[] = [
     handle: "BLKMDL3",
     brandLabel: "Zack",
     summary:
-      "Zack shows a Tesla Cybercab cabin running games from a controller. Robotaxi, not Optimus, and not a home SKU.",
+      "Zack shows a Tesla Cybercab cabin running games from a controller.",
     publishedAt: "2026-09-04T18:08:37Z",
-    robotSlug: "optimus-gen2",
-    compareSlugs: ["figure-02", "optimus-gen2"],
   },
   {
     id: "sf-024",

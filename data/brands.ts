@@ -275,4 +275,10 @@ export const brands: Brand[] = [
       "小鹏",
     ],
   },
+  {
+    id: "weave-robotics",
+    name: "Weave Robotics",
+    logo: "/brands/weave-robotics.png",
+    aliases: ["Weave Robotics", "Weave"],
+  },
 ];

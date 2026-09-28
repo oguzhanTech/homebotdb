@@ -2,6 +2,54 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-069",
+    title: "Isaac 1: $7,999 or $449 a month, California first",
+    slug: "isaac-1-added-to-catalog",
+    type: "data_update",
+    authorId: "maya-chen",
+    robotSlug: "isaac-1",
+    summary:
+      "Weave's order page takes a $250 deposit for Isaac 1. At delivery the choice is $7,999 up front or $449 a month, with California first in fall 2026.",
+    content:
+      "A $250 deposit on Weave's order page holds an Isaac 1. It is refundable until the robot ships, and the pre-order agreement says it is not a promise of delivery. At the door you choose $7,999 up front or $449 a month. California is first, in fall 2026. The rest of the US is scheduled through 2027.\n\nIsaac 1 rolls. It does not walk. Weave lists an 8 hour battery, a 2 hour charge, and a body that drops from 5 ft 9 in down to 3 ft. Laundry Flow and Daily Reset are the two jobs: clothes, hampers, folding, beds, toys, and shoes. A remote operator can step in when the robot would miss the task. Weight and lift strength are not on the sheet.\n\nNEO Gamma is the two-legged US pre-order in the same chore conversation, at $20,000 or $499 a month. Isaac 1 is the wheeled one with a published $7,999 list. Compare them on /compare/isaac-1-vs-neo-gamma if you are choosing a home helper you can actually reserve.",
+    coverImage: "/images/updates/isaac-1-added-to-catalog.jpg",
+    sourceUrl: "https://www.weaverobotics.com/isaac-1",
+    createdAt: "2026-09-28T21:50:00Z",
+    updatedAt: "2026-09-28T21:50:00Z",
+  },
+  {
+    id: "upd-068",
+    title: "Reachy Mini Lite is $399, Wireless is $499",
+    slug: "reachy-mini-list-399-499",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "reachy-mini",
+    summary:
+      "Pollen's store and the Hugging Face order table now list Reachy Mini Lite at $399 and Wireless at $499. We still had $299 and $449.",
+    content:
+      "The Pollen product page lists Reachy Mini Lite at $399 and the wireless kit at $499, before tax and shipping. The Hugging Face order table matches those numbers. We still had the launch pair, $299 and $449. The catalog price is now $399+.\n\nLead time is up to 90 days. Many orders ship sooner. Direct checkout is the EU, the UK, the US, and Canada. Other countries go through Seeed Studio. Height, weight, and the 2 to 4 hour wireless battery did not move on the hardware sheet.\n\nReachy Mini is still the desk kit you assemble. Microduck is the walking duck from the same team, still a $399 pre-order. Check pollen-robotics.com/reachy-mini before you treat the old $299 Lite price as current.",
+    coverImage: "/images/updates/reachy-mini-added-to-catalog.png",
+    sourceUrl: "https://www.pollen-robotics.com/reachy-mini/",
+    createdAt: "2026-09-28T21:10:00Z",
+    updatedAt: "2026-09-28T21:10:00Z",
+  },
+  {
+    id: "upd-067",
+    title: "UWORLD U1 deliveries started at showrooms, not homes",
+    slug: "ubtech-u1-first-deliveries-commercial",
+    type: "availability_update",
+    authorId: "maya-chen",
+    robotSlug: "ubtech-u1",
+    summary:
+      "Zhou Jian said UWORLD U1 deliveries opened on September 16. The first named recipients are a car group, a Beijing partner, and a Korean robot park.",
+    content:
+      "On September 16, 2026, UBTech founder Zhou Jian said the UWORLD U1 series had started shipping. Chinese trade coverage names the first recipients: Shanghai Yongda, Beijing Boshi, and Galaxy robot park in South Korea. Those are a dealer group, a regional partner, and an entertainment site. They are not a confirmed living-room delivery.\n\nList prices did not move. Lite is still ¥119,800 (about $17,600). Pro is ¥169,800. Ultra is ¥880,000 for the female build and ¥990,000 for the male build. Status stays China pre-order until a household shipment is on the record. English write-ups that say the robots are already in ordinary homes are ahead of the named recipients.\n\nAria is the other full-size companion you quote, not cart. ElliQ is the US elder desk unit you can start as a membership. UWORLD U1 is still the China companion whose first boxes went to businesses.",
+    coverImage: "/images/updates/ubtech-u1-added-to-catalog.jpg",
+    sourceUrl: "https://www.gkzhan.com/news/detail/195712.html",
+    createdAt: "2026-09-28T21:00:00Z",
+    updatedAt: "2026-09-28T21:00:00Z",
+  },
+  {
     id: "upd-066",
     title: "Ropet's official shop ships KAMOMO in the US only",
     slug: "ropet-kamomo-us-only-shipping",
