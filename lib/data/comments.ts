@@ -91,18 +91,35 @@ export async function listComments(
   }
 }
 
+function commentLoadError(message: string): Error {
+  const compact = message.replace(/\s+/g, " ").trim();
+  const readable =
+    compact.startsWith("<") || compact.length > 180
+      ? "Supabase did not respond."
+      : compact;
+  return new Error(`Failed to load comments: ${readable}`);
+}
+
 export async function listAllComments(): Promise<Comment[]> {
-  const supabase = getSupabase();
-  const { data, error } = await supabase
-    .from("comments")
-    .select("*")
-    .order("created_at", { ascending: false });
+  try {
+    const supabase = getSupabase();
+    const { data, error } = await supabase
+      .from("comments")
+      .select("*")
+      .order("created_at", { ascending: false });
 
-  if (error) {
-    throw new Error(`Failed to load comments: ${error.message}`);
+    if (error) {
+      throw commentLoadError(error.message);
+    }
+
+    return (data as CommentRow[]).map(rowToComment);
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith("Failed to load comments:")) {
+      throw error;
+    }
+    const message = error instanceof Error ? error.message : String(error);
+    throw commentLoadError(message);
   }
-
-  return (data as CommentRow[]).map(rowToComment);
 }
 
 export async function listRecentComments(limit = 5): Promise<Comment[]> {

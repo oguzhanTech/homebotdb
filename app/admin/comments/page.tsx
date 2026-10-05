@@ -3,6 +3,9 @@ import { siteConfig } from "@/config/site";
 import { CommentModerationList } from "@/components/admin/CommentModerationList";
 import { listAllComments } from "@/lib/data/comments";
 import { buildPageMetadata } from "@/lib/seo";
+import type { Comment } from "@/types/comment";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = buildPageMetadata({
   title: `Comments — Admin — ${siteConfig.name}`,
@@ -11,7 +14,15 @@ export const metadata = buildPageMetadata({
 });
 
 export default async function AdminCommentsPage() {
-  const comments = await listAllComments();
+  let comments: Comment[] = [];
+  let unavailable = false;
+
+  try {
+    comments = await listAllComments();
+  } catch (error) {
+    unavailable = true;
+    console.error(error instanceof Error ? error.message : "Failed to load comments");
+  }
 
   return (
     <main className="px-3.5 py-5 sm:px-7 sm:py-7">
@@ -29,7 +40,13 @@ export default async function AdminCommentsPage() {
         </p>
       </div>
 
-      <CommentModerationList comments={comments} />
+      {unavailable ? (
+        <p className="text-sm text-muted">
+          Comments could not be loaded. Supabase did not respond. Try again in a moment.
+        </p>
+      ) : (
+        <CommentModerationList comments={comments} />
+      )}
     </main>
   );
 }
