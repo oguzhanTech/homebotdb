@@ -141,6 +141,36 @@ export function buildUpdateMetadata(update: Update): Metadata {
   });
 }
 
+function parseOfferPrice(price: string): number | undefined {
+  const numeric = price.replace(/[^0-9.]/g, "");
+  if (!numeric || numeric === ".") return undefined;
+  const value = Number(numeric);
+  if (!Number.isFinite(value) || value <= 0) return undefined;
+  return value;
+}
+
+function buildRobotOffer(robot: Robot) {
+  if (
+    robot.commercialStatus !== "buy_now" &&
+    robot.commercialStatus !== "pre_order"
+  ) {
+    return undefined;
+  }
+
+  const price = parseOfferPrice(robot.price);
+  if (price == null) return undefined;
+
+  return {
+    "@type": "Offer",
+    price,
+    priceCurrency: "USD",
+    availability:
+      robot.commercialStatus === "buy_now"
+        ? "https://schema.org/InStock"
+        : "https://schema.org/PreOrder",
+  };
+}
+
 export function buildRobotJsonLd(robot: Robot) {
   const pageUrl = `${siteConfig.url}/robots/${robot.slug}`;
   return {
@@ -154,17 +184,7 @@ export function buildRobotJsonLd(robot: Robot) {
       ? absoluteUrl(getPrimaryRobotImage(robot)!)
       : undefined,
     url: pageUrl,
-    offers: robot.price
-      ? {
-          "@type": "Offer",
-          price: robot.price.replace(/[^0-9.]/g, "") || undefined,
-          priceCurrency: "USD",
-          availability:
-            robot.commercialStatus === "buy_now"
-              ? "https://schema.org/InStock"
-              : "https://schema.org/PreOrder",
-        }
-      : undefined,
+    offers: buildRobotOffer(robot),
   };
 }
 
@@ -232,7 +252,7 @@ export function buildWebsiteJsonLd() {
     description: siteConfig.description,
     potentialAction: {
       "@type": "SearchAction",
-      target: `${siteConfig.url}/?q={search_term_string}`,
+      target: `${siteConfig.url}/robots/?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   };
@@ -269,6 +289,8 @@ export function buildDiscussionJsonLd({
   pageDescription: string;
   comments: Comment[];
 }) {
+  if (comments.length === 0) return null;
+
   const pageUrl = `${siteConfig.url}${pagePath}`;
   const { topLevel, repliesByParent } = groupCommentsByThread(comments);
 
@@ -279,6 +301,12 @@ export function buildDiscussionJsonLd({
     );
   });
 
+  const datePublished = comments.reduce(
+    (earliest, comment) =>
+      comment.createdAt < earliest ? comment.createdAt : earliest,
+    comments[0].createdAt,
+  );
+
   const aboutId =
     target.type === "robot"
       ? `${pageUrl}#product`
@@ -288,7 +316,14 @@ export function buildDiscussionJsonLd({
     "@context": "https://schema.org",
     "@type": "DiscussionForumPosting",
     headline: `Comments on ${pageTitle}`,
+    text: pageDescription.trim() || pageTitle,
     description: pageDescription,
+    datePublished,
+    author: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
     url: `${pageUrl}#comments`,
     about: {
       "@id": aboutId,

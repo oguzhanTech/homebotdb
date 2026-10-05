@@ -3,6 +3,38 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-050",
+    tweetUrl: "https://x.com/asimovinc/status/2107011043373576441",
+    handle: "asimovinc",
+    brandLabel: "Asimov",
+    summary:
+      "Menlo posts Asimov, an orange-and-black developer humanoid, sitting on a boardwalk at night.",
+    publishedAt: "2026-10-05T07:32:33Z",
+  },
+  {
+    id: "sf-049",
+    tweetUrl: "https://x.com/H0meMadeGarbage/status/2106998616120508493",
+    handle: "H0meMadeGarbage",
+    brandLabel: "HomeMadeGarbage",
+    summary:
+      "HomeMadeGarbage films a Microduck skittering across a living-room floor.",
+    publishedAt: "2026-10-05T06:43:10Z",
+    robotSlug: "microduck",
+    compareSlugs: ["microduck", "reachy-mini"],
+  },
+  {
+    id: "sf-048",
+    tweetUrl: "https://x.com/Optimus_RH/status/2106879862518526428",
+    handle: "Optimus_RH",
+    brandLabel: "Optimus",
+    summary:
+      "Optimus_RH shares a glossy AI render of Optimus. The post itself says Made with AI.",
+    publishedAt: "2026-10-04T22:51:17Z",
+    robotSlug: "optimus-gen2",
+    newsSlug: "tesla-optimus-v3-fremont-production-plan",
+    compareSlugs: ["figure-02", "optimus-gen2"],
+  },
+  {
     id: "sf-047",
     tweetUrl: "https://x.com/OpenAI/status/2104651136699609518",
     handle: "OpenAI",

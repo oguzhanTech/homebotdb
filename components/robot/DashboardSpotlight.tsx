@@ -114,9 +114,9 @@ function SpotlightCard({
               size="lg"
               className="[&_img]:!h-[3.85rem] [&_img]:!w-[3.85rem]"
             />
-            <h1 className="text-[2.0625rem] font-medium tracking-tight sm:text-[2.475rem]">
+            <h2 className="text-[2.0625rem] font-medium tracking-tight sm:text-[2.475rem]">
               {robot.name}
-            </h1>
+            </h2>
           </div>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[#565f6b]">
             {robot.shortDescription}

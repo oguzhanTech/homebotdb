@@ -32,10 +32,12 @@ export function CommentSection({
       aria-label={sectionLabel}
       className="min-w-0 scroll-mt-24"
     >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      {jsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      ) : null}
 
       <CommentThread
         initialComments={comments}

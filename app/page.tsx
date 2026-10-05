@@ -30,6 +30,13 @@ export default async function HomePage() {
     <main className="min-w-0 px-3.5 py-5 sm:px-7 sm:py-7">
       <TopBar />
 
+      <header className="mb-6">
+        <h1 className="text-2xl font-medium tracking-tight sm:text-3xl">
+          {siteConfig.name}
+        </h1>
+        <p className="mt-1 text-sm text-muted">{siteConfig.tagline}</p>
+      </header>
+
       <DashboardSpotlight robots={robots} />
 
       <HomeDashboard robots={robots} />
