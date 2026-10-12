@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-070",
+    title: "AiMe gen 2 is on JD pre-sale in China. Still no price.",
+    slug: "aime-jd-presale-china",
+    type: "availability_update",
+    authorId: "maya-chen",
+    robotSlug: "tcl-aime",
+    summary:
+      "TCL says the second-generation AiMe opened on JD on August 8, 2026, for families in China. The post still has no yuan price.",
+    content:
+      "TCL's news post dated September 18 says the second-generation AiMe went on JD pre-sale on August 8, 2026. The first generation was the CES 2025 modular concept. This one is the production model for families in China. HomeBotRadar still had AiMe as a prototype with no country and no price.\n\nThe TCL page does not list a yuan figure, a battery, or a size. Chip and joint counts in vendor writeups are not on that post, so the spec table stays empty. Status is now pre-order, China only. Price stays TBA.\n\nEMO is the desk pet you can buy today. Compare them on /compare/emo-companion-vs-tcl-aime if you want a shipping companion next to a China pre-sale. Check the TCL news post before you assume a US cart.",
+    coverImage: "/images/updates/aime-jd-presale-china.jpg",
+    sourceUrl: "https://www.tcl.com/cn/zh/news/heyaime",
+    createdAt: "2026-10-13T09:40:00Z",
+    updatedAt: "2026-10-13T09:40:00Z",
+  },
+  {
     id: "upd-069",
     title: "Isaac 1: $7,999 or $449 a month, California first",
     slug: "isaac-1-added-to-catalog",

@@ -14,6 +14,9 @@ export function CompareVerdict({ verdict }: { verdict: CompareVerdictData }) {
       {verdict.detail ? (
         <p className="mt-2 text-sm leading-relaxed text-muted">{verdict.detail}</p>
       ) : null}
+      <p className="mt-2 text-sm leading-relaxed text-muted">
+        {uiCopy.compare.verdict.rowCountNote}
+      </p>
     </Card>
   );
 }

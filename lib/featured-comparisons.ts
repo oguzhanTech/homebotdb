@@ -1,3 +1,4 @@
+import { INDEXABLE_COMPARE_PAIRS } from "@/data/indexable-compares";
 import { buildCompareSlug } from "@/lib/compare";
 import { getPopularDayKey, hashString } from "@/lib/popular-robots";
 import type { Robot } from "@/types/robot";
@@ -47,7 +48,7 @@ function addPair(
   pool.set(pairKey(pair.slugs), pair);
 }
 
-/** All same-segment pairs we might rotate through on /compare */
+/** Broader same-segment pairs. The hub rotator and the index use the editorial allowlist. */
 export function buildFeaturedComparePool(robots: Robot[]): FeaturedComparePair[] {
   const bySlug = new Map(robots.map((robot) => [robot.slug, robot]));
   const pool = new Map<string, FeaturedComparePair>();
@@ -108,13 +109,27 @@ function pickPairFromSegment(
   return candidates[index];
 }
 
-/** Stable UTC-day selection of N relevant pairs across different segments when possible. */
+function indexableComparePool(robots: Robot[]): FeaturedComparePair[] {
+  const bySlug = new Map(robots.map((robot) => [robot.slug, robot]));
+  const pool: FeaturedComparePair[] = [];
+
+  for (const [leftSlug, rightSlug] of INDEXABLE_COMPARE_PAIRS) {
+    const left = bySlug.get(leftSlug);
+    const right = bySlug.get(rightSlug);
+    if (!left || !right) continue;
+    pool.push(makePair(left, right));
+  }
+
+  return pool;
+}
+
+/** Stable UTC-day selection from the indexable compare allowlist. */
 export function getFeaturedComparisonsToday(
   robots: Robot[],
   count = 3,
   now = new Date(),
 ): FeaturedComparePair[] {
-  const pool = buildFeaturedComparePool(robots);
+  const pool = indexableComparePool(robots);
   if (pool.length === 0) return [];
   if (pool.length <= count) return pool.slice(0, count);
 

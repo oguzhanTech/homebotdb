@@ -1,5 +1,5 @@
-import { buildComparePath } from "@/lib/compare";
-import { getRobotBySlug } from "@/lib/data/repository";
+import { buildComparePath, buildCompareSlug } from "@/lib/compare";
+import { getRobotBySlug, isIndexableCompareSlug } from "@/lib/data/repository";
 import type { Robot } from "@/types/robot";
 import type { Update } from "@/types/update";
 
@@ -46,7 +46,9 @@ export function getUpdateExploreSections(update: Update): UpdateExploreSections 
       .slice(0, 3);
 
     for (const peer of peers) {
-      compare.push(compareLink(robot, peer));
+      if (isIndexableCompareSlug(buildCompareSlug([robot.slug, peer.slug]))) {
+        compare.push(compareLink(robot, peer));
+      }
       relatedRobots.push(robotLink(peer));
     }
   }

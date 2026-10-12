@@ -4,7 +4,6 @@ import { siteConfig } from "@/config/site";
 import { buildWebsiteJsonLd } from "@/lib/seo";
 import { AppShell } from "@/components/layout/AppShell";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
-import { GoogleAdSense } from "@/components/analytics/GoogleAdSense";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -64,7 +63,6 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <GoogleAdSense />
         <GoogleAnalytics />
         <AppShell>{children}</AppShell>
       </body>

@@ -144,6 +144,8 @@ export const uiCopy = {
       headline: (leader: string, wins: number, total: number) =>
         `${leader} leads on ${wins} of ${total} comparable rows`,
       noComparableRows: "No clear leader on comparable numeric rows in this matchup.",
+      rowCountNote:
+        "The lead is a count of published spec rows, not an in-home test.",
       leadsBadge: (count: number) => `Leads ${count}`,
     },
     chooseGuide: {

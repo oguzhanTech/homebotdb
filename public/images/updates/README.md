@@ -10,6 +10,7 @@ Path `{slug}` must match the update `slug`. Agent declares the filename; editor 
 
 Examples:
 
+- `aime-jd-presale-china.jpg`
 - `mirumi-added-to-catalog.jpg`
 - `optimus-gen2-price-estimate-musk-target.jpg`
 - `figure-02-price-unknown-figure-03-focus.jpg`

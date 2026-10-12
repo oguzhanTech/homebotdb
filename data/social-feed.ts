@@ -3,6 +3,45 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-054",
+    tweetUrl: "https://x.com/alexandr_wang/status/2109693288752337109",
+    handle: "alexandr_wang",
+    brandLabel: "Alexandr Wang",
+    summary:
+      "Alexandr Wang says Meta's corporate team refused his video. It opens on a soft glowing face.",
+    publishedAt: "2026-10-12T17:10:50Z",
+  },
+  {
+    id: "sf-053",
+    tweetUrl: "https://x.com/antoinepirrone/status/2109667437503193163",
+    handle: "antoinepirrone",
+    brandLabel: "Antoine Pirrone",
+    summary:
+      "Antoine Pirrone, who builds Microduck, posts three uncut minutes of them walking on carpet.",
+    publishedAt: "2026-10-12T15:28:07Z",
+    robotSlug: "microduck",
+    compareSlugs: ["microduck", "reachy-mini"],
+  },
+  {
+    id: "sf-052",
+    tweetUrl: "https://x.com/Baconbrix/status/2109406594241060901",
+    handle: "Baconbrix",
+    brandLabel: "Evan Bacon",
+    summary:
+      "Evan Bacon had Grok Bot build a Vision Pro app. He talks to the bots and places them around his apartment.",
+    publishedAt: "2026-10-11T22:11:37Z",
+  },
+  {
+    id: "sf-051",
+    tweetUrl: "https://x.com/deweytn/status/2109356153561833967",
+    handle: "deweytn",
+    brandLabel: "Claudia Galeán",
+    summary:
+      "Claudia Galeán puts 2019 Atlas over the 2026 model. Spot is the Boston Dynamics robot we list.",
+    publishedAt: "2026-10-11T18:51:11Z",
+    robotSlug: "spot",
+  },
+  {
     id: "sf-050",
     tweetUrl: "https://x.com/asimovinc/status/2107011043373576441",
     handle: "asimovinc",

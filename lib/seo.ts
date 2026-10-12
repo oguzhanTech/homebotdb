@@ -115,7 +115,7 @@ export function buildCompareFaqJsonLd(robots: Robot[], answer: string) {
     mainEntity: [
       {
         "@type": "Question",
-        name: `Should I buy ${names}?`,
+        name: `How do the published specs compare for ${names}?`,
         acceptedAnswer: {
           "@type": "Answer",
           text: answer,
