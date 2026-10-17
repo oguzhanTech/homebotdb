@@ -3,6 +3,44 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-058",
+    tweetUrl: "https://x.com/adcock_brett/status/2111209042253385766",
+    handle: "adcock_brett",
+    brandLabel: "Brett Adcock",
+    summary:
+      "Brett Adcock resets Hark's daily limit and teases a surprise. A Figure hand waits next to a red stop button.",
+    publishedAt: "2026-10-16T21:33:54Z",
+    robotSlug: "figure-02",
+    compareSlugs: ["figure-02", "optimus-gen2"],
+  },
+  {
+    id: "sf-057",
+    tweetUrl: "https://x.com/maticrobots/status/2110914669141742060",
+    handle: "maticrobots",
+    brandLabel: "Matic Robots",
+    summary:
+      "Matic sets its floor vacuum on a steep ramp, copying Tesla's Roadster stunt. The joke is that this robot sucks on purpose.",
+    publishedAt: "2026-10-16T02:04:10Z",
+  },
+  {
+    id: "sf-056",
+    tweetUrl: "https://x.com/Tesla/status/2110913438293647789",
+    handle: "Tesla",
+    brandLabel: "Tesla",
+    summary:
+      "Tesla posts the Roadster at the base of a lit ramp and calls it real life. The flying Rocket version is invite-only, with production aimed at 2028.",
+    publishedAt: "2026-10-16T01:59:17Z",
+  },
+  {
+    id: "sf-055",
+    tweetUrl: "https://x.com/elonmusk/status/2110913107094606330",
+    handle: "elonmusk",
+    brandLabel: "Elon Musk",
+    summary:
+      "Elon Musk says flying cars showed up. The short video is Tesla's Roadster using thrusters for a hop, not a long flight.",
+    publishedAt: "2026-10-16T01:57:58Z",
+  },
+  {
     id: "sf-054",
     tweetUrl: "https://x.com/alexandr_wang/status/2109693288752337109",
     handle: "alexandr_wang",

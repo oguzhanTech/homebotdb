@@ -249,7 +249,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Tesla humanoid prototype with a $20,000-$30,000 Musk price target; no public order path or home ship date yet.",
     longDescription:
-      "Optimus Gen 2 is Tesla's human-shaped robot. It has a head, two arms, and two legs. Tesla trains it with the same kind of AI work used in its cars and factory software.\n\nMost public videos show Optimus in factories, carrying boxes and walking on test floors. As of mid-2026 there is still no consumer checkout, reservation queue, or published MSRP. Elon Musk has repeatedly floated a $20,000-$30,000 at-scale target; treat that as an estimate, not a store price. Tesla has also talked about helping in homes someday, but there is no normal home trial program yet.\n\nOn paper it is roughly person-height (about 173 cm) and can lift heavy loads for a robot. Many specs are still unconfirmed because Tesla shares little detail outside staged demos.\n\nHomeBotRadar lists Optimus so you can compare it to robots you can pre-order or buy today, like Unitree G1 or Figure 02. Status here is Coming Soon, not available for home delivery.",
+      "Optimus Gen 2 is Tesla's human-shaped robot. It has a head, two arms, and two legs. Tesla trains it with the same kind of AI work used in its cars and factory software.\n\nMost public videos show Optimus in factories, carrying boxes and walking on test floors. As of October 2026 there is still no consumer checkout, reservation queue, or published MSRP. Tesla's July 22, 2026 update says Fremont lines are being installed and production is anticipated later in 2026, with the first robots kept for an internal training academy. Elon Musk has repeatedly floated a $20,000-$30,000 at-scale target; treat that as an estimate, not a store price. Tesla has also talked about helping in homes someday, but there is no normal home trial program yet.\n\nOn paper it is roughly person-height (about 173 cm) and can lift heavy loads for a robot. Many specs are still unconfirmed because Tesla shares little detail outside staged demos.\n\nHomeBotRadar lists Optimus so you can compare it to robots you can pre-order or buy today, like Unitree G1 or Figure 02. Status here is Coming Soon, not available for home delivery.",
     price: "$20,000-$30,000",
     priceStatus: "estimate",
     batteryLife: "8 h",
@@ -269,7 +269,7 @@ export const robots: Robot[] = [
     availabilityStatus: "coming_soon",
     countriesAvailable: [],
     firstAnnounced: "2022",
-    lastUpdated: "2026-07-26",
+    lastUpdated: "2026-10-17",
     imageUrl: "/images/optimus/optimus.png",
     imageUrls: [
       "/images/optimus/optimus-pose.png",
@@ -280,8 +280,8 @@ export const robots: Robot[] = [
     affiliateUrl: "https://www.tesla.com/AI",
     sourceUrls: [
       "https://www.tesla.com/AI",
+      "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf",
       "https://deploy.report/explainers/tesla-optimus-price",
-      "https://www.techtimes.com/articles/321012/20260720/tesla-optimus-production-count-remains-zero-q2-earnings-call-looms-wednesday.htm",
     ],
     similarRobotSlugs: ["figure-02", "unitree-g1", "neo-gamma", "xpeng-iron"],
     capabilities: [
@@ -311,18 +311,18 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "unconfirmed",
-        updatedAt: "2026-07-26",
-        note: "Musk/Tesla at-scale target $20K-$30K (We, Robot era and later). Not an MSRP. No public order page as of Jul 2026 freshness pass.",
+        updatedAt: "2026-10-17",
+        note: "Musk/Tesla at-scale target $20K-$30K. Not an MSRP. tesla.com/AI and the Jul 22, 2026 Q2 update still list no order price. Q3 results are scheduled for Oct 21, 2026.",
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-07-26",
-        note: "Still coming soon: no consumer checkout or reservation queue on Tesla properties reviewed Jul 2026",
+        updatedAt: "2026-10-17",
+        note: "Coming soon. Q2 2026 update: Fremont Optimus lines under construction, production anticipated later in 2026, first builds for the internal Optimus Academy. No checkout on tesla.com/AI as of Oct 17, 2026. Weekly output reports were not used.",
       },
       readinessScore: {
         status: "confirmed",
-        updatedAt: "2026-07-26",
-        note: "Freshness pass: confirmed no buy path; estimate price band added for compare context only",
+        updatedAt: "2026-10-17",
+        note: "Oct 17, 2026 freshness pass: still no public buy path. Scores unchanged.",
       },
     },
     priceHistory: [
@@ -364,7 +364,7 @@ export const robots: Robot[] = [
     availabilityStatus: "available",
     countriesAvailable: ["United States", "Canada", "United Kingdom", "Germany"],
     firstAnnounced: "2021",
-    lastUpdated: "2026-07-26",
+    lastUpdated: "2026-10-17",
     imageUrl: "/images/emo/emo-g1.png",
     imageUrls: [
       "/images/emo/emo-g1.png",
@@ -374,6 +374,7 @@ export const robots: Robot[] = [
     videoUrls: ["https://www.youtube.com/watch?v=IqQhJsrttp8"],
     affiliateUrl: "https://living.ai/store/",
     sourceUrls: [
+      "https://living.ai/product/emo/",
       "https://living.ai/store/",
       "https://living.ai/product/emo-white/",
       "https://living.ai/",
@@ -402,13 +403,13 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "confirmed",
-        updatedAt: "2026-07-26",
-        note: "Living.ai store still lists standard EMO at $279; White $289; GO HOME $369-$379",
+        updatedAt: "2026-10-17",
+        note: "Living.ai still lists standard EMO at $279; White $289; GO HOME $369-$379",
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-07-26",
-        note: "Freshness pass: buy-now cart live on living.ai/store",
+        updatedAt: "2026-10-17",
+        note: "Freshness pass: buy-now cart still live on living.ai/store and /product/emo",
       },
     },
     priceHistory: [
@@ -3494,8 +3495,8 @@ export const robots: Robot[] = [
     shortDescription:
       "Realbotix F-Series humanoid companion with 44 DoF, silicone skin, magnetic face swaps, and AI chat on a motorized wheeled base.",
     longDescription:
-      "Aria is Realbotix's flagship female-presenting character on the company's F-Series full-bodied humanoid line. The Las Vegas firm builds her with patented silicone skin, 17 facial motors for expressive talk, and a modular body you can re-skin or re-face after delivery. Eye-embedded micro cameras support face and object recognition so the robot can greet people by name or comment on what it sees.\n\nAria cannot walk. Realbotix mounts the upper body on a motorized wheeled base you steer with a manual remote, or run plugged into wall power. Official specs list 44 degrees of freedom across face, neck, arms, torso, hands, and base, with 4 to 8 hours of onboard battery life when unplugged. The company says orders can ship in as soon as 12 weeks after configuration.\n\nRealbotix sells through sales contact, not a shopping cart. The former public robots page now 404s after redirect to realbotix.ai. F-Series hardware has been listed from about $125,000, with customization (extra heads, voice packs, custom sculpts from about $20,000+) pushing quotes higher. CES 2025 press widely cited a fully configured Aria near $175,000. A separate Robot Controller subscription runs $199.99 per month for AI updates, and the platform can plug into ChatGPT or locally hosted models.\n\nHomeBotRadar tracks Aria for buyers comparing ultra-premium conversation robots against elder-care desk units like ElliQ or emotional pets like LOVOT. This is a luxury companion platform, not a chore humanoid. Expect cloud-tied AI, remote-controlled mobility, and quote-based purchasing.",
-    price: "$125,000+",
+      "Aria is Realbotix's flagship female-presenting character on the company's F-Series full-bodied humanoid line. The Las Vegas firm builds her with patented silicone skin, 17 facial motors for expressive talk, and a modular body you can re-skin or re-face after delivery. Eye-embedded micro cameras support face and object recognition so the robot can greet people by name or comment on what it sees.\n\nAria cannot walk. Realbotix mounts the upper body on a motorized wheeled base you steer with a manual remote, or run plugged into wall power. Official specs list 44 degrees of freedom across face, neck, arms, torso, hands, and base, with 4 to 8 hours of onboard battery life when unplugged. The company says orders can ship in as soon as 12 weeks after configuration.\n\nRealbotix sells through sales contact, not a shopping cart. The former public robots page now 404s after redirect to realbotix.ai. The company's lineup page lists F-Series from $175,000. Customization (extra heads, voice packs, custom sculpts from about $20,000+) still pushes quotes higher. A separate Robot Controller subscription runs $199.99 per month for AI updates, and the platform can plug into ChatGPT or locally hosted models.\n\nHomeBotRadar tracks Aria for buyers comparing ultra-premium conversation robots against elder-care desk units like ElliQ or emotional pets like LOVOT. This is a luxury companion platform, not a chore humanoid. Expect cloud-tied AI, remote-controlled mobility, and quote-based purchasing.",
+    price: "$175,000+",
     priceStatus: "confirmed",
     batteryLife: "4–8 h",
     chargeTime: "Unknown",
@@ -3515,7 +3516,7 @@ export const robots: Robot[] = [
     availabilityStatus: "limited",
     countriesAvailable: ["United States"],
     firstAnnounced: "2025",
-    lastUpdated: "2026-07-26",
+    lastUpdated: "2026-10-17",
     imageUrl: "/images/realbotix-aria/realbotix-aria-front.jpg",
     imageUrls: [
       "/images/realbotix-aria/realbotix-aria-front.png",
@@ -3524,10 +3525,11 @@ export const robots: Robot[] = [
     videoUrls: ["https://www.youtube.com/watch?v=o6gImFp3kn8"],
     affiliateUrl: "https://realbotix.ai/contact-us#contact",
     sourceUrls: [
+      "https://www.realbotix.ai/newsletters/realbotix-business-snapshot",
+      "https://www.sedarplus.ca/csa-party/records/document.html?id=f71b268bdebeef58201b7b65a2f2eca572dc295af9e07fb635eaf5b0806bf459",
       "https://realbotix.ai/contact-us#contact",
       "https://realbotix.ai/",
       "https://www.cnet.com/tech/services-and-software/we-interviewed-aria-a-175k-almost-human-robot-at-ces-2025/",
-      "https://www.forbes.com/sites/barrycollins/2025/01/08/this-could-be-your-ai-robot-girlfriend-for-175000/",
     ],
     similarRobotSlugs: ["lovot", "elliq", "buddy", "tombot-jennie", "ubtech-u1", "realbotix-melody"],
     capabilities: [
@@ -3576,15 +3578,20 @@ export const robots: Robot[] = [
         commercialStatus: "confirmed",
         readinessScore: "confirmed",
       }),
+      commercialStatus: {
+        status: "confirmed",
+        updatedAt: "2026-10-17",
+        note: "Quote-only via realbotix.ai contact. Public /robots page still 404 as of Oct 17, 2026.",
+      },
       price: {
         status: "confirmed",
-        updatedAt: "2026-07-26",
-        note: "F-Series from ~$125,000 historically; CES 2025 press quoted Aria flagship near $175,000. Public robots page now 404; quote via sales contact. Robot Controller AI $199.99/mo",
+        updatedAt: "2026-10-17",
+        note: "F-Series start $175,000 on the live Realbotix business snapshot and in the Dec 31, 2025 MD&A. The Mar 31, 2026 MD&A keeps 44 DoF and a 4-8 h battery but omits the dollar figure. No public cart. /robots still 404.",
       },
       batteryLife: {
         status: "confirmed",
-        updatedAt: "2026-07-01",
-        note: "4 to 8 h on built-in battery per F-Series page; plug-in operation also supported",
+        updatedAt: "2026-10-17",
+        note: "4 to 8 h on the built-in battery, or plug-in, per the Dec 2025 and Mar 2026 MD&A. Investor highlights also say up to 10 h on a wheelbase; the filings are the number we keep.",
       },
       height: {
         status: "unconfirmed",
@@ -3620,6 +3627,12 @@ export const robots: Robot[] = [
         price: "$125,000+",
         status: "confirmed",
         note: "Revalidated: /robots page 404; order via realbotix.ai contact. Status moved to limited (quote-only)",
+      },
+      {
+        date: "2026-10-17",
+        price: "$175,000+",
+        status: "confirmed",
+        note: "Official lineup page and Dec 31, 2025 MD&A list F-Series from $175,000. Still quote-only.",
       },
     ],
   },
@@ -4618,10 +4631,10 @@ export const robots: Robot[] = [
     type: "specialty",
     primaryTask: "entertainment",
     shortDescription:
-      "Palm-sized bag-charm companion that glances toward sound and touch with baby-like head turns. Japan retail from ¥19,800.",
+      "Palm-sized bag-charm companion that glances toward sound and touch. US store $149.99; Japan ¥22,000.",
     longDescription:
-      "mirumi is a clip-on charm robot from Tokyo's Yukai Engineering (makers of Qoobo and other joy-focused bots). The name blends Japanese for \"look\" and \"plush.\" It hugs a bag strap or arm with soft TPU arms, then turns its head toward voices, nuzzles when petted, buries its face at loud sounds, and glances away like a shy infant.\n\nThere is no chat app and no chore mode. Behaviors come from tuned motion patterns plus a microphone and head touch sensor. Custom Japanese acrylic fur covers an ABS body in Pink, Ivory, or Gray. Size is about 10 × 11 × 14 cm and 155 g, with roughly 8 hours of use and a 2-hour USB 5V charge.\n\nmirumi debuted at CES 2025, raised about ¥79 million from 2,000-plus Kickstarter backers, and went on sale in Japan on April 23, 2026 at ¥19,800 tax included through Tsutaya stores and store-jp.mirumi.tokyo. International rollout includes Lane Crawford Hong Kong and planned pop-ups such as Harrods. HomeBotRadar tracks mirumi for shoppers comparing emotional desk pets like Romi and Ropet KAMOMO who want a wearable fashion-tech companion instead.",
-    price: "$132",
+      "mirumi is a clip-on charm robot from Tokyo's Yukai Engineering (makers of Qoobo and other joy-focused bots). The name blends Japanese for \"look\" and \"plush.\" It hugs a bag strap or arm with soft TPU arms, then turns its head toward voices, nuzzles when petted, buries its face at loud sounds, and glances away like a shy infant.\n\nThere is no chat app and no chore mode. Behaviors come from tuned motion patterns plus a microphone and head touch sensor. Soft fur covers an ABS body. Japan colors include Black, Pink, Ivory, and Gray. Size is about 10 × 11 × 14 cm and 155 g, with roughly 8 hours of use and a 2-hour USB 5V charge.\n\nJapan launch was April 23, 2026. From October 1, 2026 the Japan online store lists ¥22,000 tax included, up from ¥19,800. The US store takes $149.99 pre-orders that ship in October. The UK store and Harrods list £149 with local shipping. HomeBotRadar tracks mirumi for shoppers comparing emotional desk pets like Romi and Ropet KAMOMO who want a wearable fashion-tech companion instead.",
+    price: "$149.99",
     priceStatus: "confirmed",
     batteryLife: "~8 h",
     chargeTime: "~2 h",
@@ -4633,15 +4646,15 @@ export const robots: Robot[] = [
       "Microphone (sound/voice response), head touch sensor; proximity/radar sensing cited in CES demos (unconfirmed on JP retail sheet)",
     processor: "Not specified",
     connectivity: "USB charging (5V 1A); no companion app required",
-    readinessScore: 89,
-    realityScore: 86,
+    readinessScore: 90,
+    realityScore: 88,
     dataFreshnessScore: 0,
     dataConfidenceScore: 0,
     commercialStatus: "buy_now",
     availabilityStatus: "limited",
-    countriesAvailable: ["Japan"],
+    countriesAvailable: ["Japan", "United States", "United Kingdom"],
     firstAnnounced: "2025",
-    lastUpdated: "2026-07-24",
+    lastUpdated: "2026-10-17",
     imageUrl: "/images/mirumi/mirumi-front.png",
     imageUrls: [
       "/images/mirumi/mirumi-front.png",
@@ -4649,14 +4662,15 @@ export const robots: Robot[] = [
       "/images/mirumi/mirumi-colors.png",
     ],
     videoUrls: ["https://www.youtube.com/watch?v=PEtshGcvtRk"],
-    affiliateUrl: "https://store-jp.mirumi.tokyo/",
+    affiliateUrl: "https://store-us.mirumi.tokyo/",
     sourceUrls: [
+      "https://store-us.mirumi.tokyo/products/gray",
+      "https://store-jp.mirumi.tokyo/blogs/news/20260914",
+      "https://store-jp.mirumi.tokyo/collections/all",
+      "https://store-uk.mirumi.tokyo/pages/buy-mirumi-uk",
       "https://mirumi.tokyo/",
-      "https://www.mymirumi.com/",
       "https://store-jp.mirumi.tokyo/",
-      "https://www.haveagood-holiday.com/en/articles/mirumi-charm-robot-japan-launch",
       "https://www.theverge.com/news/836762/yukai-engineering-mirumi-furry-companion-robot-preorder-available-kickstarter",
-      "https://www.kickstarter.com/projects/yukaienginnering/mirumi-a-charm-robot-that-steals-a-glance-and-your-heart",
     ],
     similarRobotSlugs: [
       "romi",
@@ -4676,9 +4690,10 @@ export const robots: Robot[] = [
     ],
     ecosystem: [
       "Clip-on bag / arm hug mount",
-      "Official Japan online store",
+      "Official Japan, US, and UK online stores",
       "Tsutaya Books / Electrics retail (Japan)",
-      "Pink, Ivory, and Gray fur colors",
+      "Harrods (UK)",
+      "Black, Pink, Ivory, and Gray fur colors",
       "No subscription or cloud chat required",
     ],
     reviews: [
@@ -4689,10 +4704,10 @@ export const robots: Robot[] = [
         url: "https://www.theverge.com/news/836762/yukai-engineering-mirumi-furry-companion-robot-preorder-available-kickstarter",
       },
       {
-        source: "Holiday Travel / Yukai launch coverage",
+        source: "mirumi Japan store price notice",
         summary:
-          "Japan launch coverage lists ¥19,800, ~8 h battery, and Tsutaya plus official store availability from April 23, 2026.",
-        url: "https://www.haveagood-holiday.com/en/articles/mirumi-charm-robot-japan-launch",
+          "Official Japan store raised the tax-included price to ¥22,000 from October 1, 2026.",
+        url: "https://store-jp.mirumi.tokyo/blogs/news/20260914",
       },
     ],
     tags: ["SPECIALTY", "COMPANION", "BUY NOW", "JAPAN", "WEARABLE"],
@@ -4712,8 +4727,8 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "confirmed",
-        updatedAt: "2026-07-24",
-        note: "Japan MSRP ¥19,800 tax included (~$132). Kickstarter / intl retail often cited near $149–$150.",
+        updatedAt: "2026-10-17",
+        note: "Catalog USD from US store $149.99 pre-order. Japan official store ¥22,000 tax included from Oct 1, 2026 (was ¥19,800). UK store £149.",
       },
       height: {
         status: "confirmed",
@@ -4732,13 +4747,13 @@ export const robots: Robot[] = [
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-07-24",
-        note: "Japan retail from April 23, 2026; international rollout (HK Lane Crawford and other markets) announced",
+        updatedAt: "2026-10-17",
+        note: "Japan and UK sell now. US store is October pre-order at $149.99. Limited outside those channels.",
       },
       readinessScore: {
         status: "confirmed",
-        updatedAt: "2026-07-24",
-        note: "Editorial score reflects priced Japan buy-now SKU with confirmed size/battery; limited outside Japan for now",
+        updatedAt: "2026-10-17",
+        note: "Priced JP/UK buy-now plus US pre-order carts with matching size/battery sheets",
       },
     },
     priceHistory: [
@@ -4753,6 +4768,12 @@ export const robots: Robot[] = [
         price: "$132",
         status: "confirmed",
         note: "Japan launch MSRP ¥19,800 tax included",
+      },
+      {
+        date: "2026-10-17",
+        price: "$149.99",
+        status: "confirmed",
+        note: "US store $149.99; Japan store ¥22,000 tax included from Oct 1, 2026",
       },
     ],
   },

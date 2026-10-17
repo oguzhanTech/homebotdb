@@ -11,3 +11,4 @@ If omitted, HomeBotRadar falls back to the linked robot image or the site defaul
 - `yansyn-x2-cries-on-command.jpg` — Yansyn-X2 silicone face at the 2026 Inclusion Conference in Shanghai (tear / frown still; not a walking humanoid)
 - `mashable-ucsd-humanoid-surgeon-visit.jpg` — UC San Diego surgical lab / Unitree G1 at a console (October 2026 visit; pig gallbladder trial, not a human patient and not a product hero)
 - `fotex-hive-unitree-night-restock.jpg` — night shelf restock at a Føtex near Copenhagen (Hive Robots / Unitree bodies, store closed, not a product poster)
+- `uss-walker-tienkung-quechua.jpg` — Universidad Señor de Sipán photo of Walker Tienkung humanoids at the July 6, 2026 Chiclayo showing (support frames; not a still of the later Quechua speech test)

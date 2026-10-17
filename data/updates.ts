@@ -2,6 +2,38 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-072",
+    title: "Aria's F-Series start is $175,000",
+    slug: "aria-f-series-starts-at-175000",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "realbotix-aria",
+    summary:
+      "Realbotix lists the F-Series from $175,000. We still had $125,000+. There is still no shopping cart.",
+    content:
+      "Realbotix's lineup page lists the F-Series, Aria's line, from $175,000. The company's December 2025 management report says the same thing: F-Series robots start at $175,000. HomeBotRadar still had $125,000+ from the old robots page, which now 404s.\n\nOrders stay quote-only through the contact form. The March 2026 filing repeats 44 moving parts and a 4 to 8 hour battery, and it does not reprint the dollar figure. Height and weight on our sheet did not move.\n\nUWORLD U1 Lite is the other full-size companion, listed from about $17,600 in China. Compare them on /compare/realbotix-aria-vs-ubtech-u1 if you are choosing a quote-built companion. Check the Realbotix lineup page before you treat $125,000 as the current start.",
+    coverImage: "/images/updates/aria-f-series-starts-at-175000.jpg",
+    sourceUrl: "https://www.realbotix.ai/newsletters/realbotix-business-snapshot",
+    createdAt: "2026-10-17T21:00:00Z",
+    updatedAt: "2026-10-17T21:00:00Z",
+  },
+  {
+    id: "upd-071",
+    title: "US mirumi is $149.99. Japan rose to ¥22,000.",
+    slug: "mirumi-us-149-jp-22000",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "mirumi",
+    summary:
+      "The US store lists mirumi at $149.99 as an October pre-order. Japan moved to ¥22,000 tax included on October 1.",
+    content:
+      "store-us.mirumi.tokyo lists Gray, Ivory, and Pink at $149.99. Those US carts are October pre-orders. We still had $132 from the old Japan launch price.\n\nJapan's official store raised the tax-included price to ¥22,000 on October 1, 2026, up from ¥19,800. Black joined Pink, Ivory, and Gray there. The UK store and Harrods sell at £149 with local shipping. Catalog countries are now Japan, the United States, and the United Kingdom.\n\nBattery, size, and weight on the store sheets stay the same: about 8 hours, 14 cm, 155 g. Check the US or Japan store for your region before you treat $132 as current.",
+    coverImage: "/images/updates/mirumi-added-to-catalog.jpg",
+    sourceUrl: "https://store-us.mirumi.tokyo/products/gray",
+    createdAt: "2026-10-17T20:20:00Z",
+    updatedAt: "2026-10-17T20:20:00Z",
+  },
+  {
     id: "upd-070",
     title: "AiMe gen 2 is on JD pre-sale in China. Still no price.",
     slug: "aime-jd-presale-china",
