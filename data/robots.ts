@@ -19,9 +19,9 @@ export const robots: Robot[] = [
     type: "humanoid",
     primaryTask: "home_assistant",
     shortDescription:
-      "Figure AI workforce-generation humanoid; enterprise pilots only. No public MSRP. Company home marketing now centers Figure 03.",
+      "Figure AI's prior humanoid. Most of the F.02 fleet was retired on September 30, 2026. A few remain in storage. No public price.",
     longDescription:
-      "Figure 02 is a human-shaped robot from Figure AI. It walks on two legs and uses two hands, so it can move through human spaces without special tracks or ramps.\n\nFigure deployed F.02 mainly in workforce and factory pilot settings (including BMW-era demos). You cannot buy one for a home today. There is still no public MSRP or consumer cart. Figure's public site now leads with Figure 03 for home-oriented messaging, while F.02 remains the prior generation we keep in the catalog for compare history.\n\nPublished F.02-class figures commonly cite about 168 cm height, roughly 70 kg, about 5 h runtime, and around 20 kg payload, but many details stay lightly documented outside company demos.\n\nHomeBotRadar tracks Figure 02 so you can compare it to robots you can pre-order or buy today, like Unitree G1 or 1X NEO. Status here is prototype, not home delivery.",
+      "Figure 02 is a human-shaped robot from Figure AI. It walks on two legs and uses two hands, so it can move through human spaces without special tracks or ramps.\n\nFigure deployed F.02 in workforce and factory pilots, including an 11-month run at BMW's Spartanburg plant. You cannot buy one for a home. There is still no public price or cart. On September 30, 2026, Figure said keeping the F.02 fleet no longer made sense as the Figure 03 fleet grew. Most units are gone. A few remain in storage at headquarters.\n\nPublished F.02-class figures commonly cite about 168 cm height, roughly 70 kg, about 5 h runtime, and around 20 kg payload, but many details stay lightly documented outside company demos.\n\nHomeBotRadar keeps Figure 02 so you can compare the retired generation with robots you can pre-order or buy today, like Unitree G1 or 1X NEO. Status here is discontinued, not home delivery.",
     price: "Unknown",
     priceStatus: "unknown",
     batteryLife: "5 h",
@@ -33,15 +33,15 @@ export const robots: Robot[] = [
     sensors: "6× RGB cameras, IMU, force-torque sensors",
     processor: "Dual NVIDIA RTX modules (unconfirmed)",
     connectivity: "Wi-Fi, Ethernet, 5G (unconfirmed)",
-    readinessScore: 72,
+    readinessScore: 60,
     realityScore: 66,
     dataFreshnessScore: 0,
     dataConfidenceScore: 0,
-    commercialStatus: "prototype",
-    availabilityStatus: "prototype",
+    commercialStatus: "discontinued",
+    availabilityStatus: "discontinued",
     countriesAvailable: ["United States"],
     firstAnnounced: "2024",
-    lastUpdated: "2026-07-29",
+    lastUpdated: "2026-10-27",
     imageUrl: "/images/figure-02/figure-02-front.png",
     imageUrls: [
       "/images/figure-02/figure-02-front.png",
@@ -50,10 +50,10 @@ export const robots: Robot[] = [
     videoUrls: ["https://www.youtube.com/watch?v=Sq1QZB5baNw&t=3s"],
     affiliateUrl: "https://www.figure.ai/",
     sourceUrls: [
-      "https://www.figure.ai/",
-      "https://www.figure.ai/figure",
+      "https://www.figure.ai/news/f-02-decommission",
+      "https://www.figure.ai/news/production-at-bmw",
       "https://www.figure.ai/news/introducing-figure-03",
-      "https://www.figure.ai/company",
+      "https://www.figure.ai/",
     ],
     similarRobotSlugs: ["unitree-g1", "neo-gamma", "optimus-gen2", "pm01", "kuavo-5", "casbot-01", "dobot-atom"],
     capabilities: [
@@ -66,7 +66,7 @@ export const robots: Robot[] = [
     ],
     ecosystem: ["Helix AI (company stack)", "Custom fleet management"],
     reviews: [],
-    tags: ["HUMANOID", "PROTOTYPE", "ENTERPRISE"],
+    tags: ["HUMANOID", "DISCONTINUED", "ENTERPRISE"],
     degreesOfFreedom: "28",
     unitId: "F02-2026-001",
     fieldMeta: {
@@ -82,19 +82,19 @@ export const robots: Robot[] = [
         readinessScore: "confirmed",
       }),
       price: {
-        status: "coming_soon",
-        updatedAt: "2026-07-29",
-        note: "No public MSRP. Prior $20,000+ catalog estimate removed in Jul 2026 freshness pass; enterprise quotes only. Public site now markets Figure 03.",
+        status: "unconfirmed",
+        updatedAt: "2026-10-27",
+        note: "No public list price before or after retirement. Sept 30, 2026 decommission post still has no dollar figure.",
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-07-29",
-        note: "Still prototype / enterprise pilots; not a home buy-now SKU",
+        updatedAt: "2026-10-27",
+        note: "Figure's Sept 30, 2026 post: most of the F.02 fleet is gone, a few remain in storage at HQ. Not a buy path.",
       },
       readinessScore: {
         status: "confirmed",
-        updatedAt: "2026-07-29",
-        note: "Trimmed slightly after confirming no list price and public focus shift to Figure 03",
+        updatedAt: "2026-10-27",
+        note: "Readiness cut from 72 to 60 after the official fleet retirement. Reality stays 66: BMW deployment was real, and the generation is now gone.",
       },
     },
     priceHistory: [
@@ -4785,10 +4785,10 @@ export const robots: Robot[] = [
     type: "humanoid",
     primaryTask: "conversation",
     shortDescription:
-      "Realbotix M-Series companion humanoid with 39 DoF upper body, suitcase travel pack-down, and $95,000+ quote pricing. Stationary from the waist down; sales via contact, not a cart.",
+      "Realbotix M-Series companion humanoid with 39 DoF upper body, suitcase travel pack-down, and $135,000+ quote pricing. Stationary from the waist down; sales via contact, not a cart.",
     longDescription:
-      "Melody is Realbotix's named M-Series character, unveiled at CES 2025 as an open, modular upper-body humanoid for companionship and front-of-house interaction. Unlike the wheeled F-Series Aria, the M-Series is stationary from the waist down and ships in seated, standing, or desktop (thighs-up) configurations. Dynamixel P-Series servos drive smoother gestures, and the platform packs into suitcase-sized cases for travel between venues.\n\nMaterials covering the platform list 39 degrees of freedom, interchangeable paneled body parts and faces (male, female, or custom), eye-embedded micro-cameras for eye contact and object recognition, and AI-agnostic software that can run Realbotix companionship AI or third-party stacks such as ChatGPT. Press demos also highlight all-day plug-in power from a standard outlet so hospitality and event greeters need not depend on a short battery window.\n\nThere is no consumer checkout. Realbotix's former public robots page (realbotix.com/robots) now redirects to a dead path on realbotix.ai. Orders go through sales contact (sales@realbotix.com or the corporate contact page). July 2026 school-district coverage still cited a $95,000 company starting list for M-Series; some investor materials have also mentioned about $135,000. Treat the catalog band as quote-led. HomeBotRadar tracks Melody for buyers comparing Realbotix's travel-ready greeter platform against full-bodied Aria and other six-figure companions such as UWORLD U1.",
-    price: "$95,000+",
+      "Melody is Realbotix's named M-Series character, unveiled at CES 2025 as an open, modular upper-body humanoid for companionship and front-of-house interaction. Unlike the wheeled F-Series Aria, the M-Series is stationary from the waist down and ships in seated, standing, or desktop (thighs-up) configurations. Dynamixel P-Series servos drive smoother gestures, and the platform packs into suitcase-sized cases for travel between venues.\n\nMaterials covering the platform list 39 degrees of freedom, interchangeable paneled body parts and faces (male, female, or custom), eye-embedded micro-cameras for eye contact and object recognition, and AI-agnostic software that can run Realbotix companionship AI or third-party stacks such as ChatGPT. Press demos also highlight all-day plug-in power from a standard outlet so hospitality and event greeters need not depend on a short battery window.\n\nThere is no consumer checkout. Realbotix's former public robots page now 404s. Orders go through sales contact (sales@realbotix.com or the corporate contact page). The company's lineup page lists the M-Series from $135,000. That matches the December 2025 management report. Older press had cited about $95,000. HomeBotRadar tracks Melody for buyers comparing Realbotix's travel-ready greeter platform against full-bodied Aria and other six-figure companions such as UWORLD U1.",
+    price: "$135,000+",
     priceStatus: "confirmed",
     batteryLife: "Plug-in / all-day",
     chargeTime: "N/A (mains)",
@@ -4808,7 +4808,7 @@ export const robots: Robot[] = [
     availabilityStatus: "limited",
     countriesAvailable: ["United States"],
     firstAnnounced: "2025",
-    lastUpdated: "2026-07-26",
+    lastUpdated: "2026-10-27",
     imageUrl: "/images/realbotix-melody/realbotix-melody-front.png",
     imageUrls: [
       "/images/realbotix-melody/realbotix-melody-front.png",
@@ -4819,12 +4819,10 @@ export const robots: Robot[] = [
     ],
     affiliateUrl: "https://realbotix.ai/contact-us#contact",
     sourceUrls: [
+      "https://www.realbotix.ai/newsletters/realbotix-business-snapshot",
+      "https://www.sedarplus.ca/csa-party/records/document.html?id=f71b268bdebeef58201b7b65a2f2eca572dc295af9e07fb635eaf5b0806bf459",
       "https://realbotix.ai/contact-us#contact",
-      "https://realbotix.ai/news/realbotix-to-deploy-first-humanoid-robot-and-ai-teachers-assistant-in-u-s-school-district",
       "https://www.businesswire.com/news/home/20250107953617/en/Realbotix-Unveils-New-Robotic-Technology-At-CES-2025",
-      "https://interestingengineering.com/ces-2025/realbotix-open-source-humanoid-robot-melody",
-      "https://interestingengineering.com/ai-robotics/humanoid-robot-achieve-lifelike-presence",
-      "https://www.theguardian.com/us-news/2026/jul/25/new-york-humanoid-robot-teachers-school",
     ],
     similarRobotSlugs: [
       "realbotix-aria",
@@ -4881,8 +4879,13 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "confirmed",
-        updatedAt: "2026-07-26",
-        note: "Jul 2026 press still cites ~$95K company M-Series start; public robots page is now 404; investor notes have also cited ~$135K. Final price is quote-only.",
+        updatedAt: "2026-10-27",
+        note: "M-Series start $135,000 on the live Realbotix lineup page and in the Dec 31, 2025 MD&A. Older press cited about $95,000. No public cart. /robots still 404.",
+      },
+      commercialStatus: {
+        status: "confirmed",
+        updatedAt: "2026-10-27",
+        note: "Quote-only via realbotix.ai contact. Public /robots page still 404 as of Oct 27, 2026.",
       },
       batteryLife: {
         status: "confirmed",
@@ -4898,11 +4901,6 @@ export const robots: Robot[] = [
         status: "confirmed",
         updatedAt: "2026-07-26",
         note: "M-Series is stationary from the waist down (not a walker)",
-      },
-      commercialStatus: {
-        status: "confirmed",
-        updatedAt: "2026-07-26",
-        note: "Not buy-now cart. Sales via realbotix.ai contact / sales@realbotix.com; former /robots product page 404s after redirect",
       },
       readinessScore: {
         status: "confirmed",
@@ -4922,6 +4920,12 @@ export const robots: Robot[] = [
         price: "$95,000+",
         status: "confirmed",
         note: "Revalidated: no live public list page; Jul 2026 coverage still cites $95K start; order via sales contact",
+      },
+      {
+        date: "2026-10-27",
+        price: "$135,000+",
+        status: "confirmed",
+        note: "Official lineup page and Dec 31, 2025 MD&A list M-Series from $135,000. Still quote-only.",
       },
     ],
   },

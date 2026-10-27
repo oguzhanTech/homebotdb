@@ -3,6 +3,35 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-061",
+    tweetUrl: "https://x.com/Tesla/status/2115123717877760129",
+    handle: "Tesla",
+    brandLabel: "Tesla",
+    summary:
+      "Tesla posts a still of Roadsters on a vertical loop, some hanging in the air. The line is: what goes up must come down.",
+    publishedAt: "2026-10-27T16:49:26Z",
+  },
+  {
+    id: "sf-060",
+    tweetUrl: "https://x.com/Lightsp2d/status/2114725115586035986",
+    handle: "Lightsp2d",
+    brandLabel: "Alexander Lux",
+    summary:
+      "Alexander Lux answers Realbotix's Echo promo with Times Square footage. The robot's shoulder joints are bare metal.",
+    publishedAt: "2026-10-26T14:25:31Z",
+    robotSlug: "realbotix-aria",
+    compareSlugs: ["realbotix-aria", "realbotix-melody"],
+  },
+  {
+    id: "sf-059",
+    tweetUrl: "https://x.com/sesanaallen/status/2114547134016241905",
+    handle: "sesanaallen",
+    brandLabel: "ses",
+    summary:
+      "ses holds a folding phone with ChatGPT on one half and Claude on the other. The only caption is Now kiss.",
+    publishedAt: "2026-10-26T02:38:17Z",
+  },
+  {
     id: "sf-058",
     tweetUrl: "https://x.com/adcock_brett/status/2111209042253385766",
     handle: "adcock_brett",

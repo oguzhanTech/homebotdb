@@ -2,6 +2,38 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-074",
+    title: "Figure 02 is retired. A few are in storage.",
+    slug: "figure-02-fleet-retired",
+    type: "availability_update",
+    authorId: "maya-chen",
+    robotSlug: "figure-02",
+    summary:
+      "Figure says most of the Figure 02 fleet is gone as of September 30, 2026. There is still no list price.",
+    content:
+      "Figure's September 30, 2026 note says keeping the Figure 02 fleet no longer makes sense now that the Figure 03 fleet is growing. Most units are gone. A few remain in storage at headquarters. There is still no public price and no cart.\n\nThe same note says Figure shipped robots to a foundry in Imatra, Finland, and filmed them jumping into molten steel. That is the company's account of how it disposed of the fleet, not a new home product. Height, weight, and the 5 hour battery on our sheet did not move.\n\nNEO Gamma is the US home humanoid you can still reserve. Compare them on /compare/figure-02-vs-neo-gamma if you want the retired generation next to a pre-order. Check figure.ai/news/f-02-decommission before you treat Figure 02 as an active pilot.",
+    coverImage: "/images/updates/figure-02-fleet-retired.jpg",
+    sourceUrl: "https://www.figure.ai/news/f-02-decommission",
+    createdAt: "2026-10-27T20:45:00Z",
+    updatedAt: "2026-10-27T20:45:00Z",
+  },
+  {
+    id: "upd-073",
+    title: "Melody's M-Series start is $135,000",
+    slug: "melody-m-series-starts-at-135000",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "realbotix-melody",
+    summary:
+      "Realbotix lists the M-Series from $135,000. We still had $95,000+. Orders stay quote-only.",
+    content:
+      "Realbotix's lineup page lists the M-Series, Melody's line, from $135,000. The company's December 2025 management report says the same start. HomeBotRadar still had $95,000+ from older press and the old robots page.\n\nThere is still no shopping cart. realbotix.ai/robots returns 404. Sales go through the contact form. The lineup page still lists 39 moving parts and a body that packs into a travel case. Battery and height on our sheet did not move.\n\nAria, the full-body F-Series, starts at $175,000 on the same page. Compare them on /compare/realbotix-aria-vs-realbotix-melody if you are choosing a Realbotix quote. Check the lineup page before you treat $95,000 as current.",
+    coverImage: "/images/updates/melody-m-series-starts-at-135000.jpg",
+    sourceUrl: "https://www.realbotix.ai/newsletters/realbotix-business-snapshot",
+    createdAt: "2026-10-27T20:30:00Z",
+    updatedAt: "2026-10-27T20:30:00Z",
+  },
+  {
     id: "upd-072",
     title: "Aria's F-Series start is $175,000",
     slug: "aria-f-series-starts-at-175000",
