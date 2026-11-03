@@ -1,33 +1,29 @@
 ---
-title: Tesla plans Optimus V3 production at Fremont this summer
+title: "Tesla started Optimus production at Fremont"
 slug: tesla-optimus-v3-fremont-production-plan
 authorId: oguzhan-aydin
 robotSlug: optimus-gen2
-summary: Musk tied a Fremont factory conversion to Optimus V3, but warned 2026 output will start slow with no firm volume target yet.
+summary: "Tesla's October 21, 2026 update says Optimus production began on Fremont's high-volume lines. The ramp is early. There is still no home price."
 coverImage: /images/news/optimus-robot.jpg
-sourceUrl: https://electrek.co/2026/04/22/tesla-optimus-production-fremont-model-sx-line/
+sourceUrl: https://www.sec.gov/Archives/edgar/data/1318605/000162828026066738/exhibit9914.htm
 createdAt: 2026-05-22T16:00:00Z
-updatedAt: 2026-05-22T16:00:00Z
+updatedAt: 2026-11-03T20:50:00Z
 ---
 
-Tesla says **Optimus V3** production should start at **Fremont in late July or August 2026**. That timeline comes from Musk on the **Q1 2026 earnings call**, not a store page or spec sheet. Treat it as a plan, not a ship date for home buyers.
+Tesla says Optimus production has started at Fremont. The [Q3 2026 shareholder update](https://www.sec.gov/Archives/edgar/data/1318605/000162828026066738/exhibit9914.htm) says the robots coming off the high-volume line are the first production-quality units the company has made. California is listed as an early ramp. Texas is still under construction. The letter does not name a version, a unit count, or a price.
 
-## What Tesla outlined
+## What the April plan said
 
-- **Fremont:** Model S and Model X production is winding down so the line can convert to Optimus assembly. Musk described a **1 million robots per year** line capacity at full run rate for that site.
-- **Giga Texas:** A second Optimus factory is in progress, with production expected around **summer 2027** and a much larger long-term capacity target in Tesla's shareholder materials.
-- **V3 pitch:** Musk has talked about robots that learn from **demonstration, speech, and video**. That is the headline skill story. We still lack verified home-task benchmarks or consumer pricing.
+On the Q1 2026 call, Elon Musk tied a Fremont start to late July or August 2026 and described a line built for about 1 million robots a year at full rate. That million figure is the line design, not a count of robots built. The July 22 update dropped the summer window. It said the old Model S and Model X lines were being converted and that production was anticipated later in 2026. October is the first shareholder letter that says production has begun.
 
-On the same call, Musk said **2026 output will be "quite slow"** and that the rate is **hard to predict** on a brand-new line with **10,000 unique parts**. That matters more than the million-unit capacity headline, which describes the line design, not this year's build count.
+Musk had already warned that 2026 output would be quite slow, because a new line with about 10,000 unique parts is hard to predict. The October letter fits that warning. Tesla says it will keep changing the hardware and the process, and that the current process is suitable for a commercial product. The capacity cell for Optimus is blank. Giga Texas remains a construction project in the same table. Older materials still point at a second Optimus factory around summer 2027.
+
+The April call talked about Optimus V3 and about robots that learn from demonstration, speech, and video. The October letter just says Optimus. It does not confirm that the bots on the line are the V3 design. There is still no home-task sheet and no buyer price.
 
 ## Price talk vs proof
 
-Analysts still circle a **$20,000–$30,000** unit-cost band if Tesla hits serious volume. Morgan Stanley and others warn that supply-chain shifts could push costs much higher. None of that is a confirmed MSRP for your living room.
+Analysts still circle a $20,000 to $30,000 unit-cost band if Tesla hits serious volume. That is not a store price. Tesla has not published an MSRP, a reservation, or a date for selling a robot to a household. Musk also said no Optimus units did useful factory work in 2025. The new letter does not walk that back with a home trial.
 
-Musk also admitted that **no Optimus units did useful factory work in 2025**, walking back earlier volume talk. For HomeBotRadar, that is the reality check behind the Fremont conversion news.
+## Still not a home checkout
 
-## What this means for HomeBotRadar
-
-The home-market signal here is **factory production intent**, not a home preorder window. We track Optimus under **Gen 2** in the catalog today because that is what we can score with public data. V3 may change specs later.
-
-We are **not updating Optimus scores** on this news alone. Availability for consumer home use is still **Coming Soon**, and we have no official home MSRP. We will revisit readiness and reality when Tesla publishes verifiable home-use specs or a buyer-facing price.
+The home signal is a factory ramp, not a preorder. HomeBotRadar still tracks this program as Optimus Gen 2, because that is the public row we can score. This note does not change that listing. Availability for a home buyer is still Coming Soon.

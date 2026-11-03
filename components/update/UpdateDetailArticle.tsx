@@ -6,7 +6,7 @@ import { getEditorById } from "@/lib/editors";
 import { getUpdateCoverImage } from "@/lib/update-images";
 import { getUpdatePublicPath } from "@/lib/update-paths";
 import { formatUpdateReadingTime } from "@/lib/reading-time";
-import { formatDate } from "@/lib/utils";
+import { formatDate, newsShownDate } from "@/lib/utils";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { AuthorCard } from "@/components/update/AuthorCard";
 import { MarkdownContent } from "@/components/update/MarkdownContent";
@@ -46,7 +46,13 @@ export function UpdateDetailArticle({
         <span className="rounded-lg bg-blue-soft px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-blue">
           {UPDATE_TYPE_LABELS[update.type]}
         </span>
-        <span className="text-sm text-muted">{formatDate(update.createdAt)}</span>
+        <span className="text-sm text-muted">
+          {formatDate(
+            isNews
+              ? newsShownDate(update.createdAt, update.updatedAt)
+              : update.createdAt,
+          )}
+        </span>
         {isNews ? (
           <span className="text-sm text-muted">
             · {formatUpdateReadingTime(update)}

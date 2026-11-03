@@ -3,6 +3,45 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-065",
+    tweetUrl: "https://x.com/HannesVonEssen/status/2117688155600007338",
+    handle: "HannesVonEssen",
+    brandLabel: "Hannes von Essen",
+    summary:
+      "Hannes von Essen posts the first Microdock, a prototype dock that charges a Microduck by itself.",
+    publishedAt: "2026-11-03T18:39:35Z",
+    robotSlug: "microduck",
+    compareSlugs: ["microduck", "reachy-mini"],
+  },
+  {
+    id: "sf-064",
+    tweetUrl: "https://x.com/maticrobots/status/2117311176657059992",
+    handle: "maticrobots",
+    brandLabel: "Matic Robots",
+    summary:
+      "Zach, Neuralink patient 22, steers a Matic around his home using only his thoughts.",
+    publishedAt: "2026-11-02T17:41:36Z",
+  },
+  {
+    id: "sf-063",
+    tweetUrl: "https://x.com/adcock_brett/status/2117286067472937012",
+    handle: "adcock_brett",
+    brandLabel: "Brett Adcock",
+    summary:
+      "Brett Adcock shows new Figure 03 robots leaving BotQ and crossing the campus.",
+    publishedAt: "2026-11-02T16:01:50Z",
+    newsSlug: "figure-ai-botq-hourly-production",
+  },
+  {
+    id: "sf-062",
+    tweetUrl: "https://x.com/RoboColosseum/status/2117256448925421773",
+    handle: "RoboColosseum",
+    brandLabel: "RoboColosseum",
+    summary:
+      "RoboColosseum lines up part of a robot fleet and says real-world model tests start in 48 hours.",
+    publishedAt: "2026-11-02T14:04:08Z",
+  },
+  {
     id: "sf-061",
     tweetUrl: "https://x.com/Tesla/status/2115123717877760129",
     handle: "Tesla",

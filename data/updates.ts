@@ -2,6 +2,22 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-075",
+    title: "Vector 2.0 is $249.99 again",
+    slug: "vector-2-lists-at-24999",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "vector-2",
+    summary:
+      "anki.bot lists Vector 2.0 at $249.99 and says it is in stock. HomeBotRadar still had $199.99. Voice still needs the paid plan.",
+    content:
+      "anki.bot lists Vector 2.0 at $249.99. On November 3, 2026 the page said in stock, with shipping within one business day. HomeBotRadar still had $199.99 from the July 30 check.\n\nVoice commands still need a Vector AI subscription at $11.99 a month or $99.99 a year. The store includes the first 28 days. Without the plan, Vector still moves and docks, but it will not answer Hey Vector.\n\nEMO is $279 if you want a desk companion on a different plan. Compare them on /compare/emo-companion-vs-vector-2. Check anki.bot/products/vector-robot before you treat $199.99 as current.",
+    coverImage: "/images/updates/vector-2-lists-at-24999.jpg",
+    sourceUrl: "https://anki.bot/products/vector-robot",
+    createdAt: "2026-11-03T20:30:00Z",
+    updatedAt: "2026-11-03T20:30:00Z",
+  },
+  {
     id: "upd-074",
     title: "Figure 02 is retired. A few are in storage.",
     slug: "figure-02-fleet-retired",

@@ -108,12 +108,8 @@ export function getNewsUpdates(limit?: number): Update[] {
 
 export function getRecentNews(days = 5, limit = 1): Update[] {
   const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
-  return getUpdates()
-    .filter(
-      (update) =>
-        update.type === "news" &&
-        new Date(update.createdAt).getTime() >= cutoff,
-    )
+  return getNewsUpdates()
+    .filter((update) => new Date(update.createdAt).getTime() >= cutoff)
     .slice(0, limit);
 }
 

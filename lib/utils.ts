@@ -18,6 +18,14 @@ export function formatPrice(price: string | null | undefined): string {
   return displayValue(price, "Unknown");
 }
 
+/** Card and article date. A later update day replaces the original publish day. */
+export function newsShownDate(createdAt: string, updatedAt?: string | null): string {
+  if (!updatedAt) return createdAt;
+  const createdDay = createdAt.slice(0, 10);
+  const updatedDay = updatedAt.slice(0, 10);
+  return updatedDay > createdDay ? updatedAt : createdAt;
+}
+
 export function formatDate(date: string | null | undefined): string {
   if (!date) return "Unknown";
   const parsed = new Date(date);

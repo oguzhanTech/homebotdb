@@ -148,7 +148,7 @@ export const robots: Robot[] = [
     availabilityStatus: "limited",
     countriesAvailable: ["United States", "China", "Japan", "Germany"],
     firstAnnounced: "2024",
-    lastUpdated: "2026-07-30",
+    lastUpdated: "2026-11-03",
     imageUrl: "/images/unitree-g1/unitree-g1.png",
     imageUrls: [
       "/images/unitree-g1/unitree-g1.png",
@@ -195,28 +195,28 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "confirmed",
-        updatedAt: "2026-07-30",
-        note: "Official unitree.com/g1 and shop list US $13,500 base (tax/shipping excluded). Prior catalog $16,000 was stale. EDU is sales quote.",
+        updatedAt: "2026-11-03",
+        note: "Rechecked Nov 3, 2026: unitree.com/g1 and the shop still list US $13,500 (tax excluded). Shop shipping is $300-$1,200. EDU is sales quote.",
       },
       height: {
         status: "confirmed",
-        updatedAt: "2026-07-30",
-        note: "Standing envelope 1320×450×200 mm on official G1 parameter table",
+        updatedAt: "2026-11-03",
+        note: "Standing envelope 1320×450×200 mm on official G1 parameter table. Rechecked Nov 3, 2026.",
       },
       payload: {
         status: "confirmed",
-        updatedAt: "2026-07-30",
-        note: "Arm max load about 2 kg (G1) / about 3 kg (G1 EDU) per Unitree table",
+        updatedAt: "2026-11-03",
+        note: "Arm max load about 2 kg (G1) / about 3 kg (G1 EDU) per Unitree table. Rechecked Nov 3, 2026.",
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-07-30",
-        note: "UniStore Add to Cart live; product often backordered. Treated as buy_now + limited.",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: shop cart still live and the page still says G1 is backordered. buy_now + limited.",
       },
       readinessScore: {
         status: "confirmed",
-        updatedAt: "2026-07-30",
-        note: "Freshness pass: official $13.5K list + live cart raised readiness slightly",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: $13,500 and backorder unchanged. Height, weight, 2 h battery, and arm load still match the spec table. Scores unchanged.",
       },
     },
     priceHistory: [
@@ -452,7 +452,7 @@ export const robots: Robot[] = [
     availabilityStatus: "limited",
     countriesAvailable: ["United States"],
     firstAnnounced: "2025",
-    lastUpdated: "2026-07-29",
+    lastUpdated: "2026-11-03",
     imageUrl: "/images/neo-gamma/neo-gamma.png",
     imageUrls: [
       "/images/neo-gamma/neo-gamma.png",
@@ -464,8 +464,8 @@ export const robots: Robot[] = [
     sourceUrls: [
       "https://www.1x.tech/order",
       "https://www.1x.tech/discover/neo-home-robot",
+      "https://www.1x.tech/discover/neo-factory",
       "https://www.1x.tech/discover/introducing-neo-gamma",
-      "https://blog.robozaps.com/b/1x-neo-review",
     ],
     similarRobotSlugs: ["figure-02", "mirokai", "unitree-g1", "pm01", "dobot-atom", "xpeng-iron", "isaac-1"],
     capabilities: [
@@ -499,23 +499,23 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "confirmed",
-        updatedAt: "2026-07-29",
-        note: "1x.tech/order Early Access $20,000 ownership or $499/mo; $200 refundable deposit. Consumer SKU branded NEO.",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: 1x.tech/order still Early Access $20,000 or $499/mo, $200 refundable deposit. Consumer SKU branded NEO.",
       },
       batteryLife: {
         status: "confirmed",
-        updatedAt: "2026-07-29",
-        note: "Order sheet: 842 Wh, 4 h run-time",
+        updatedAt: "2026-11-03",
+        note: "Order sheet rechecked Nov 3, 2026: 842 Wh, 4 h run-time",
       },
       chargeTime: {
         status: "confirmed",
-        updatedAt: "2026-07-29",
-        note: "Self-charge to dock; quick charge listed as ~6 min per hour of runtime",
+        updatedAt: "2026-11-03",
+        note: "Self-charge to dock; quick charge listed as ~6 min per hour of runtime. Rechecked on the order sheet Nov 3, 2026.",
       },
       payload: {
         status: "confirmed",
-        updatedAt: "2026-07-29",
-        note: "Order sheet: arm payload 18 lb (~8 kg), carry 55 lb (~25 kg), lift 154 lb",
+        updatedAt: "2026-11-03",
+        note: "Order sheet rechecked Nov 3, 2026: arm payload 18 lb (~8 kg), carry 55 lb (~25 kg), lift 154 lb",
       },
       speed: {
         status: "confirmed",
@@ -524,13 +524,13 @@ export const robots: Robot[] = [
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-07-29",
-        note: "US pre-order live; first consumer shipments framed for 2026; no verified home deliveries as of mid-Jul 2026 press checks",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: US pre-order still live. Order page still says US deliveries start 2026. April 30 factory note says units off the line are prioritized for internal home testing. No customer-shipment announcement on the order page.",
       },
       readinessScore: {
         status: "confirmed",
-        updatedAt: "2026-07-29",
-        note: "Freshness pass: battery/charge/payload confirmed from order page; reality nudged up on stronger official sheet",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: price, 4 h battery, payload, and pre-order status unchanged. Scores unchanged.",
       },
     },
     priceHistory: [
@@ -564,8 +564,8 @@ export const robots: Robot[] = [
     shortDescription:
       "Palm-sized autonomous desk robot with expressive face, Alexa, and ChatGPT voice features behind a paid subscription.",
     longDescription:
-      "Vector 2.0 is a palm-sized robot for your desk. Digital Dream Labs revived the original Anki Vector design with a user-replaceable battery and a wider camera for recognizing faces and pets.\n\nVector rolls on small treads, makes curious sounds, plays with its included cube, and drives back to its charger on its own. Voice commands, cloud AI, and ChatGPT need an active Vector AI subscription ($11.99 per month or $99.99 per year). Without it, Vector still shows basic autonomous behavior but will not answer Hey Vector. Amazon Alexa smart home control is available when the service is active.\n\nBlack hardware lists at $199.99 on anki.bot (other colors cost more). Digital Dream Labs has had cloud outages that can limit setup and premium features. Some owners restore service with community tools such as Wire-Pod.",
-    price: "$199.99",
+      "Vector 2.0 is a palm-sized robot for your desk. Digital Dream Labs revived the original Anki Vector design with a user-replaceable battery and a wider camera for recognizing faces and pets.\n\nVector rolls on small treads, makes curious sounds, plays with its included cube, and drives back to its charger on its own. Voice commands, cloud AI, and ChatGPT need an active Vector AI subscription ($11.99 per month or $99.99 per year). Without it, Vector still shows basic autonomous behavior but will not answer Hey Vector. Amazon Alexa smart home control is available when the service is active.\n\nanki.bot lists Vector 2.0 at $249.99. On November 3, 2026 the page said in stock, with shipping within one business day, and the first 28 days of the voice plan included. Digital Dream Labs has had cloud outages that can limit setup and premium features. Some owners restore service with community tools such as Wire-Pod.",
+    price: "$249.99",
     priceStatus: "confirmed",
     batteryLife: "~2 h",
     chargeTime: "Not specified",
@@ -592,7 +592,7 @@ export const robots: Robot[] = [
       "Australia",
     ],
     firstAnnounced: "2022",
-    lastUpdated: "2026-07-30",
+    lastUpdated: "2026-11-03",
     imageUrl: "/images/vector-2/vector-2-front.png",
     imageUrls: [
       "/images/vector-2/vector-2-front.png",
@@ -646,18 +646,18 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "confirmed",
-        updatedAt: "2026-07-30",
-        note: "anki.bot black $199.99; Pink $219.99; Red/Blue higher. AI subscription $11.99/mo or $99.99/yr required for voice.",
+        updatedAt: "2026-11-03",
+        note: "anki.bot lists Vector 2.0 at $249.99 (Nov 3, 2026). July 30 row was $199.99. Voice plan still $11.99/mo or $99.99/yr after 28 days.",
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-07-30",
-        note: "Freshness pass: in stock on anki.bot, ships within one business day (vendor copy)",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: anki.bot cart live and marked in stock, shipping within one business day.",
       },
       readinessScore: {
         status: "confirmed",
-        updatedAt: "2026-07-30",
-        note: "Revalidated live cart and subscription pricing; slight readiness/reality bump",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: list price rose to $249.99. Buy path still live. Scores unchanged.",
       },
     },
     priceHistory: [
@@ -684,6 +684,12 @@ export const robots: Robot[] = [
         price: "$11.99/mo",
         status: "confirmed",
         note: "Vector AI subscription; $99.99/yr alternate",
+      },
+      {
+        date: "2026-11-03",
+        price: "$249.99",
+        status: "confirmed",
+        note: "anki.bot list price moved up from the July $199.99 row",
       },
     ],
   },
@@ -1077,7 +1083,7 @@ export const robots: Robot[] = [
     availabilityStatus: "available",
     countriesAvailable: ["United States", "Japan"],
     firstAnnounced: "2017",
-    lastUpdated: "2026-08-05",
+    lastUpdated: "2026-11-03",
     imageUrl: "/images/aibo-ers1000/aibo-front.png",
     imageUrls: [
       "/images/aibo-ers1000/aibo-front.png",
@@ -1132,8 +1138,8 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "confirmed",
-        updatedAt: "2026-08-05",
-        note: "US white ERS-1000 $3,199.99 incl. 3-year AI Cloud. Black Sesame (ERS-1000/H) lists $2,899.99 as a separate limited color",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: US white ERS-1000 still $3,199.99, includes 3-year AI Cloud. Sony estimated delivery Nov 4-5. Black Sesame (ERS-1000/H) is a separate limited color at $2,899.99",
       },
       height: {
         status: "confirmed",
@@ -1142,8 +1148,8 @@ export const robots: Robot[] = [
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-08-05",
-        note: "Add to Cart live on electronics.sony.com. Not for sale/ship to Illinois or Baltimore, MD",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: cart live on electronics.sony.com. Final sale. Not for sale or ship to Illinois or Baltimore, MD",
       },
     },
     priceHistory: [
@@ -4960,7 +4966,7 @@ export const robots: Robot[] = [
     availabilityStatus: "prototype",
     countriesAvailable: [],
     firstAnnounced: "2024",
-    lastUpdated: "2026-07-30",
+    lastUpdated: "2026-11-03",
     imageUrl: "/images/lg-q9/lg-q9-front.png",
     imageUrls: [
       "/images/lg-q9/lg-q9-front.png",
@@ -5022,8 +5028,8 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "coming_soon",
-        updatedAt: "2026-07-30",
-        note: "No official MSRP. Ignore phone-model LG Q9 pages. Third-party pilot guesses exist; not used as catalog price.",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: still no official MSRP on LG consumer channels. Ignore phone-model LG Q9 pages.",
       },
       height: {
         status: "unconfirmed",
@@ -5032,13 +5038,13 @@ export const robots: Robot[] = [
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-07-30",
-        note: "Prototype / demo / SDK samples. No consumer checkout. CLOiD (CES 2026) is the later armed home robot that builds on Q9 tech.",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: still no consumer checkout. Jan 4, 2026 CLOiD release still describes Q9 as the earlier Self-Driving AI Home Hub.",
       },
       readinessScore: {
         status: "confirmed",
-        updatedAt: "2026-07-30",
-        note: "Editorial: strong demo and SDK footprint, offset by missing MSRP and ship date",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: still no MSRP or ship date. Scores unchanged.",
       },
     },
     priceHistory: [
@@ -5060,7 +5066,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Kawasaki's hydrogen-powered four-legged off-road ride: weight-shift control like horseback riding. Expo concept aiming at 2035 commercialization.",
     longDescription:
-      "CORLEO is Kawasaki Heavy Industries' four-legged off-road personal mobility vehicle. It merges motorcycle chassis ideas with legged robotics so a rider can traverse mountains and rough ground where tires struggle. Control is mainly by shifting body weight, like horseback riding, with machine support for beginners.\n\nKawasaki showed CORLEO as a concept at Expo 2025 Osaka, Kansai. In December 2025 it launched a president-reporting SAFE ADVENTURE team to commercialize the platform, targeting on-site mobility at Expo 2030 Riyadh and consumer-facing commercialization around 2035. A riding simulator is planned for about 2027, with motion data aimed at gaming and e-sports too.\n\nPower comes from a hydrogen canister in the rear that feeds a hydrogen engine up front to generate electricity for the legs. Official materials do not publish MSRP, height, weight, range, or a consumer order path. HomeBotRadar tracks CORLEO as a long-horizon personal quadruped ride, not a living-room companion. Compare Spot if you want a buyable enterprise quadruped today.",
+      "CORLEO is Kawasaki Heavy Industries' four-legged off-road personal mobility vehicle. It merges motorcycle chassis ideas with legged robotics so a rider can traverse mountains and rough ground where tires struggle. Control is mainly by shifting body weight, like horseback riding, with machine support for beginners.\n\nKawasaki showed CORLEO as a concept at Expo 2025 Osaka, Kansai. In December 2025 it launched a president-reporting SAFE ADVENTURE team to commercialize the platform, targeting on-site mobility at Expo 2030 Riyadh and consumer-facing commercialization around 2035. An August 2026 release still targets a riding simulator around 2027. Kawasaki's October 2026 account says public demo rides on that simulator are aimed at 2028, and that the price is still not set. At gamescom 2026 in Cologne the public exhibit was a full-scale mock-up people could sit on, not a working ride.\n\nPower comes from a hydrogen canister in the rear that feeds a hydrogen engine up front to generate electricity for the legs. Official materials do not publish MSRP, height, weight, range, or a consumer order path. HomeBotRadar tracks CORLEO as a long-horizon personal quadruped ride, not a living-room companion. Compare Spot if you want a buyable enterprise quadruped today.",
     price: "TBA",
     priceStatus: "coming_soon",
     batteryLife: "Unknown",
@@ -5081,7 +5087,7 @@ export const robots: Robot[] = [
     availabilityStatus: "coming_soon",
     countriesAvailable: [],
     firstAnnounced: "2025",
-    lastUpdated: "2026-08-05",
+    lastUpdated: "2026-11-03",
     imageUrl: "/images/corleo/corleo-front.png",
     imageUrls: [
       "/images/corleo/corleo-expo.png", 
@@ -5090,10 +5096,10 @@ export const robots: Robot[] = [
     videoUrls: ["https://www.youtube.com/watch?v=445K716GYCk"],
     affiliateUrl: "https://global.kawasaki.com/en/corp/newsroom/news/detail/?f=20251211_7502",
     sourceUrls: [
+      "https://answers.khi.co.jp/en/mobility/261023e-01/",
+      "https://global.kawasaki.com/en/corp/newsroom/news/detail/?f=20260819_0930",
       "https://global.kawasaki.com/en/corp/newsroom/news/detail/?f=20251211_7502",
       "https://global.kawasaki.com/en/corp/newsroom/news/detail/?f=20250403_9193",
-      "https://www.instagram.com/kawasaki_corleo_official/",
-      "https://newmobility.news/en/2026/02/27/from-hay-to-hydrogen-kawasakis-robotic-horse-gets-serious/",
     ],
     similarRobotSlugs: ["spot", "unitree-g1", "aibo-ers1000"],
     capabilities: [
@@ -5106,7 +5112,7 @@ export const robots: Robot[] = [
     ],
     ecosystem: [
       "SAFE ADVENTURE Business Development Team",
-      "Riding simulator (targeted ~2027)",
+      "Riding simulator (completion still cited for 2027; demo rides aimed at 2028)",
       "Hydrogen canister fuel system",
       "Motorcycle-derived rear swingarm",
       "Official Instagram (kawasaki_corleo_official)",
@@ -5136,8 +5142,8 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "coming_soon",
-        updatedAt: "2026-08-05",
-        note: "No official MSRP. Ignore third-party €80k+ guesses until Kawasaki publishes a list price",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: Kawasaki says the price has not been determined. Ignore third-party dollar guesses.",
       },
       chargeTime: {
         status: "unconfirmed",
@@ -5151,13 +5157,13 @@ export const robots: Robot[] = [
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-08-05",
-        note: "Official Dec 2025: development launched; Expo 2030 Riyadh on-site target; commercialization aimed at 2035. Not a consumer cart today",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: still no cart. Commercialization aimed at 2035. gamescom 2026 exhibit was a sit-on mock-up. Simulator completion still cited for 2027; public demo rides aimed at 2028.",
       },
       readinessScore: {
         status: "confirmed",
-        updatedAt: "2026-08-05",
-        note: "Editorial: dedicated Kawasaki team and 2035 target, offset by missing specs and decade-scale ship window",
+        updatedAt: "2026-11-03",
+        note: "Nov 3, 2026: still no buy path or list price. Scores unchanged.",
       },
     },
     priceHistory: [
