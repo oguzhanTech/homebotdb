@@ -3,6 +3,8 @@ import { uiCopy } from "@/config/ui-copy";
 export const navItems = [
   { href: "/", label: uiCopy.nav.commandCenter, icon: uiCopy.navIcons.commandCenter },
   { href: "/robots", label: uiCopy.nav.robots, icon: uiCopy.navIcons.robots },
+  { href: "/rankings", label: uiCopy.nav.rankings, icon: uiCopy.navIcons.rankings },
+  { href: "/knowledge", label: uiCopy.nav.answers, icon: uiCopy.navIcons.answers },
   { href: "/compare", label: uiCopy.nav.compare, icon: uiCopy.navIcons.compare },
   { href: "/updates", label: uiCopy.nav.radarFeed, icon: uiCopy.navIcons.radarFeed },
   { href: "/news", label: uiCopy.nav.news, icon: uiCopy.navIcons.news },

@@ -6,12 +6,14 @@ import {
   getNewsUpdates,
   getRobots,
 } from "@/lib/data/repository";
+import { getRankings } from "@/lib/rankings";
 import { getSocialFeedItems } from "@/lib/data/social-feed";
 import { TopBar } from "@/components/layout/TopBar";
 import { DashboardSpotlight } from "@/components/robot/DashboardSpotlight";
 import { HomeDashboard } from "@/components/home/HomeDashboard";
 import { SocialSignalSection } from "@/components/home/SocialSignalSection";
 import { UpdatesSection, NewsSection } from "@/components/robot/UpdatesSection";
+import { RankingsHome } from "@/components/rankings/RankingsHome";
 import { EmailAlertPlaceholder } from "@/components/marketing/EmailAlertPlaceholder";
 
 export const metadata = buildPageMetadata({
@@ -24,6 +26,7 @@ export default async function HomePage() {
   const robots = getRobots();
   const latestUpdates = getLatestUpdates(6);
   const newsUpdates = getNewsUpdates(4);
+  const rankings = getRankings();
   const socialFeed = getSocialFeedItems();
 
   return (
@@ -42,6 +45,8 @@ export default async function HomePage() {
       <HomeDashboard robots={robots} />
 
       <NewsSection updates={newsUpdates} />
+
+      <RankingsHome articles={rankings} />
 
       <SocialSignalSection items={socialFeed} />
 

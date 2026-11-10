@@ -8,6 +8,11 @@ import {
   getNewsUpdates,
   getRobots,
 } from "@/lib/data/repository";
+import { getRankings } from "@/lib/rankings";
+import {
+  getKnowledgeAnswers,
+  getKnowledgeCategoriesWithAnswers,
+} from "@/lib/knowledge";
 
 /** Stable date for pages that do not have their own editorial timestamp. */
 const STATIC_LAST_MODIFIED = new Date("2026-10-06T00:00:00.000Z");
@@ -33,10 +38,22 @@ function sitemapUrl(path: string = "/"): string {
 export default function sitemap(): MetadataRoute.Sitemap {
   const robots = getRobots();
   const robotsBySlug = new Map(robots.map((robot) => [robot.slug, robot]));
+  const rankings = getRankings();
+  const rankingsHubModified = rankings.reduce((latest, article) => {
+    const stamp = isoStamp(article.updatedAt);
+    return stamp > latest ? stamp : latest;
+  }, STATIC_LAST_MODIFIED);
+  const knowledgeAnswers = getKnowledgeAnswers();
+  const knowledgeHubModified = knowledgeAnswers.reduce((latest, answer) => {
+    const stamp = isoStamp(answer.updatedAt);
+    return stamp > latest ? stamp : latest;
+  }, STATIC_LAST_MODIFIED);
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: sitemapUrl("/"), lastModified: STATIC_LAST_MODIFIED, changeFrequency: "daily", priority: 1 },
     { url: sitemapUrl("/robots"), lastModified: STATIC_LAST_MODIFIED, changeFrequency: "daily", priority: 0.95 },
+    { url: sitemapUrl("/rankings"), lastModified: rankingsHubModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: sitemapUrl("/knowledge"), lastModified: knowledgeHubModified, changeFrequency: "weekly", priority: 0.85 },
     { url: sitemapUrl("/compare"), lastModified: STATIC_LAST_MODIFIED, changeFrequency: "weekly", priority: 0.8 },
     { url: sitemapUrl("/updates"), lastModified: STATIC_LAST_MODIFIED, changeFrequency: "daily", priority: 0.9 },
     { url: sitemapUrl("/news"), lastModified: STATIC_LAST_MODIFIED, changeFrequency: "daily", priority: 0.85 },
@@ -91,10 +108,39 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
+  const rankingRoutes = rankings.map((article) => ({
+    url: sitemapUrl(`/rankings/${article.slug}`),
+    lastModified: isoStamp(article.updatedAt),
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
+  const knowledgeCategoryRoutes = getKnowledgeCategoriesWithAnswers().map((category) => {
+    const stamps = getKnowledgeAnswers()
+      .filter((answer) => answer.category === category.slug)
+      .map((answer) => isoStamp(answer.updatedAt).getTime());
+    return {
+      url: sitemapUrl(`/knowledge/${category.slug}`),
+      lastModified: new Date(Math.max(...stamps)),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    };
+  });
+
+  const knowledgeRoutes = knowledgeAnswers.map((answer) => ({
+    url: sitemapUrl(`/knowledge/${answer.slug}`),
+    lastModified: isoStamp(answer.updatedAt),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
   return [
     ...staticRoutes,
     ...robotRoutes,
     ...categoryRoutes,
+    ...rankingRoutes,
+    ...knowledgeCategoryRoutes,
+    ...knowledgeRoutes,
     ...updateRoutes,
     ...newsRoutes,
     ...compareRoutes,

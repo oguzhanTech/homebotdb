@@ -6,7 +6,11 @@ Hero images for `/updates/{slug}` Robot Signal posts. Always set `coverImage` in
 coverImage: "/images/updates/{slug}.jpg",
 ```
 
-Path `{slug}` must match the update `slug`. Agent declares the filename; editor adds the binary under this folder.
+Path `{slug}` must match the update `slug`. Save a real photo of that robot here: official product image, company press photo, or the photo on the source article. About 1200×630 px or 16:9. If no honest photo exists, leave the path declared and pass on the binary.
+
+- `loona-petbot-premium-is-409.jpg` — KEYi gallery photo of Loona Petbot Premium, the $409 en-us listing. Photo: KEYi.
+- `jennie-ship-talk-is-early-2027.jpg` — WTOP photo of Jennie on a table at National Harbor, November 6, 2026. Photo: WTOP / John Domen.
+- `vector-2-lists-at-24999.jpg` — anki.bot product photo of Vector 2.0 with the lift raised. Photo: Digital Dream Labs.
 
 Examples:
 

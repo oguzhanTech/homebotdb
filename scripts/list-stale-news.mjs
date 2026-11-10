@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * List news articles by oldest updatedAt (news scan ranking).
+ * List news articles by oldest updatedAt (news update scan ranking).
  * Usage:
  *   node scripts/list-stale-news.mjs
  *   node scripts/list-stale-news.mjs --limit 8

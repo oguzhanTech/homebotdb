@@ -6,6 +6,13 @@ export type UpdateType =
   | "price_update"
   | "availability_update";
 
+/** One catalog value that moved. The update page draws from → to. */
+export interface UpdateChange {
+  label: string;
+  from: string;
+  to: string;
+}
+
 export interface Update {
   id: string;
   title: string;
@@ -17,6 +24,8 @@ export interface Update {
   content: string;
   coverImage?: string;
   coverImageCaption?: string;
+  /** Set only when a catalog value moved. Omit on notes and new listings. */
+  change?: UpdateChange;
   sourceUrl?: string;
   createdAt: string;
   updatedAt: string;

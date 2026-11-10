@@ -9,6 +9,7 @@ import { formatUpdateReadingTime } from "@/lib/reading-time";
 import { formatDate, newsShownDate } from "@/lib/utils";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { AuthorCard } from "@/components/update/AuthorCard";
+import { UpdateChangeCallout } from "@/components/update/UpdateChangeCallout";
 import { MarkdownContent } from "@/components/update/MarkdownContent";
 import { UpdateContent } from "@/components/update/UpdateContent";
 import { ShareButtons } from "@/components/update/ShareButtons";
@@ -74,6 +75,8 @@ export function UpdateDetailArticle({
       <p className="mt-4 text-lg leading-relaxed text-[#565f6b]">
         {update.summary}
       </p>
+
+      {update.change ? <UpdateChangeCallout change={update.change} /> : null}
 
       {coverImage ? (
         <figure className="mt-6">

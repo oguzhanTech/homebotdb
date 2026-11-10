@@ -724,7 +724,7 @@ export const robots: Robot[] = [
     availabilityStatus: "limited",
     countriesAvailable: ["France", "Japan", "United States"],
     firstAnnounced: "2023",
-    lastUpdated: "2026-08-05",
+    lastUpdated: "2026-11-10",
     imageUrl: "/images/mirokai/mirokai-front.png",
     imageUrls: [
       "/images/mirokai/mirokai-front.png",
@@ -779,23 +779,23 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "unconfirmed",
-        updatedAt: "2026-08-05",
-        note: "Still no public MSRP on enchanted.tools. $30,000+ remains partner-quote estimate; service fees extra",
+        updatedAt: "2026-11-10",
+        note: "Nov 10, 2026: enchanted.tools/robot still has no public MSRP. $30,000+ stays a partner-quote estimate. A UK reseller quotes £50,000–£60,000; that is not the company list price",
       },
       chargeTime: {
         status: "unconfirmed",
-        updatedAt: "2026-08-05",
+        updatedAt: "2026-11-10",
         note: "~1 h common in press sheets. Official page confirms self-aligning autonomous dock, not charge duration",
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-08-05",
-        note: "Official site: first commercial deployments open; Buy Mirokaï / demo inquiry. Still B2B quote, not consumer cart",
+        updatedAt: "2026-11-10",
+        note: "Nov 10, 2026: first commercial deployments still open via demo inquiry. Still B2B quote, not a consumer cart",
       },
       readinessScore: {
         status: "confirmed",
-        updatedAt: "2026-08-05",
-        note: "Raised on official commercial-deployment CTA plus Wi-Fi 6E / cellular connectivity on product page",
+        updatedAt: "2026-11-10",
+        note: "Commercial-deployment CTA and Wi-Fi 6E / cellular still on the product page. No new home checkout",
       },
     },
     priceHistory: [
@@ -823,7 +823,7 @@ export const robots: Robot[] = [
     shortDescription:
       "Lap-size robotic golden retriever puppy for dementia care, designed by Jim Henson's Creature Shop with touch and voice response.",
     longDescription:
-      "Jennie is a robotic golden retriever puppy made for seniors, especially people with dementia who cannot safely keep a live dog. Jim Henson's Creature Shop designed the fur, face, and movements so it feels like a real lap pet.\n\nNine motors drive head tilts, tail wags, and barks. Touch sensors across the body tell the difference between gentle petting and a hard pat. A phone app lets caregivers rename the pup and adjust how it responds.\n\nTombot still has no public MSRP. Press has cited about $1,500 as a target; the official site says it will contact the waitlist with pricing closer to shipping. The first litter is sold out. Tombot is working toward FDA clearance for clinical use.\n\nJennie does not walk around the house. It is meant to stay in your lap or beside a chair for comfort and calm, not for fetching objects or cleaning.",
+      "Jennie is a robotic golden retriever puppy made for seniors, especially people with dementia who cannot safely keep a live dog. Jim Henson's Creature Shop designed the fur, face, and movements so it feels like a real lap pet.\n\nNine motors drive head tilts, tail wags, and barks. Touch sensors across the body tell the difference between gentle petting and a hard pat. A phone app lets caregivers rename the pup and adjust how it responds.\n\nTombot still has no public MSRP. The official site says the first litter is sold out and that it will contact the waitlist with pricing closer to shipping. Press, including a November 6, 2026 WTOP interview with CEO Tom Stevens, still cites about $1,500. In that interview he said he hopes to start shipping early next year. Tombot's investor page says it anticipates FDA medical-device status. That is not a clearance already on the books.\n\nJennie does not walk around the house. It is meant to stay in your lap or beside a chair for comfort and calm, not for fetching objects or cleaning.",
     price: "$1,500",
     priceStatus: "estimate",
     batteryLife: "4–6 h",
@@ -844,7 +844,7 @@ export const robots: Robot[] = [
     availabilityStatus: "waitlist",
     countriesAvailable: ["United States"],
     firstAnnounced: "2018",
-    lastUpdated: "2026-08-22",
+    lastUpdated: "2026-11-10",
     imageUrl: "/images/tombot-jennie/jennie-front.png",
     imageUrls: [
       "/images/tombot-jennie/jennie-front.png",
@@ -856,6 +856,8 @@ export const robots: Robot[] = [
     sourceUrls: [
       "https://tombot.com/pages/meet-our-puppies",
       "https://tombot.com/",
+      "https://tombot.com/pages/investors",
+      "https://wtop.com/maryland/2026/11/this-robotic-medical-device-looks-and-barks-like-a-puppy/",
       "https://www.massrobotics.org/tombot-raises-7m-to-bring-its-robotic-dog-jennie-to-market/",
       "https://uk.pcmag.com/smart-home/162324/i-cuddled-with-an-emotional-support-robot-dog-at-ces-2026-and-it-healed-a-part-of-me",
     ],
@@ -898,8 +900,8 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "unconfirmed",
-        updatedAt: "2026-08-22",
-        note: "Freshness pass; tombot.com still has no list price. $1,500 remains a CES 2026 target, not a store MSRP",
+        updatedAt: "2026-11-10",
+        note: "tombot.com still has no list price. About $1,500 is what WTOP reported on Nov 6, 2026, not a store MSRP",
       },
       batteryLife: {
         status: "unconfirmed",
@@ -913,8 +915,8 @@ export const robots: Robot[] = [
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-08-22",
-        note: "Official waitlist; first litter sold out. June 2026 press cites a Fall 2026 first-customer target; tombot.com still says pricing closer to shipping",
+        updatedAt: "2026-11-10",
+        note: "Official waitlist; first litter sold out. June press cited Fall 2026. On Nov 6, 2026 the CEO told WTOP he hopes to ship early next year. The product page still names no date",
       },
     },
     priceHistory: [
@@ -1183,8 +1185,8 @@ export const robots: Robot[] = [
     shortDescription:
       "Wheeled robot pet with face and gesture recognition, ChatGPT chat, auto-docking, and Blockly coding for kids.",
     longDescription:
-      "Loona is a wheeled robot pet from KEYi Tech. It looks like a small dog, shows over a thousand facial expressions, and recognizes family members by face.\n\nIt follows you, plays games, and supports remote viewing through the Loona app. A camera, 3D depth sensor, and microphones power follow-me play and FPV driving. ChatGPT-backed chat and vision questions need Wi-Fi; KEYi says most sensing stays on the device for privacy.\n\nWhen the battery is low, Loona returns to its charging dock on its own. Kids can also program it with Google Blockly. It sells for about $439 on the official site during promos (list $529), with no subscription required for core pet features today.",
-    price: "$439",
+      "Loona is a wheeled robot pet from KEYi Tech. It looks like a small dog, shows over a thousand facial expressions, and recognizes family members by face.\n\nIt follows you, plays games, and supports remote viewing through the Loona app. A camera, 3D depth sensor, and microphones power follow-me play and FPV driving. ChatGPT-backed chat and vision questions need Wi-Fi; KEYi says most sensing stays on the device for privacy.\n\nWhen the battery is low, Loona returns to its charging dock on its own. Kids can also program it with Google Blockly. The official en-us page lists Petbot Premium at $409 during the current promo (list $529). A separate US shop still shows $639. Core pet features do not require a subscription.",
+    price: "$409",
     priceStatus: "confirmed",
     batteryLife: "2 h",
     chargeTime: "~3 h",
@@ -1212,7 +1214,7 @@ export const robots: Robot[] = [
       "France",
     ],
     firstAnnounced: "2022",
-    lastUpdated: "2026-08-22",
+    lastUpdated: "2026-11-10",
     imageUrl: "/images/loona/loona-front.png",
     imageUrls: [
       "/images/loona/loona-front.png",
@@ -1265,8 +1267,8 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "confirmed",
-        updatedAt: "2026-08-22",
-        note: "US Petbot Premium promo $439 vs $529 list on keyirobot.com; promo prices move",
+        updatedAt: "2026-11-10",
+        note: "en-us Petbot Premium promo $409 vs $529 list on keyirobot.com. A sale banner is on that page. us.keyirobot.com still listed Premium at $639 the same day",
       },
       batteryLife: {
         status: "confirmed",
@@ -1280,8 +1282,8 @@ export const robots: Robot[] = [
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-08-22",
-        note: "Buy now on official US store; shipping lists US, UK, Germany, EU, Canada, Australia, Singapore",
+        updatedAt: "2026-11-10",
+        note: "Buy now on keyirobot.com/en-us. Shipping lists still cover US, UK, Germany, EU, Canada, Australia, Singapore",
       },
     },
     priceHistory: [
@@ -1302,6 +1304,12 @@ export const robots: Robot[] = [
         price: "$439",
         status: "confirmed",
         note: "Official US Petbot Premium promo vs $529 list",
+      },
+      {
+        date: "2026-11-10",
+        price: "$409",
+        status: "confirmed",
+        note: "en-us Petbot Premium promo vs $529 list. us.keyirobot.com still showed $639",
       },
     ],
   },
@@ -1336,7 +1344,7 @@ export const robots: Robot[] = [
     availabilityStatus: "limited",
     countriesAvailable: ["United States", "France", "Global (direct order)"],
     firstAnnounced: "2024",
-    lastUpdated: "2026-08-26",
+    lastUpdated: "2026-11-10",
     imageUrl: "/images/reachy-2/reachy-2-front.png",
     imageUrls: [
       "/images/reachy-2/reachy-2-front.png",
@@ -1394,28 +1402,28 @@ export const robots: Robot[] = [
       }),
       batteryLife: {
         status: "confirmed",
-        updatedAt: "2026-08-26",
+        updatedAt: "2026-11-10",
         note: "Official mobile-base spec: 8 h. Applies to omni-base kits",
       },
       weight: {
         status: "confirmed",
-        updatedAt: "2026-08-26",
+        updatedAt: "2026-11-10",
         note: "Official product page: up to 50 kg full robot. Unbox guide cites 50 kg for the dual-arm mobile unit",
       },
       height: {
         status: "confirmed",
-        updatedAt: "2026-08-26",
-        note: "Manual height adjustment between 136 and 166 cm",
+        updatedAt: "2026-11-10",
+        note: "Product page still says 136–166 cm, adjusted by hand",
       },
       price: {
         status: "confirmed",
-        updatedAt: "2026-08-26",
-        note: "Hugging Face order path still $70,000 via sales@pollen-robotics.com. Kit quotes vary; product page has no public cart",
+        updatedAt: "2026-11-10",
+        note: "Nov 10, 2026: pollen-robotics.com/reachy-2/ still has no cart. $70,000+ remains the April 2025 Hugging Face order figure via sales@",
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-08-26",
-        note: "Still institutional order (Get your Reachy 2 / sales email). Not a home checkout",
+        updatedAt: "2026-11-10",
+        note: "Still an institutional order. Product page has no home checkout",
       },
     },
     priceHistory: [
@@ -1464,7 +1472,7 @@ export const robots: Robot[] = [
     availabilityStatus: "prototype",
     countriesAvailable: [],
     firstAnnounced: "2020",
-    lastUpdated: "2026-08-26",
+    lastUpdated: "2026-11-10",
     imageUrl: "/images/ballie/ballie-front.png",
     imageUrls: [
       "/images/ballie/ballie-front.png",
@@ -1527,23 +1535,23 @@ export const robots: Robot[] = [
       }),
       batteryLife: {
         status: "unconfirmed",
-        updatedAt: "2026-08-26",
-        note: "2–3 h continuous projector use per Samsung CES 2024 briefing",
+        updatedAt: "2026-11-10",
+        note: "2–3 h continuous projector use per Samsung CES 2024 briefing. No newer spec sheet",
       },
       height: {
         status: "unconfirmed",
-        updatedAt: "2026-08-26",
+        updatedAt: "2026-11-10",
         note: "Bowling-ball class sphere (~20 cm diameter, press demos)",
       },
       price: {
         status: "coming_soon",
-        updatedAt: "2026-08-26",
-        note: "No MSRP. Consumer path still unpublished after Jan 2026 shelving",
+        updatedAt: "2026-11-10",
+        note: "No MSRP. Nov 10, 2026 recheck found no Samsung store page after the Jan 2026 shelving",
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-08-26",
-        note: "Still internal R&D. samsung.com/us/explore/ballie 404s; US sign-up page removed. Spokesperson: active innovation platform, not a store SKU",
+        updatedAt: "2026-11-10",
+        note: "Still internal R&D. January Bloomberg statement called it an active innovation platform, not a store SKU. No reversal found by Nov 10, 2026",
       },
     },
     priceHistory: [
@@ -5206,7 +5214,7 @@ export const robots: Robot[] = [
     availabilityStatus: "waitlist",
     countriesAvailable: ["Poland"],
     firstAnnounced: "2024",
-    lastUpdated: "2026-08-22",
+    lastUpdated: "2026-11-10",
     imageUrl: "/images/fidi/fidi-front.png",
     imageUrls: [
       "/images/fidi/fidi-front.png",
@@ -5263,28 +5271,28 @@ export const robots: Robot[] = [
       }),
       price: {
         status: "coming_soon",
-        updatedAt: "2026-08-22",
-        note: "No official MSRP on semirobotics.pl. 2024 MamBiznes interview: price unset; possible care-site lease. Not a store number",
+        updatedAt: "2026-11-10",
+        note: "Nov 10, 2026: semirobotics.pl still has no MSRP. A Nov 4 trade interview said the sale price is not decided. Not a store number",
       },
       batteryLife: {
         status: "coming_soon",
-        updatedAt: "2026-08-22",
+        updatedAt: "2026-11-10",
         note: "Official pages do not publish runtime or whether the unit is battery or plug-in",
       },
       height: {
         status: "coming_soon",
-        updatedAt: "2026-08-22",
+        updatedAt: "2026-11-10",
         note: "2S Design says height is adapted to users; no published cm figure",
       },
       commercialStatus: {
         status: "confirmed",
-        updatedAt: "2026-08-22",
-        note: "Official waitlist for first deliveries. Videos are working prototypes. Series production and CE medical-device certification in progress. Łódź DPS pilots reported Aug 2025",
+        updatedAt: "2026-11-10",
+        note: "Nov 10, 2026: site still says the video robot is a working prototype and series production has not started. Email list for first deliveries. Łódź DPS pilots reported Aug 2025",
       },
       readinessScore: {
         status: "confirmed",
-        updatedAt: "2026-08-22",
-        note: "Editorial: real care-home pilots and a live waitlist, offset by missing MSRP, unpublished dimensions, and unfinished series production",
+        updatedAt: "2026-11-10",
+        note: "Care-home pilots and a live waitlist, offset by missing MSRP, unpublished dimensions, and unfinished series production",
       },
     },
     priceHistory: [

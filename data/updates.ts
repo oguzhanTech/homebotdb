@@ -2,6 +2,38 @@ import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {
+    id: "upd-077",
+    title: "Loona Petbot Premium is $409",
+    slug: "loona-petbot-premium-is-409",
+    type: "price_update",
+    authorId: "maya-chen",
+    robotSlug: "loona",
+    summary:
+      "The KEYi en-us page lists Loona Petbot Premium at $409, down from the $439 we had. The crossed-out list price is still $529.",
+    content:
+      "keyirobot.com/en-us/products/petbot lists Loona Petbot Premium at $409. The crossed-out price on that page is $529. HomeBotRadar still had $439 from the August 22 check. A sale banner is on the page, so treat $409 as today's promo, not a forever tag.\n\nThe other US shop, us.keyirobot.com, still listed Loona Premium at $639 the same day. Package and tariff notes on that shop do not match the en-us page. Check the checkout you will actually use.\n\nVector 2.0 is the other small pet on a live cart, at $249.99 before its voice plan. Compare them on /compare/loona-vs-vector-2.",
+    coverImage: "/images/updates/loona-petbot-premium-is-409.jpg",
+    sourceUrl: "https://keyirobot.com/en-us/products/petbot",
+    createdAt: "2026-11-10T19:50:00Z",
+    updatedAt: "2026-11-10T19:50:00Z",
+  },
+  {
+    id: "upd-076",
+    title: "Jennie ship talk is early 2027",
+    slug: "jennie-ship-talk-is-early-2027",
+    type: "availability_update",
+    authorId: "maya-chen",
+    robotSlug: "tombot-jennie",
+    summary:
+      "Tombot's site still has no price and a sold-out first litter. On Nov 6 the CEO told WTOP he hopes to ship early next year.",
+    content:
+      "tombot.com still says the first litter is sold out and that pricing comes closer to shipping. There is no cart and no date on that page. June coverage had pointed at fall 2026. On November 6, 2026, CEO Tom Stevens told WTOP he hopes to start shipping this first generation early next year.\n\nThe same interview puts the price at about $1,500. That figure is still not on the Tombot site, so it stays an estimate. WTOP's headline calls Jennie an FDA-approved device. Tombot's investor page only says the company anticipates that status. Do not treat the headline as a clearance.\n\nElliQ is the elder-care robot you can lease in the US today. Compare them on /compare/elliq-vs-tombot-jennie if you are choosing between a desk companion and a lap puppy that is still on a waitlist.",
+    coverImage: "/images/updates/jennie-ship-talk-is-early-2027.jpg",
+    sourceUrl: "https://wtop.com/maryland/2026/11/this-robotic-medical-device-looks-and-barks-like-a-puppy/",
+    createdAt: "2026-11-10T19:40:00Z",
+    updatedAt: "2026-11-10T19:40:00Z",
+  },
+  {
     id: "upd-075",
     title: "Vector 2.0 is $249.99 again",
     slug: "vector-2-lists-at-24999",
@@ -13,6 +45,7 @@ export const updates: Update[] = [
     content:
       "anki.bot lists Vector 2.0 at $249.99. On November 3, 2026 the page said in stock, with shipping within one business day. HomeBotRadar still had $199.99 from the July 30 check.\n\nVoice commands still need a Vector AI subscription at $11.99 a month or $99.99 a year. The store includes the first 28 days. Without the plan, Vector still moves and docks, but it will not answer Hey Vector.\n\nEMO is $279 if you want a desk companion on a different plan. Compare them on /compare/emo-companion-vs-vector-2. Check anki.bot/products/vector-robot before you treat $199.99 as current.",
     coverImage: "/images/updates/vector-2-lists-at-24999.jpg",
+    change: { label: "Price", from: "$199.99", to: "$249.99" },
     sourceUrl: "https://anki.bot/products/vector-robot",
     createdAt: "2026-11-03T20:30:00Z",
     updatedAt: "2026-11-03T20:30:00Z",

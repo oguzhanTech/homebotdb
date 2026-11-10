@@ -31,9 +31,10 @@ export const cookiesSections: LegalSection[] = [
     title: "Managing cookies",
     paragraphs: [
       "You can block or delete cookies in your browser settings. Blocking essential cookies may limit site features.",
+      "Visitors in the European Economic Area, the United Kingdom, and Switzerland see a cookie choice on the first visit. Accept turns on analytics and advertising. Manage lets you turn either off. Cookie settings in the footer opens that choice again. The choice is stored on this device for one year.",
+      "Visitors outside those places do not see the choice. Analytics and advertising stay on there.",
       "For personalized Google ads, visit https://adssettings.google.com.",
       "For industry opt-outs in the US, visit https://www.aboutads.info/choices.",
-      "Where required by law, we will ask for consent before non-essential cookies are placed.",
     ],
   },
   {

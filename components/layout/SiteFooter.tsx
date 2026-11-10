@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { legalConfig, legalLinks } from "@/config/legal";
 import { siteConfig } from "@/config/site";
+import { CookieSettingsButton } from "@/components/consent/CookieSettingsButton";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -26,6 +27,7 @@ export function SiteFooter() {
               {link.label}
             </Link>
           ))}
+          <CookieSettingsButton />
           <a
             href={`mailto:${legalConfig.contactEmail}`}
             className="cursor-pointer font-medium uppercase tracking-wider text-[#5d6570] transition-colors hover:text-ink"

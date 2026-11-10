@@ -3,7 +3,9 @@ import { Space_Grotesk, Space_Mono } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { buildWebsiteJsonLd } from "@/lib/seo";
 import { AppShell } from "@/components/layout/AppShell";
-import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { ConsentScripts } from "@/components/consent/ConsentScripts";
+import { ConsentRegionProvider } from "@/components/consent/ConsentRegionProvider";
+import { CookieConsentBanner } from "@/components/consent/CookieConsentBanner";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -63,8 +65,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <GoogleAnalytics />
-        <AppShell>{children}</AppShell>
+        <ConsentRegionProvider>
+          <ConsentScripts />
+          <AppShell>{children}</AppShell>
+          <CookieConsentBanner />
+        </ConsentRegionProvider>
       </body>
     </html>
   );

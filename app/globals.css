@@ -325,6 +325,21 @@ strong .prose-internal-link {
   animation: sidebar-target-pulse 2.4s ease-in-out infinite;
 }
 
+@keyframes knowledge-caret {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.knowledge-caret {
+  animation: knowledge-caret 0.9s steps(1) infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sidebar-nav-item::before,
   .sidebar-nav-item:hover::before {
@@ -333,7 +348,8 @@ strong .prose-internal-link {
   }
 
   .sidebar-nav-item--active .sidebar-nav-icon,
-  .sidebar-nav-target {
+  .sidebar-nav-target,
+  .knowledge-caret {
     animation: none;
   }
 

@@ -121,13 +121,26 @@ function LinkifyChildren({
   });
 }
 
-export function MarkdownContent({ content }: { content: string }) {
+export function MarkdownContent({
+  content,
+  className,
+}: {
+  content: string;
+  className?: string;
+}) {
   const usedHrefs = new Set<string>();
 
   return (
-    <div className="news-prose mt-8 max-w-none">
+    <div className={className ?? "news-prose mt-8 max-w-none"}>
       <ReactMarkdown
         components={{
+          h3: ({ children }) => (
+            <h3 className="mt-6 text-base font-semibold tracking-tight text-[#2a3038]">
+              <LinkifyChildren keyPrefix="news-h3" usedHrefs={usedHrefs}>
+                {children}
+              </LinkifyChildren>
+            </h3>
+          ),
           h2: ({ children }) => (
             <h2 className="mt-8 text-xl font-semibold tracking-tight text-[#2a3038] first:mt-0">
               <LinkifyChildren keyPrefix="news-h2" usedHrefs={usedHrefs}>

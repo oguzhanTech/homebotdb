@@ -1,9 +1,13 @@
 import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
+import { uiCopy } from "@/config/ui-copy";
 import { getRobotBySlug, getRobots } from "@/lib/data/repository";
+import { getRankingBySlug } from "@/lib/rankings";
+import { getKnowledgeBySlug, getKnowledgeCategory } from "@/lib/knowledge";
+import { getRobotCategoryBySlug } from "@/lib/robot-categories";
 
 export const INTERNAL_PATH_PATTERN =
-  /(\/(?:robots|compare|updates|news|wizard)(?:\/[a-z0-9-]+(?:-vs-[a-z0-9-]+)?)?)/i;
+  /(\/(?:robots|compare|updates|news|wizard|rankings|knowledge)(?:\/[a-z0-9-]+(?:-vs-[a-z0-9-]+)?)?)/i;
 
 export const INTERNAL_LINK_CLASS =
   "prose-internal-link cursor-pointer rounded-[6px] border border-blue/30 bg-blue-soft px-1.5 py-0.5 font-semibold text-blue transition-colors hover:border-blue/45 hover:bg-[#dce8ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/30";
@@ -100,10 +104,28 @@ export function labelForPath(href: string): string {
   if (href === "/updates") return "Radar Feed";
   if (href === "/news") return "News";
   if (href === "/wizard") return "Robot Matchmaker";
+  if (href === "/rankings") return "Rankings";
+  if (href.startsWith("/rankings/")) {
+    const slug = href.replace("/rankings/", "").replace(/\/$/, "");
+    return getRankingBySlug(slug)?.title ?? "Rankings";
+  }
+  if (href === "/knowledge") return uiCopy.nav.answers;
+  if (href.startsWith("/knowledge/")) {
+    const slug = href.replace("/knowledge/", "").replace(/\/$/, "");
+    return (
+      getKnowledgeCategory(slug)?.label ??
+      getKnowledgeBySlug(slug)?.title ??
+      uiCopy.nav.answers
+    );
+  }
 
   if (href.startsWith("/robots/")) {
-    const slug = href.replace("/robots/", "");
-    return getRobotBySlug(slug)?.name ?? slug.replace(/-/g, " ");
+    const slug = href.replace("/robots/", "").replace(/\/$/, "");
+    return (
+      getRobotBySlug(slug)?.name ??
+      getRobotCategoryBySlug(slug)?.title ??
+      slug.replace(/-/g, " ")
+    );
   }
 
   if (href.startsWith("/compare/")) {

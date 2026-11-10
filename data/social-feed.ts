@@ -3,6 +3,45 @@ import type { SocialFeedItem } from "@/types/social-feed";
 /** Curated X posts with native video. Use embed-friendly status URLs only. */
 export const socialFeedItems: SocialFeedItem[] = [
   {
+    id: "sf-069",
+    tweetUrl: "https://x.com/Optimus_RH/status/2120163569530802510",
+    handle: "Optimus_RH",
+    brandLabel: "Optimus RH",
+    summary:
+      "Optimus RH posts a 51-second video and two words: Optimus is coming. The catalog row is still Coming Soon, with no cart.",
+    publishedAt: "2026-11-10T14:36:00Z",
+    robotSlug: "optimus-gen2",
+    compareSlugs: ["optimus-gen2", "unitree-g1"],
+  },
+  {
+    id: "sf-068",
+    tweetUrl: "https://x.com/PopBase/status/2120159706945839520",
+    handle: "PopBase",
+    brandLabel: "Pop Base",
+    summary:
+      "Pop Base posts Amazon's new Ring robots. Ring Drone Cam is an indoor flying camera. Ring Rover Cam patrols.",
+    publishedAt: "2026-11-10T14:20:39Z",
+  },
+  {
+    id: "sf-067",
+    tweetUrl: "https://x.com/yukez/status/2119880324075377094",
+    handle: "yukez",
+    brandLabel: "Yuke Zhu",
+    summary:
+      "Yuke Zhu introduces GR00T 2. The model imagines how the room will move, then writes the actions for grippers, hands, and humanoids.",
+    publishedAt: "2026-11-09T19:50:29Z",
+    newsSlug: "nvidia-isaac-gr00t-open-reference-robot",
+  },
+  {
+    id: "sf-066",
+    tweetUrl: "https://x.com/googlegemma/status/2119866181163336042",
+    handle: "googlegemma",
+    brandLabel: "Google Gemma",
+    summary:
+      "Google Gemma drops a Gemma model into a robot. First move: scan the room, find the TV, and start a movie. NVIDIA fit it on an 8GB Jetson.",
+    publishedAt: "2026-11-09T18:54:17Z",
+  },
+  {
     id: "sf-065",
     tweetUrl: "https://x.com/HannesVonEssen/status/2117688155600007338",
     handle: "HannesVonEssen",

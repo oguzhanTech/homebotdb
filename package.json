@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "news:build": "node scripts/build-news.mjs",
-    "predev": "npm run news:build",
-    "prebuild": "npm run news:build",
+    "rankings:build": "node scripts/build-rankings.mjs",
+    "knowledge:build": "node scripts/build-knowledge.mjs",
+    "predev": "npm run news:build && npm run rankings:build && npm run knowledge:build",
+    "prebuild": "npm run news:build && npm run rankings:build && npm run knowledge:build",
     "dev": "node scripts/dev.mjs",
     "build": "next build",
     "start": "next start",

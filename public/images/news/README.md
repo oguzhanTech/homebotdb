@@ -13,3 +13,4 @@ If omitted, HomeBotRadar falls back to the linked robot image or the site defaul
 - `fotex-hive-unitree-night-restock.jpg` — night shelf restock at a Føtex near Copenhagen (Hive Robots / Unitree bodies, store closed, not a product poster)
 - `uss-walker-tienkung-quechua.jpg` — Universidad Señor de Sipán photo of Walker Tienkung humanoids at the July 6, 2026 Chiclayo showing (support frames; not a still of the later Quechua speech test)
 - `unitree-h2-x-kung-fu-guardian.jpg` — YouTube still from Unitree's October 21, 2026 H2-X promo (robot on a car; on-screen title misspells Unitree)
+- `sony-ends-aibo-sales-in-japan.jpg` — Sony product photo of the ivory white aibo ERS-1000, the color named in the June 25, 2026 Japan sales notice. Same hero used on the catalog row. Photo: Sony.
